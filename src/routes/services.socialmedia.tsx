@@ -5,6 +5,26 @@ import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageHeader, Section, CTA } from "@/components/ServicePage";
 import { PageBackdrop } from "@/components/PageBackdrop";
 import { FAQSection } from "@/components/FAQSection";
+import { JsonLd, buildServiceSchema, buildFAQSchema, buildBreadcrumbSchema } from "@/components/JsonLd";
+
+const faqs = [
+  {
+    q: "How does social media marketing actually generate leads?",
+    a: "By pairing content that earns attention with a clear next step — a landing page, a DM flow, or a paid campaign — so people who engage have somewhere to go, instead of just scrolling past.",
+  },
+  {
+    q: "How long until we see results?",
+    a: "Engagement and reach typically build within 4–6 weeks. Lead volume follows once the content-to-conversion system is fully in place — usually within the first two to three months.",
+  },
+  {
+    q: "Do you handle paid ads too, or just organic content?",
+    a: "Both. We build organic content and paid campaigns as one system, not two separate efforts, so they reinforce each other instead of competing for budget.",
+  },
+  {
+    q: "Which platforms do you work on?",
+    a: "Primarily Instagram and LinkedIn, with Meta and other paid channels layered in where it makes sense for your audience — not every platform, just the ones that convert.",
+  },
+];
 
 export const Route = createFileRoute("/services/socialmedia")({
   head: () => ({
@@ -314,6 +334,22 @@ bg-lime
 function MarketingPage() {
   return (
     <main className="pt-32 px-6 pb-20 relative">
+      <JsonLd
+        data={buildServiceSchema({
+          name: "Social Media Marketing",
+          description:
+            "Content strategy, paid campaigns, and social media management that turns online attention into qualified leads.",
+          url: "https://zoumconsultancy.com/services/socialmedia",
+        })}
+      />
+      <JsonLd data={buildFAQSchema(faqs)} />
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services/socialmedia" },
+          { name: "Social Media Marketing", path: "/services/socialmedia" },
+        ])}
+      />
       <PageBackdrop />
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -351,26 +387,7 @@ function MarketingPage() {
             </Section>
 
             <Section id="pricing" title="Frequently asked" kicker="/ faq">
-              <FAQSection
-                items={[
-                  {
-                    q: "How does social media marketing actually generate leads?",
-                    a: "By pairing content that earns attention with a clear next step — a landing page, a DM flow, or a paid campaign — so people who engage have somewhere to go, instead of just scrolling past.",
-                  },
-                  {
-                    q: "How long until we see results?",
-                    a: "Engagement and reach typically build within 4–6 weeks. Lead volume follows once the content-to-conversion system is fully in place — usually within the first two to three months.",
-                  },
-                  {
-                    q: "Do you handle paid ads too, or just organic content?",
-                    a: "Both. We build organic content and paid campaigns as one system, not two separate efforts, so they reinforce each other instead of competing for budget.",
-                  },
-                  {
-                    q: "Which platforms do you work on?",
-                    a: "Primarily Instagram and LinkedIn, with Meta and other paid channels layered in where it makes sense for your audience — not every platform, just the ones that convert.",
-                  },
-                ]}
-              />
+              <FAQSection items={faqs} />
             </Section>
 
             <CTA />

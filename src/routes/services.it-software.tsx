@@ -6,6 +6,7 @@ import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageBackdrop } from "@/components/PageBackdrop";
 import { PageHeader, Section, CTA } from "@/components/ServicePage";
 import { FAQSection } from "@/components/FAQSection";
+import { JsonLd, buildServiceSchema, buildFAQSchema, buildBreadcrumbSchema } from "@/components/JsonLd";
 
 export const Route = createFileRoute("/services/it-software")({
   head: () => ({
@@ -103,6 +104,22 @@ const faqs = [
 function ITPage() {
   return (
     <main className="pt-32 px-6 pb-20 relative">
+      <JsonLd
+        data={buildServiceSchema({
+          name: "IT & Software Development",
+          description:
+            "Websites, web applications, SaaS platforms, dashboards, backend systems, and cloud infrastructure.",
+          url: "https://zoumconsultancy.com/services/it-software",
+        })}
+      />
+      <JsonLd data={buildFAQSchema(faqs)} />
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services/it-software" },
+          { name: "IT & Software Development", path: "/services/it-software" },
+        ])}
+      />
       <PageBackdrop />
 
       <div className="max-w-7xl mx-auto relative z-10">

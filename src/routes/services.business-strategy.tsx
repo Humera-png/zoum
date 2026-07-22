@@ -6,6 +6,26 @@ import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageBackdrop } from "@/components/PageBackdrop";
 import { PageHeader, Section, CTA } from "@/components/ServicePage";
 import { FAQSection } from "@/components/FAQSection";
+import { JsonLd, buildServiceSchema, buildFAQSchema, buildBreadcrumbSchema } from "@/components/JsonLd";
+
+const faqs = [
+  {
+    q: "How much does business strategy consulting cost?",
+    a: "It depends on scope — a focused diagnostic is priced differently from an ongoing operating partnership. We'll give you a specific number after understanding what you actually need, not a generic package price.",
+  },
+  {
+    q: "How long does an engagement take?",
+    a: "A diagnostic and roadmap typically takes 30 days. Implementation timelines vary — some fixes land in weeks, larger operational redesigns run over one to two quarters.",
+  },
+  {
+    q: "Do you replace our existing team or work with them?",
+    a: "We work with your team. Our job is to find the bottleneck and build the fix alongside the people who'll own it after we're gone.",
+  },
+  {
+    q: "What size businesses do you work with?",
+    a: "Mostly growth-stage companies and established businesses hitting a specific operational wall — not pre-revenue startups, and not problems that just need more headcount.",
+  },
+];
 
 export const Route = createFileRoute("/services/business-strategy")({
   head: () => ({
@@ -109,6 +129,22 @@ const cases = [
 function BusinessStrategyPage() {
   return (
     <main className="pt-32 px-6 pb-20 relative">
+      <JsonLd
+        data={buildServiceSchema({
+          name: "Business Strategy & Operations",
+          description:
+            "Operational diagnostics, process redesign, and growth strategy consulting for growth-stage and established businesses.",
+          url: "https://zoumconsultancy.com/services/business-strategy",
+        })}
+      />
+      <JsonLd data={buildFAQSchema(faqs)} />
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services/business-strategy" },
+          { name: "Business Strategy & Operations", path: "/services/business-strategy" },
+        ])}
+      />
       <PageBackdrop />
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -204,26 +240,7 @@ function BusinessStrategyPage() {
             </Section>
 
             <Section id="pricing" title="Frequently asked" kicker="/ faq">
-              <FAQSection
-                items={[
-                  {
-                    q: "How much does business strategy consulting cost?",
-                    a: "It depends on scope — a focused diagnostic is priced differently from an ongoing operating partnership. We'll give you a specific number after understanding what you actually need, not a generic package price.",
-                  },
-                  {
-                    q: "How long does an engagement take?",
-                    a: "A diagnostic and roadmap typically takes 30 days. Implementation timelines vary — some fixes land in weeks, larger operational redesigns run over one to two quarters.",
-                  },
-                  {
-                    q: "Do you replace our existing team or work with them?",
-                    a: "We work with your team. Our job is to find the bottleneck and build the fix alongside the people who'll own it after we're gone.",
-                  },
-                  {
-                    q: "What size businesses do you work with?",
-                    a: "Mostly growth-stage companies and established businesses hitting a specific operational wall — not pre-revenue startups, and not problems that just need more headcount.",
-                  },
-                ]}
-              />
+              <FAQSection items={faqs} />
             </Section>
 
             <CTA />

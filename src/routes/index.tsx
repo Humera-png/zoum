@@ -19,6 +19,8 @@ import {
 } from "lucide-react";
 import { MagneticButton } from "@/components/MagneticButton";
 import { ContactForm } from "@/components/ContactForm";
+import { FAQSection } from "@/components/FAQSection";
+import { JsonLd, buildFAQSchema } from "@/components/JsonLd";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -638,6 +640,51 @@ function Testimonials() {
   );
 }
 
+const homeFaqs = [
+  {
+    q: "How much does executive career advisory cost?",
+    a: "It depends on the level of role and scope of support. We'll give you a specific number after a short assessment call — no generic package pricing.",
+  },
+  {
+    q: "How long does recruitment or a career move typically take?",
+    a: "Most clients see a serious opportunity within 8–12 weeks. Full placement timelines vary with seniority and how targeted the search is.",
+  },
+  {
+    q: "Can AI actually automate our repetitive work?",
+    a: "Yes, for most rule-based, repeated tasks — data entry, follow-ups, reporting, first-line support. We map what your team does manually every week, then automate the highest-time-cost pieces first.",
+  },
+  {
+    q: "What kind of businesses benefit most from AI automation?",
+    a: "Any business with repeated manual work — customer support, sales follow-up, reporting, order or document processing. If your team does the same task the same way every week, it's usually automatable.",
+  },
+  {
+    q: "How does social media marketing generate real leads?",
+    a: "By pairing content that earns attention with a clear next step — a landing page, a DM flow, or a paid campaign — so people who engage have somewhere to go, not just something to scroll past.",
+  },
+];
+
+function FAQ() {
+  return (
+    <section className="relative px-4 sm:px-6 py-14 md:py-20">
+      <div className="max-w-3xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-10 md:mb-14"
+        >
+          <div className="text-xs uppercase tracking-[0.3em] text-lime mb-4">/ faq</div>
+          <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-tight">
+            Questions people{" "}
+            <span className="italic font-serif text-muted-foreground">actually ask.</span>
+          </h2>
+        </motion.div>
+        <FAQSection items={homeFaqs} />
+      </div>
+    </section>
+  );
+}
+
 function Contact() {
   return (
     <section id="contact" className="relative px-4 sm:px-6 py-14 md:py-20">
@@ -690,11 +737,13 @@ function Contact() {
 function Index() {
   return (
     <main className="relative overflow-x-hidden">
+      <JsonLd data={buildFAQSchema(homeFaqs)} />
       <Hero />
       <ClientMarquee />
       <Services />
       <Philosophy />
       <Testimonials />
+      <FAQ />
       <Contact />
     </main>
   );

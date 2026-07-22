@@ -15,6 +15,26 @@ import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageHeader, Section, CTA } from "@/components/ServicePage";
 import { PageBackdrop } from "@/components/PageBackdrop";
 import { FAQSection } from "@/components/FAQSection";
+import { JsonLd, buildServiceSchema, buildFAQSchema, buildBreadcrumbSchema } from "@/components/JsonLd";
+
+const faqs = [
+  {
+    q: "How long does executive career advisory take?",
+    a: "Most clients see their first serious opportunity within 8–12 weeks of starting, though timelines vary with seniority and target role. We'll be specific after an initial assessment.",
+  },
+  {
+    q: "Is this the same as a recruiter?",
+    a: "No. Recruiters work for the hiring company. We work only for you — positioning, strategy, and negotiation are built around your goals, not a placement fee.",
+  },
+  {
+    q: "What level of roles do you work with?",
+    a: "Director through C-suite and board-level. If you're already operating at a senior level and want the title and comp to match, this is built for you.",
+  },
+  {
+    q: "Is this confidential?",
+    a: "Yes — engagements are private by default, which matters if you're advising while still employed.",
+  },
+];
 
 export const Route = createFileRoute("/services/career")({
   head: () => ({
@@ -187,6 +207,22 @@ const successes = [
 function CareerPage() {
   return (
     <main className="pt-32 px-6 pb-20 relative">
+      <JsonLd
+        data={buildServiceSchema({
+          name: "Career Mastery & Talent Acquisition",
+          description:
+            "Executive career advisory, positioning, and talent placement for senior professionals moving into C-suite and board-level roles.",
+          url: "https://zoumconsultancy.com/services/career",
+        })}
+      />
+      <JsonLd data={buildFAQSchema(faqs)} />
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services/career" },
+          { name: "Career Mastery & Talent Acquisition", path: "/services/career" },
+        ])}
+      />
       <PageBackdrop />
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -245,26 +281,7 @@ function CareerPage() {
             </section>
 
             <Section id="faq" title="Frequently asked" kicker="/ faq">
-              <FAQSection
-                items={[
-                  {
-                    q: "How long does executive career advisory take?",
-                    a: "Most clients see their first serious opportunity within 8–12 weeks of starting, though timelines vary with seniority and target role. We'll be specific after an initial assessment.",
-                  },
-                  {
-                    q: "Is this the same as a recruiter?",
-                    a: "No. Recruiters work for the hiring company. We work only for you — positioning, strategy, and negotiation are built around your goals, not a placement fee.",
-                  },
-                  {
-                    q: "What level of roles do you work with?",
-                    a: "Director through C-suite and board-level. If you're already operating at a senior level and want the title and comp to match, this is built for you.",
-                  },
-                  {
-                    q: "Is this confidential?",
-                    a: "Yes — engagements are private by default, which matters if you're advising while still employed.",
-                  },
-                ]}
-              />
+              <FAQSection items={faqs} />
             </Section>
 
             <CTA />

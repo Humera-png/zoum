@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Linkedin } from "lucide-react";
 import { Counter } from "@/components/Counter";
 import { PageBackdrop } from "@/components/PageBackdrop";
+import { JsonLd, buildBreadcrumbSchema } from "@/components/JsonLd";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -52,6 +53,12 @@ const board = [
 function AboutPage() {
   return (
     <main className="pt-32 px-6 pb-20 relative">
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about" },
+        ])}
+      />
       <PageBackdrop />
       <div className="max-w-7xl mx-auto relative z-10">
         <header className="pt-12 max-w-4xl">

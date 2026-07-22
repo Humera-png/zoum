@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { MapPin, Mail, Phone } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
 import { PageBackdrop } from "@/components/PageBackdrop";
+import { JsonLd, buildBreadcrumbSchema } from "@/components/JsonLd";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -29,6 +30,12 @@ export const Route = createFileRoute("/contact")({
 function ContactPage() {
   return (
     <main className="pt-16 px-6 pb-16 md:pb-24 relative">
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Contact", path: "/contact" },
+        ])}
+      />
       <PageBackdrop />
       <div
         className="ambient-orb h-[500px] w-[500px] top-20 right-0"
