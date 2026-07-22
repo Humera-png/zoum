@@ -7,16 +7,9 @@
 /* ======================
    FONTS
 ====================== */
-
-@font-face {
-  font-family: "Clash Display";
-
-  src: url("https://fonts.cdnfonts.com/s/100013/ClashDisplay-Variable.woff2") format("woff2");
-
-  font-weight: 200 700;
-
-  font-display: swap;
-}
+/* Clash Display is loaded via Fontshare's own CDN in __root.tsx's <head> links
+   (the previous fonts.cdnfonts.com mirror 404'd, silently falling back to Inter
+   for every heading sitewide). */
 
 /* ======================
    THEME
