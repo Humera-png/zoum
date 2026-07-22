@@ -85,6 +85,15 @@
 
     background-size: 4px 4px;
   }
+
+  /* Keyboard-only focus ring for links/buttons that don't define their own
+     focus state (form fields have their own via .input-glow above). */
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--brand-deep);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
 }
 
 /* ======================
@@ -254,6 +263,30 @@
     color: var(--brand-deep);
 
     border: 1px solid rgba(14, 124, 66, 0.25);
+  }
+
+  /* ======================
+   FORM STATES
+====================== */
+
+  .input-glow {
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .input-glow:focus-visible {
+    outline: none;
+    border-color: var(--brand-deep);
+    box-shadow: 0 0 0 3px var(--brand-glow);
+  }
+
+  .input-error {
+    border-color: #dc2626 !important;
+  }
+
+  .input-error:focus-visible {
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.35);
   }
 
   /* ======================

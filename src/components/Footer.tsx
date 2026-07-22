@@ -33,6 +33,7 @@ export function Footer() {
             <input
               type="email"
               required
+              aria-label="Email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="your@email.com"
@@ -90,13 +91,18 @@ export function Footer() {
               Contact
             </Link>
             <div className="flex items-center gap-2">
-              {[Twitter, Linkedin, Instagram].map((I, i) => (
+              {[
+                { Icon: Twitter, label: "X (Twitter)" },
+                { Icon: Linkedin, label: "LinkedIn" },
+                { Icon: Instagram, label: "Instagram" },
+              ].map(({ Icon, label }) => (
                 <a
-                  key={i}
+                  key={label}
                   href="#"
+                  aria-label={label}
                   className="h-9 w-9 grid place-items-center rounded-full glass hover:bg-lime hover:text-white hover:border-transparent transition"
                 >
-                  <I className="h-4 w-4" />
+                  <Icon className="h-4 w-4" aria-hidden="true" />
                 </a>
               ))}
             </div>
