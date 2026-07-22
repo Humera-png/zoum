@@ -157,15 +157,6 @@ function Hero() {
       />
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-4 lg:gap-5 items-center relative z-10">
         <div className="min-w-0">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-xs text-muted-foreground mb-3"
-          >
-            <span className="h-1.5 w-1.5 rounded-full bg-lime pulse-lime" />
-            Free strategy call available — limited spots
-          </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
