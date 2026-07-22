@@ -1,5 +1,6 @@
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useRef, MouseEvent, ReactNode } from "react";
+import { Link } from "@tanstack/react-router";
 
 type Props = {
   children: ReactNode;
@@ -43,9 +44,17 @@ export function MagneticButton({
     </motion.span>
   );
 
+  // Internal routes (e.g. "/contact") go through TanStack Router's <Link> for client-side
+  // navigation and prefetching; anything else (tel:, mailto:, external URLs) stays a plain <a>.
+  const isInternal = href?.startsWith("/");
+
   return (
     <motion.div ref={ref} onMouseMove={onMove} onMouseLeave={onLeave} className="inline-block">
-      {href ? (
+      {isInternal ? (
+        <Link to={href} className={className}>
+          {inner}
+        </Link>
+      ) : href ? (
         <a href={href} className={className}>
           {inner}
         </a>
