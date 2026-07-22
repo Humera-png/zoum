@@ -77,9 +77,10 @@ function AboutPage() {
             transition={{ delay: 0.2 }}
             className="mt-6 text-lg text-muted-foreground max-w-2xl"
           >
-            Founded in 2014, ZOUM Placement Services partners with companies and individuals through
-            high-stakes inflection points. Every Partner has run a P&L, closed a round, or held a
-            C-suite seat.
+            Founded in 2014, ZOUM works with companies and individuals at the moments that actually
+            matter — a hire that has to be right, a stalled quarter, a career move with no room for
+            a mistake. Every Partner has run a P&L, closed a round, or held a C-suite seat
+            themselves.
           </motion.p>
         </header>
 

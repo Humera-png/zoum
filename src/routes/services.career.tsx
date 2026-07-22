@@ -14,6 +14,7 @@ import {
 import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageHeader, Section, CTA } from "@/components/ServicePage";
 import { PageBackdrop } from "@/components/PageBackdrop";
+import { FAQSection } from "@/components/FAQSection";
 
 export const Route = createFileRoute("/services/career")({
   head: () => ({
@@ -62,7 +63,7 @@ const milestones: Milestone[] = [
     icon: Compass,
     code: "M1",
     title: "Career Assessment",
-    desc: "An objective evaluation of your leadership impact, operational strengths, executive experience, and market value to create a clear career transition strategy.",
+    desc: "An honest look at where you actually stand — your strengths, your market value, and what's realistically next.",
     metric: "Audit",
     span: "md:col-span-2",
   },
@@ -71,15 +72,15 @@ const milestones: Milestone[] = [
     icon: Target,
     code: "M2",
     title: "Executive Positioning",
-    desc: "We transform your experience into a leadership narrative that communicates your value to boards, founders, investors, and executive hiring teams.",
+    desc: "We rewrite how you present your experience so boards and hiring teams see the leader you already are.",
     span: "md:col-span-2",
   },
 
   {
     icon: Rocket,
     code: "M3",
-    title: "Opportunity Strategy",
-    desc: "A targeted approach to accessing senior leadership opportunities through market mapping, relationship strategy, and executive networking.",
+    title: "Opportunity Access",
+    desc: "We put you in front of roles and decision-makers you can't reach through job boards alone.",
     metric: "Access",
     span: "",
   },
@@ -88,15 +89,15 @@ const milestones: Milestone[] = [
     icon: Briefcase,
     code: "M4",
     title: "Interview & Negotiation",
-    desc: "Preparation for executive interviews, stakeholder conversations, compensation discussions, and final offer evaluation.",
+    desc: "Real prep for the conversations that decide the offer — including the compensation talk.",
     span: "",
   },
 
   {
     icon: Trophy,
     code: "M5",
-    title: "Leadership Transition",
-    desc: "A structured first 90-day roadmap designed to build credibility, align teams, and create momentum in your new leadership role.",
+    title: "First 90 Days",
+    desc: "A clear plan for building credibility and momentum in the new role, so you're not figuring it out alone.",
     metric: "90 Days",
     span: "md:col-span-2",
   },
@@ -104,8 +105,8 @@ const milestones: Milestone[] = [
   {
     icon: Sparkles,
     code: "M6",
-    title: "Long-Term Strategy",
-    desc: "Continuous career advisory focused on board readiness, leadership growth, and future executive opportunities.",
+    title: "What Comes Next",
+    desc: "Ongoing advisory as you grow into the role and start eyeing the one after it.",
     span: "",
   },
 ];
@@ -190,28 +191,29 @@ function CareerPage() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <PageHeader
-          pill="Executive Career Advisory"
-          title="The Executive"
-          italic="Positioning."
-          sub="A private practice helping accomplished operators move into C-suite, general management, and board-level opportunities."
+          pill="Career Mastery & Talent Acquisition"
+          title="Stuck below"
+          italic="your level?"
+          sub="You're already doing the work of the role above you — just without the title or the pay. We help you get both."
         />
 
         <div className="mt-20 grid lg:grid-cols-[200px_1fr] gap-12">
           <ServiceSubNav />
 
           <div className="space-y-32">
-            <Section id="overview" title="The Mechanism of Advancement" kicker="/ strategy">
+            <Section id="overview" title="Why applications alone don't work" kicker="/ the problem">
               <div className="glass-strong rounded-3xl p-10">
                 <Quote className="text-lime mb-5" />
 
                 <p className="font-serif italic text-3xl">
-                  "Senior opportunities are not won through applications. They are created through
-                  positioning, relationships, and strategic visibility."
+                  "Senior roles rarely go to the best applicant. They go to the person the room
+                  already trusts."
                 </p>
 
                 <p className="mt-6 text-muted-foreground">
-                  ZOUM works with senior professionals to clarify their value, strengthen their
-                  market presence, and access leadership opportunities that match their ambition.
+                  If you're applying and hearing nothing back, the problem usually isn't your
+                  experience — it's that decision-makers don't know you exist yet. We fix your
+                  positioning and put you in front of the people who are hiring.
                 </p>
               </div>
             </Section>
@@ -241,6 +243,29 @@ function CareerPage() {
                 ))}
               </div>
             </section>
+
+            <Section id="faq" title="Frequently asked" kicker="/ faq">
+              <FAQSection
+                items={[
+                  {
+                    q: "How long does executive career advisory take?",
+                    a: "Most clients see their first serious opportunity within 8–12 weeks of starting, though timelines vary with seniority and target role. We'll be specific after an initial assessment.",
+                  },
+                  {
+                    q: "Is this the same as a recruiter?",
+                    a: "No. Recruiters work for the hiring company. We work only for you — positioning, strategy, and negotiation are built around your goals, not a placement fee.",
+                  },
+                  {
+                    q: "What level of roles do you work with?",
+                    a: "Director through C-suite and board-level. If you're already operating at a senior level and want the title and comp to match, this is built for you.",
+                  },
+                  {
+                    q: "Is this confidential?",
+                    a: "Yes — engagements are private by default, which matters if you're advising while still employed.",
+                  },
+                ]}
+              />
+            </Section>
 
             <CTA />
           </div>

@@ -1,10 +1,11 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Check, Target, BarChart3, Workflow, Rocket } from "lucide-react";
+import { Target, BarChart3, Workflow, Rocket } from "lucide-react";
 
 import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageBackdrop } from "@/components/PageBackdrop";
 import { PageHeader, Section, CTA } from "@/components/ServicePage";
+import { FAQSection } from "@/components/FAQSection";
 
 export const Route = createFileRoute("/services/business-strategy")({
   head: () => ({
@@ -43,33 +44,33 @@ const frameworks = [
   {
     icon: Target,
 
-    name: "Business Growth Strategy",
+    name: "Growth Strategy",
 
-    desc: "We help companies identify growth opportunities, improve decision making, and create clear strategies that align teams with measurable business goals.",
+    desc: "We find where growth is realistically available and build a plan the team can actually execute — not a 40-slide deck that sits in a drive.",
   },
 
   {
     icon: Workflow,
 
-    name: "Operational Excellence",
+    name: "Operational Fixes",
 
-    desc: "Improve internal systems, workflows, and execution processes to reduce inefficiencies and create scalable operations.",
+    desc: "We find the specific workflows costing you time and margin, and redesign them — usually a handful of processes, not a full overhaul.",
   },
 
   {
     icon: BarChart3,
 
-    name: "Performance & Analytics",
+    name: "Reporting & Visibility",
 
-    desc: "Build data-driven organizations using dashboards, KPIs, reporting systems, and performance frameworks.",
+    desc: "Dashboards and reporting that tell you what's actually happening, so decisions aren't made on gut feel three weeks too late.",
   },
 
   {
     icon: Rocket,
 
-    name: "Scaling & Transformation",
+    name: "Scaling Support",
 
-    desc: "Support businesses through expansion, digital transformation, restructuring, and long-term operational growth.",
+    desc: "Hands-on help through the specific stretch points that break most growing teams — new markets, new headcount, new complexity.",
   },
 ];
 
@@ -113,28 +114,26 @@ function BusinessStrategyPage() {
       <div className="max-w-7xl mx-auto relative z-10">
         <PageHeader
           pill="Business Strategy & Operations"
-          title="Scale"
-          italic="Smarter."
-          sub="
-Strategic consulting for businesses looking to improve operations, accelerate growth, optimize execution, and build scalable systems for long-term success.
-"
+          title="Busier, but"
+          italic="not growing?"
+          sub="A busier team isn't the same as a growing business. We find where your operations are actually leaking time and margin, then fix the process — not just the symptom."
         />
 
         <div className="mt-20 grid lg:grid-cols-[200px_1fr] gap-12">
           <ServiceSubNav />
 
           <div className="space-y-32">
-            <Section id="overview" title="Strategic Growth Engine" kicker="/ consulting">
+            <Section id="overview" title="Where growth actually stalls" kicker="/ the problem">
               <div className="glass-strong rounded-3xl p-10">
                 <p className="font-serif italic text-3xl">
-                  "Successful companies are not built only through ideas. They are built through
-                  strategy, systems, execution, and the ability to adapt."
+                  "Most growth problems aren't a strategy problem. They're a 'nobody owns this'
+                  problem."
                 </p>
 
                 <p className="mt-6 text-muted-foreground">
-                  ZOUM partners with organizations to solve complex business challenges through
-                  strategic planning, operational improvement, technology enablement, and
-                  growth-focused execution frameworks.
+                  Revenue stalls, margins shrink, and decisions slow down — usually because
+                  processes that worked at a smaller size never got redesigned for the size you are
+                  now. We find the specific bottleneck and fix it, not the whole org chart.
                 </p>
               </div>
             </Section>
@@ -204,88 +203,27 @@ Strategic consulting for businesses looking to improve operations, accelerate gr
               </div>
             </Section>
 
-            <Section id="pricing" title="Engagement Models" kicker="/ solutions">
-              <div className="grid md:grid-cols-3 gap-5">
-                {[
+            <Section id="pricing" title="Frequently asked" kicker="/ faq">
+              <FAQSection
+                items={[
                   {
-                    tier: "Strategy Consulting",
-
-                    price: "Discovery",
-
-                    time: "Initial Assessment",
-
-                    feats: ["Business analysis", "Growth roadmap", "Strategic recommendations"],
+                    q: "How much does business strategy consulting cost?",
+                    a: "It depends on scope — a focused diagnostic is priced differently from an ongoing operating partnership. We'll give you a specific number after understanding what you actually need, not a generic package price.",
                   },
-
                   {
-                    tier: "Operations Transformation",
-
-                    price: "Growth",
-
-                    time: "Ongoing Partnership",
-
-                    highlight: true,
-
-                    feats: [
-                      "Process optimization",
-
-                      "Operational systems",
-
-                      "Performance improvement",
-                    ],
+                    q: "How long does an engagement take?",
+                    a: "A diagnostic and roadmap typically takes 30 days. Implementation timelines vary — some fixes land in weeks, larger operational redesigns run over one to two quarters.",
                   },
-
                   {
-                    tier: "Enterprise Advisory",
-
-                    price: "Custom",
-
-                    time: "Long-Term",
-
-                    feats: ["Executive consulting", "Transformation planning", "Scale strategy"],
+                    q: "Do you replace our existing team or work with them?",
+                    a: "We work with your team. Our job is to find the bottleneck and build the fix alongside the people who'll own it after we're gone.",
                   },
-                ].map((t, i) => (
-                  <div
-                    key={i}
-                    className={`glass-strong rounded-3xl p-8 transition ${
-                      t.highlight
-                        ? "ring-2 ring-[var(--brand-deep)] shadow-[0_24px_60px_-24px_var(--brand-glow)]"
-                        : ""
-                    }`}
-                  >
-                    {t.highlight && (
-                      <div className="text-[10px] inline-block bg-lime text-white px-2.5 py-1 rounded-full mb-3 uppercase tracking-wider">
-                        Most Popular
-                      </div>
-                    )}
-
-                    <div className="font-display text-2xl">{t.tier}</div>
-
-                    <div className="font-display text-4xl mt-2">{t.price}</div>
-
-                    <div className="text-xs uppercase tracking-wider text-muted-foreground mt-1">
-                      {t.time}
-                    </div>
-
-                    <ul className="mt-6 space-y-2 text-sm text-muted-foreground">
-                      {t.feats.map((f) => (
-                        <li key={f} className="flex items-center gap-2">
-                          <Check className="h-3.5 w-3.5 text-lime" />
-
-                          {f}
-                        </li>
-                      ))}
-                    </ul>
-
-                    <Link
-                      to="/contact"
-                      className="mt-6 block text-center glass rounded-full py-3 text-sm hover:bg-white transition"
-                    >
-                      Discuss Strategy
-                    </Link>
-                  </div>
-                ))}
-              </div>
+                  {
+                    q: "What size businesses do you work with?",
+                    a: "Mostly growth-stage companies and established businesses hitting a specific operational wall — not pre-revenue startups, and not problems that just need more headcount.",
+                  },
+                ]}
+              />
             </Section>
 
             <CTA />

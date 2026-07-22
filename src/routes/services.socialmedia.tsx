@@ -1,9 +1,10 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 
 import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageHeader, Section, CTA } from "@/components/ServicePage";
 import { PageBackdrop } from "@/components/PageBackdrop";
+import { FAQSection } from "@/components/FAQSection";
 
 export const Route = createFileRoute("/services/socialmedia")({
   head: () => ({
@@ -318,28 +319,25 @@ function MarketingPage() {
       <div className="max-w-7xl mx-auto relative z-10">
         <PageHeader
           pill="Social Media Marketing"
-          title="Build"
-          italic="Digital Influence."
-          sub="
-A performance-driven social media marketing agency helping businesses grow visibility, attract customers, and build powerful online brands.
-"
+          title="Posting but"
+          italic="not converting?"
+          sub="Content without a strategy just fills a feed. We build the system behind it — message, content, and channels working together — so attention turns into leads."
         />
 
         <div className="mt-20 grid lg:grid-cols-[200px_1fr] gap-12">
           <ServiceSubNav />
 
           <div className="space-y-32">
-            <Section id="overview" title="More Than Social Media Posts" kicker="/ strategy">
+            <Section id="overview" title="Why posting more isn't the fix" kicker="/ the problem">
               <div className="glass-strong rounded-3xl p-10">
                 <p className="font-serif italic text-3xl">
-                  "Successful brands are built through attention, trust, and consistent digital
-                  presence."
+                  "More posts without a strategy just means more content nobody was waiting for."
                 </p>
 
                 <p className="mt-6 text-muted-foreground leading-relaxed">
-                  ZOUM creates complete social media growth systems combining content marketing,
-                  social management, paid advertising, and analytics to help businesses turn online
-                  attention into measurable growth.
+                  If your content isn't converting, the issue usually isn't effort — it's that
+                  there's no system connecting what you post to what you're trying to sell. We
+                  build that system: strategy, content, and paid reach working together.
                 </p>
               </div>
             </Section>
@@ -352,42 +350,27 @@ A performance-driven social media marketing agency helping businesses grow visib
               </div>
             </Section>
 
-            <Section id="pricing" title="Growth Partnerships" kicker="/ solutions">
-              <div className="grid md:grid-cols-3 gap-6">
-                {[
+            <Section id="pricing" title="Frequently asked" kicker="/ faq">
+              <FAQSection
+                items={[
                   {
-                    title: "Starter Growth",
-
-                    desc: "For businesses building their first professional online presence.",
+                    q: "How does social media marketing actually generate leads?",
+                    a: "By pairing content that earns attention with a clear next step — a landing page, a DM flow, or a paid campaign — so people who engage have somewhere to go, instead of just scrolling past.",
                   },
-
                   {
-                    title: "Growth Partner",
-
-                    desc: "Complete social media marketing including strategy, content, campaigns, and optimization.",
+                    q: "How long until we see results?",
+                    a: "Engagement and reach typically build within 4–6 weeks. Lead volume follows once the content-to-conversion system is fully in place — usually within the first two to three months.",
                   },
-
                   {
-                    title: "Enterprise Brand",
-
-                    desc: "A complete digital growth partnership for ambitious companies.",
+                    q: "Do you handle paid ads too, or just organic content?",
+                    a: "Both. We build organic content and paid campaigns as one system, not two separate efforts, so they reinforce each other instead of competing for budget.",
                   },
-                ].map((x, i) => (
-                  <div
-                    key={i}
-                    className="glass-strong rounded-3xl p-8 hover:-translate-y-2 transition flex flex-col"
-                  >
-                    <h3 className="font-display text-2xl">{x.title}</h3>
-                    <p className="mt-4 text-muted-foreground flex-1">{x.desc}</p>
-                    <Link
-                      to="/contact"
-                      className="mt-6 block text-center glass rounded-full py-3 text-sm font-semibold hover:bg-white transition"
-                    >
-                      Get started →
-                    </Link>
-                  </div>
-                ))}
-              </div>
+                  {
+                    q: "Which platforms do you work on?",
+                    a: "Primarily Instagram and LinkedIn, with Meta and other paid channels layered in where it makes sense for your audience — not every platform, just the ones that convert.",
+                  },
+                ]}
+              />
             </Section>
 
             <CTA />
