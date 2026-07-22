@@ -1,0 +1,341 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@source "./";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ======================
+   FONTS
+====================== */
+
+@font-face {
+  font-family: "Clash Display";
+
+  src: url("https://fonts.cdnfonts.com/s/100013/ClashDisplay-Variable.woff2") format("woff2");
+
+  font-weight: 200 700;
+
+  font-display: swap;
+}
+
+/* ======================
+   THEME
+====================== */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --radius-md: calc(var(--radius) - 2px);
+
+  --radius-lg: var(--radius);
+
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --font-display: "Clash Display", "Inter", sans-serif;
+
+  --font-serif: "Instrument Serif", Georgia, serif;
+
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+/* ======================
+   ROOT
+====================== */
+
+:root {
+  --radius: 1rem;
+
+  --background: oklch(0.985 0 0);
+
+  --foreground: oklch(0.2 0.02 160);
+
+  --brand: #1fcb6b;
+
+  --brand-deep: #0e7c42;
+
+  --brand-forest: #073b22;
+
+  --brand-glow: rgba(31, 203, 107, 0.55);
+
+  --ink: #14241b;
+}
+
+/* ======================
+   BASE
+====================== */
+
+@layer base {
+  * {
+    box-sizing: border-box;
+
+    border-color: #e2e8f0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--background);
+
+    color: var(--ink);
+
+    font-family: var(--font-sans);
+
+    overflow-x: hidden;
+
+    background-image: radial-gradient(rgba(14, 124, 66, 0.04) 1px, transparent 1px);
+
+    background-size: 4px 4px;
+  }
+}
+
+/* ======================
+   GLASS
+====================== */
+
+@layer utilities {
+  .glass {
+    background: rgba(255, 255, 255, 0.7);
+
+    backdrop-filter: blur(20px) saturate(180%);
+
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+
+    border: 0.5px solid #e2e8f0;
+
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.6) inset,
+      0 12px 40px -24px rgba(7, 59, 34, 0.12);
+  }
+
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.82);
+
+    backdrop-filter: blur(28px) saturate(200%);
+
+    -webkit-backdrop-filter: blur(28px) saturate(200%);
+
+    border: 0.5px solid #e2e8f0;
+
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.6) inset,
+      0 30px 60px -30px rgba(7, 59, 34, 0.18);
+  }
+
+  /* ======================
+   COLORS
+====================== */
+
+  .text-lime {
+    color: var(--brand-deep);
+  }
+
+  .bg-lime {
+    background: var(--brand);
+  }
+
+  .text-brand {
+    color: var(--brand);
+  }
+
+  .text-brand-deep {
+    color: var(--brand-deep);
+  }
+
+  .bg-brand {
+    background: var(--brand);
+  }
+
+  /* ======================
+   CAREER BENTO FIXED
+====================== */
+
+  .career-bento {
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 20px;
+
+    align-items: stretch;
+  }
+
+  .career-card {
+    min-height: 280px;
+
+    padding: 32px;
+
+    border-radius: 32px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    overflow: visible;
+
+    transition:
+      transform 0.4s ease,
+      box-shadow 0.4s ease;
+  }
+
+  .career-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 25px 60px -25px rgba(31, 203, 107, 0.35);
+  }
+
+  .career-card h3 {
+    font-family: var(--font-display);
+
+    font-size: clamp(1.8rem, 2vw, 2.5rem);
+
+    line-height: 1.05;
+
+    margin-bottom: 18px;
+  }
+
+  .career-card p {
+    font-size: 15px;
+
+    line-height: 1.7;
+
+    color: #647067;
+  }
+
+  .career-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 40px;
+  }
+
+  .career-top span {
+    font-size: 12px;
+
+    letter-spacing: 0.25em;
+
+    color: var(--brand-deep);
+  }
+
+  .career-icon {
+    width: 44px;
+
+    height: 44px;
+
+    border-radius: 14px;
+
+    display: grid;
+
+    place-items: center;
+
+    background: white;
+
+    border: 1px solid #e2e8f0;
+  }
+
+  .career-pill {
+    display: inline-flex;
+
+    margin-top: 20px;
+
+    padding: 6px 14px;
+
+    border-radius: 999px;
+
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.1em;
+
+    color: var(--brand-deep);
+
+    border: 1px solid rgba(14, 124, 66, 0.25);
+  }
+
+  /* ======================
+   EFFECTS
+====================== */
+
+  .glow-lime {
+    box-shadow: 0 8px 30px -8px var(--brand-glow);
+  }
+
+  .hover-glow-lime {
+    transition: 0.4s ease;
+  }
+
+  .hover-glow-lime:hover {
+    box-shadow: 0 24px 60px -20px var(--brand-glow);
+  }
+
+  .ambient-orb {
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(100px);
+
+    pointer-events: none;
+
+    z-index: 0;
+  }
+
+  /* ======================
+   BUTTON
+====================== */
+
+  .btn-lime {
+    background: var(--brand);
+
+    color: white;
+
+    border: 1px solid var(--brand-deep);
+
+    transition: 0.35s ease;
+  }
+
+  .btn-lime:hover {
+    background: #18b85f;
+
+    transform: translateY(-2px);
+  }
+
+  /* ======================
+   BACKGROUND GRID
+====================== */
+
+  .bg-grid-faint {
+    background-image:
+      linear-gradient(to right, rgba(7, 59, 34, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(7, 59, 34, 0.05) 1px, transparent 1px);
+
+    background-size: 56px 56px;
+  }
+
+  /* ======================
+   MOBILE
+====================== */
+
+  @media (max-width: 900px) {
+    .career-bento {
+      grid-template-columns: 1fr;
+    }
+
+    .career-card {
+      min-height: auto;
+
+      padding: 26px;
+    }
+  }
+}
