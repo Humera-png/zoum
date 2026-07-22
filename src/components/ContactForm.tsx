@@ -1,9 +1,35 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useCallback, memo, useRef } from "react";
 import { z } from "zod";
-import { ArrowUpRight, Check, Loader2 } from "lucide-react";
+import { ArrowUpRight, Check, Loader2, Upload, X } from "lucide-react";
 import { MagneticButton } from "./MagneticButton";
 import { useContactForm } from "../hooks/useContactForm";
+
+export const REASONS = [
+  { value: "business-strategy", label: "Business Strategy & Operations" },
+  { value: "career", label: "Career / Job Application" },
+  { value: "social-media", label: "Social Media Marketing" },
+  { value: "ai-automation", label: "AI Automation" },
+  { value: "it-software", label: "IT & Software Development" },
+  { value: "general", label: "General Inquiry" },
+] as const;
+
+const MAX_RESUME_BYTES = 5 * 1024 * 1024;
+const ALLOWED_RESUME_MIME = new Set([
+  "application/pdf",
+  "application/msword",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+]);
+const ALLOWED_RESUME_EXT = new Set([".pdf", ".doc", ".docx"]);
+
+function isValidResume(file: File): boolean {
+  const ext = file.name.slice(file.name.lastIndexOf(".")).toLowerCase();
+  return (
+    file.size <= MAX_RESUME_BYTES &&
+    ALLOWED_RESUME_EXT.has(ext) &&
+    ALLOWED_RESUME_MIME.has(file.type)
+  );
+}
 
 const schema = z.object({
   name: z.string().trim().min(2, "Name must be at least 2 characters").max(100),
@@ -18,7 +44,10 @@ const schema = z.object({
     .regex(/^[+\d\s\-()\[\]]{7,20}$/, { message: "Enter a valid phone number" })
     .or(z.literal("")),
   company: z.string().trim().min(1, "Company is required").max(120),
-  service: z.string().trim().min(1, "Select a service").max(120),
+  reason: z.enum(
+    REASONS.map((r) => r.value) as [string, ...string[]],
+    { message: "Select a reason for contact" },
+  ),
   message: z.string().trim().min(10, "Tell us a bit more (10+ chars)").max(1000),
 });
 
@@ -29,27 +58,53 @@ const emptyFormValues: FormValues = {
   email: "",
   phone: "",
   company: "",
-  service: "",
+  reason: "",
   message: "",
 };
 
 export function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const { sendMessage, loading, toast } = useContactForm();
 
   const [formData, setFormData] = useState<FormValues>(emptyFormValues);
   const [errors, setErrors] = useState<Partial<Record<keyof FormValues, string>>>({});
+  const [resume, setResume] = useState<File | null>(null);
+  const [resumeError, setResumeError] = useState("");
   // Honeypot: hidden from real users; bots auto-fill it, letting us silently discard spam
   const [honeypot, setHoneypot] = useState("");
 
   const handleChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
       const { name, value } = e.target;
       setFormData((prev) => ({ ...prev, [name]: value }));
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     },
     [],
   );
+
+  const handleResumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0] ?? null;
+    if (!file) {
+      setResume(null);
+      setResumeError("");
+      return;
+    }
+    if (!isValidResume(file)) {
+      setResume(null);
+      setResumeError("Upload a PDF, DOC, or DOCX file under 5MB.");
+      e.target.value = "";
+      return;
+    }
+    setResume(file);
+    setResumeError("");
+  };
+
+  const clearResume = () => {
+    setResume(null);
+    setResumeError("");
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  };
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -67,13 +122,19 @@ export function ContactForm() {
       return;
     }
 
-    const success = await sendMessage(result.data);
+    const success = await sendMessage({
+      ...result.data,
+      resume: result.data.reason === "career" ? resume : null,
+    });
 
     if (success) {
       setFormData(emptyFormValues);
+      clearResume();
       formRef.current?.reset();
     }
   };
+
+  const showResumeUpload = formData.reason === "career";
 
   return (
     <div className="w-full px-4 sm:px-0">
@@ -149,14 +210,69 @@ export function ContactForm() {
             />
           </div>
 
-          <Field
-            label="Service"
-            name="service"
-            placeholder="Business Strategy / Career / Social Media / AI"
-            value={formData.service}
-            onChange={handleChange}
-            error={errors.service}
-          />
+          <div>
+            <label className="text-xs uppercase tracking-wider text-muted-foreground">
+              Reason for contact
+            </label>
+            <select
+              name="reason"
+              value={formData.reason}
+              onChange={handleChange}
+              className={`mt-2 w-full bg-white/40 border border-border rounded-2xl px-4 py-3 text-sm input-glow transition ${errors.reason ? "input-error" : ""} ${formData.reason ? "text-foreground" : "text-muted-foreground"}`}
+            >
+              <option value="" disabled>
+                Select a reason
+              </option>
+              {REASONS.map((r) => (
+                <option key={r.value} value={r.value}>
+                  {r.label}
+                </option>
+              ))}
+            </select>
+            {errors.reason && <p className="mt-1 text-xs text-destructive">{errors.reason}</p>}
+          </div>
+
+          <AnimatePresence initial={false}>
+            {showResumeUpload && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                className="overflow-hidden"
+              >
+                <label className="text-xs uppercase tracking-wider text-muted-foreground">
+                  Resume (optional)
+                </label>
+                {resume ? (
+                  <div className="mt-2 flex items-center justify-between gap-3 bg-white/40 border border-border rounded-2xl px-4 py-3">
+                    <span className="text-sm truncate">{resume.name}</span>
+                    <button
+                      type="button"
+                      onClick={clearResume}
+                      aria-label="Remove resume"
+                      className="shrink-0 text-muted-foreground hover:text-destructive transition"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  </div>
+                ) : (
+                  <label className="mt-2 flex items-center justify-center gap-2 bg-white/40 border border-dashed border-border rounded-2xl px-4 py-4 text-sm text-muted-foreground cursor-pointer hover:bg-white/60 transition">
+                    <Upload className="h-4 w-4" />
+                    PDF, DOC, or DOCX — up to 5MB
+                    <input
+                      ref={fileInputRef}
+                      type="file"
+                      accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                      onChange={handleResumeChange}
+                      className="sr-only"
+                    />
+                  </label>
+                )}
+                {resumeError && <p className="mt-1 text-xs text-destructive">{resumeError}</p>}
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           <div>
             <label className="text-xs uppercase tracking-wider text-muted-foreground">
