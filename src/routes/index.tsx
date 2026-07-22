@@ -15,7 +15,6 @@ import {
   Users,
   Cpu,
   Code2,
-  Quote,
   Star,
 } from "lucide-react";
 import { MagneticButton } from "@/components/MagneticButton";
@@ -171,9 +170,9 @@ function Hero() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight tracking-tight whitespace-normal break-words"
           >
-            Architecting <span className="italic font-serif text-lime">Alpha</span>:
+            Grow your business.
             <br />
-            Business &amp; Career <span className="text-gradient-charcoal">Mastery.</span>
+            Advance your <span className="italic font-serif text-lime">career.</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -181,8 +180,8 @@ function Hero() {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="mt-5 md:mt-7 text-base md:text-lg text-muted-foreground max-w-xl"
           >
-            ZOUM Placement Services scales companies and accelerates careers through data-driven
-            strategy, executive precision, and uncompromising execution.
+            ZOUM is a Jaipur consultancy that helps companies scale and professionals move up —
+            through strategy, marketing, AI automation, and software that actually works.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -475,8 +474,8 @@ function Philosophy() {
           transition={{ delay: 0.3 }}
           className="mt-7 text-muted-foreground max-w-xl mx-auto"
         >
-          Founded in 2014, ZOUM Placement Services is a private advisory firm partnering with
-          operators who refuse the average curve.
+          Founded in 2014, ZOUM works with business owners and professionals who want a clear
+          answer, not a longer meeting.
         </motion.p>
 
         {/* Compact 2-col metric matrix */}
@@ -519,70 +518,56 @@ function Philosophy() {
 const testimonials = [
   {
     name: "Sarim J.",
-    role: "CTO, Fintech Ops",
-    service: "AI Automation and IT Services",
+    role: "CTO",
+    company: "Fintech Ops",
+    stat: "Replaced 3 outsourced teams",
     quote:
-      "Honestly, I was skeptical about the AI hype, but ZOUM actually delivered. They built an autonomous reconciliation agent that picked up the slack of three outsourced teams. It just runs flawlessly in the background and is easily the best investment we made this year.",
-  },
-  {
-    name: "Priya Malhotra",
-    role: "Founder, Series B SaaS",
-    service: "Business Strategy and Operations",
-    quote:
-      "Most consultants just give you flashy slide decks, but these guys rolled up their sleeves. They completely overhauled our messy go-to-market strategy, and within 11 months, our ARR literally tripled. No corporate fluff - just strategies that actually bring in revenue.",
-  },
-  {
-    name: "Rajesh Kumar",
-    role: "VP Engineering → CTO",
-    service: "Career Mastery and Talent Acquisition",
-    quote:
-      "I was stuck in upper management for years, circling the C-suite but never breaking through. ZOUM changed the game for me. They fixed my personal branding and prepped me for tough board interviews. I landed my dream CTO role with a 2.4x compensation jump.",
-  },
-  {
-    name: "Anita R.",
-    role: "COO, Industrial Group",
-    service: "Career Mastery and Talent Acquisition",
-    quote:
-      "Getting 400 traditional managers to change how they run their teams seemed impossible. ZOUM’s leadership labs actually clicked with them. The daily friction on the floor is gone, and our internal quarterly team happiness scores jumped by 38 points.",
-  },
-  {
-    name: "Vikram S.",
-    role: "VP of Growth & Brand Strategy",
-    service: "Social Media Marketing",
-    quote:
-      "We were putting out content but getting zero traction. ZOUM came in and built a real content engine for us. In just two months, we hit over 5 million organic impressions and turned that attention into 40 solid, high-value corporate leads. They really know how to capture an audience.",
-  },
-
-  /* --- Newly Added Humanized Reviews --- */
-  {
-    name: "Devika Nair",
-    role: "Head of Talent Acquisition",
-    service: "Career Mastery and Talent Acquisition",
-    quote:
-      "Finding elite executive talent used to take us months of endless interviewing. ZOUM didn't just dump resumes on us - they brought us three perfectly vetted leaders who fit our culture from day one. It saved us so much time and headache.",
-  },
-  {
-    name: "Marcus Chen",
-    role: "Co-Founder, E-Commerce Hub",
-    service: "Social Media Marketing",
-    quote:
-      "Our ad costs were killing our margins, so we needed an organic social media presence fast. ZOUM stepped in and completely re-vamped our short-form video strategy. Now our TikTok and LinkedIn are driving actual daily sales without us spending a dime on ads.",
+      "ZOUM built an automation that replaced three outsourced teams' worth of reconciliation work. It just runs — easily our best investment this year.",
+    service: "AI Automation",
+    to: "/services/ai-automation" as const,
   },
   {
     name: "Rohan Deshmukh",
     role: "VP of Infrastructure",
-    service: "AI Automation and IT Services",
+    company: "—",
+    stat: "Hours saved daily",
     quote:
-      "We had mountains of messy customer data that our support reps had to manually dig through. ZOUM plugged a custom smart data system right into our workflow. Now, answers are generated instantly, saving our reps hours of manual searching every single day.",
+      "Our reps used to dig through messy data for every answer. ZOUM built a system that surfaces it instantly — saving hours every day.",
+    service: "IT & Software Development",
+    to: "/services/it-software" as const,
   },
   {
-    name: "Sarah Jenkins",
-    role: "Managing Director",
-    service: "Business Strategy and Operations",
+    name: "Priya Malhotra",
+    role: "Founder",
+    company: "Series B SaaS",
+    stat: "3x ARR in 11 months",
     quote:
-      "Our operational bottlenecks were holding us back from scaling up. The team at ZOUM mapped out our entire workflow, cut out the redundant steps, and optimized our profit margins. For the first time in years, we are expanding without constantly putting out fires.",
+      "They rebuilt our go-to-market from scratch. Eleven months later, our ARR had tripled — no slide decks, just what worked.",
+    service: "Business Strategy",
+    to: "/services/business-strategy" as const,
+  },
+  {
+    name: "Rajesh Kumar",
+    role: "VP Engineering → CTO",
+    company: "—",
+    stat: "2.4x compensation jump",
+    quote:
+      "ZOUM fixed my positioning and prepped me for board-level interviews. I landed the CTO role with a 2.4x pay jump.",
+    service: "Career Mastery",
+    to: "/services/career" as const,
+  },
+  {
+    name: "Vikram S.",
+    role: "VP of Growth",
+    company: "—",
+    stat: "5M+ impressions, 40 leads",
+    quote:
+      "We had content but zero traction. In two months, ZOUM's system hit 5M+ organic impressions and turned that into 40 qualified leads.",
+    service: "Social Media Marketing",
+    to: "/services/socialmedia" as const,
   },
 ];
+
 function Testimonials() {
   return (
     <section className="relative px-4 sm:px-6 py-14 md:py-20">
@@ -593,42 +578,58 @@ function Testimonials() {
           viewport={{ once: true }}
           className="text-center mb-10 md:mb-14"
         >
-          <div className="text-xs uppercase tracking-[0.3em] text-lime mb-4">
-            / proof over rhetoric
-          </div>
+          <div className="text-xs uppercase tracking-[0.3em] text-lime mb-4">/ results</div>
           <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-tight">
-            Operators. Founders.{" "}
-            <span className="italic font-serif text-muted-foreground">On record.</span>
+            Real clients.{" "}
+            <span className="italic font-serif text-muted-foreground">Real numbers.</span>
           </h2>
         </motion.div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {testimonials.map((t, i) => (
             <motion.figure
               key={t.name}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ delay: i * 0.08, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="glass-strong rounded-3xl p-6 md:p-7 flex flex-col h-full hover-glow-lime transition"
+              transition={{ delay: i * 0.08, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="glass-strong rounded-3xl p-6 flex flex-col h-full hover-glow-lime transition"
             >
-              <div className="flex items-center justify-between">
-                <Quote className="h-7 w-7 text-lime" />
-                <div className="flex gap-0.5">
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 shrink-0 rounded-full bg-lime text-white grid place-items-center font-display text-sm">
+                  {t.name
+                    .split(" ")
+                    .map((p) => p[0])
+                    .join("")
+                    .slice(0, 2)}
+                </div>
+                <div className="min-w-0">
+                  <div className="text-sm font-semibold text-foreground truncate">{t.name}</div>
+                  <div className="text-xs text-muted-foreground truncate">
+                    {t.role}
+                    {t.company !== "—" ? `, ${t.company}` : ""}
+                  </div>
+                </div>
+                <div className="ml-auto flex gap-0.5 shrink-0">
                   {[0, 1, 2, 3, 4].map((s) => (
-                    <Star key={s} className="h-3.5 w-3.5 fill-[var(--brand)] text-[var(--brand)]" />
+                    <Star key={s} className="h-3 w-3 fill-[var(--brand)] text-[var(--brand)]" />
                   ))}
                 </div>
               </div>
-              <blockquote className="mt-5 text-foreground text-base leading-relaxed flex-1">
+
+              <div className="mt-4 inline-flex items-center self-start rounded-full bg-lime/10 px-3 py-1 text-xs font-semibold text-lime">
+                {t.stat}
+              </div>
+
+              <blockquote className="mt-3 text-sm text-foreground leading-relaxed flex-1">
                 "{t.quote}"
               </blockquote>
-              <figcaption className="mt-5 pt-4 border-t border-border">
-                <div className="text-sm font-semibold text-foreground">{t.name}</div>
-                <div className="text-xs text-muted-foreground mt-0.5">{t.role}</div>
-                <div className="mt-3 inline-block text-[10px] uppercase tracking-[0.2em] text-lime border border-brand-deep/30 rounded-full px-2 py-0.5">
-                  {t.service}
-                </div>
-              </figcaption>
+
+              <Link
+                to={t.to}
+                className="mt-4 pt-4 border-t border-border inline-flex items-center gap-1.5 text-xs font-semibold text-lime hover:underline"
+              >
+                See our {t.service} approach <ArrowUpRight className="h-3.5 w-3.5" />
+              </Link>
             </motion.figure>
           ))}
         </div>
