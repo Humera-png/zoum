@@ -36,8 +36,9 @@ export const Route = createFileRoute("/")({
         content:
           "Jaipur's leading consultancy for business strategy, talent placement, social media growth, and AI automation. Book a free strategy call today.",
       },
-      { rel: "canonical", href: "https://zoumconsultancy.com" },
+      { property: "og:url", content: "https://zoumconsultancy.com" },
     ],
+    links: [{ rel: "canonical", href: "https://zoumconsultancy.com" }],
   }),
   component: Index,
 });

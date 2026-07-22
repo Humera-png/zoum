@@ -19,8 +19,9 @@ export const Route = createFileRoute("/contact")({
         content:
           "Reach out to ZOUM Consultancy in Jaipur. Business strategy, career advisory, social media, and AI services. We respond within 24 hours.",
       },
-      { rel: "canonical", href: "https://zoumconsultancy.com/contact" },
+      { property: "og:url", content: "https://zoumconsultancy.com/contact" },
     ],
+    links: [{ rel: "canonical", href: "https://zoumconsultancy.com/contact" }],
   }),
   component: ContactPage,
 });

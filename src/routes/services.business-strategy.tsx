@@ -29,6 +29,10 @@ export const Route = createFileRoute("/services/business-strategy")({
         content:
           "Strategic consulting and operational excellence solutions designed for ambitious businesses.",
       },
+      { property: "og:url", content: "https://zoumconsultancy.com/services/business-strategy" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://zoumconsultancy.com/services/business-strategy" },
     ],
   }),
 

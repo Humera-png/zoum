@@ -35,7 +35,9 @@ export const Route = createFileRoute("/services/ai-automation")({
         content:
           "Build smarter with ZOUM — custom AI agents, software platforms, mobile apps, and cloud infrastructure for modern Indian businesses.",
       },
+      { property: "og:url", content: "https://zoumconsultancy.com/services/ai-automation" },
     ],
+    links: [{ rel: "canonical", href: "https://zoumconsultancy.com/services/ai-automation" }],
   }),
 
   component: AIPage,

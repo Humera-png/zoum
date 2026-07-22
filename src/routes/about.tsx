@@ -14,7 +14,9 @@ export const Route = createFileRoute("/about")({
         property: "og:description",
         content: "Operators, not consultants. Meet the ZOUM advisory board.",
       },
+      { property: "og:url", content: "https://zoumconsultancy.com/about" },
     ],
+    links: [{ rel: "canonical", href: "https://zoumconsultancy.com/about" }],
   }),
   component: AboutPage,
 });

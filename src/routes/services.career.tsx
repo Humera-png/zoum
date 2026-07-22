@@ -35,7 +35,9 @@ export const Route = createFileRoute("/services/career")({
         content:
           "Fast-track your leadership career with ZOUM. Executive positioning, compensation negotiation, C-suite transitions, and talent placement across India.",
       },
+      { property: "og:url", content: "https://zoumconsultancy.com/services/career" },
     ],
+    links: [{ rel: "canonical", href: "https://zoumconsultancy.com/services/career" }],
   }),
 
   component: CareerPage,

@@ -22,7 +22,9 @@ export const Route = createFileRoute("/services/socialmedia")({
         content:
           "Grow your brand online with ZOUM's social media marketing team. Content strategy, paid ads, and community management that convert attention into leads.",
       },
+      { property: "og:url", content: "https://zoumconsultancy.com/services/socialmedia" },
     ],
+    links: [{ rel: "canonical", href: "https://zoumconsultancy.com/services/socialmedia" }],
   }),
 
   component: MarketingPage,
