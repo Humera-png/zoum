@@ -210,13 +210,13 @@ function Hero() {
             className="mt-6 md:mt-7 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-muted-foreground/70"
           >
             <div>
-              FORBES <span className="text-foreground/70">- "Sharp."</span>
+              700+ <span className="text-foreground/70">placements in a year</span>
             </div>
             <div>
-              BLOOMBERG <span className="text-foreground/70">- "Disciplined."</span>
+              42+ <span className="text-foreground/70">clients served</span>
             </div>
             <div className="hidden md:block">
-              WSJ <span className="text-foreground/70">- "Effective."</span>
+              Jaipur, India <span className="text-foreground/70">— operating since 2014</span>
             </div>
           </motion.div>
         </div>
