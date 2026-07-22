@@ -24,9 +24,14 @@ const serviceItems = [
     desc: "Unified Excellence.",
   },
   {
-    label: "AI and IT Services",
+    label: "AI Automation",
     to: "/services/ai-automation" as const,
-    desc: "Production AI Architectures.",
+    desc: "Stop doing the same task twice.",
+  },
+  {
+    label: "IT & Software Development",
+    to: "/services/it-software" as const,
+    desc: "Your website shouldn't be the bottleneck.",
   },
   {
     label: "Business Strategy and Operations",

@@ -14,7 +14,7 @@ import {
   TrendingUp,
   Users,
   Cpu,
-  Headphones,
+  Code2,
   Quote,
   Star,
 } from "lucide-react";
@@ -294,53 +294,46 @@ function ClientMarquee() {
 const services = [
   {
     icon: Briefcase,
-    title: "Career Mastery and Talent Acquisition",
-    headline: "The Executive Leap.",
-    body: "We position senior leaders for high-ticket roles and build elite executive teams. From personal branding to compensation negotiation, we fast-track your leadership authority.",
-    points: [
-      "Executive & C-Suite Positioning",
-      "High-Level Compensation Strategy",
-      "Boardroom Readiness & socialmedia",
-    ],
+    title: "Career Mastery & Talent Acquisition",
+    headline: "Stuck below your level?",
+    body: "You're doing C-suite work without the C-suite title or pay. We position you for the roles you're already qualified for and negotiate the offer once you get there.",
+    points: ["Executive positioning", "Compensation negotiation", "Board-level access"],
     to: "/services/career" as const,
     img: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80",
   },
   {
     icon: Users,
     title: "Social Media Marketing",
-    headline: "Unified Excellence.",
-    body: "We build digital authority that converts attention into revenue. By aligning content, brand message, and multi-channel campaigns, your company dominates the industry conversation.",
-    points: [
-      "Brand Narrative & Voice",
-      "Multi-Channel Social Strategy",
-      "High-Converting Content Engines",
-    ],
+    headline: "Posting but not converting?",
+    body: "Content without a strategy just fills a feed. We build a system — content, message, and channels working together — that turns attention into leads.",
+    points: ["Content that converts", "Consistent brand voice", "Leads, not just likes"],
     to: "/services/socialmedia" as const,
     img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
   },
   {
     icon: Cpu,
-    title: "AI and IT Services",
-    headline: "Production AI Architectures.",
-    body: "We integrate custom AI agents and smart automation workflows into your existing tech stack. Cut manual labor hours and upgrade your backend with production-ready AI models.",
-    points: [
-      "Autonomous Agent Workflows",
-      "Custom OpenAI & GPT-4 Integrations",
-      "Smart Data Systems (RAG Pipelines)",
-    ],
+    title: "AI Automation",
+    headline: "Still doing it by hand?",
+    body: "Repetitive tasks — data entry, follow-ups, reporting — eat hours every week. We build AI automations that take them over, so your team works on what actually moves the business.",
+    points: ["Hours back every week", "Fewer manual errors", "Lower operating cost"],
     to: "/services/ai-automation" as const,
     img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80",
   },
   {
+    icon: Code2,
+    title: "IT & Software Development",
+    headline: "Is your site the bottleneck?",
+    body: "A slow website or a tool held together with spreadsheets caps how fast you can grow. We build websites, apps, and systems that hold up as you scale.",
+    points: ["Fast, modern builds", "Fewer bugs and outages", "Built to scale"],
+    to: "/services/it-software" as const,
+    img: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
     icon: TrendingUp,
-    title: "Business Strategy and Operations",
-    headline: "Scale Without Friction.",
-    body: "We fix operational bottlenecks and redesign your business model for compound growth. Streamline your processes, expand profit margins, and launch your offerings faster.",
-    points: [
-      "Process & Workflow Redesign",
-      "Profit Margin Optimization",
-      "Go-To-Market (GTM) Acceleration",
-    ],
+    title: "Business Strategy & Operations",
+    headline: "Busier, but not growing?",
+    body: "A busier team isn't the same as a growing business. We find where your operations are leaking time and margin, then fix the process, not just the symptom.",
+    points: ["Fewer bottlenecks", "Better margins", "Faster decisions"],
     to: "/services/business-strategy" as const,
     img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
   },
@@ -413,14 +406,14 @@ function Services() {
           <div>
             <div className="text-xs uppercase tracking-[0.3em] text-lime mb-3">/ services</div>
             <h2 className="font-display text-4xl md:text-6xl tracking-tight max-w-3xl leading-tight">
-              Four pillars.{" "}
-              <span className="italic font-serif text-muted-foreground">One outcome.</span>
+              Five problems.{" "}
+              <span className="italic font-serif text-muted-foreground">One team.</span>
             </h2>
           </div>
           <div className="flex flex-col gap-2 items-start">
             <p className="text-muted-foreground max-w-sm text-sm">
-              Strategy, talent, digital presence, and AI — every layer of a modern, high-performance
-              enterprise.
+              Whatever's actually holding you back — strategy, talent, marketing, automation, or
+              software — pick the one that matches.
             </p>
             <Link
               to="/contact"

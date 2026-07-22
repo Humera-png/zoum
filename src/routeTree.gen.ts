@@ -15,6 +15,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ServicesAiAutomationRouteImport } from './routes/services.ai-automation'
 import { Route as ServicesBusinessStrategyRouteImport } from './routes/services.business-strategy'
 import { Route as ServicesCareerRouteImport } from './routes/services.career'
+import { Route as ServicesItSoftwareRouteImport } from './routes/services.it-software'
 import { Route as ServicesSocialmediaRouteImport } from './routes/services.socialmedia'
 
 const IndexRoute = IndexRouteImport.update({
@@ -48,6 +49,11 @@ const ServicesCareerRoute = ServicesCareerRouteImport.update({
   path: '/services/career',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesItSoftwareRoute = ServicesItSoftwareRouteImport.update({
+  id: '/services/it-software',
+  path: '/services/it-software',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesSocialmediaRoute = ServicesSocialmediaRouteImport.update({
   id: '/services/socialmedia',
   path: '/services/socialmedia',
@@ -61,6 +67,7 @@ export interface FileRoutesByFullPath {
   '/services/ai-automation': typeof ServicesAiAutomationRoute
   '/services/business-strategy': typeof ServicesBusinessStrategyRoute
   '/services/career': typeof ServicesCareerRoute
+  '/services/it-software': typeof ServicesItSoftwareRoute
   '/services/socialmedia': typeof ServicesSocialmediaRoute
 }
 export interface FileRoutesByTo {
@@ -70,6 +77,7 @@ export interface FileRoutesByTo {
   '/services/ai-automation': typeof ServicesAiAutomationRoute
   '/services/business-strategy': typeof ServicesBusinessStrategyRoute
   '/services/career': typeof ServicesCareerRoute
+  '/services/it-software': typeof ServicesItSoftwareRoute
   '/services/socialmedia': typeof ServicesSocialmediaRoute
 }
 export interface FileRoutesById {
@@ -80,6 +88,7 @@ export interface FileRoutesById {
   '/services/ai-automation': typeof ServicesAiAutomationRoute
   '/services/business-strategy': typeof ServicesBusinessStrategyRoute
   '/services/career': typeof ServicesCareerRoute
+  '/services/it-software': typeof ServicesItSoftwareRoute
   '/services/socialmedia': typeof ServicesSocialmediaRoute
 }
 export interface FileRouteTypes {
@@ -91,6 +100,7 @@ export interface FileRouteTypes {
     | '/services/ai-automation'
     | '/services/business-strategy'
     | '/services/career'
+    | '/services/it-software'
     | '/services/socialmedia'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -100,6 +110,7 @@ export interface FileRouteTypes {
     | '/services/ai-automation'
     | '/services/business-strategy'
     | '/services/career'
+    | '/services/it-software'
     | '/services/socialmedia'
   id:
     | '__root__'
@@ -109,6 +120,7 @@ export interface FileRouteTypes {
     | '/services/ai-automation'
     | '/services/business-strategy'
     | '/services/career'
+    | '/services/it-software'
     | '/services/socialmedia'
   fileRoutesById: FileRoutesById
 }
@@ -119,6 +131,7 @@ export interface RootRouteChildren {
   ServicesAiAutomationRoute: typeof ServicesAiAutomationRoute
   ServicesBusinessStrategyRoute: typeof ServicesBusinessStrategyRoute
   ServicesCareerRoute: typeof ServicesCareerRoute
+  ServicesItSoftwareRoute: typeof ServicesItSoftwareRoute
   ServicesSocialmediaRoute: typeof ServicesSocialmediaRoute
 }
 
@@ -166,6 +179,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesCareerRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/it-software': {
+      id: '/services/it-software'
+      path: '/services/it-software'
+      fullPath: '/services/it-software'
+      preLoaderRoute: typeof ServicesItSoftwareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/socialmedia': {
       id: '/services/socialmedia'
       path: '/services/socialmedia'
@@ -183,6 +203,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesAiAutomationRoute: ServicesAiAutomationRoute,
   ServicesBusinessStrategyRoute: ServicesBusinessStrategyRoute,
   ServicesCareerRoute: ServicesCareerRoute,
+  ServicesItSoftwareRoute: ServicesItSoftwareRoute,
   ServicesSocialmediaRoute: ServicesSocialmediaRoute,
 }
 export const routeTree = rootRouteImport
