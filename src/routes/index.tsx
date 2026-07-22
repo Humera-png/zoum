@@ -196,7 +196,7 @@ function Hero() {
               Book a Free Strategy Call <ArrowUpRight className="h-4 w-4" />
             </MagneticButton>
             <Link
-              to="/services/business"
+              to="/services/business-strategy"
               className="w-full md:w-auto glass px-7 py-4 rounded-full text-sm font-semibold text-foreground hover:bg-white transition inline-flex items-center justify-center"
             >
               View our services
@@ -340,7 +340,7 @@ const services = [
       "Profit Margin Optimization",
       "Go-To-Market (GTM) Acceleration",
     ],
-    to: "/services/bpo-operations" as const,
+    to: "/services/business-strategy" as const,
     img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
   },
 ];

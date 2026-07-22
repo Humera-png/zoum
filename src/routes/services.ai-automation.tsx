@@ -13,7 +13,7 @@ import {
 
 import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageBackdrop } from "@/components/PageBackdrop";
-import { PageHeader, Section, CTA } from "./services.business";
+import { PageHeader, Section, CTA } from "@/components/ServicePage";
 
 export const Route = createFileRoute("/services/ai-automation")({
   head: () => ({

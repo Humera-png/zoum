@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 
 import { ServiceSubNav } from "@/components/ServiceSubNav";
-import { PageHeader, Section, CTA } from "./services.business";
+import { PageHeader, Section, CTA } from "@/components/ServicePage";
 import { PageBackdrop } from "@/components/PageBackdrop";
 
 export const Route = createFileRoute("/services/career")({

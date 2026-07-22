@@ -155,7 +155,7 @@ function AboutPage() {
             ].map((s, i) => (
               <div key={i} className="relative text-center md:text-left">
                 <div className="font-display text-5xl md:text-6xl tracking-tight">
-                  <Counter to={s.v} suffix={s.suffix} prefix={s.prefix} />
+                  <Counter to={s.v} suffix={s.suffix} />
                 </div>
                 <div className="mt-3 text-sm text-muted-foreground uppercase tracking-wider">
                   {s.label}

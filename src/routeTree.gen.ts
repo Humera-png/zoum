@@ -9,24 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as AdminRouteImport } from './routes/admin'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ServicessocialmediaRouteImport } from './routes/services.socialmedia.tsx'
-import { Route as ServicesCareerRouteImport } from './routes/services.career'
-import { Route as ServicesBusinessRouteImport } from './routes/services.business'
-import { Route as ServicesBpoOperationsRouteImport } from './routes/services.business-strategy.tsx'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ServicesAiAutomationRouteImport } from './routes/services.ai-automation'
+import { Route as ServicesBusinessStrategyRouteImport } from './routes/services.business-strategy'
+import { Route as ServicesCareerRouteImport } from './routes/services.career'
+import { Route as ServicesSocialmediaRouteImport } from './routes/services.socialmedia'
 
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminRoute = AdminRouteImport.update({
-  id: '/admin',
-  path: '/admin',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -34,29 +27,9 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ServicessocialmediaRoute = ServicessocialmediaRouteImport.update({
-  id: '/services/socialmedia',
-  path: '/services/socialmedia',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ServicesCareerRoute = ServicesCareerRouteImport.update({
-  id: '/services/career',
-  path: '/services/career',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ServicesBusinessRoute = ServicesBusinessRouteImport.update({
-  id: '/services/business',
-  path: '/services/business',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ServicesBpoOperationsRoute = ServicesBpoOperationsRouteImport.update({
-  id: '/services/bpo-operations',
-  path: '/services/bpo-operations',
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesAiAutomationRoute = ServicesAiAutomationRouteImport.update({
@@ -64,73 +37,77 @@ const ServicesAiAutomationRoute = ServicesAiAutomationRouteImport.update({
   path: '/services/ai-automation',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesBusinessStrategyRoute =
+  ServicesBusinessStrategyRouteImport.update({
+    id: '/services/business-strategy',
+    path: '/services/business-strategy',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesCareerRoute = ServicesCareerRouteImport.update({
+  id: '/services/career',
+  path: '/services/career',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesSocialmediaRoute = ServicesSocialmediaRouteImport.update({
+  id: '/services/socialmedia',
+  path: '/services/socialmedia',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/admin': typeof AdminRoute
   '/contact': typeof ContactRoute
   '/services/ai-automation': typeof ServicesAiAutomationRoute
-  '/services/bpo-operations': typeof ServicesBpoOperationsRoute
-  '/services/business': typeof ServicesBusinessRoute
+  '/services/business-strategy': typeof ServicesBusinessStrategyRoute
   '/services/career': typeof ServicesCareerRoute
-  '/services/socialmedia': typeof ServicessocialmediaRoute
+  '/services/socialmedia': typeof ServicesSocialmediaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/admin': typeof AdminRoute
   '/contact': typeof ContactRoute
   '/services/ai-automation': typeof ServicesAiAutomationRoute
-  '/services/bpo-operations': typeof ServicesBpoOperationsRoute
-  '/services/business': typeof ServicesBusinessRoute
+  '/services/business-strategy': typeof ServicesBusinessStrategyRoute
   '/services/career': typeof ServicesCareerRoute
-  '/services/socialmedia': typeof ServicessocialmediaRoute
+  '/services/socialmedia': typeof ServicesSocialmediaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/admin': typeof AdminRoute
   '/contact': typeof ContactRoute
   '/services/ai-automation': typeof ServicesAiAutomationRoute
-  '/services/bpo-operations': typeof ServicesBpoOperationsRoute
-  '/services/business': typeof ServicesBusinessRoute
+  '/services/business-strategy': typeof ServicesBusinessStrategyRoute
   '/services/career': typeof ServicesCareerRoute
-  '/services/socialmedia': typeof ServicessocialmediaRoute
+  '/services/socialmedia': typeof ServicesSocialmediaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
-    | '/admin'
     | '/contact'
     | '/services/ai-automation'
-    | '/services/bpo-operations'
-    | '/services/business'
+    | '/services/business-strategy'
     | '/services/career'
     | '/services/socialmedia'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
-    | '/admin'
     | '/contact'
     | '/services/ai-automation'
-    | '/services/bpo-operations'
-    | '/services/business'
+    | '/services/business-strategy'
     | '/services/career'
     | '/services/socialmedia'
   id:
     | '__root__'
     | '/'
     | '/about'
-    | '/admin'
     | '/contact'
     | '/services/ai-automation'
-    | '/services/bpo-operations'
-    | '/services/business'
+    | '/services/business-strategy'
     | '/services/career'
     | '/services/socialmedia'
   fileRoutesById: FileRoutesById
@@ -138,29 +115,20 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  AdminRoute: typeof AdminRoute
   ContactRoute: typeof ContactRoute
   ServicesAiAutomationRoute: typeof ServicesAiAutomationRoute
-  ServicesBpoOperationsRoute: typeof ServicesBpoOperationsRoute
-  ServicesBusinessRoute: typeof ServicesBusinessRoute
+  ServicesBusinessStrategyRoute: typeof ServicesBusinessStrategyRoute
   ServicesCareerRoute: typeof ServicesCareerRoute
-  ServicessocialmediaRoute: typeof ServicessocialmediaRoute
+  ServicesSocialmediaRoute: typeof ServicesSocialmediaRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/admin': {
-      id: '/admin'
-      path: '/admin'
-      fullPath: '/admin'
-      preLoaderRoute: typeof AdminRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -170,39 +138,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/services/socialmedia': {
-      id: '/services/socialmedia'
-      path: '/services/socialmedia'
-      fullPath: '/services/socialmedia'
-      preLoaderRoute: typeof ServicessocialmediaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/services/career': {
-      id: '/services/career'
-      path: '/services/career'
-      fullPath: '/services/career'
-      preLoaderRoute: typeof ServicesCareerRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/services/business': {
-      id: '/services/business'
-      path: '/services/business'
-      fullPath: '/services/business'
-      preLoaderRoute: typeof ServicesBusinessRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/services/bpo-operations': {
-      id: '/services/bpo-operations'
-      path: '/services/bpo-operations'
-      fullPath: '/services/bpo-operations'
-      preLoaderRoute: typeof ServicesBpoOperationsRouteImport
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services/ai-automation': {
@@ -212,30 +152,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesAiAutomationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/business-strategy': {
+      id: '/services/business-strategy'
+      path: '/services/business-strategy'
+      fullPath: '/services/business-strategy'
+      preLoaderRoute: typeof ServicesBusinessStrategyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/career': {
+      id: '/services/career'
+      path: '/services/career'
+      fullPath: '/services/career'
+      preLoaderRoute: typeof ServicesCareerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/socialmedia': {
+      id: '/services/socialmedia'
+      path: '/services/socialmedia'
+      fullPath: '/services/socialmedia'
+      preLoaderRoute: typeof ServicesSocialmediaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  AdminRoute: AdminRoute,
   ContactRoute: ContactRoute,
   ServicesAiAutomationRoute: ServicesAiAutomationRoute,
-  ServicesBpoOperationsRoute: ServicesBpoOperationsRoute,
-  ServicesBusinessRoute: ServicesBusinessRoute,
+  ServicesBusinessStrategyRoute: ServicesBusinessStrategyRoute,
   ServicesCareerRoute: ServicesCareerRoute,
-  ServicessocialmediaRoute: ServicessocialmediaRoute,
+  ServicesSocialmediaRoute: ServicesSocialmediaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

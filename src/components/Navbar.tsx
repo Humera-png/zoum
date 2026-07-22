@@ -7,7 +7,7 @@ import { Logo } from "./Logo";
 
 const links = [
   { label: "Home", to: "/" as const },
-  { label: "Services", to: "/services/business" as const, hasMenu: true },
+  { label: "Services", to: "/services/business-strategy" as const, hasMenu: true },
   { label: "About", to: "/about" as const },
   { label: "Contact", to: "/contact" as const },
 ];
@@ -30,7 +30,7 @@ const serviceItems = [
   },
   {
     label: "Business Strategy and Operations",
-    to: "/services/bpo-operations" as const,
+    to: "/services/business-strategy" as const,
     desc: "Scale Without Friction.",
   },
 ];
