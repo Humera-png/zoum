@@ -22,25 +22,26 @@ export const Route = createFileRoute("/about")({
   component: AboutPage,
 });
 
+// No stock photos here on purpose — a stock photo presented next to a named person
+// (especially one with a real LinkedIn link) reads as claiming to be their actual
+// likeness, which isn't true and damages trust the moment someone checks. Every
+// member without a real, owned photo gets the same initials placeholder.
 const board = [
   {
     name: "Abdur Rehman",
     role: "Founder",
     bio: "Human Resources Specialist & Business Consultant. 5+ years of operational excellence in strategic talent sourcing and business planning.",
-    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
     linkedin: "https://www.linkedin.com/in/abdur-rehman-534483221/",
   },
   {
     name: "Executive Partner",
     role: "Partner",
     bio: "Strategic advisory and institutional leadership consulting.",
-    img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=80",
   },
   {
     name: "Operations Director",
     role: "Director",
     bio: "Operational scaling, infrastructure development, and process transformation.",
-    img: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=600&q=80",
   },
   {
     name: "Humera Shaikh",
@@ -49,6 +50,15 @@ const board = [
     linkedin: "https://www.linkedin.com/in/humerashaikhofficial/",
   },
 ];
+
+function initialsOf(name: string): string {
+  return name
+    .split(" ")
+    .map((p) => p[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+}
 
 function AboutPage() {
   return (
@@ -118,18 +128,9 @@ function AboutPage() {
               >
                 <div>
                   <div className="aspect-[4/5] overflow-hidden bg-zinc-900/30 relative flex items-center justify-center border-b border-zinc-800/40">
-                    {m.img ? (
-                      <img
-                        src={m.img}
-                        alt={m.name}
-                        loading="lazy"
-                        className="h-full w-full object-cover grayscale-hover group-hover:scale-105 transition-transform duration-700"
-                      />
-                    ) : (
-                      <div className="font-display text-5xl font-bold tracking-tighter text-zinc-700 select-none group-hover:text-lime transition duration-500">
-                        HS
-                      </div>
-                    )}
+                    <div className="font-display text-5xl font-bold tracking-tighter text-zinc-700 select-none group-hover:text-lime transition duration-500">
+                      {initialsOf(m.name)}
+                    </div>
                   </div>
                   <div className="p-5">
                     <div className="text-[11px] uppercase tracking-wider text-lime font-medium">

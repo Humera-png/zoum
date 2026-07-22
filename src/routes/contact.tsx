@@ -56,7 +56,7 @@ function ContactPage() {
             transition={{ duration: 0.8 }}
             className="mt-4 font-display text-5xl md:text-7xl tracking-tight leading-[0.95]"
           >
-            Let's architect <span className="italic font-serif text-lime">your</span> alpha.
+            Let's talk about <span className="italic font-serif text-lime">your</span> next move.
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
