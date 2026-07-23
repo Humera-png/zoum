@@ -68,7 +68,7 @@ const strategies: StrategyItem[] = [
 
     desc: "We define how your brand should appear online by building a clear strategy based on your audience, competitors, and business goals.",
 
-    points: ["Audience research", "Brand messaging", "Competitor analysis", "Platform selection"],
+    points: ["Audience research", "Brand messaging", "Competitor analysis"],
   },
 
   {
@@ -79,15 +79,7 @@ const strategies: StrategyItem[] = [
 
     desc: "We create content systems that attract attention, educate customers, and build long-term trust with your audience.",
 
-    points: [
-      "Content planning",
-
-      "Creative direction",
-
-      "Short-form videos",
-
-      "Storytelling framework",
-    ],
+    points: ["Content planning", "Creative direction", "Short-form videos"],
   },
 
   {
@@ -98,15 +90,7 @@ const strategies: StrategyItem[] = [
 
     desc: "Complete management of your social channels with consistent publishing, engagement, and performance improvement.",
 
-    points: [
-      "Instagram management",
-
-      "LinkedIn growth",
-
-      "Community engagement",
-
-      "Monthly reporting",
-    ],
+    points: ["Instagram management", "LinkedIn growth", "Community engagement"],
   },
 
   {
@@ -117,7 +101,7 @@ const strategies: StrategyItem[] = [
 
     desc: "Performance-focused advertising campaigns designed to generate qualified leads and increase conversions.",
 
-    points: ["Meta advertising", "Audience targeting", "A/B testing", "ROI optimization"],
+    points: ["Meta advertising", "Audience targeting", "ROI optimization"],
   },
 
   {
@@ -128,7 +112,7 @@ const strategies: StrategyItem[] = [
 
     desc: "We help founders and companies become trusted voices through strategic personal branding and thought leadership.",
 
-    points: ["LinkedIn strategy", "Founder branding", "Industry visibility", "Online reputation"],
+    points: ["LinkedIn strategy", "Founder branding", "Industry visibility"],
   },
 
   {
@@ -139,15 +123,7 @@ const strategies: StrategyItem[] = [
 
     desc: "We analyze your marketing data and continuously improve your strategy to create sustainable growth.",
 
-    points: [
-      "Performance tracking",
-
-      "Growth reports",
-
-      "Conversion analysis",
-
-      "Strategy improvements",
-    ],
+    points: ["Performance tracking", "Growth reports", "Conversion analysis"],
   },
 ];
 

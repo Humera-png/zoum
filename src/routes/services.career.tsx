@@ -127,7 +127,7 @@ const milestones: Milestone[] = [
     code: "M6",
     title: "What Comes Next",
     desc: "Ongoing advisory as you grow into the role and start eyeing the one after it.",
-    span: "",
+    span: "md:col-span-4",
   },
 ];
 
