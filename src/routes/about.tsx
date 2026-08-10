@@ -34,6 +34,11 @@ const board = [
     linkedin: "https://www.linkedin.com/in/abdur-rehman-534483221/",
   },
   {
+    name: "Parv Jain",
+    role: "Co-Founder",
+    bio: "Co-founder of ZOUM Consultancy.",
+  },
+  {
     name: "Executive Partner",
     role: "Partner",
     bio: "Strategic advisory and institutional leadership consulting.",
@@ -116,7 +121,7 @@ function AboutPage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {board.map((m, i) => (
               <motion.div
                 key={m.name}

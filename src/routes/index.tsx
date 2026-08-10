@@ -186,7 +186,7 @@ function Hero() {
               href="/contact"
               className="btn-lime w-full md:w-auto font-semibold px-7 py-4 rounded-full inline-flex items-center justify-center text-white"
             >
-              Book a Free Strategy Call <ArrowUpRight className="h-4 w-4" />
+              Actively Hiring <ArrowUpRight className="h-4 w-4" />
             </MagneticButton>
             <Link
               to="/services/business-strategy"
@@ -195,6 +195,14 @@ function Hero() {
               View our services
             </Link>
           </motion.div>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.75 }}
+            className="mt-3 text-xs text-muted-foreground"
+          >
+            Join our growing team — we're actively hiring across roles.
+          </motion.p>
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -322,7 +330,7 @@ const services = [
   },
   {
     icon: TrendingUp,
-    title: "Business Strategy & Operations",
+    title: "Business Strategy & Outsourcing",
     headline: "Busier, but not growing?",
     body: "A busier team isn't the same as a growing business. We find where your operations are leaking time and margin, then fix the process, not just the symptom.",
     points: ["Fewer bottlenecks", "Better margins", "Faster decisions"],

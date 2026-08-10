@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Target, BarChart3, Workflow, Rocket } from "lucide-react";
+import { Target, BarChart3, Workflow, Rocket, Headphones, FileStack, LifeBuoy, ClipboardList } from "lucide-react";
 
 import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageBackdrop } from "@/components/PageBackdrop";
@@ -25,30 +25,34 @@ const faqs = [
     q: "What size businesses do you work with?",
     a: "Mostly growth-stage companies and established businesses hitting a specific operational wall — not pre-revenue startups, and not problems that just need more headcount.",
   },
+  {
+    q: "Do you just advise, or can you also run the process for us?",
+    a: "Both. Some engagements end with a roadmap your team executes. Others hand off the actual process — a call centre line, back-office work, customer support — to a team we staff and manage, so it runs without adding headcount on your side.",
+  },
 ];
 
 export const Route = createFileRoute("/services/business-strategy")({
   head: () => ({
     meta: [
       {
-        title: "Business Strategy Consulting & Operations Transformation | ZOUM",
+        title: "Business Strategy & Process Outsourcing (BPO) | ZOUM Consultancy",
       },
 
       {
         name: "description",
         content:
-          "ZOUM provides business strategy consulting, operational transformation, growth strategy, process optimization, and executive advisory services to help companies scale efficiently.",
+          "ZOUM provides business strategy consulting and business process outsourcing — growth strategy, operational fixes, call centre operations, back-office and customer support — for companies across India.",
       },
 
       {
         property: "og:title",
-        content: "Business Strategy & Operations Consulting | ZOUM",
+        content: "Business Strategy & Process Outsourcing | ZOUM Consultancy",
       },
 
       {
         property: "og:description",
         content:
-          "Strategic consulting and operational excellence solutions designed for ambitious businesses.",
+          "From strategy to execution: operational consulting plus outsourced call centre, back-office, and customer support services.",
       },
       { property: "og:url", content: "https://zoumconsultancy.com/services/business-strategy" },
     ],
@@ -94,6 +98,29 @@ const frameworks = [
   },
 ];
 
+const outsourcing = [
+  {
+    icon: Headphones,
+    name: "Call Centre Operations",
+    desc: "Inbound support, outbound campaigns, and multilingual coverage — run by a trained team so yours doesn't have to staff for peak volume.",
+  },
+  {
+    icon: FileStack,
+    name: "Back-Office Support",
+    desc: "Data entry, order processing, and the paperwork that piles up when your team is heads-down on the work only they can do.",
+  },
+  {
+    icon: LifeBuoy,
+    name: "Customer Support Services",
+    desc: "Tickets, chats, and calls answered on your SLA — with the escalation path back to your team when it actually needs them.",
+  },
+  {
+    icon: ClipboardList,
+    name: "Administrative Outsourcing",
+    desc: "Scheduling, documentation, and recurring admin work handed off to a team that runs it the same reliable way every time.",
+  },
+];
+
 const cases = [
   {
     client: "Technology Company",
@@ -131,9 +158,9 @@ function BusinessStrategyPage() {
     <main className="pt-32 px-6 pb-20 relative">
       <JsonLd
         data={buildServiceSchema({
-          name: "Business Strategy & Operations",
+          name: "Business Strategy & Process Outsourcing",
           description:
-            "Operational diagnostics, process redesign, and growth strategy consulting for growth-stage and established businesses.",
+            "Operational diagnostics, process redesign, and growth strategy consulting, plus outsourced call centre, back-office, and customer support operations for growth-stage and established businesses.",
           url: "https://zoumconsultancy.com/services/business-strategy",
         })}
       />
@@ -149,7 +176,7 @@ function BusinessStrategyPage() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <PageHeader
-          pill="Business Strategy & Operations"
+          pill="Business Strategy & Outsourcing"
           title="Busier, but"
           italic="not growing?"
           sub="A busier team isn't the same as a growing business. We find where your operations are actually leaking time and margin, then fix the process — not just the symptom."
@@ -202,6 +229,36 @@ function BusinessStrategyPage() {
                     <div className="font-display text-xl">{f.name}</div>
 
                     <div className="text-sm text-muted-foreground mt-2">{f.desc}</div>
+                  </motion.div>
+                ))}
+              </div>
+            </Section>
+
+            <Section
+              id="outsourcing"
+              title="From strategy to who runs it"
+              kicker="/ business process outsourcing"
+            >
+              <p className="text-muted-foreground max-w-2xl -mt-4 mb-8">
+                Some fixes don't need a new hire — they need a team that already knows how to run
+                the process. Once we've mapped the bottleneck, we can also staff and run the fix
+                itself, not just hand you a plan.
+              </p>
+              <div className="grid md:grid-cols-2 gap-5">
+                {outsourcing.map((o, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.05 }}
+                    className="group glass node-bloom rounded-2xl p-6"
+                  >
+                    <div className="h-10 w-10 rounded-xl glass-strong grid place-items-center mb-4 group-hover:bg-lime group-hover:text-white transition">
+                      <o.icon className="h-5 w-5" />
+                    </div>
+                    <div className="font-display text-xl">{o.name}</div>
+                    <div className="text-sm text-muted-foreground mt-2">{o.desc}</div>
                   </motion.div>
                 ))}
               </div>

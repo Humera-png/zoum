@@ -16,12 +16,12 @@ const serviceItems = [
   {
     label: "Career Mastery and Talent Acquisition",
     to: "/services/career" as const,
-    desc: "The Executive Leap.",
+    desc: "Stuck below your level?",
   },
   {
     label: "Social Media Marketing",
     to: "/services/socialmedia" as const,
-    desc: "Unified Excellence.",
+    desc: "Posting but not converting?",
   },
   {
     label: "AI Automation",
@@ -34,9 +34,9 @@ const serviceItems = [
     desc: "Your website shouldn't be the bottleneck.",
   },
   {
-    label: "Business Strategy and Operations",
+    label: "Business Strategy & Outsourcing",
     to: "/services/business-strategy" as const,
-    desc: "Scale Without Friction.",
+    desc: "Busier, but not growing?",
   },
 ];
 
