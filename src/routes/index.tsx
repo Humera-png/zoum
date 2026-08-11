@@ -28,9 +28,9 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "ZOUM Consultancy — Jaipur's top business consultancy. 700+ placements, 42+ clients served. Expert business strategy, executive career advisory, social media marketing & AI automation across India.",
+          "ZOUM Consultancy: Jaipur's top business consultancy. 700+ placements, 42+ clients served. Expert business strategy, executive career advisory, social media marketing & AI automation across India.",
       },
-      { property: "og:title", content: "ZOUM Consultancy — Scale Your Business & Career" },
+      { property: "og:title", content: "ZOUM Consultancy | Scale Your Business & Career" },
       {
         property: "og:description",
         content:
@@ -393,7 +393,7 @@ function Services() {
           </div>
           <div className="flex flex-col gap-2 items-start">
             <p className="text-muted-foreground max-w-sm text-sm">
-              Strategy, talent, digital presence, and AI — every layer of a modern, high-performance
+              Strategy, talent, digital presence, and AI. Every layer of a modern, high-performance
               enterprise.
             </p>
             <Link
@@ -510,7 +510,7 @@ const testimonials = [
     role: "Founder, Series B SaaS",
     service: "Business Process Outsourcing",
     quote:
-      "They rebuilt our go-to-market from scratch. Eleven months later our ARR had tripled — no slide decks, just what worked.",
+      "They rebuilt our go-to-market from scratch. Eleven months later our ARR had tripled. No slide decks, just what worked.",
   },
   {
     name: "Rajesh Kumar",
@@ -540,7 +540,7 @@ const testimonials = [
     role: "Head of Talent Acquisition",
     service: "Career Mastery and Talent Acquisition",
     quote:
-      "ZOUM didn't dump resumes on us — they brought three vetted leaders who fit our culture from day one.",
+      "ZOUM didn't dump resumes on us. They brought three vetted leaders who fit our culture from day one.",
   },
   {
     name: "Marcus Chen",
@@ -636,8 +636,8 @@ function Contact() {
             READY TO GROW? <span className="italic font-serif text-lime">LET'S TALK.</span>
           </h2>
           <p className="mt-6 text-muted-foreground max-w-md">
-            Send us your inquiry and we'll respond within 24 hours with a clear plan of action —
-            no pitch decks, no lengthy onboarding. Just results.
+            Send us your inquiry and we'll respond within 24 hours with a clear plan of action.
+            No pitch decks, no lengthy onboarding. Just results.
           </p>
           <div className="mt-6 space-y-3 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
@@ -646,7 +646,7 @@ function Contact() {
             </div>
             <div className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-lime" />
-              Pan-India coverage — Jaipur headquartered
+              Pan-India coverage, Jaipur headquartered
             </div>
             <div className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-lime" />

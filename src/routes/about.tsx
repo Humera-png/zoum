@@ -7,9 +7,9 @@ import { PageBackdrop } from "@/components/PageBackdrop";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — ZOUM Placement Services" },
+      { title: "About | ZOUM Placement Services" },
       { name: "description", content: "Meet the advisory board behind ZOUM Placement Services." },
-      { property: "og:title", content: "About — ZOUM Placement Services" },
+      { property: "og:title", content: "About | ZOUM Placement Services" },
       {
         property: "og:description",
         content: "Operators, not consultants. Meet the ZOUM advisory board.",

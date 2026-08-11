@@ -13,7 +13,7 @@ export const Route = createFileRoute("/contact")({
         content:
           "Contact ZOUM Consultancy in Jaipur for a free strategy call. We help businesses scale, professionals advance careers, and brands grow online. Response within 24 hours.",
       },
-      { property: "og:title", content: "Contact ZOUM Consultancy — Book a Free Strategy Call" },
+      { property: "og:title", content: "Contact ZOUM Consultancy | Book a Free Strategy Call" },
       {
         property: "og:description",
         content:

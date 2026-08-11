@@ -105,18 +105,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "ZOUM Consultancy Jaipur — Business Strategy, Career & AI Services" },
+      { title: "ZOUM Consultancy Jaipur | Business Strategy, Career & AI Services" },
       {
         name: "description",
         content:
-          "ZOUM Consultancy — Jaipur's premier business consultancy. Expert services in business strategy, executive career advisory, social media marketing, and AI automation across India.",
+          "ZOUM Consultancy: Jaipur's premier business consultancy. Expert services in business strategy, executive career advisory, social media marketing, and AI automation across India.",
       },
       { name: "robots", content: "index, follow" },
       { name: "keywords", content: "business consultancy Jaipur, career advisory India, social media marketing, AI automation, placement services, ZOUM" },
-      { property: "og:title", content: "ZOUM Consultancy — Business Strategy & Career Advisory | Jaipur, India" },
+      { property: "og:title", content: "ZOUM Consultancy | Business Strategy & Career Advisory | Jaipur, India" },
       {
         property: "og:description",
-        content: "Scale your business and accelerate your career with ZOUM Consultancy — Jaipur's leading consultancy for strategy, talent, social media, and AI.",
+        content: "Scale your business and accelerate your career with ZOUM Consultancy, Jaipur's leading consultancy for strategy, talent, social media, and AI.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://zoumconsultancy.com" },
@@ -124,7 +124,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: "ZOUM Consultancy" },
       { property: "og:locale", content: "en_IN" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "ZOUM Consultancy — Business Strategy & Career Advisory" },
+      { name: "twitter:title", content: "ZOUM Consultancy | Business Strategy & Career Advisory" },
       { name: "twitter:description", content: "Scale your business and accelerate your career with Jaipur's leading consultancy." },
       { name: "twitter:image", content: "https://zoumconsultancy.com/assets/zoum-logo.png" },
     ],

@@ -14,7 +14,7 @@ export const Route = createFileRoute("/services/socialmedia")({
       {
         name: "description",
         content:
-          "ZOUM Consultancy — social media marketing agency in Jaipur. Strategic content, paid campaigns, brand growth, Instagram & LinkedIn management, and digital marketing across India.",
+          "ZOUM Consultancy: social media marketing agency in Jaipur. Strategic content, paid campaigns, brand growth, Instagram & LinkedIn management, and digital marketing across India.",
       },
       { property: "og:title", content: "Social Media Marketing | ZOUM Consultancy Jaipur" },
       {

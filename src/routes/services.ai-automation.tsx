@@ -33,7 +33,7 @@ export const Route = createFileRoute("/services/ai-automation")({
       {
         property: "og:description",
         content:
-          "Build smarter with ZOUM — custom AI agents, software platforms, mobile apps, and cloud infrastructure for modern Indian businesses.",
+          "Build smarter with ZOUM: custom AI agents, software platforms, mobile apps, and cloud infrastructure for modern Indian businesses.",
       },
     ],
   }),

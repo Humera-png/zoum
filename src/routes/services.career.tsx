@@ -24,7 +24,7 @@ export const Route = createFileRoute("/services/career")({
       {
         name: "description",
         content:
-          "ZOUM Consultancy Jaipur — confidential executive career advisory, C-suite positioning, talent acquisition, and leadership transition services across India. 700+ placements in one year.",
+          "ZOUM Consultancy Jaipur: confidential executive career advisory, C-suite positioning, talent acquisition, and leadership transition services across India. 700+ placements in one year.",
       },
       {
         property: "og:title",

@@ -12,7 +12,7 @@ export const Route = createFileRoute("/services/business")({
       {
         name: "description",
         content:
-          "Business process outsourcing in Jaipur. ZOUM helps companies scale without friction — process redesign, GTM acceleration, profit optimisation, and growth strategy across India.",
+          "Business process outsourcing in Jaipur. ZOUM helps companies scale without friction: process redesign, GTM acceleration, profit optimisation, and growth strategy across India.",
       },
       { property: "og:title", content: "Business Process Outsourcing | ZOUM Consultancy" },
       {
@@ -145,7 +145,7 @@ function BusinessPage() {
           pill="Business Process Outsourcing"
           title="Scale Without"
           italic="Friction."
-          sub="Operations, ROI, market dominance — for operators who refuse the average curve."
+          sub="Operations, ROI, market dominance. For operators who refuse the average curve."
         />
 
         <div className="mt-20 grid lg:grid-cols-[200px_1fr] gap-12">
@@ -337,7 +337,7 @@ export function CTA() {
           Ready to get started?
         </h3>
         <p className="mt-3 text-muted-foreground max-w-md mx-auto">
-          Begin with a free 30-minute strategy call — no pitch deck, no prep required. Just a
+          Begin with a free 30-minute strategy call. No pitch deck, no prep required. Just a
           direct conversation about your goals.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
