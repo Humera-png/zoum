@@ -90,13 +90,22 @@ export function Footer() {
               Contact
             </Link>
             <div className="flex items-center gap-2">
-              {[Twitter, Linkedin, Instagram].map((I, i) => (
+              {[
+                { Icon: Twitter, href: "#" },
+                { Icon: Linkedin, href: "#" },
+                {
+                  Icon: Instagram,
+                  href: "https://www.instagram.com/zoumplacementservices?igsh=MWh3cnFrbXliMjlwdA==",
+                },
+              ].map(({ Icon, href }, i) => (
                 <a
                   key={i}
-                  href="#"
+                  href={href}
+                  target={href !== "#" ? "_blank" : undefined}
+                  rel={href !== "#" ? "noreferrer" : undefined}
                   className="h-9 w-9 grid place-items-center rounded-full glass hover:bg-lime hover:text-white hover:border-transparent transition"
                 >
-                  <I className="h-4 w-4" />
+                  <Icon className="h-4 w-4" />
                 </a>
               ))}
             </div>

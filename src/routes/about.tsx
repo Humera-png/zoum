@@ -19,12 +19,20 @@ export const Route = createFileRoute("/about")({
   component: AboutPage,
 });
 
+function initialsOf(name: string): string {
+  return name
+    .split(" ")
+    .map((p) => p[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+}
+
 const board = [
   {
     name: "Abdur Rehman",
     role: "Founder",
     bio: "Human Resources Specialist & Business Consultant. 5+ years of operational excellence in strategic talent sourcing and business planning.",
-    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
     linkedin: "https://www.linkedin.com/in/abdur-rehman-534483221/",
   },
   {
@@ -80,7 +88,6 @@ function AboutPage() {
               </h2>
             </div>
             <p className="text-muted-foreground max-w-sm text-sm">
-              Hover to bring them into focus.
             </p>
           </div>
 
@@ -96,18 +103,9 @@ function AboutPage() {
               >
                 <div>
                   <div className="aspect-[4/5] overflow-hidden bg-zinc-900/30 relative flex items-center justify-center border-b border-zinc-800/40">
-                    {m.img ? (
-                      <img
-                        src={m.img}
-                        alt={m.name}
-                        loading="lazy"
-                        className="h-full w-full object-cover grayscale-hover group-hover:scale-105 transition-transform duration-700"
-                      />
-                    ) : (
-                      <div className="font-display text-5xl font-bold tracking-tighter text-zinc-700 select-none group-hover:text-lime transition duration-500">
-                        HS
-                      </div>
-                    )}
+                    <div className="font-display text-5xl font-bold tracking-tighter text-zinc-700 select-none group-hover:text-lime transition duration-500">
+                      {initialsOf(m.name)}
+                    </div>
                   </div>
                   <div className="p-5">
                     <div className="text-[11px] uppercase tracking-wider text-lime font-medium">
@@ -139,11 +137,11 @@ function AboutPage() {
             />
             {[
               { v: 150, suffix: "+", label: "Companies Scaled" },
-              { v: 1000, suffix: "+", label: "Careers Placed" },
+              { v: 700, suffix: "+", label: "Careers Placed" },
             ].map((s, i) => (
               <div key={i} className="relative text-center md:text-left">
                 <div className="font-display text-5xl md:text-6xl tracking-tight">
-                  <Counter to={s.v} suffix={s.suffix} prefix={s.prefix} />
+                  <Counter to={s.v} suffix={s.suffix} />
                 </div>
                 <div className="mt-3 text-sm text-muted-foreground uppercase tracking-wider">
                   {s.label}
