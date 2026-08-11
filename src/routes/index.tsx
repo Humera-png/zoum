@@ -193,7 +193,7 @@ function Hero() {
               href="/contact"
               className="btn-lime w-full md:w-auto font-semibold px-7 py-4 rounded-full inline-flex items-center justify-center text-white"
             >
-              Book a Free Strategy Call <ArrowUpRight className="h-4 w-4" />
+              Actively Hiring <ArrowUpRight className="h-4 w-4" />
             </MagneticButton>
             <Link
               to="/services/business"
