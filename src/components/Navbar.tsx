@@ -19,17 +19,17 @@ const serviceItems = [
     desc: "The Executive Leap.",
   },
   {
-    label: "Social Media Marketing",
-    to: "/services/socialmedia" as const,
-    desc: "Unified Excellence.",
-  },
-  {
     label: "AI and IT Services",
     to: "/services/ai-automation" as const,
     desc: "Production AI Architectures.",
   },
   {
-    label: "Business Strategy and Operations",
+    label: "Social Media Marketing",
+    to: "/services/socialmedia" as const,
+    desc: "Unified Excellence.",
+  },
+  {
+    label: "Business Process Outsourcing",
     to: "/services/bpo-operations" as const,
     desc: "Scale Without Friction.",
   },

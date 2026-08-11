@@ -8,17 +8,17 @@ import { PageBackdrop } from "@/components/PageBackdrop";
 export const Route = createFileRoute("/services/business")({
   head: () => ({
     meta: [
-      { title: "Business Strategy & Operations Consulting | ZOUM Consultancy Jaipur" },
+      { title: "Business Process Outsourcing | ZOUM Consultancy Jaipur" },
       {
         name: "description",
         content:
-          "Expert business strategy and operations consulting in Jaipur. ZOUM helps companies scale without friction — process redesign, GTM acceleration, profit optimisation, and growth strategy across India.",
+          "Business process outsourcing in Jaipur. ZOUM helps companies scale without friction — process redesign, GTM acceleration, profit optimisation, and growth strategy across India.",
       },
-      { property: "og:title", content: "Business Strategy Consulting | ZOUM Consultancy" },
+      { property: "og:title", content: "Business Process Outsourcing | ZOUM Consultancy" },
       {
         property: "og:description",
         content:
-          "Scale your business without friction. ZOUM's strategy team delivers operating audits, GTM redesigns, and profit margin optimisation.",
+          "Scale your business without friction. ZOUM's team delivers operating audits, GTM redesigns, and profit margin optimisation.",
       },
     ],
   }),
@@ -142,7 +142,7 @@ function BusinessPage() {
       <PageBackdrop />
       <div className="max-w-7xl mx-auto relative z-10">
         <PageHeader
-          pill="Business Strategy"
+          pill="Business Process Outsourcing"
           title="Scale Without"
           italic="Friction."
           sub="Operations, ROI, market dominance — for operators who refuse the average curve."

@@ -10,18 +10,18 @@ export const Route = createFileRoute("/services/business-strategy")({
   head: () => ({
     meta: [
       {
-        title: "Business Strategy Consulting & Operations Transformation | ZOUM",
+        title: "Business Process Outsourcing | ZOUM",
       },
 
       {
         name: "description",
         content:
-          "ZOUM provides business strategy consulting, operational transformation, growth strategy, process optimization, and executive advisory services to help companies scale efficiently.",
+          "ZOUM provides business process outsourcing, operational transformation, growth strategy, process optimization, and executive advisory services to help companies scale efficiently.",
       },
 
       {
         property: "og:title",
-        content: "Business Strategy & Operations Consulting | ZOUM",
+        content: "Business Process Outsourcing | ZOUM",
       },
 
       {
@@ -108,7 +108,7 @@ function BusinessStrategyPage() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <PageHeader
-          pill="Business Strategy & Operations"
+          pill="Business Process Outsourcing"
           title="Scale"
           italic="Smarter."
           sub="

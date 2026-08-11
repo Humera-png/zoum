@@ -91,7 +91,7 @@ const structuredData = {
     "@type": "OfferCatalog",
     name: "Consultancy Services",
     itemListElement: [
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Business Strategy & Operations" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Business Process Outsourcing" } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Career Advisory & Executive Placement" } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Social Media Marketing" } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI Automation & Software Development" } },

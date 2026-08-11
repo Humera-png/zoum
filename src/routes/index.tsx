@@ -307,7 +307,7 @@ const services = [
   },
   {
     icon: TrendingUp,
-    title: "Business Strategy and Operations",
+    title: "Business Process Outsourcing",
     headline: "Scale Without Friction.",
     body: "We fix operational bottlenecks and redesign your business model for compound growth. Streamline your processes, expand profit margins, and launch your offerings faster.",
     points: [
@@ -316,7 +316,7 @@ const services = [
       "Go-To-Market (GTM) Acceleration",
     ],
     to: "/services/bpo-operations" as const,
-    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
   },
 ];
 
@@ -503,35 +503,35 @@ const testimonials = [
     role: "CTO, Fintech Ops",
     service: "AI Automation and IT Services",
     quote:
-      "Honestly, I was skeptical about the AI hype, but ZOUM actually delivered. They built an autonomous reconciliation agent that picked up the slack of three outsourced teams. It just runs flawlessly in the background and is easily the best investment we made this year.",
+      "ZOUM built an autonomous reconciliation agent that replaced three outsourced teams' worth of work. Easily our best investment this year.",
   },
   {
     name: "Priya Malhotra",
     role: "Founder, Series B SaaS",
-    service: "Business Strategy and Operations",
+    service: "Business Process Outsourcing",
     quote:
-      "Most consultants just give you flashy slide decks, but these guys rolled up their sleeves. They completely overhauled our messy go-to-market strategy, and within 11 months, our ARR literally tripled. No corporate fluff - just strategies that actually bring in revenue.",
+      "They rebuilt our go-to-market from scratch. Eleven months later our ARR had tripled — no slide decks, just what worked.",
   },
   {
     name: "Rajesh Kumar",
     role: "VP Engineering → CTO",
     service: "Career Mastery and Talent Acquisition",
     quote:
-      "I was stuck in upper management for years, circling the C-suite but never breaking through. ZOUM changed the game for me. They fixed my personal branding and prepped me for tough board interviews. I landed my dream CTO role with a 2.4x compensation jump.",
+      "ZOUM fixed my positioning and prepped me for board-level interviews. I landed the CTO role with a 2.4x compensation jump.",
   },
   {
     name: "Anita R.",
     role: "COO, Industrial Group",
     service: "Career Mastery and Talent Acquisition",
     quote:
-      "Getting 400 traditional managers to change how they run their teams seemed impossible. ZOUM’s leadership labs actually clicked with them. The daily friction on the floor is gone, and our internal quarterly team happiness scores jumped by 38 points.",
+      "400 managers, one leadership program that actually stuck. Daily floor friction is gone and our team happiness score jumped 38 points.",
   },
   {
     name: "Vikram S.",
     role: "VP of Growth & Brand Strategy",
     service: "Social Media Marketing",
     quote:
-      "We were putting out content but getting zero traction. ZOUM came in and built a real content engine for us. In just two months, we hit over 5 million organic impressions and turned that attention into 40 solid, high-value corporate leads. They really know how to capture an audience.",
+      "We had content but no traction. In two months, ZOUM's system hit 5M+ organic impressions and turned it into 40 qualified leads.",
   },
 
   /* --- Newly Added Humanized Reviews --- */
@@ -540,28 +540,28 @@ const testimonials = [
     role: "Head of Talent Acquisition",
     service: "Career Mastery and Talent Acquisition",
     quote:
-      "Finding elite executive talent used to take us months of endless interviewing. ZOUM didn't just dump resumes on us - they brought us three perfectly vetted leaders who fit our culture from day one. It saved us so much time and headache.",
+      "ZOUM didn't dump resumes on us — they brought three vetted leaders who fit our culture from day one.",
   },
   {
     name: "Marcus Chen",
     role: "Co-Founder, E-Commerce Hub",
     service: "Social Media Marketing",
     quote:
-      "Our ad costs were killing our margins, so we needed an organic social media presence fast. ZOUM stepped in and completely re-vamped our short-form video strategy. Now our TikTok and LinkedIn are driving actual daily sales without us spending a dime on ads.",
+      "ZOUM rebuilt our short-form video strategy. Now TikTok and LinkedIn drive daily sales without us spending a dime on ads.",
   },
   {
     name: "Rohan Deshmukh",
     role: "VP of Infrastructure",
     service: "AI Automation and IT Services",
     quote:
-      "We had mountains of messy customer data that our support reps had to manually dig through. ZOUM plugged a custom smart data system right into our workflow. Now, answers are generated instantly, saving our reps hours of manual searching every single day.",
+      "ZOUM plugged a smart data system into our workflow. Answers that took hours of digging now come back instantly.",
   },
   {
     name: "Sarah Jenkins",
     role: "Managing Director",
-    service: "Business Strategy and Operations",
+    service: "Business Process Outsourcing",
     quote:
-      "Our operational bottlenecks were holding us back from scaling up. The team at ZOUM mapped out our entire workflow, cut out the redundant steps, and optimized our profit margins. For the first time in years, we are expanding without constantly putting out fires.",
+      "ZOUM mapped our workflow and cut the redundant steps. First time in years we're expanding without constantly putting out fires.",
   },
 ];
 function Testimonials() {
