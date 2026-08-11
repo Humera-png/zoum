@@ -17,6 +17,9 @@ import {
   Headphones,
   Quote,
   Star,
+  Award,
+  Zap,
+  Layers,
 } from "lucide-react";
 import { MagneticButton } from "@/components/MagneticButton";
 import { ContactForm } from "@/components/ContactForm";
@@ -282,12 +285,12 @@ const services = [
   {
     icon: Cpu,
     title: "AI and IT Services",
-    headline: "Production AI Architectures.",
-    body: "We integrate custom AI agents and smart automation workflows into your existing tech stack. Cut manual labor hours and upgrade your backend with production-ready AI models.",
+    headline: "Let AI Handle the Busywork.",
+    body: "We build simple AI tools and software that take over repetitive tasks like data entry, replying to customers, and reporting, so your team can spend time on work that actually grows the business.",
     points: [
-      "Autonomous Agent Workflows",
-      "Custom OpenAI & GPT-4 Integrations",
-      "Smart Data Systems (RAG Pipelines)",
+      "Saves hours every week",
+      "Fewer manual mistakes",
+      "Easy for your team to use",
     ],
     to: "/services/ai-automation" as const,
     img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80",
@@ -407,6 +410,68 @@ function Services() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 auto-rows-fr">
           {services.map((s, i) => (
             <ServiceCard key={s.title} s={s} i={i} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const whyChooseZoum = [
+  {
+    icon: Users,
+    title: "Operators, Not Just Consultants",
+    body: "Every partner has actually run the thing they're advising you on — no theory-only playbooks.",
+  },
+  {
+    icon: Award,
+    title: "700+ Placements, Proven Results",
+    body: "A track record you can check, not a promise you have to take on faith.",
+  },
+  {
+    icon: Zap,
+    title: "Fast Response, No Bureaucracy",
+    body: "We respond within 24 hours. No multi-week onboarding before real work starts.",
+  },
+  {
+    icon: Layers,
+    title: "One Team, Every Discipline",
+    body: "Strategy, talent, marketing, and tech under one roof, so nothing falls through the cracks.",
+  },
+];
+
+function WhyChooseZoum() {
+  return (
+    <section className="relative px-4 sm:px-6 py-14 md:py-20">
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-10 md:mb-14"
+        >
+          <div className="text-xs uppercase tracking-[0.3em] text-lime mb-4">/ why zoum</div>
+          <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-tight">
+            What sets us{" "}
+            <span className="italic font-serif text-muted-foreground">apart.</span>
+          </h2>
+        </motion.div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {whyChooseZoum.map((w, i) => (
+            <motion.div
+              key={w.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08 }}
+              className="glass rounded-2xl p-6 hover-glow-lime transition"
+            >
+              <div className="h-10 w-10 rounded-xl glass-strong grid place-items-center mb-4">
+                <w.icon className="h-5 w-5 text-lime" />
+              </div>
+              <div className="font-display text-lg">{w.title}</div>
+              <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{w.body}</p>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -673,6 +738,7 @@ function Index() {
       <Hero />
       <ClientMarquee />
       <Services />
+      <WhyChooseZoum />
       <Philosophy />
       <Testimonials />
       <Contact />

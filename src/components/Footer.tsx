@@ -1,95 +1,37 @@
 import { Link } from "@tanstack/react-router";
-import { Twitter, Linkedin, Instagram, MapPin, Phone } from "lucide-react";
-import { useState } from "react";
+import { Twitter, Linkedin, Instagram, MapPin, Phone, Mail } from "lucide-react";
 import { Logo } from "./Logo";
 
-export function Footer() {
-  const [email, setEmail] = useState("");
-  const [done, setDone] = useState(false);
+const quickLinks = [
+  { label: "Home", to: "/" as const },
+  { label: "About", to: "/about" as const },
+  { label: "Contact", to: "/contact" as const },
+];
 
+const serviceLinks = [
+  { label: "Career Mastery", to: "/services/career" as const },
+  { label: "AI and IT Services", to: "/services/ai-automation" as const },
+  { label: "Social Media Marketing", to: "/services/socialmedia" as const },
+  { label: "Business Process Outsourcing", to: "/services/bpo-operations" as const },
+];
+
+export function Footer() {
   return (
     <footer className="px-6 pb-10 pt-16 border-t border-border mt-16 relative">
       <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-8 items-center mb-10">
-          <div>
-            <div className="font-display text-3xl tracking-tight">
-              Stay in the <span className="text-lime">signal.</span>
+        <div className="grid md:grid-cols-4 gap-10 mb-10">
+          <div className="md:col-span-2">
+            <div className="flex items-center gap-2.5">
+              <Logo size={30} />
+              <span className="font-display text-lg tracking-tight">
+                ZOUM <span className="text-muted-foreground text-sm">Placement Services</span>
+              </span>
             </div>
-            <p className="text-muted-foreground mt-2 text-sm">
-              Quarterly briefings on placement, leadership, and execution.
+            <p className="text-muted-foreground mt-4 text-sm max-w-sm leading-relaxed">
+              ZOUM Placement Services connects businesses and professionals through strategy,
+              talent, social media, and AI. Jaipur headquartered, pan-India reach.
             </p>
-          </div>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              if (email.includes("@")) {
-                setDone(true);
-                setEmail("");
-                setTimeout(() => setDone(false), 3000);
-              }
-            }}
-            className="glass rounded-full p-2 flex items-center gap-2"
-          >
-            <input
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="your@email.com"
-              className="bg-transparent flex-1 min-w-0 px-4 py-2 text-sm placeholder:text-muted-foreground outline-none text-foreground"
-            />
-            <button className="btn-lime text-sm font-medium px-5 py-2.5 rounded-full pulse-lime whitespace-nowrap">
-              {done ? "Subscribed ✓" : "Subscribe"}
-            </button>
-          </form>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-6 mb-10">
-          <div className="glass rounded-2xl p-5 flex items-start gap-3">
-            <MapPin className="h-5 w-5 text-lime mt-0.5 shrink-0" />
-            <div>
-              <div className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-                Headquarters
-              </div>
-              <div className="mt-1 text-sm text-foreground leading-relaxed">
-                ZOUM Placement Services, Plot no 3, Madrampura, Civil Lines, Jaipur
-              </div>
-            </div>
-          </div>
-          <div className="glass rounded-2xl p-5 flex items-start gap-3">
-            <Phone className="h-5 w-5 text-lime mt-0.5 shrink-0" />
-            <div>
-              <div className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-                Active Line
-              </div>
-              <a
-                href="tel:+918306971791"
-                className="mt-1 block text-sm text-foreground font-medium hover:text-lime transition"
-              >
-                +91 8306971791
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex flex-wrap items-center justify-between gap-6 pt-8 border-t border-border">
-          <div className="flex items-center gap-2 flex-wrap">
-            <Logo size={26} />
-            <span className="font-display text-sm">
-              ZOUM <span className="text-muted-foreground text-xs">Placement Services</span>
-            </span>
-            <span className="text-muted-foreground text-xs ml-3">
-              © 2025 - All rights reserved.
-            </span>
-          </div>
-          <div className="flex items-center gap-4">
-            <Link to="/about" className="text-xs text-muted-foreground hover:text-foreground">
-              About
-            </Link>
-            <Link to="/contact" className="text-xs text-muted-foreground hover:text-foreground">
-              Contact
-            </Link>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 mt-5">
               {[
                 { Icon: Twitter, href: "#" },
                 { Icon: Linkedin, href: "#" },
@@ -110,6 +52,72 @@ export function Footer() {
               ))}
             </div>
           </div>
+
+          <div>
+            <div className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground mb-4">
+              Quick Links
+            </div>
+            <ul className="space-y-2.5">
+              {quickLinks.map((l) => (
+                <li key={l.to}>
+                  <Link
+                    to={l.to}
+                    className="text-sm text-foreground/80 hover:text-lime transition"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+              {serviceLinks.map((l) => (
+                <li key={l.to}>
+                  <Link
+                    to={l.to}
+                    className="text-sm text-foreground/80 hover:text-lime transition"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <div className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground mb-4">
+              Contact
+            </div>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-2.5">
+                <MapPin className="h-4 w-4 text-lime mt-0.5 shrink-0" />
+                <span className="text-sm text-foreground/80 leading-relaxed">
+                  ZOUM Placement Services, Plot no 3, Madrampura, Civil Lines, Jaipur
+                </span>
+              </li>
+              <li className="flex items-center gap-2.5">
+                <Phone className="h-4 w-4 text-lime shrink-0" />
+                <a
+                  href="tel:+918306971791"
+                  className="text-sm text-foreground/80 hover:text-lime transition"
+                >
+                  +91 8306971791
+                </a>
+              </li>
+              <li className="flex items-center gap-2.5">
+                <Mail className="h-4 w-4 text-lime shrink-0" />
+                <a
+                  href="mailto:contact@zoumconsultancy.com"
+                  className="text-sm text-foreground/80 hover:text-lime transition"
+                >
+                  contact@zoumconsultancy.com
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="flex flex-wrap items-center justify-between gap-4 pt-8 border-t border-border">
+          <span className="text-muted-foreground text-xs">
+            © 2025 ZOUM Placement Services. All rights reserved.
+          </span>
         </div>
       </div>
     </footer>
