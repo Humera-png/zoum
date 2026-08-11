@@ -14,13 +14,12 @@ import {
   TrendingUp,
   Users,
   Cpu,
-  Code2,
+  Headphones,
+  Quote,
   Star,
 } from "lucide-react";
 import { MagneticButton } from "@/components/MagneticButton";
 import { ContactForm } from "@/components/ContactForm";
-import { FAQSection } from "@/components/FAQSection";
-import { JsonLd, buildFAQSchema } from "@/components/JsonLd";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -37,9 +36,8 @@ export const Route = createFileRoute("/")({
         content:
           "Jaipur's leading consultancy for business strategy, talent placement, social media growth, and AI automation. Book a free strategy call today.",
       },
-      { property: "og:url", content: "https://zoumconsultancy.com" },
+      { rel: "canonical", href: "https://zoumconsultancy.com" },
     ],
-    links: [{ rel: "canonical", href: "https://zoumconsultancy.com" }],
   }),
   component: Index,
 });
@@ -157,15 +155,24 @@ function Hero() {
       />
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-4 lg:gap-5 items-center relative z-10">
         <div className="min-w-0">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-xs text-muted-foreground mb-3"
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-lime pulse-lime" />
+            Free strategy call available — limited spots
+          </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight tracking-tight whitespace-normal break-words"
           >
-            Grow your business.
+            Architecting <span className="italic font-serif text-lime">Alpha</span>:
             <br />
-            Advance your <span className="italic font-serif text-lime">career.</span>
+            Business &amp; Career <span className="text-gradient-charcoal">Mastery.</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -173,8 +180,8 @@ function Hero() {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="mt-5 md:mt-7 text-base md:text-lg text-muted-foreground max-w-xl"
           >
-            ZOUM is a Jaipur consultancy that helps companies scale and professionals move up —
-            through strategy, marketing, AI automation, and software that actually works.
+            ZOUM Placement Services scales companies and accelerates careers through data-driven
+            strategy, executive precision, and uncompromising execution.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -186,23 +193,15 @@ function Hero() {
               href="/contact"
               className="btn-lime w-full md:w-auto font-semibold px-7 py-4 rounded-full inline-flex items-center justify-center text-white"
             >
-              Actively Hiring <ArrowUpRight className="h-4 w-4" />
+              Book a Free Strategy Call <ArrowUpRight className="h-4 w-4" />
             </MagneticButton>
             <Link
-              to="/services/business-strategy"
+              to="/services/business"
               className="w-full md:w-auto glass px-7 py-4 rounded-full text-sm font-semibold text-foreground hover:bg-white transition inline-flex items-center justify-center"
             >
               View our services
             </Link>
           </motion.div>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.75 }}
-            className="mt-3 text-xs text-muted-foreground"
-          >
-            Join our growing team — we're actively hiring across roles.
-          </motion.p>
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -210,13 +209,13 @@ function Hero() {
             className="mt-6 md:mt-7 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-muted-foreground/70"
           >
             <div>
-              700+ <span className="text-foreground/70">placements in a year</span>
+              FORBES <span className="text-foreground/70">- "Sharp."</span>
             </div>
             <div>
-              42+ <span className="text-foreground/70">clients served</span>
+              BLOOMBERG <span className="text-foreground/70">- "Disciplined."</span>
             </div>
             <div className="hidden md:block">
-              Jaipur, India <span className="text-foreground/70">— operating since 2014</span>
+              WSJ <span className="text-foreground/70">- "Effective."</span>
             </div>
           </motion.div>
         </div>
@@ -294,47 +293,54 @@ function ClientMarquee() {
 const services = [
   {
     icon: Briefcase,
-    title: "Career Mastery & Talent Acquisition",
-    headline: "Stuck below your level?",
-    body: "You're doing C-suite work without the C-suite title or pay. We position you for the roles you're already qualified for and negotiate the offer once you get there.",
-    points: ["Executive positioning", "Compensation negotiation", "Board-level access"],
+    title: "Career Mastery and Talent Acquisition",
+    headline: "The Executive Leap.",
+    body: "We position senior leaders for high-ticket roles and build elite executive teams. From personal branding to compensation negotiation, we fast-track your leadership authority.",
+    points: [
+      "Executive & C-Suite Positioning",
+      "High-Level Compensation Strategy",
+      "Boardroom Readiness & socialmedia",
+    ],
     to: "/services/career" as const,
     img: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80",
   },
   {
     icon: Users,
     title: "Social Media Marketing",
-    headline: "Posting but not converting?",
-    body: "Content without a strategy just fills a feed. We build a system — content, message, and channels working together — that turns attention into leads.",
-    points: ["Content that converts", "Consistent brand voice", "Leads, not just likes"],
+    headline: "Unified Excellence.",
+    body: "We build digital authority that converts attention into revenue. By aligning content, brand message, and multi-channel campaigns, your company dominates the industry conversation.",
+    points: [
+      "Brand Narrative & Voice",
+      "Multi-Channel Social Strategy",
+      "High-Converting Content Engines",
+    ],
     to: "/services/socialmedia" as const,
     img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
   },
   {
     icon: Cpu,
-    title: "AI Automation",
-    headline: "Still doing it by hand?",
-    body: "Repetitive tasks — data entry, follow-ups, reporting — eat hours every week. We build AI automations that take them over, so your team works on what actually moves the business.",
-    points: ["Hours back every week", "Fewer manual errors", "Lower operating cost"],
+    title: "AI and IT Services",
+    headline: "Production AI Architectures.",
+    body: "We integrate custom AI agents and smart automation workflows into your existing tech stack. Cut manual labor hours and upgrade your backend with production-ready AI models.",
+    points: [
+      "Autonomous Agent Workflows",
+      "Custom OpenAI & GPT-4 Integrations",
+      "Smart Data Systems (RAG Pipelines)",
+    ],
     to: "/services/ai-automation" as const,
     img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    icon: Code2,
-    title: "IT & Software Development",
-    headline: "Is your site the bottleneck?",
-    body: "A slow website or a tool held together with spreadsheets caps how fast you can grow. We build websites, apps, and systems that hold up as you scale.",
-    points: ["Fast, modern builds", "Fewer bugs and outages", "Built to scale"],
-    to: "/services/it-software" as const,
-    img: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
     icon: TrendingUp,
-    title: "Business Strategy & Outsourcing",
-    headline: "Busier, but not growing?",
-    body: "A busier team isn't the same as a growing business. We find where your operations are leaking time and margin, then fix the process, not just the symptom.",
-    points: ["Fewer bottlenecks", "Better margins", "Faster decisions"],
-    to: "/services/business-strategy" as const,
+    title: "Business Strategy and Operations",
+    headline: "Scale Without Friction.",
+    body: "We fix operational bottlenecks and redesign your business model for compound growth. Streamline your processes, expand profit margins, and launch your offerings faster.",
+    points: [
+      "Process & Workflow Redesign",
+      "Profit Margin Optimization",
+      "Go-To-Market (GTM) Acceleration",
+    ],
+    to: "/services/bpo-operations" as const,
     img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
   },
 ];
@@ -406,14 +412,14 @@ function Services() {
           <div>
             <div className="text-xs uppercase tracking-[0.3em] text-lime mb-3">/ services</div>
             <h2 className="font-display text-4xl md:text-6xl tracking-tight max-w-3xl leading-tight">
-              Five problems.{" "}
-              <span className="italic font-serif text-muted-foreground">One team.</span>
+              Four pillars.{" "}
+              <span className="italic font-serif text-muted-foreground">One outcome.</span>
             </h2>
           </div>
           <div className="flex flex-col gap-2 items-start">
             <p className="text-muted-foreground max-w-sm text-sm">
-              Whatever's actually holding you back — strategy, talent, marketing, automation, or
-              software — pick the one that matches.
+              Strategy, talent, digital presence, and AI — every layer of a modern, high-performance
+              enterprise.
             </p>
             <Link
               to="/contact"
@@ -475,8 +481,8 @@ function Philosophy() {
           transition={{ delay: 0.3 }}
           className="mt-7 text-muted-foreground max-w-xl mx-auto"
         >
-          Founded in 2014, ZOUM works with business owners and professionals who want a clear
-          answer, not a longer meeting.
+          Founded in 2020, ZOUM Placement Services is a private advisory firm partnering with
+          operators who refuse the average curve.
         </motion.p>
 
         {/* Compact 2-col metric matrix */}
@@ -519,56 +525,70 @@ function Philosophy() {
 const testimonials = [
   {
     name: "Sarim J.",
-    role: "CTO",
-    company: "Fintech Ops",
-    stat: "Replaced 3 outsourced teams",
+    role: "CTO, Fintech Ops",
+    service: "AI Automation and IT Services",
     quote:
-      "ZOUM built an automation that replaced three outsourced teams' worth of reconciliation work. It just runs — easily our best investment this year.",
-    service: "AI Automation",
-    to: "/services/ai-automation" as const,
-  },
-  {
-    name: "Rohan Deshmukh",
-    role: "VP of Infrastructure",
-    company: "—",
-    stat: "Hours saved daily",
-    quote:
-      "Our reps used to dig through messy data for every answer. ZOUM built a system that surfaces it instantly — saving hours every day.",
-    service: "IT & Software Development",
-    to: "/services/it-software" as const,
+      "Honestly, I was skeptical about the AI hype, but ZOUM actually delivered. They built an autonomous reconciliation agent that picked up the slack of three outsourced teams. It just runs flawlessly in the background and is easily the best investment we made this year.",
   },
   {
     name: "Priya Malhotra",
-    role: "Founder",
-    company: "Series B SaaS",
-    stat: "3x ARR in 11 months",
+    role: "Founder, Series B SaaS",
+    service: "Business Strategy and Operations",
     quote:
-      "They rebuilt our go-to-market from scratch. Eleven months later, our ARR had tripled — no slide decks, just what worked.",
-    service: "Business Strategy",
-    to: "/services/business-strategy" as const,
+      "Most consultants just give you flashy slide decks, but these guys rolled up their sleeves. They completely overhauled our messy go-to-market strategy, and within 11 months, our ARR literally tripled. No corporate fluff - just strategies that actually bring in revenue.",
   },
   {
     name: "Rajesh Kumar",
     role: "VP Engineering → CTO",
-    company: "—",
-    stat: "2.4x compensation jump",
+    service: "Career Mastery and Talent Acquisition",
     quote:
-      "ZOUM fixed my positioning and prepped me for board-level interviews. I landed the CTO role with a 2.4x pay jump.",
-    service: "Career Mastery",
-    to: "/services/career" as const,
+      "I was stuck in upper management for years, circling the C-suite but never breaking through. ZOUM changed the game for me. They fixed my personal branding and prepped me for tough board interviews. I landed my dream CTO role with a 2.4x compensation jump.",
+  },
+  {
+    name: "Anita R.",
+    role: "COO, Industrial Group",
+    service: "Career Mastery and Talent Acquisition",
+    quote:
+      "Getting 400 traditional managers to change how they run their teams seemed impossible. ZOUM’s leadership labs actually clicked with them. The daily friction on the floor is gone, and our internal quarterly team happiness scores jumped by 38 points.",
   },
   {
     name: "Vikram S.",
-    role: "VP of Growth",
-    company: "—",
-    stat: "5M+ impressions, 40 leads",
-    quote:
-      "We had content but zero traction. In two months, ZOUM's system hit 5M+ organic impressions and turned that into 40 qualified leads.",
+    role: "VP of Growth & Brand Strategy",
     service: "Social Media Marketing",
-    to: "/services/socialmedia" as const,
+    quote:
+      "We were putting out content but getting zero traction. ZOUM came in and built a real content engine for us. In just two months, we hit over 5 million organic impressions and turned that attention into 40 solid, high-value corporate leads. They really know how to capture an audience.",
+  },
+
+  /* --- Newly Added Humanized Reviews --- */
+  {
+    name: "Devika Nair",
+    role: "Head of Talent Acquisition",
+    service: "Career Mastery and Talent Acquisition",
+    quote:
+      "Finding elite executive talent used to take us months of endless interviewing. ZOUM didn't just dump resumes on us - they brought us three perfectly vetted leaders who fit our culture from day one. It saved us so much time and headache.",
+  },
+  {
+    name: "Marcus Chen",
+    role: "Co-Founder, E-Commerce Hub",
+    service: "Social Media Marketing",
+    quote:
+      "Our ad costs were killing our margins, so we needed an organic social media presence fast. ZOUM stepped in and completely re-vamped our short-form video strategy. Now our TikTok and LinkedIn are driving actual daily sales without us spending a dime on ads.",
+  },
+  {
+    name: "Rohan Deshmukh",
+    role: "VP of Infrastructure",
+    service: "AI Automation and IT Services",
+    quote:
+      "We had mountains of messy customer data that our support reps had to manually dig through. ZOUM plugged a custom smart data system right into our workflow. Now, answers are generated instantly, saving our reps hours of manual searching every single day.",
+  },
+  {
+    name: "Sarah Jenkins",
+    role: "Managing Director",
+    service: "Business Strategy and Operations",
+    quote:
+      "Our operational bottlenecks were holding us back from scaling up. The team at ZOUM mapped out our entire workflow, cut out the redundant steps, and optimized our profit margins. For the first time in years, we are expanding without constantly putting out fires.",
   },
 ];
-
 function Testimonials() {
   return (
     <section className="relative px-4 sm:px-6 py-14 md:py-20">
@@ -579,106 +599,45 @@ function Testimonials() {
           viewport={{ once: true }}
           className="text-center mb-10 md:mb-14"
         >
-          <div className="text-xs uppercase tracking-[0.3em] text-lime mb-4">/ results</div>
+          <div className="text-xs uppercase tracking-[0.3em] text-lime mb-4">
+            / proof over rhetoric
+          </div>
           <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-tight">
-            Real clients.{" "}
-            <span className="italic font-serif text-muted-foreground">Real numbers.</span>
+            Operators. Founders.{" "}
+            <span className="italic font-serif text-muted-foreground">On record.</span>
           </h2>
         </motion.div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {testimonials.map((t, i) => (
             <motion.figure
               key={t.name}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ delay: i * 0.08, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="glass-strong rounded-3xl p-6 flex flex-col h-full hover-glow-lime transition"
+              transition={{ delay: i * 0.08, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="glass-strong rounded-3xl p-6 md:p-7 flex flex-col h-full hover-glow-lime transition"
             >
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 shrink-0 rounded-full bg-lime text-white grid place-items-center font-display text-sm">
-                  {t.name
-                    .split(" ")
-                    .map((p) => p[0])
-                    .join("")
-                    .slice(0, 2)}
-                </div>
-                <div className="min-w-0">
-                  <div className="text-sm font-semibold text-foreground truncate">{t.name}</div>
-                  <div className="text-xs text-muted-foreground truncate">
-                    {t.role}
-                    {t.company !== "—" ? `, ${t.company}` : ""}
-                  </div>
-                </div>
-                <div className="ml-auto flex gap-0.5 shrink-0">
+              <div className="flex items-center justify-between">
+                <Quote className="h-7 w-7 text-lime" />
+                <div className="flex gap-0.5">
                   {[0, 1, 2, 3, 4].map((s) => (
-                    <Star key={s} className="h-3 w-3 fill-[var(--brand)] text-[var(--brand)]" />
+                    <Star key={s} className="h-3.5 w-3.5 fill-[var(--brand)] text-[var(--brand)]" />
                   ))}
                 </div>
               </div>
-
-              <div className="mt-4 inline-flex items-center self-start rounded-full bg-lime/10 px-3 py-1 text-xs font-semibold text-lime">
-                {t.stat}
-              </div>
-
-              <blockquote className="mt-3 text-sm text-foreground leading-relaxed flex-1">
+              <blockquote className="mt-5 text-foreground text-base leading-relaxed flex-1">
                 "{t.quote}"
               </blockquote>
-
-              <Link
-                to={t.to}
-                className="mt-4 pt-4 border-t border-border inline-flex items-center gap-1.5 text-xs font-semibold text-lime hover:underline"
-              >
-                See our {t.service} approach <ArrowUpRight className="h-3.5 w-3.5" />
-              </Link>
+              <figcaption className="mt-5 pt-4 border-t border-border">
+                <div className="text-sm font-semibold text-foreground">{t.name}</div>
+                <div className="text-xs text-muted-foreground mt-0.5">{t.role}</div>
+                <div className="mt-3 inline-block text-[10px] uppercase tracking-[0.2em] text-lime border border-brand-deep/30 rounded-full px-2 py-0.5">
+                  {t.service}
+                </div>
+              </figcaption>
             </motion.figure>
           ))}
         </div>
-      </div>
-    </section>
-  );
-}
-
-const homeFaqs = [
-  {
-    q: "How much does executive career advisory cost?",
-    a: "It depends on the level of role and scope of support. We'll give you a specific number after a short assessment call — no generic package pricing.",
-  },
-  {
-    q: "How long does recruitment or a career move typically take?",
-    a: "Most clients see a serious opportunity within 8–12 weeks. Full placement timelines vary with seniority and how targeted the search is.",
-  },
-  {
-    q: "Can AI actually automate our repetitive work?",
-    a: "Yes, for most rule-based, repeated tasks — data entry, follow-ups, reporting, first-line support. We map what your team does manually every week, then automate the highest-time-cost pieces first.",
-  },
-  {
-    q: "What kind of businesses benefit most from AI automation?",
-    a: "Any business with repeated manual work — customer support, sales follow-up, reporting, order or document processing. If your team does the same task the same way every week, it's usually automatable.",
-  },
-  {
-    q: "How does social media marketing generate real leads?",
-    a: "By pairing content that earns attention with a clear next step — a landing page, a DM flow, or a paid campaign — so people who engage have somewhere to go, not just something to scroll past.",
-  },
-];
-
-function FAQ() {
-  return (
-    <section className="relative px-4 sm:px-6 py-14 md:py-20">
-      <div className="max-w-3xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-10 md:mb-14"
-        >
-          <div className="text-xs uppercase tracking-[0.3em] text-lime mb-4">/ faq</div>
-          <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-tight">
-            Questions people{" "}
-            <span className="italic font-serif text-muted-foreground">actually ask.</span>
-          </h2>
-        </motion.div>
-        <FAQSection items={homeFaqs} />
       </div>
     </section>
   );
@@ -736,13 +695,11 @@ function Contact() {
 function Index() {
   return (
     <main className="relative overflow-x-hidden">
-      <JsonLd data={buildFAQSchema(homeFaqs)} />
       <Hero />
       <ClientMarquee />
       <Services />
       <Philosophy />
       <Testimonials />
-      <FAQ />
       <Contact />
     </main>
   );

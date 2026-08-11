@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { MapPin, Mail, Phone } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
 import { PageBackdrop } from "@/components/PageBackdrop";
-import { JsonLd, buildBreadcrumbSchema } from "@/components/JsonLd";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -20,9 +19,8 @@ export const Route = createFileRoute("/contact")({
         content:
           "Reach out to ZOUM Consultancy in Jaipur. Business strategy, career advisory, social media, and AI services. We respond within 24 hours.",
       },
-      { property: "og:url", content: "https://zoumconsultancy.com/contact" },
+      { rel: "canonical", href: "https://zoumconsultancy.com/contact" },
     ],
-    links: [{ rel: "canonical", href: "https://zoumconsultancy.com/contact" }],
   }),
   component: ContactPage,
 });
@@ -30,12 +28,6 @@ export const Route = createFileRoute("/contact")({
 function ContactPage() {
   return (
     <main className="pt-16 px-6 pb-16 md:pb-24 relative">
-      <JsonLd
-        data={buildBreadcrumbSchema([
-          { name: "Home", path: "/" },
-          { name: "Contact", path: "/contact" },
-        ])}
-      />
       <PageBackdrop />
       <div
         className="ambient-orb h-[500px] w-[500px] top-20 right-0"
@@ -56,7 +48,7 @@ function ContactPage() {
             transition={{ duration: 0.8 }}
             className="mt-4 font-display text-5xl md:text-7xl tracking-tight leading-[0.95]"
           >
-            Let's talk about <span className="italic font-serif text-lime">your</span> next move.
+            Let's architect <span className="italic font-serif text-lime">your</span> alpha.
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -98,28 +90,16 @@ function ContactPage() {
                 {
                   icon: Mail,
                   label: "contact@zoumconsultancy.com",
-                  href: "mailto:contact@zoumconsultancy.com",
                   sub: "Inquiries answered within 24 hours.",
                 },
-                {
-                  icon: Phone,
-                  label: "+91 8306971791",
-                  href: "tel:+918306971791",
-                  sub: "Mon-Fri · 10am – 7pm IST.",
-                },
+                { icon: Phone, label: "+91 98290 12345", sub: "Mon-Fri · 10am – 7pm IST." },
               ].map((c, i) => (
                 <div key={i} className="glass rounded-2xl p-4 flex items-start gap-4">
                   <div className="h-11 w-11 rounded-xl bg-lime grid place-items-center shrink-0 text-white">
                     <c.icon className="h-4 w-4" />
                   </div>
                   <div>
-                    {c.href ? (
-                      <a href={c.href} className="text-sm font-medium hover:text-lime transition">
-                        {c.label}
-                      </a>
-                    ) : (
-                      <div className="text-sm font-medium">{c.label}</div>
-                    )}
+                    <div className="text-sm font-medium">{c.label}</div>
                     <div className="text-xs text-muted-foreground mt-0.5">{c.sub}</div>
                   </div>
                 </div>

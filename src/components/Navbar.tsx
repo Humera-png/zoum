@@ -7,7 +7,7 @@ import { Logo } from "./Logo";
 
 const links = [
   { label: "Home", to: "/" as const },
-  { label: "Services", to: "/services/business-strategy" as const, hasMenu: true },
+  { label: "Services", to: "/services/business" as const, hasMenu: true },
   { label: "About", to: "/about" as const },
   { label: "Contact", to: "/contact" as const },
 ];
@@ -16,27 +16,22 @@ const serviceItems = [
   {
     label: "Career Mastery and Talent Acquisition",
     to: "/services/career" as const,
-    desc: "Stuck below your level?",
+    desc: "The Executive Leap.",
   },
   {
     label: "Social Media Marketing",
     to: "/services/socialmedia" as const,
-    desc: "Posting but not converting?",
+    desc: "Unified Excellence.",
   },
   {
-    label: "AI Automation",
+    label: "AI and IT Services",
     to: "/services/ai-automation" as const,
-    desc: "Stop doing the same task twice.",
+    desc: "Production AI Architectures.",
   },
   {
-    label: "IT & Software Development",
-    to: "/services/it-software" as const,
-    desc: "Your website shouldn't be the bottleneck.",
-  },
-  {
-    label: "Business Strategy & Outsourcing",
-    to: "/services/business-strategy" as const,
-    desc: "Busier, but not growing?",
+    label: "Business Strategy and Operations",
+    to: "/services/bpo-operations" as const,
+    desc: "Scale Without Friction.",
   },
 ];
 

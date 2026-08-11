@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { Linkedin } from "lucide-react";
 import { Counter } from "@/components/Counter";
 import { PageBackdrop } from "@/components/PageBackdrop";
-import { JsonLd, buildBreadcrumbSchema } from "@/components/JsonLd";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -15,38 +14,18 @@ export const Route = createFileRoute("/about")({
         property: "og:description",
         content: "Operators, not consultants. Meet the ZOUM advisory board.",
       },
-      { property: "og:url", content: "https://zoumconsultancy.com/about" },
     ],
-    links: [{ rel: "canonical", href: "https://zoumconsultancy.com/about" }],
   }),
   component: AboutPage,
 });
 
-// No stock photos here on purpose — a stock photo presented next to a named person
-// (especially one with a real LinkedIn link) reads as claiming to be their actual
-// likeness, which isn't true and damages trust the moment someone checks. Every
-// member without a real, owned photo gets the same initials placeholder.
 const board = [
   {
     name: "Abdur Rehman",
     role: "Founder",
     bio: "Human Resources Specialist & Business Consultant. 5+ years of operational excellence in strategic talent sourcing and business planning.",
+    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
     linkedin: "https://www.linkedin.com/in/abdur-rehman-534483221/",
-  },
-  {
-    name: "Parv Jain",
-    role: "Co-Founder",
-    bio: "Co-founder of ZOUM Consultancy.",
-  },
-  {
-    name: "Executive Partner",
-    role: "Partner",
-    bio: "Strategic advisory and institutional leadership consulting.",
-  },
-  {
-    name: "Operations Director",
-    role: "Director",
-    bio: "Operational scaling, infrastructure development, and process transformation.",
   },
   {
     name: "Humera Shaikh",
@@ -56,24 +35,9 @@ const board = [
   },
 ];
 
-function initialsOf(name: string): string {
-  return name
-    .split(" ")
-    .map((p) => p[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
-}
-
 function AboutPage() {
   return (
     <main className="pt-32 px-6 pb-20 relative">
-      <JsonLd
-        data={buildBreadcrumbSchema([
-          { name: "Home", path: "/" },
-          { name: "About", path: "/about" },
-        ])}
-      />
       <PageBackdrop />
       <div className="max-w-7xl mx-auto relative z-10">
         <header className="pt-12 max-w-4xl">
@@ -99,10 +63,9 @@ function AboutPage() {
             transition={{ delay: 0.2 }}
             className="mt-6 text-lg text-muted-foreground max-w-2xl"
           >
-            Founded in 2014, ZOUM works with companies and individuals at the moments that actually
-            matter — a hire that has to be right, a stalled quarter, a career move with no room for
-            a mistake. Every Partner has run a P&L, closed a round, or held a C-suite seat
-            themselves.
+            Founded in 2020, ZOUM Placement Services partners with companies and individuals through
+            high-stakes inflection points. Every Partner has run a P&L, closed a round, or held a
+            C-suite seat.
           </motion.p>
         </header>
 
@@ -121,7 +84,7 @@ function AboutPage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {board.map((m, i) => (
               <motion.div
                 key={m.name}
@@ -133,9 +96,18 @@ function AboutPage() {
               >
                 <div>
                   <div className="aspect-[4/5] overflow-hidden bg-zinc-900/30 relative flex items-center justify-center border-b border-zinc-800/40">
-                    <div className="font-display text-5xl font-bold tracking-tighter text-zinc-700 select-none group-hover:text-lime transition duration-500">
-                      {initialsOf(m.name)}
-                    </div>
+                    {m.img ? (
+                      <img
+                        src={m.img}
+                        alt={m.name}
+                        loading="lazy"
+                        className="h-full w-full object-cover grayscale-hover group-hover:scale-105 transition-transform duration-700"
+                      />
+                    ) : (
+                      <div className="font-display text-5xl font-bold tracking-tighter text-zinc-700 select-none group-hover:text-lime transition duration-500">
+                        HS
+                      </div>
+                    )}
                   </div>
                   <div className="p-5">
                     <div className="text-[11px] uppercase tracking-wider text-lime font-medium">
@@ -171,7 +143,7 @@ function AboutPage() {
             ].map((s, i) => (
               <div key={i} className="relative text-center md:text-left">
                 <div className="font-display text-5xl md:text-6xl tracking-tight">
-                  <Counter to={s.v} suffix={s.suffix} />
+                  <Counter to={s.v} suffix={s.suffix} prefix={s.prefix} />
                 </div>
                 <div className="mt-3 text-sm text-muted-foreground uppercase tracking-wider">
                   {s.label}

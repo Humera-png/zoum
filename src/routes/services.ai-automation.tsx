@@ -1,173 +1,280 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Bot, Workflow, Mail, FileText, Headphones, BarChart3, Boxes, Plug } from "lucide-react";
+import {
+  Cpu,
+  Workflow,
+  Bot,
+  Database,
+  Sparkles,
+  Cloud,
+  Smartphone,
+  Code2,
+} from "lucide-react";
 
 import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageBackdrop } from "@/components/PageBackdrop";
-import { PageHeader, Section, CTA } from "@/components/ServicePage";
-import { FAQSection } from "@/components/FAQSection";
-import { JsonLd, buildServiceSchema, buildFAQSchema, buildBreadcrumbSchema } from "@/components/JsonLd";
+import { PageHeader, Section, CTA } from "./services.business";
 
 export const Route = createFileRoute("/services/ai-automation")({
   head: () => ({
     meta: [
-      { title: "AI Automation Services | ZOUM Consultancy Jaipur" },
+      {
+        title: "AI Automation & Software Development | ZOUM Consultancy Jaipur",
+      },
       {
         name: "description",
         content:
-          "ZOUM builds AI agents and automation systems that take over repetitive work — workflow, CRM, email, document, and customer support automation for businesses across India.",
+          "ZOUM Consultancy builds custom AI automation systems, software applications, Android & iOS apps, AI chatbots, and cloud solutions for businesses across India. Based in Jaipur.",
       },
       {
         property: "og:title",
-        content: "AI Automation Services | ZOUM Consultancy",
+        content: "AI Automation & Custom Software Development | ZOUM Consultancy",
       },
       {
         property: "og:description",
         content:
-          "Stop doing the same task twice. ZOUM builds AI automations that save time, cut manual errors, and free your team for higher-value work.",
+          "Build smarter with ZOUM — custom AI agents, software platforms, mobile apps, and cloud infrastructure for modern Indian businesses.",
       },
-      { property: "og:url", content: "https://zoumconsultancy.com/services/ai-automation" },
     ],
-    links: [{ rel: "canonical", href: "https://zoumconsultancy.com/services/ai-automation" }],
   }),
+
   component: AIPage,
 });
 
 const services = [
   {
-    icon: Workflow,
-    name: "Workflow Automation",
-    desc: "Data gets copied between tools by hand and someone always forgets a step. We connect your systems so information moves on its own.",
-  },
-  {
     icon: Bot,
-    name: "CRM Automation",
-    desc: "Leads sit in an inbox instead of your CRM. We wire up automatic capture, follow-ups, and reminders so nothing falls through.",
+
+    name: "AI Automation Systems",
+
+    desc: "Automate repetitive business processes with intelligent workflows, AI agents, and custom automation systems that improve speed and efficiency.",
   },
+
   {
-    icon: Headphones,
-    name: "Customer Support AI",
-    desc: "Customers wait hours for answers to questions you get every day. We build an AI assistant that answers instantly and hands off the rest to your team.",
+    icon: Sparkles,
+
+    name: "AI Voice Assistants",
+
+    desc: "Create personalized AI voice assistants for customer support, scheduling, sales, internal operations, and smarter communication.",
   },
+
   {
-    icon: Mail,
-    name: "Email Automation",
-    desc: "Drafting the same emails eats a whole afternoon a week. We automate the repetitive writing so your team only handles the exceptions.",
+    icon: Database,
+
+    name: "AI Chatbots & AI Agents",
+
+    desc: "Deploy smart conversational AI trained on your business data to answer questions, support customers, and assist teams.",
   },
+
   {
-    icon: FileText,
-    name: "Document Automation",
-    desc: "Contracts, invoices, and reports get built the same way every time, by hand. We automate the drafting and formatting.",
+    icon: Code2,
+
+    name: "Custom Software Development",
+
+    desc: "Build scalable software platforms, internal tools, SaaS products, and enterprise solutions designed around your business goals.",
   },
+
   {
-    icon: BarChart3,
-    name: "Reporting Automation",
-    desc: "Someone spends a day every month pulling numbers into a spreadsheet. We automate the pull so reports are ready before anyone asks.",
+    icon: Smartphone,
+
+    name: "Android & iOS App Development",
+
+    desc: "Design and develop modern mobile applications with smooth experiences, strong performance, and scalable technology.",
   },
+
   {
-    icon: Boxes,
-    name: "Inventory Automation",
-    desc: "Stock counts and orders drift out of sync across tools. We connect them so what you see is what's actually true.",
+    icon: Cpu,
+
+    name: "Web Application Development",
+
+    desc: "High-performance websites and web applications built with modern frameworks, secure architecture, and growth-focused design.",
   },
+
   {
-    icon: Plug,
-    name: "AI Agent & API Integrations",
-    desc: "Your tools don't talk to each other. We build the AI agents and integrations that connect them into one working system.",
+    icon: Cloud,
+
+    name: "Cloud Solutions & Infrastructure",
+
+    desc: "Reliable cloud systems, deployment pipelines, migrations, hosting, and infrastructure designed for business growth.",
+  },
+
+  {
+    icon: Workflow,
+
+    name: "AI Integrations & APIs",
+
+    desc: "Connect your existing platforms with AI, automation tools, APIs, and intelligent systems that improve operations.",
   },
 ];
 
-const outcomes = [
-  { title: "Hours back every week", desc: "Repetitive tasks run in the background instead of on someone's desk." },
-  { title: "Fewer manual mistakes", desc: "Automated handoffs remove the copy-paste errors that cost you time to fix." },
-  { title: "Lower operating cost", desc: "Less manual labor per task means the same team handles more volume." },
-];
+const results = [
+  {
+    title: "Business Automation",
 
-const faqs = [
-  {
-    q: "Can AI actually automate our repetitive work?",
-    a: "Yes, for most rule-based, repeated tasks — data entry, follow-ups, reporting, first-line support. We start by mapping what your team does manually every week, then automate the highest-time-cost pieces first.",
+    metric: "Less Manual Work",
+
+    desc: "Replace repetitive tasks with intelligent systems that allow your team to focus on important business growth.",
   },
+
   {
-    q: "How long does it take to set up an automation?",
-    a: "A single workflow automation typically takes 1–3 weeks from scope to live. Larger systems spanning multiple tools take longer — we'll give you a specific timeline after a short discovery call.",
+    title: "AI Customer Experience",
+
+    metric: "Faster Engagement",
+
+    desc: "Create AI assistants and chatbots that provide instant responses and better customer interactions.",
   },
+
   {
-    q: "What if our team isn't technical?",
-    a: "That's normal. We handle the build and integration, then hand off a system your team can run without needing to code or maintain it themselves.",
-  },
-  {
-    q: "Which businesses benefit most from AI automation?",
-    a: "Any business with repeated manual work — customer support, sales follow-up, reporting, order or document processing. If your team does the same task the same way every week, it's usually automatable.",
+    title: "Digital Product Growth",
+
+    metric: "Scalable Technology",
+
+    desc: "Launch software, apps, and platforms built to support long-term business expansion.",
   },
 ];
 
 function AIPage() {
   return (
     <main className="pt-32 px-6 pb-20 relative">
-      <JsonLd
-        data={buildServiceSchema({
-          name: "AI Automation",
-          description:
-            "AI agents and automation systems for workflow, CRM, email, document, and customer support automation.",
-          url: "https://zoumconsultancy.com/services/ai-automation",
-        })}
-      />
-      <JsonLd data={buildFAQSchema(faqs)} />
-      <JsonLd
-        data={buildBreadcrumbSchema([
-          { name: "Home", path: "/" },
-          { name: "Services", path: "/services/ai-automation" },
-          { name: "AI Automation", path: "/services/ai-automation" },
-        ])}
-      />
       <PageBackdrop />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <PageHeader
-          pill="AI Automation"
-          title="Stop doing"
-          italic="the same task twice."
-          sub="We build AI agents and automations that take over the repetitive work — so your team spends time growing the business instead of running it by hand."
+          pill="AI & Software Development"
+          title="Build"
+          italic="Digital Intelligence."
+          sub="ZOUM creates AI-powered software solutions, mobile applications, automation systems, and cloud technologies that help businesses operate smarter and scale faster."
         />
 
         <div className="mt-20 grid lg:grid-cols-[200px_1fr] gap-12">
           <ServiceSubNav />
 
           <div className="space-y-32">
-            <Section id="overview" title="What we automate" kicker="/ capabilities">
+            <Section id="overview" title="Technology Built For Growth" kicker="/ our approach">
+              <div className="glass-strong rounded-3xl p-10 relative overflow-hidden">
+                <div className="absolute -right-20 -top-20 h-60 w-60 bg-lime/20 blur-3xl rounded-full" />
+
+                <Sparkles className="text-lime mb-5 relative" />
+
+                <p className="font-serif italic text-3xl relative">
+                  "Great technology does more than run your business. It creates opportunities your
+                  competitors cannot see."
+                </p>
+
+                <p className="mt-6 text-muted-foreground relative">
+                  ZOUM combines artificial intelligence, software engineering, mobile development,
+                  automation, and cloud technology to create digital solutions that solve real
+                  business challenges.
+                </p>
+              </div>
+            </Section>
+
+            <Section id="services" title="What We Build" kicker="/ capabilities">
               <div className="grid md:grid-cols-2 gap-5">
                 {services.map((s, i) => (
                   <motion.div
-                    key={s.name}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.05 }}
+                    key={i}
+                    initial={{
+                      opacity: 0,
+                      y: 20,
+                    }}
+                    whileInView={{
+                      opacity: 1,
+                      y: 0,
+                    }}
+                    viewport={{
+                      once: true,
+                    }}
+                    transition={{
+                      delay: i * 0.05,
+                    }}
                     className="group glass node-bloom rounded-2xl p-6"
                   >
                     <div className="h-10 w-10 rounded-xl glass-strong grid place-items-center mb-4 group-hover:bg-lime group-hover:text-white transition">
                       <s.icon className="h-5 w-5" />
                     </div>
+
                     <div className="font-display text-xl">{s.name}</div>
+
                     <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{s.desc}</p>
                   </motion.div>
                 ))}
               </div>
             </Section>
 
-            <Section id="process" title="What you get" kicker="/ outcomes">
+            <Section id="results" title="Business Outcomes" kicker="/ impact">
               <div className="grid md:grid-cols-3 gap-5">
-                {outcomes.map((r) => (
-                  <div key={r.title} className="glass-strong rounded-3xl p-7 hover-glow-lime transition">
-                    <div className="font-display text-2xl">{r.title}</div>
-                    <p className="text-sm text-muted-foreground mt-3">{r.desc}</p>
-                  </div>
+                {results.map((r, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{
+                      opacity: 0,
+                      y: 20,
+                    }}
+                    whileInView={{
+                      opacity: 1,
+                      y: 0,
+                    }}
+                    viewport={{
+                      once: true,
+                    }}
+                    className="glass-strong rounded-3xl p-7 hover-glow-lime transition"
+                  >
+                    <div className="text-xs uppercase tracking-wider text-muted-foreground">
+                      {r.title}
+                    </div>
+
+                    <div className="font-display text-3xl mt-3">{r.metric}</div>
+
+                    <p className="text-sm text-muted-foreground mt-4">{r.desc}</p>
+                  </motion.div>
                 ))}
               </div>
             </Section>
 
-            <Section id="pricing" title="Frequently asked" kicker="/ faq">
-              <FAQSection items={faqs} />
+            <Section id="pricing" title="Technology Partnerships" kicker="/ engagement">
+              <div className="grid md:grid-cols-3 gap-5">
+                {[
+                  {
+                    tier: "AI Starter",
+                    price: "Discovery",
+                    desc: "Identify automation opportunities, software requirements, and create a clear technology roadmap.",
+                  },
+
+                  {
+                    tier: "Custom Build",
+                    price: "Development",
+                    highlight: true,
+                    desc: "Complete AI systems, mobile applications, software platforms, cloud solutions, and automation implementation.",
+                  },
+
+                  {
+                    tier: "Long Term Partner",
+                    price: "Scale",
+                    desc: "Continuous technology support, optimization, improvements, and future product expansion.",
+                  },
+                ].map((p, i) => (
+                  <div
+                    key={i}
+                    className={`glass-strong rounded-3xl p-8 ${
+                      p.highlight ? "ring-2 ring-[var(--brand-deep)]" : ""
+                    }`}
+                  >
+                    <div className="font-display text-2xl">{p.tier}</div>
+
+                    <div className="font-display text-4xl mt-3">{p.price}</div>
+
+                    <p className="text-sm text-muted-foreground mt-4">{p.desc}</p>
+
+                    <Link
+                      to="/contact"
+                      className="mt-6 block text-center glass rounded-full py-3 text-sm hover:bg-white transition"
+                    >
+                      Start Project
+                    </Link>
+                  </div>
+                ))}
+              </div>
             </Section>
 
             <CTA />

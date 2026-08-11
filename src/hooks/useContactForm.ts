@@ -1,17 +1,17 @@
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 
-const CONTACT_API_URL = import.meta.env.VITE_CONTACT_API_URL as string | undefined;
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_6ao43b2";
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_c8fjxln";
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "__xDwFbjdHI1zh9Gd";
 
 export interface ContactFormData {
   name: string;
   email: string;
   phone: string;
   company: string;
-  reason: string;
+  service: string;
   message: string;
-  resume?: File | null;
-  // Honeypot — always empty for real users.
-  website?: string;
 }
 
 export const useContactForm = () => {
@@ -19,37 +19,29 @@ export const useContactForm = () => {
   const [toast, setToast] = useState("");
 
   const sendMessage = async (data: ContactFormData): Promise<boolean> => {
-    if (!CONTACT_API_URL) {
-      console.error("VITE_CONTACT_API_URL is not configured.");
-      setToast("Contact form isn't configured yet. Please email us directly.");
-      setTimeout(() => setToast(""), 6000);
-      return false;
-    }
-
     setLoading(true);
 
     try {
-      const body = new FormData();
-      body.set("name", data.name);
-      body.set("email", data.email);
-      body.set("phone", data.phone);
-      body.set("company", data.company);
-      body.set("reason", data.reason);
-      body.set("message", data.message);
-      body.set("website", data.website ?? "");
-      if (data.resume) body.set("resume", data.resume);
-
-      const res = await fetch(CONTACT_API_URL, { method: "POST", body });
-
-      if (!res.ok) {
-        const payload = await res.json().catch(() => null);
-        throw new Error(payload?.error ?? `Request failed (${res.status})`);
-      }
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: data.name,
+          from_email: data.email,
+          phone: data.phone,
+          company: data.company,
+          service: data.service,
+          message: data.message,
+          // to_email must be set as {{to_email}} in the EmailJS template "To Email" field
+          to_email: "contact@zoumconsultancy.com",
+        },
+        { publicKey: EMAILJS_PUBLIC_KEY },
+      );
 
       setToast("Inquiry dispatched — we'll respond within 24 hours.");
       return true;
     } catch (err) {
-      console.error("Contact form error:", err);
+      console.error("EmailJS error:", err);
       setToast("Failed to send inquiry. Please try again or email us directly.");
       return false;
     } finally {

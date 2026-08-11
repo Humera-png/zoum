@@ -1,30 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 
 import { ServiceSubNav } from "@/components/ServiceSubNav";
-import { PageHeader, Section, CTA } from "@/components/ServicePage";
+import { PageHeader, Section, CTA } from "./services.business";
 import { PageBackdrop } from "@/components/PageBackdrop";
-import { FAQSection } from "@/components/FAQSection";
-import { JsonLd, buildServiceSchema, buildFAQSchema, buildBreadcrumbSchema } from "@/components/JsonLd";
-
-const faqs = [
-  {
-    q: "How does social media marketing actually generate leads?",
-    a: "By pairing content that earns attention with a clear next step — a landing page, a DM flow, or a paid campaign — so people who engage have somewhere to go, instead of just scrolling past.",
-  },
-  {
-    q: "How long until we see results?",
-    a: "Engagement and reach typically build within 4–6 weeks. Lead volume follows once the content-to-conversion system is fully in place — usually within the first two to three months.",
-  },
-  {
-    q: "Do you handle paid ads too, or just organic content?",
-    a: "Both. We build organic content and paid campaigns as one system, not two separate efforts, so they reinforce each other instead of competing for budget.",
-  },
-  {
-    q: "Which platforms do you work on?",
-    a: "Primarily Instagram and LinkedIn, with Meta and other paid channels layered in where it makes sense for your audience — not every platform, just the ones that convert.",
-  },
-];
 
 export const Route = createFileRoute("/services/socialmedia")({
   head: () => ({
@@ -43,9 +22,7 @@ export const Route = createFileRoute("/services/socialmedia")({
         content:
           "Grow your brand online with ZOUM's social media marketing team. Content strategy, paid ads, and community management that convert attention into leads.",
       },
-      { property: "og:url", content: "https://zoumconsultancy.com/services/socialmedia" },
     ],
-    links: [{ rel: "canonical", href: "https://zoumconsultancy.com/services/socialmedia" }],
   }),
 
   component: MarketingPage,
@@ -68,7 +45,7 @@ const strategies: StrategyItem[] = [
 
     desc: "We define how your brand should appear online by building a clear strategy based on your audience, competitors, and business goals.",
 
-    points: ["Audience research", "Brand messaging", "Competitor analysis"],
+    points: ["Audience research", "Brand messaging", "Competitor analysis", "Platform selection"],
   },
 
   {
@@ -79,7 +56,15 @@ const strategies: StrategyItem[] = [
 
     desc: "We create content systems that attract attention, educate customers, and build long-term trust with your audience.",
 
-    points: ["Content planning", "Creative direction", "Short-form videos"],
+    points: [
+      "Content planning",
+
+      "Creative direction",
+
+      "Short-form videos",
+
+      "Storytelling framework",
+    ],
   },
 
   {
@@ -90,7 +75,15 @@ const strategies: StrategyItem[] = [
 
     desc: "Complete management of your social channels with consistent publishing, engagement, and performance improvement.",
 
-    points: ["Instagram management", "LinkedIn growth", "Community engagement"],
+    points: [
+      "Instagram management",
+
+      "LinkedIn growth",
+
+      "Community engagement",
+
+      "Monthly reporting",
+    ],
   },
 
   {
@@ -101,7 +94,7 @@ const strategies: StrategyItem[] = [
 
     desc: "Performance-focused advertising campaigns designed to generate qualified leads and increase conversions.",
 
-    points: ["Meta advertising", "Audience targeting", "ROI optimization"],
+    points: ["Meta advertising", "Audience targeting", "A/B testing", "ROI optimization"],
   },
 
   {
@@ -112,7 +105,7 @@ const strategies: StrategyItem[] = [
 
     desc: "We help founders and companies become trusted voices through strategic personal branding and thought leadership.",
 
-    points: ["LinkedIn strategy", "Founder branding", "Industry visibility"],
+    points: ["LinkedIn strategy", "Founder branding", "Industry visibility", "Online reputation"],
   },
 
   {
@@ -123,7 +116,15 @@ const strategies: StrategyItem[] = [
 
     desc: "We analyze your marketing data and continuously improve your strategy to create sustainable growth.",
 
-    points: ["Performance tracking", "Growth reports", "Conversion analysis"],
+    points: [
+      "Performance tracking",
+
+      "Growth reports",
+
+      "Conversion analysis",
+
+      "Strategy improvements",
+    ],
   },
 ];
 
@@ -310,46 +311,33 @@ bg-lime
 function MarketingPage() {
   return (
     <main className="pt-32 px-6 pb-20 relative">
-      <JsonLd
-        data={buildServiceSchema({
-          name: "Social Media Marketing",
-          description:
-            "Content strategy, paid campaigns, and social media management that turns online attention into qualified leads.",
-          url: "https://zoumconsultancy.com/services/socialmedia",
-        })}
-      />
-      <JsonLd data={buildFAQSchema(faqs)} />
-      <JsonLd
-        data={buildBreadcrumbSchema([
-          { name: "Home", path: "/" },
-          { name: "Services", path: "/services/socialmedia" },
-          { name: "Social Media Marketing", path: "/services/socialmedia" },
-        ])}
-      />
       <PageBackdrop />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <PageHeader
           pill="Social Media Marketing"
-          title="Posting but"
-          italic="not converting?"
-          sub="Content without a strategy just fills a feed. We build the system behind it — message, content, and channels working together — so attention turns into leads."
+          title="Build"
+          italic="Digital Influence."
+          sub="
+A performance-driven social media marketing agency helping businesses grow visibility, attract customers, and build powerful online brands.
+"
         />
 
         <div className="mt-20 grid lg:grid-cols-[200px_1fr] gap-12">
           <ServiceSubNav />
 
           <div className="space-y-32">
-            <Section id="overview" title="Why posting more isn't the fix" kicker="/ the problem">
+            <Section id="overview" title="More Than Social Media Posts" kicker="/ strategy">
               <div className="glass-strong rounded-3xl p-10">
                 <p className="font-serif italic text-3xl">
-                  "More posts without a strategy just means more content nobody was waiting for."
+                  "Successful brands are built through attention, trust, and consistent digital
+                  presence."
                 </p>
 
                 <p className="mt-6 text-muted-foreground leading-relaxed">
-                  If your content isn't converting, the issue usually isn't effort — it's that
-                  there's no system connecting what you post to what you're trying to sell. We
-                  build that system: strategy, content, and paid reach working together.
+                  ZOUM creates complete social media growth systems combining content marketing,
+                  social management, paid advertising, and analytics to help businesses turn online
+                  attention into measurable growth.
                 </p>
               </div>
             </Section>
@@ -362,8 +350,42 @@ function MarketingPage() {
               </div>
             </Section>
 
-            <Section id="pricing" title="Frequently asked" kicker="/ faq">
-              <FAQSection items={faqs} />
+            <Section id="pricing" title="Growth Partnerships" kicker="/ solutions">
+              <div className="grid md:grid-cols-3 gap-6">
+                {[
+                  {
+                    title: "Starter Growth",
+
+                    desc: "For businesses building their first professional online presence.",
+                  },
+
+                  {
+                    title: "Growth Partner",
+
+                    desc: "Complete social media marketing including strategy, content, campaigns, and optimization.",
+                  },
+
+                  {
+                    title: "Enterprise Brand",
+
+                    desc: "A complete digital growth partnership for ambitious companies.",
+                  },
+                ].map((x, i) => (
+                  <div
+                    key={i}
+                    className="glass-strong rounded-3xl p-8 hover:-translate-y-2 transition flex flex-col"
+                  >
+                    <h3 className="font-display text-2xl">{x.title}</h3>
+                    <p className="mt-4 text-muted-foreground flex-1">{x.desc}</p>
+                    <Link
+                      to="/contact"
+                      className="mt-6 block text-center glass rounded-full py-3 text-sm font-semibold hover:bg-white transition"
+                    >
+                      Get started →
+                    </Link>
+                  </div>
+                ))}
+              </div>
             </Section>
 
             <CTA />
