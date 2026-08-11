@@ -305,19 +305,6 @@ const services = [
     img: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    icon: Users,
-    title: "Social Media Marketing",
-    headline: "Unified Excellence.",
-    body: "We build digital authority that converts attention into revenue. By aligning content, brand message, and multi-channel campaigns, your company dominates the industry conversation.",
-    points: [
-      "Brand Narrative & Voice",
-      "Multi-Channel Social Strategy",
-      "High-Converting Content Engines",
-    ],
-    to: "/services/socialmedia" as const,
-    img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
     icon: Cpu,
     title: "AI and IT Services",
     headline: "Production AI Architectures.",
@@ -329,6 +316,19 @@ const services = [
     ],
     to: "/services/ai-automation" as const,
     img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80",
+  },
+   {
+    icon: Users,
+    title: "Social Media Marketing",
+    headline: "Unified Excellence.",
+    body: "We build digital authority that converts attention into revenue. By aligning content, brand message, and multi-channel campaigns, your company dominates the industry conversation.",
+    points: [
+      "Brand Narrative & Voice",
+      "Multi-Channel Social Strategy",
+      "High-Converting Content Engines",
+    ],
+    to: "/services/socialmedia" as const,
+    img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
   },
   {
     icon: TrendingUp,
