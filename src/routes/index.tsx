@@ -155,15 +155,6 @@ function Hero() {
       />
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-4 lg:gap-5 items-center relative z-10">
         <div className="min-w-0">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-xs text-muted-foreground mb-3"
-          >
-            <span className="h-1.5 w-1.5 rounded-full bg-lime pulse-lime" />
-            Free strategy call available — limited spots
-          </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -201,22 +192,6 @@ function Hero() {
             >
               View our services
             </Link>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.9 }}
-            className="mt-6 md:mt-7 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-muted-foreground/70"
-          >
-            <div>
-              FORBES <span className="text-foreground/70">- "Sharp."</span>
-            </div>
-            <div>
-              BLOOMBERG <span className="text-foreground/70">- "Disciplined."</span>
-            </div>
-            <div className="hidden md:block">
-              WSJ <span className="text-foreground/70">- "Effective."</span>
-            </div>
           </motion.div>
         </div>
         <motion.div
