@@ -37,9 +37,8 @@ export const useJobSeekerForm = () => {
           phone: data.mobile,
           company: `Job application — ${data.city}`,
           service: "Career / Job Application",
-          message: `Gender: ${data.gender}\nDate of birth: ${data.dob}\nCity: ${data.city}\nCurrent CTC: ${data.currentCtc}\nExpected CTC: ${data.expectedCtc}\nCurrent/last company: ${data.company}\nExperience: ${data.experience}\nEducation: ${data.education}${data.resume ? `\nResume attached: ${data.resume.name}` : "\nNo resume attached"}`,
+          message: `Gender: ${data.gender}\nDate of birth: ${data.dob}\nCity: ${data.city}\nCurrent CTC: ${data.currentCtc}\nExpected CTC: ${data.expectedCtc}\nCurrent/last company: ${data.company}\nExperience: ${data.experience}\nEducation: ${data.education}${data.resume ? `\nResume selected: ${data.resume.name} (ask the candidate to email it directly if it's not attached)` : "\nNo resume attached"}`,
           to_email: "contact@zoumconsultancy.com",
-          ...(data.resume ? { resume: data.resume } : {}),
         },
         { publicKey: EMAILJS_PUBLIC_KEY },
       );
