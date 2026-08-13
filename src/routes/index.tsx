@@ -419,7 +419,7 @@ function Services() {
   );
 }
 
-const whyChooseZoum = [
+const whatSetsUsApart = [
   {
     icon: Users,
     title: "Real Industry Experience",
@@ -435,6 +435,9 @@ const whyChooseZoum = [
     title: "Fast Response, No Bureaucracy",
     body: "We respond within 24 hours. No multi-week onboarding before real work starts.",
   },
+];
+
+const whyChooseUs = [
   {
     icon: Layers,
     title: "One Team, Every Discipline",
@@ -452,39 +455,67 @@ const whyChooseZoum = [
   },
 ];
 
-function WhyChooseZoum() {
+function CardGrid({
+  items,
+}: {
+  items: { icon: React.ComponentType<{ className?: string }>; title: string; body: string }[];
+}) {
   return (
-    <section className="relative px-4 sm:px-6 py-14 md:py-20">
-      <div className="max-w-7xl mx-auto">
+    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {items.map((w, i) => (
         <motion.div
+          key={w.title}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-10 md:mb-14"
+          transition={{ delay: i * 0.08 }}
+          className="glass rounded-2xl p-6 hover-glow-lime transition"
         >
-          <div className="text-xs uppercase tracking-[0.3em] text-lime mb-4">/ why zoum</div>
-          <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-tight">
-            What sets us{" "}
-            <span className="italic font-serif text-muted-foreground">apart.</span>
-          </h2>
+          <div className="h-10 w-10 rounded-xl glass-strong grid place-items-center mb-4">
+            <w.icon className="h-5 w-5 text-lime" />
+          </div>
+          <div className="font-display text-lg">{w.title}</div>
+          <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{w.body}</p>
         </motion.div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {whyChooseZoum.map((w, i) => (
-            <motion.div
-              key={w.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              className="glass rounded-2xl p-6 hover-glow-lime transition"
-            >
-              <div className="h-10 w-10 rounded-xl glass-strong grid place-items-center mb-4">
-                <w.icon className="h-5 w-5 text-lime" />
-              </div>
-              <div className="font-display text-lg">{w.title}</div>
-              <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{w.body}</p>
-            </motion.div>
-          ))}
+      ))}
+    </div>
+  );
+}
+
+function WhyChooseZoum() {
+  return (
+    <section className="relative px-4 sm:px-6 py-14 md:py-20">
+      <div className="max-w-7xl mx-auto space-y-16">
+        <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-10 md:mb-14"
+          >
+            <div className="text-xs uppercase tracking-[0.3em] text-lime mb-4">/ why zoum</div>
+            <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-tight">
+              What sets us{" "}
+              <span className="italic font-serif text-muted-foreground">apart.</span>
+            </h2>
+          </motion.div>
+          <CardGrid items={whatSetsUsApart} />
+        </div>
+
+        <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-10 md:mb-14"
+          >
+            <div className="text-xs uppercase tracking-[0.3em] text-lime mb-4">/ the difference</div>
+            <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-tight">
+              Why{" "}
+              <span className="italic font-serif text-muted-foreground">choose us.</span>
+            </h2>
+          </motion.div>
+          <CardGrid items={whyChooseUs} />
         </div>
       </div>
     </section>

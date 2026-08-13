@@ -22,6 +22,7 @@ import {
 import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageHeader, Section, CTA } from "./services.business";
 import { PageBackdrop } from "@/components/PageBackdrop";
+import { JobSeekerForm } from "@/components/JobSeekerForm";
 
 export const Route = createFileRoute("/services/career")({
   head: () => ({
@@ -190,14 +191,46 @@ const successes = [
 ];
 
 const expertise = [
-  { icon: Cpu, name: "IT & Technology", desc: "Engineering, product, and technical leadership roles." },
-  { icon: Landmark, name: "Banking & Finance", desc: "Finance, operations, and leadership across financial services." },
-  { icon: HeartPulse, name: "Healthcare", desc: "Administrative and operational leadership for healthcare providers." },
-  { icon: Factory, name: "Manufacturing", desc: "Plant leadership, operations, and supply chain roles." },
-  { icon: ShoppingBag, name: "Consumer & Retail", desc: "Brand, merchandising, and retail operations leadership." },
-  { icon: ShoppingCart, name: "E-Commerce", desc: "Growth, operations, and category leadership for online businesses." },
-  { icon: Radio, name: "Telecom", desc: "Technical and operational leadership across telecom." },
-  { icon: Plane, name: "Aviation", desc: "Operations and management roles across aviation and logistics." },
+  {
+    icon: Cpu,
+    name: "IT & Technology",
+    desc: "We connect engineering, product, and technical leaders with teams building serious software. From platform engineering to AI, we know what a real technical hire looks like.",
+  },
+  {
+    icon: Landmark,
+    name: "Banking & Finance",
+    desc: "Finance and operations leadership across banks, NBFCs, and fintechs. We understand the compliance and risk context these roles actually sit inside.",
+  },
+  {
+    icon: HeartPulse,
+    name: "Healthcare",
+    desc: "Administrative and operational leadership for hospitals, clinics, and healthcare providers, where the wrong hire has real consequences.",
+  },
+  {
+    icon: Factory,
+    name: "Manufacturing",
+    desc: "Plant leadership, operations, and supply chain roles for businesses where uptime and process discipline are everything.",
+  },
+  {
+    icon: ShoppingBag,
+    name: "Consumer & Retail",
+    desc: "Brand, merchandising, and retail operations leadership for companies competing on customer experience.",
+  },
+  {
+    icon: ShoppingCart,
+    name: "E-Commerce",
+    desc: "Growth, operations, and category leadership for online businesses that live and die by conversion and logistics.",
+  },
+  {
+    icon: Radio,
+    name: "Telecom",
+    desc: "Technical and operational leadership across telecom infrastructure and service providers.",
+  },
+  {
+    icon: Plane,
+    name: "Aviation",
+    desc: "Operations and management roles across aviation and logistics, where the margin for error is thin.",
+  },
 ];
 
 function CareerPage() {
@@ -282,6 +315,14 @@ function CareerPage() {
                   </motion.div>
                 ))}
               </div>
+            </Section>
+
+            <Section id="apply" title="Apply Now" kicker="/ job seekers">
+              <p className="text-muted-foreground max-w-2xl -mt-4 mb-8">
+                Looking for your next role, not looking to hire? Submit your details below and
+                our team will match you with the right opportunity.
+              </p>
+              <JobSeekerForm />
             </Section>
 
             <CTA />
