@@ -5,6 +5,15 @@ import { ArrowUpRight, Check, Loader2 } from "lucide-react";
 import { MagneticButton } from "./MagneticButton";
 import { useContactForm } from "../hooks/useContactForm";
 
+const REASONS = [
+  { value: "business-strategy", label: "Business Strategy & Outsourcing" },
+  { value: "career", label: "Career / Job Application" },
+  { value: "social-media", label: "Social Media Marketing" },
+  { value: "ai-automation", label: "AI Automation" },
+  { value: "it-software", label: "IT & Software Development" },
+  { value: "general", label: "General Inquiry" },
+] as const;
+
 const schema = z.object({
   name: z.string().trim().min(2, "Name must be at least 2 characters").max(100),
   email: z
@@ -18,7 +27,7 @@ const schema = z.object({
     .regex(/^[+\d\s\-()\[\]]{7,20}$/, { message: "Enter a valid phone number" })
     .or(z.literal("")),
   company: z.string().trim().min(1, "Company is required").max(120),
-  service: z.string().trim().min(1, "Select a service").max(120),
+  reason: z.string().trim().min(1, "Select a reason"),
   message: z.string().trim().min(10, "Tell us a bit more (10+ chars)").max(1000),
 });
 
@@ -29,7 +38,7 @@ const emptyFormValues: FormValues = {
   email: "",
   phone: "",
   company: "",
-  service: "",
+  reason: "",
   message: "",
 };
 
@@ -38,12 +47,13 @@ export function ContactForm() {
   const { sendMessage, loading, toast } = useContactForm();
 
   const [formData, setFormData] = useState<FormValues>(emptyFormValues);
+  const [resume, setResume] = useState<File | null>(null);
   const [errors, setErrors] = useState<Partial<Record<keyof FormValues, string>>>({});
   // Honeypot: hidden from real users; bots auto-fill it, letting us silently discard spam
   const [honeypot, setHoneypot] = useState("");
 
   const handleChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
       const { name, value } = e.target;
       setFormData((prev) => ({ ...prev, [name]: value }));
       setErrors((prev) => ({ ...prev, [name]: undefined }));
@@ -67,10 +77,11 @@ export function ContactForm() {
       return;
     }
 
-    const success = await sendMessage(result.data);
+    const success = await sendMessage({ ...result.data, resume });
 
     if (success) {
       setFormData(emptyFormValues);
+      setResume(null);
       formRef.current?.reset();
     }
   };
@@ -149,14 +160,39 @@ export function ContactForm() {
             />
           </div>
 
-          <Field
-            label="Service"
-            name="service"
-            placeholder="Business Strategy / Career / Social Media / AI"
-            value={formData.service}
-            onChange={handleChange}
-            error={errors.service}
-          />
+          <div>
+            <label className="text-xs uppercase tracking-wider text-muted-foreground">
+              Reason for contact
+            </label>
+            <select
+              name="reason"
+              value={formData.reason}
+              onChange={handleChange}
+              className={`mt-2 w-full bg-white/40 border border-border rounded-2xl px-4 py-3 text-sm input-glow transition ${errors.reason ? "input-error" : ""}`}
+            >
+              <option value="">Select a reason</option>
+              {REASONS.map((r) => (
+                <option key={r.value} value={r.value}>
+                  {r.label}
+                </option>
+              ))}
+            </select>
+            {errors.reason && <p className="mt-1 text-xs text-destructive">{errors.reason}</p>}
+          </div>
+
+          {formData.reason === "career" && (
+            <div>
+              <label className="text-xs uppercase tracking-wider text-muted-foreground">
+                Resume (PDF, DOC, or DOCX — optional)
+              </label>
+              <input
+                type="file"
+                accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                onChange={(e) => setResume(e.target.files?.[0] ?? null)}
+                className="mt-2 w-full bg-white/40 border border-border rounded-2xl px-4 py-2.5 text-sm file:mr-3 file:rounded-full file:border-0 file:bg-lime file:text-white file:px-3 file:py-1.5 file:text-xs file:font-medium"
+              />
+            </div>
+          )}
 
           <div>
             <label className="text-xs uppercase tracking-wider text-muted-foreground">

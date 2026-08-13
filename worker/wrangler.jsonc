@@ -1,0 +1,28 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "zoum-contact-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-01-01",
+
+  // Plain (non-secret) config — safe to commit. RESEND_API_KEY is NOT here;
+  // it's set via `wrangler secret put RESEND_API_KEY` (see README.md).
+  "vars": {
+    "ALLOWED_ORIGINS": "https://zoumconsultancy.com,https://www.zoumconsultancy.com,https://zoum-consultancy.vercel.app,http://localhost:5173,http://localhost:4173",
+    "CONTACT_TO_EMAIL": "contact@zoumconsultancy.com",
+    "CONTACT_FROM_EMAIL": "ZOUM Consultancy <inquiries@zoumconsultancy.com>"
+  },
+
+  // Fixed-window rate-limit counter (per IP). Create with:
+  //   npx wrangler kv namespace create RATE_LIMIT_KV
+  //   npx wrangler kv namespace create RATE_LIMIT_KV --preview
+  // then replace the ids below with the ones it prints.
+  "kv_namespaces": [
+    {
+      "binding": "RATE_LIMIT_KV",
+      "id": "5327a4fe3f4d457ab0da93c4af9e626f",
+      "preview_id": "cfc5d906d21a4f39a514864fbdb0ee86"
+    }
+  ],
+
+  "observability": { "enabled": true }
+}

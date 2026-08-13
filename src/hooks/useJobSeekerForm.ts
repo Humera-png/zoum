@@ -1,9 +1,6 @@
 import { useState } from "react";
-import emailjs from "@emailjs/browser";
 
-const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_6ao43b2";
-const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_c8fjxln";
-const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "__xDwFbjdHI1zh9Gd";
+const CONTACT_API_URL = import.meta.env.VITE_CONTACT_API_URL as string | undefined;
 
 export interface JobSeekerFormData {
   fullName: string;
@@ -25,28 +22,44 @@ export const useJobSeekerForm = () => {
   const [toast, setToast] = useState("");
 
   const sendApplication = async (data: JobSeekerFormData): Promise<boolean> => {
+    if (!CONTACT_API_URL) {
+      setToast("Applications aren't configured yet — email your resume to contact@zoumconsultancy.com.");
+      setTimeout(() => setToast(""), 6000);
+      return false;
+    }
+
     setLoading(true);
 
     try {
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        {
-          from_name: data.fullName,
-          from_email: data.email,
-          phone: data.mobile,
-          company: `Job application — ${data.city}`,
-          service: "Career / Job Application",
-          message: `Gender: ${data.gender}\nDate of birth: ${data.dob}\nCity: ${data.city}\nCurrent CTC: ${data.currentCtc}\nExpected CTC: ${data.expectedCtc}\nCurrent/last company: ${data.company}\nExperience: ${data.experience}\nEducation: ${data.education}${data.resume ? `\nResume selected: ${data.resume.name} (ask the candidate to email it directly if it's not attached)` : "\nNo resume attached"}`,
-          to_email: "contact@zoumconsultancy.com",
-        },
-        { publicKey: EMAILJS_PUBLIC_KEY },
-      );
+      const form = new FormData();
+      form.set("fullName", data.fullName);
+      form.set("gender", data.gender);
+      form.set("dob", data.dob);
+      form.set("email", data.email);
+      form.set("mobile", data.mobile);
+      form.set("city", data.city);
+      form.set("currentCtc", data.currentCtc);
+      form.set("expectedCtc", data.expectedCtc);
+      form.set("company", data.company);
+      form.set("experience", data.experience);
+      form.set("education", data.education);
+      form.set("website", "");
+      if (data.resume) form.set("resume", data.resume);
+
+      const res = await fetch(CONTACT_API_URL.replace(/\/$/, "") + "/apply", {
+        method: "POST",
+        body: form,
+      });
+
+      if (!res.ok) {
+        const body = await res.json().catch(() => null);
+        throw new Error(body?.error ?? `Request failed (${res.status})`);
+      }
 
       setToast("Application received — our team will review it and respond within 24 hours.");
       return true;
     } catch (err) {
-      console.error("EmailJS error:", err);
+      console.error("Job application error:", err);
       setToast("Failed to send your application. Please try again or email us directly.");
       return false;
     } finally {
