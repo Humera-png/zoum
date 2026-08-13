@@ -251,7 +251,7 @@ export function Navbar() {
                 >
                   Book Now <ArrowUpRight className="h-4 w-4" />
                 </Link>
-                <div className="mt-4 text-xs text-muted-foreground text-center">+91 8306971791</div>
+                <div className="mt-4 text-xs text-muted-foreground text-center">+91 8360971791</div>
               </div>
             </motion.aside>
           </>

@@ -174,7 +174,7 @@ function Hero() {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="mt-5 md:mt-7 text-base md:text-lg text-muted-foreground max-w-xl"
           >
-            ZOUM Placement Services scales companies and accelerates careers through data-driven
+            ZOUM Consultancy scales companies and accelerates careers through data-driven
             strategy, executive precision, and uncompromising execution.
           </motion.p>
           <motion.div
@@ -187,7 +187,7 @@ function Hero() {
               href="/contact"
               className="btn-lime w-full md:w-auto font-semibold px-7 py-4 rounded-full inline-flex items-center justify-center text-white"
             >
-              Actively Hiring <ArrowUpRight className="h-4 w-4" />
+              Apply Here <ArrowUpRight className="h-4 w-4" />
             </MagneticButton>
             <Link
               to="/services/business"
