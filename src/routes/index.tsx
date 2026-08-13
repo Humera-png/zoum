@@ -20,9 +20,11 @@ import {
   Award,
   Zap,
   Layers,
+  ShieldCheck,
+  Handshake,
 } from "lucide-react";
 import { MagneticButton } from "@/components/MagneticButton";
-import { ContactForm } from "@/components/ContactForm";
+import { JobSeekerForm } from "@/components/JobSeekerForm";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -166,7 +168,7 @@ function Hero() {
           >
             Architecting <span className="italic font-serif text-lime">Alpha</span>:
             <br />
-            Business &amp; Career <span className="text-gradient-charcoal">Mastery.</span>
+            Career &amp; Business <span className="text-gradient-charcoal">Mastery.</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -190,10 +192,10 @@ function Hero() {
               Apply Here <ArrowUpRight className="h-4 w-4" />
             </MagneticButton>
             <Link
-              to="/services/business"
+              to="/services/career"
               className="w-full md:w-auto glass px-7 py-4 rounded-full text-sm font-semibold text-foreground hover:bg-white transition inline-flex items-center justify-center"
             >
-              View our services
+              Find a Job
             </Link>
           </motion.div>
         </div>
@@ -390,8 +392,8 @@ function Services() {
           <div>
             <div className="text-xs uppercase tracking-[0.3em] text-lime mb-3">/ services</div>
             <h2 className="font-display text-4xl md:text-6xl tracking-tight max-w-3xl leading-tight">
-              Four pillars.{" "}
-              <span className="italic font-serif text-muted-foreground">One outcome.</span>
+              Everything you need.{" "}
+              <span className="italic font-serif text-muted-foreground">One team.</span>
             </h2>
           </div>
           <div className="flex flex-col gap-2 items-start">
@@ -420,8 +422,8 @@ function Services() {
 const whyChooseZoum = [
   {
     icon: Users,
-    title: "Operators, Not Just Consultants",
-    body: "Every partner has actually run the thing they're advising you on — no theory-only playbooks.",
+    title: "Real Industry Experience",
+    body: "Our team has actually worked in the roles and industries we advise on, not just studied them.",
   },
   {
     icon: Award,
@@ -437,6 +439,16 @@ const whyChooseZoum = [
     icon: Layers,
     title: "One Team, Every Discipline",
     body: "Strategy, talent, marketing, and tech under one roof, so nothing falls through the cracks.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Verified, Vetted Talent",
+    body: "Every candidate we put forward is screened and assessed before you ever see a profile.",
+  },
+  {
+    icon: Handshake,
+    title: "Built for the Long Term",
+    body: "We stay involved after the first project. Transparent communication, not a one-time transaction.",
   },
 ];
 
@@ -456,7 +468,7 @@ function WhyChooseZoum() {
             <span className="italic font-serif text-muted-foreground">apart.</span>
           </h2>
         </motion.div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {whyChooseZoum.map((w, i) => (
             <motion.div
               key={w.title}
@@ -696,18 +708,18 @@ function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <div className="text-xs uppercase tracking-[0.3em] text-lime mb-4">/ contact</div>
+          <div className="text-xs uppercase tracking-[0.3em] text-lime mb-4">/ apply now</div>
           <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-[1]">
-            READY TO GROW? <span className="italic font-serif text-lime">LET'S TALK.</span>
+            READY FOR YOUR <span className="italic font-serif text-lime">NEXT ROLE?</span>
           </h2>
           <p className="mt-6 text-muted-foreground max-w-md">
-            Send us your inquiry and we'll respond within 24 hours with a clear plan of action.
-            No pitch decks, no lengthy onboarding. Just results.
+            Submit your details and we'll match you with the right opportunity. No lengthy
+            process, no ghosting. Just a clear next step.
           </p>
           <div className="mt-6 space-y-3 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-lime" />
-              Free 30-minute strategy call for new clients
+              700+ placements across every level
             </div>
             <div className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-lime" />
@@ -718,6 +730,13 @@ function Contact() {
               Responses within 24 hours, Mon–Fri
             </div>
           </div>
+          <p className="mt-4 text-sm text-muted-foreground">
+            Hiring instead?{" "}
+            <Link to="/contact" className="text-lime font-semibold hover:underline">
+              Talk to us about your business needs
+            </Link>
+            .
+          </p>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -725,7 +744,7 @@ function Contact() {
           viewport={{ once: true }}
           transition={{ delay: 0.15 }}
         >
-          <ContactForm />
+          <JobSeekerForm />
         </motion.div>
       </div>
     </section>

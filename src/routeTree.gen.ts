@@ -18,6 +18,9 @@ import { Route as ServicesCareerRouteImport } from './routes/services.career'
 import { Route as ServicesBusinessRouteImport } from './routes/services.business'
 import { Route as ServicesBpoOperationsRouteImport } from './routes/services.business-strategy.tsx'
 import { Route as ServicesAiAutomationRouteImport } from './routes/services.ai-automation'
+import { Route as ServicesTalentDevelopmentRouteImport } from './routes/services.talent-development'
+import { Route as ServicesBusinessConsultancyRouteImport } from './routes/services.business-consultancy'
+import { Route as ServicesWebsiteDevelopmentRouteImport } from './routes/services.website-development'
 
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
@@ -64,6 +67,21 @@ const ServicesAiAutomationRoute = ServicesAiAutomationRouteImport.update({
   path: '/services/ai-automation',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesTalentDevelopmentRoute = ServicesTalentDevelopmentRouteImport.update({
+  id: '/services/talent-development',
+  path: '/services/talent-development',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesBusinessConsultancyRoute = ServicesBusinessConsultancyRouteImport.update({
+  id: '/services/business-consultancy',
+  path: '/services/business-consultancy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesWebsiteDevelopmentRoute = ServicesWebsiteDevelopmentRouteImport.update({
+  id: '/services/website-development',
+  path: '/services/website-development',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -75,6 +93,9 @@ export interface FileRoutesByFullPath {
   '/services/business': typeof ServicesBusinessRoute
   '/services/career': typeof ServicesCareerRoute
   '/services/socialmedia': typeof ServicessocialmediaRoute
+  '/services/talent-development': typeof ServicesTalentDevelopmentRoute
+  '/services/business-consultancy': typeof ServicesBusinessConsultancyRoute
+  '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -86,6 +107,9 @@ export interface FileRoutesByTo {
   '/services/business': typeof ServicesBusinessRoute
   '/services/career': typeof ServicesCareerRoute
   '/services/socialmedia': typeof ServicessocialmediaRoute
+  '/services/talent-development': typeof ServicesTalentDevelopmentRoute
+  '/services/business-consultancy': typeof ServicesBusinessConsultancyRoute
+  '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -98,6 +122,9 @@ export interface FileRoutesById {
   '/services/business': typeof ServicesBusinessRoute
   '/services/career': typeof ServicesCareerRoute
   '/services/socialmedia': typeof ServicessocialmediaRoute
+  '/services/talent-development': typeof ServicesTalentDevelopmentRoute
+  '/services/business-consultancy': typeof ServicesBusinessConsultancyRoute
+  '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -111,6 +138,9 @@ export interface FileRouteTypes {
     | '/services/business'
     | '/services/career'
     | '/services/socialmedia'
+    | '/services/talent-development'
+    | '/services/business-consultancy'
+    | '/services/website-development'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -122,6 +152,9 @@ export interface FileRouteTypes {
     | '/services/business'
     | '/services/career'
     | '/services/socialmedia'
+    | '/services/talent-development'
+    | '/services/business-consultancy'
+    | '/services/website-development'
   id:
     | '__root__'
     | '/'
@@ -133,6 +166,9 @@ export interface FileRouteTypes {
     | '/services/business'
     | '/services/career'
     | '/services/socialmedia'
+    | '/services/talent-development'
+    | '/services/business-consultancy'
+    | '/services/website-development'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -145,6 +181,9 @@ export interface RootRouteChildren {
   ServicesBusinessRoute: typeof ServicesBusinessRoute
   ServicesCareerRoute: typeof ServicesCareerRoute
   ServicessocialmediaRoute: typeof ServicessocialmediaRoute
+  ServicesTalentDevelopmentRoute: typeof ServicesTalentDevelopmentRoute
+  ServicesBusinessConsultancyRoute: typeof ServicesBusinessConsultancyRoute
+  ServicesWebsiteDevelopmentRoute: typeof ServicesWebsiteDevelopmentRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -212,6 +251,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesAiAutomationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/talent-development': {
+      id: '/services/talent-development'
+      path: '/services/talent-development'
+      fullPath: '/services/talent-development'
+      preLoaderRoute: typeof ServicesTalentDevelopmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/business-consultancy': {
+      id: '/services/business-consultancy'
+      path: '/services/business-consultancy'
+      fullPath: '/services/business-consultancy'
+      preLoaderRoute: typeof ServicesBusinessConsultancyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/website-development': {
+      id: '/services/website-development'
+      path: '/services/website-development'
+      fullPath: '/services/website-development'
+      preLoaderRoute: typeof ServicesWebsiteDevelopmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -225,6 +285,9 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesBusinessRoute: ServicesBusinessRoute,
   ServicesCareerRoute: ServicesCareerRoute,
   ServicessocialmediaRoute: ServicessocialmediaRoute,
+  ServicesTalentDevelopmentRoute: ServicesTalentDevelopmentRoute,
+  ServicesBusinessConsultancyRoute: ServicesBusinessConsultancyRoute,
+  ServicesWebsiteDevelopmentRoute: ServicesWebsiteDevelopmentRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

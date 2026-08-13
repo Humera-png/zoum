@@ -19,14 +19,29 @@ const serviceItems = [
     desc: "The Executive Leap.",
   },
   {
+    label: "Talent & Development",
+    to: "/services/talent-development" as const,
+    desc: "Skills That Get You Noticed.",
+  },
+  {
     label: "AI and IT Services",
     to: "/services/ai-automation" as const,
     desc: "Production AI Architectures.",
   },
   {
+    label: "Website Development",
+    to: "/services/website-development" as const,
+    desc: "A Site That Actually Holds Up.",
+  },
+  {
     label: "Social Media Marketing",
     to: "/services/socialmedia" as const,
     desc: "Unified Excellence.",
+  },
+  {
+    label: "Business Consultancy",
+    to: "/services/business-consultancy" as const,
+    desc: "One Team For Everything That Grows You.",
   },
   {
     label: "Business Process Outsourcing",

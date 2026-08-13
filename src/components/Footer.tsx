@@ -10,8 +10,11 @@ const quickLinks = [
 
 const serviceLinks = [
   { label: "Career Mastery", to: "/services/career" as const },
+  { label: "Talent & Development", to: "/services/talent-development" as const },
   { label: "AI and IT Services", to: "/services/ai-automation" as const },
+  { label: "Website Development", to: "/services/website-development" as const },
   { label: "Social Media Marketing", to: "/services/socialmedia" as const },
+  { label: "Business Consultancy", to: "/services/business-consultancy" as const },
   { label: "Business Process Outsourcing", to: "/services/bpo-operations" as const },
 ];
 

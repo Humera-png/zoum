@@ -9,6 +9,14 @@ import {
   Sparkles,
   Briefcase,
   ArrowUpRight,
+  Cpu,
+  Landmark,
+  HeartPulse,
+  Factory,
+  ShoppingBag,
+  ShoppingCart,
+  Radio,
+  Plane,
 } from "lucide-react";
 
 import { ServiceSubNav } from "@/components/ServiceSubNav";
@@ -181,6 +189,17 @@ const successes = [
   },
 ];
 
+const expertise = [
+  { icon: Cpu, name: "IT & Technology", desc: "Engineering, product, and technical leadership roles." },
+  { icon: Landmark, name: "Banking & Finance", desc: "Finance, operations, and leadership across financial services." },
+  { icon: HeartPulse, name: "Healthcare", desc: "Administrative and operational leadership for healthcare providers." },
+  { icon: Factory, name: "Manufacturing", desc: "Plant leadership, operations, and supply chain roles." },
+  { icon: ShoppingBag, name: "Consumer & Retail", desc: "Brand, merchandising, and retail operations leadership." },
+  { icon: ShoppingCart, name: "E-Commerce", desc: "Growth, operations, and category leadership for online businesses." },
+  { icon: Radio, name: "Telecom", desc: "Technical and operational leadership across telecom." },
+  { icon: Plane, name: "Aviation", desc: "Operations and management roles across aviation and logistics." },
+];
+
 function CareerPage() {
   return (
     <main className="pt-32 px-6 pb-20 relative">
@@ -239,6 +258,31 @@ function CareerPage() {
                 ))}
               </div>
             </section>
+
+            <Section id="expertise" title="Our Expertise" kicker="/ industries">
+              <p className="text-muted-foreground max-w-2xl -mt-4 mb-8">
+                We place across a wide range of industries, so we already understand the hiring
+                challenges specific to your sector, not just generic recruiting.
+              </p>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                {expertise.map((e, i) => (
+                  <motion.div
+                    key={e.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.05 }}
+                    className="glass rounded-2xl p-6"
+                  >
+                    <div className="h-10 w-10 rounded-xl glass-strong grid place-items-center mb-4">
+                      <e.icon className="h-5 w-5 text-lime" />
+                    </div>
+                    <div className="font-display text-lg">{e.name}</div>
+                    <div className="text-sm text-muted-foreground mt-2">{e.desc}</div>
+                  </motion.div>
+                ))}
+              </div>
+            </Section>
 
             <CTA />
           </div>

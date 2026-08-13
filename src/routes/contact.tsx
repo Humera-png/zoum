@@ -92,7 +92,7 @@ function ContactPage() {
                   label: "contact@zoumconsultancy.com",
                   sub: "Inquiries answered within 24 hours.",
                 },
-                { icon: Phone, label: "+91 98290 12345", sub: "Mon-Fri · 10am – 7pm IST." },
+                { icon: Phone, label: "+91 8360971791", sub: "Mon-Fri · 10am – 7pm IST." },
               ].map((c, i) => (
                 <div key={i} className="glass rounded-2xl p-4 flex items-start gap-4">
                   <div className="h-11 w-11 rounded-xl bg-lime grid place-items-center shrink-0 text-white">
