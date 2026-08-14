@@ -19,7 +19,7 @@ export const useContactForm = () => {
 
   const sendMessage = async (data: ContactFormData): Promise<boolean> => {
     if (!CONTACT_API_URL) {
-      setToast("Contact form isn't configured yet — email us directly at contact@zoumconsultancy.com.");
+      setToast("Contact form isn't configured yet. Email us directly at contact@zoumconsultancy.com.");
       setTimeout(() => setToast(""), 6000);
       return false;
     }
@@ -47,7 +47,7 @@ export const useContactForm = () => {
         throw new Error(body?.error ?? `Request failed (${res.status})`);
       }
 
-      setToast("Inquiry dispatched — we'll respond within 24 hours.");
+      setToast("Inquiry dispatched. We'll respond within 24 hours.");
       return true;
     } catch (err) {
       console.error("Contact form error:", err);

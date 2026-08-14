@@ -23,7 +23,7 @@ export const useJobSeekerForm = () => {
 
   const sendApplication = async (data: JobSeekerFormData): Promise<boolean> => {
     if (!CONTACT_API_URL) {
-      setToast("Applications aren't configured yet — email your resume to contact@zoumconsultancy.com.");
+      setToast("Applications aren't configured yet. Email your resume to contact@zoumconsultancy.com.");
       setTimeout(() => setToast(""), 6000);
       return false;
     }
@@ -56,7 +56,7 @@ export const useJobSeekerForm = () => {
         throw new Error(body?.error ?? `Request failed (${res.status})`);
       }
 
-      setToast("Application received — our team will review it and respond within 24 hours.");
+      setToast("Application received. Our team will review it and respond within 24 hours.");
       return true;
     } catch (err) {
       console.error("Job application error:", err);

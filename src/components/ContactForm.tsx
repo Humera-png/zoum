@@ -183,7 +183,7 @@ export function ContactForm() {
           {formData.reason === "career" && (
             <div>
               <label className="text-xs uppercase tracking-wider text-muted-foreground">
-                Resume (PDF, DOC, or DOCX — optional)
+                Resume (PDF, DOC, or DOCX, optional)
               </label>
               <input
                 type="file"
