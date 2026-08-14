@@ -7,9 +7,13 @@ import { PageBackdrop } from "@/components/PageBackdrop";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About | ZOUM Placement Services" },
-      { name: "description", content: "Meet the advisory board behind ZOUM Placement Services." },
-      { property: "og:title", content: "About | ZOUM Placement Services" },
+      { title: "About ZOUM Consultancy | Recruitment & IT Services Company, Jaipur" },
+      {
+        name: "description",
+        content:
+          "ZOUM Consultancy is a Jaipur recruitment and IT services company. Meet the team behind our job placement, AI automation, and software development work.",
+      },
+      { property: "og:title", content: "About ZOUM Consultancy" },
       {
         property: "og:description",
         content: "A team that's actually done the work, not just consultants. Meet the ZOUM advisory board.",
@@ -72,11 +76,25 @@ function AboutPage() {
             transition={{ delay: 0.2 }}
             className="mt-6 text-lg text-muted-foreground max-w-2xl"
           >
-            Founded in 2020, ZOUM Placement Services partners with companies and individuals through
-            high-stakes inflection points. Every Partner has run a P&L, closed a round, or held a
-            C-suite seat.
+            Founded in 2020, ZOUM Placement Services works with businesses and people who want real
+            results, not average ones.
           </motion.p>
         </header>
+
+        <section className="mt-20 max-w-3xl">
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+            ZOUM Consultancy is a Jaipur-based recruitment and IT services company working with
+            businesses and job seekers across India. On the recruitment side, we help candidates get
+            noticed for roles they're already qualified for and negotiate better pay once they get
+            there, we've placed 700+ people in the past year alone. On the IT side, we build AI
+            automation and AI agents that take over repetitive work, along with websites and custom
+            software that businesses actually own and can grow with, not something they'll need to
+            redo in a year. Alongside that, we run talent and skills training, social media
+            marketing, business consultancy, and business process outsourcing for companies that want
+            one team instead of five different vendors. Every person on our team has actually done
+            the work we advise on, not just talked about it.
+          </p>
+        </section>
 
         <section className="mt-24">
           <div className="flex items-end justify-between mb-10 flex-wrap gap-4">

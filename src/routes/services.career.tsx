@@ -6,7 +6,6 @@ import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
 import { PageBackdrop } from "@/components/PageBackdrop";
 import { JobSeekerForm } from "@/components/JobSeekerForm";
 import { JobListings } from "@/components/JobListings";
-import { jobs } from "@/data/jobs";
 
 export const Route = createFileRoute("/services/career")({
   head: () => ({
@@ -126,11 +125,9 @@ function CareerPage() {
             </div>
           </Section>
 
-          {jobs.length > 0 && (
-            <Section id="openings" title="Open Roles" kicker="/ current openings">
-              <JobListings />
-            </Section>
-          )}
+          <Section id="openings" title="Open Roles" kicker="/ current openings">
+            <JobListings />
+          </Section>
 
           <Section id="apply" title="Apply Now" kicker="/ job seekers">
             <p className="text-muted-foreground max-w-2xl -mt-4 mb-8">

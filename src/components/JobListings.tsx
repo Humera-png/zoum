@@ -2,11 +2,11 @@ import { useMemo, useState } from "react";
 import { jobs, isFresherRole } from "@/data/jobs";
 import { JobCard } from "./JobCard";
 
-// Renders nothing when there are no real listings yet - an empty grid with
-// filters that filter nothing isn't useful, it's just clutter. The moment
-// real jobs are added to src/data/jobs.ts, this section appears automatically
-// with working category/city filters and Fresher/Recent grouping, no other
-// changes needed.
+// Shows an honest "no roles right now" message when there are no real listings
+// yet, instead of hiding the whole section (which looked like a missing/broken
+// feature rather than an empty one). The moment real jobs are added to
+// src/data/jobs.ts, this section shows them with working category/city
+// filters and Fresher/Recent grouping, no other changes needed.
 export function JobListings() {
   const [category, setCategory] = useState("all");
   const [city, setCity] = useState("all");
@@ -18,7 +18,13 @@ export function JobListings() {
     (j) => (category === "all" || j.category === category) && (city === "all" || j.location === city),
   );
 
-  if (jobs.length === 0) return null;
+  if (jobs.length === 0) {
+    return (
+      <p className="text-muted-foreground text-sm">
+        No open roles right now. Submit your details below and we'll reach out when something fits.
+      </p>
+    );
+  }
 
   const fresherJobs = filtered.filter(isFresherRole);
   const recentJobs = [...filtered].sort(
