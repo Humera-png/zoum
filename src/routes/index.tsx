@@ -162,7 +162,7 @@ function Hero() {
   return (
     <section
       id="home"
-      className="relative pt-16 md:pt-24 pb-12 md:pb-20 px-4 sm:px-6 mx-auto w-full max-w-full overflow-hidden block"
+      className="relative pt-28 md:pt-24 pb-12 md:pb-20 px-4 sm:px-6 mx-auto w-full max-w-full overflow-hidden block"
     >
       <div
         className="ambient-orb h-[500px] w-[500px] top-20 -left-40"

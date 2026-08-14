@@ -42,6 +42,15 @@
   --font-sans: "Inter", system-ui, sans-serif;
 }
 
+/* Custom-utility form (not @layer) so hover:/group-hover:/file: etc. compose correctly. */
+@utility text-lime {
+  color: var(--brand-deep);
+}
+
+@utility bg-lime {
+  background-color: var(--brand);
+}
+
 /* ======================
    ROOT
 ====================== */
@@ -130,14 +139,6 @@
   /* ======================
    COLORS
 ====================== */
-
-  .text-lime {
-    color: var(--brand-deep);
-  }
-
-  .bg-lime {
-    background: var(--brand);
-  }
 
   .text-brand {
     color: var(--brand);
