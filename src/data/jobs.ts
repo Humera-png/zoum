@@ -10,9 +10,15 @@ export interface JobListing {
   type: string; // e.g. "Full-time", "Fresher", "Contract"
   category: string; // e.g. "IT & Technology", "Banking & Finance"
   experience: string; // e.g. "Fresher", "2-4 years"
+  vacancy?: number;
+  salary?: string; // e.g. "3,00,000 - 4,50,000" — omit if not disclosed
   description: string;
   requirements: string[];
   postedDate: string; // ISO date
+}
+
+export function isFresherRole(job: JobListing): boolean {
+  return /fresher/i.test(job.experience) || /fresher/i.test(job.type);
 }
 
 export const jobs: JobListing[] = [];

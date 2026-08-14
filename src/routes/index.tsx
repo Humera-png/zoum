@@ -426,7 +426,7 @@ function Services() {
             </Link>
           </div>
         </motion.div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 auto-rows-fr">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map((s, i) => (
             <ServiceCard key={s.title} s={s} i={i} />
           ))}

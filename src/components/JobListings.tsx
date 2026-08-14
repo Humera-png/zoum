@@ -1,11 +1,12 @@
 import { useMemo, useState } from "react";
-import { jobs } from "@/data/jobs";
+import { jobs, isFresherRole } from "@/data/jobs";
 import { JobCard } from "./JobCard";
 
 // Renders nothing when there are no real listings yet - an empty grid with
 // filters that filter nothing isn't useful, it's just clutter. The moment
 // real jobs are added to src/data/jobs.ts, this section appears automatically
-// with working category/city filters, no other changes needed.
+// with working category/city filters and Fresher/Recent grouping, no other
+// changes needed.
 export function JobListings() {
   const [category, setCategory] = useState("all");
   const [city, setCity] = useState("all");
@@ -19,9 +20,14 @@ export function JobListings() {
 
   if (jobs.length === 0) return null;
 
+  const fresherJobs = filtered.filter(isFresherRole);
+  const recentJobs = [...filtered].sort(
+    (a, b) => new Date(b.postedDate).getTime() - new Date(a.postedDate).getTime(),
+  );
+
   return (
     <div>
-      <div className="flex flex-wrap gap-3 mb-6">
+      <div className="flex flex-wrap gap-3 mb-8">
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
@@ -47,13 +53,30 @@ export function JobListings() {
           ))}
         </select>
       </div>
+
       {filtered.length === 0 ? (
         <p className="text-muted-foreground text-sm">No roles match those filters right now.</p>
       ) : (
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {filtered.map((job) => (
-            <JobCard key={job.id} job={job} />
-          ))}
+        <div className="space-y-14">
+          {fresherJobs.length > 0 && (
+            <div>
+              <h3 className="font-display text-xl mb-5">Fresher Jobs</h3>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                {fresherJobs.map((job) => (
+                  <JobCard key={job.id} job={job} />
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div>
+            <h3 className="font-display text-xl mb-5">Recent Jobs</h3>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {recentJobs.map((job) => (
+                <JobCard key={job.id} job={job} />
+              ))}
+            </div>
+          </div>
         </div>
       )}
     </div>
