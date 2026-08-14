@@ -92,7 +92,7 @@ const structuredData = {
     name: "Consultancy Services",
     itemListElement: [
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Business Process Outsourcing" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Career Advisory & Executive Placement" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Career Advisory & Job Placement" } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Social Media Marketing" } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI Automation & Software Development" } },
     ],
@@ -109,7 +109,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "ZOUM Consultancy: Jaipur's premier business consultancy. Expert services in business strategy, executive career advisory, social media marketing, and AI automation across India.",
+          "ZOUM Consultancy: Jaipur's premier business consultancy. Business strategy, career advisory, social media marketing, and AI automation across India.",
       },
       { name: "robots", content: "index, follow" },
       { name: "keywords", content: "business consultancy Jaipur, career advisory India, social media marketing, AI automation, placement services, ZOUM" },

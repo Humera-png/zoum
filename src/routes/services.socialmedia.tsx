@@ -101,7 +101,7 @@ const strategies: StrategyItem[] = [
     code: "05",
     tag: "Authority",
 
-    title: "Executive Brand Building",
+    title: "Personal Brand Building",
 
     desc: "We help founders and companies become trusted voices through strategic personal branding and thought leadership.",
 

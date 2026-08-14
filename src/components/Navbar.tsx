@@ -8,6 +8,7 @@ import { Logo } from "./Logo";
 const links = [
   { label: "Home", to: "/" as const },
   { label: "Services", to: "/services/business" as const, hasMenu: true },
+  { label: "Find Jobs", to: "/services/career" as const },
   { label: "About", to: "/about" as const },
   { label: "Contact", to: "/contact" as const },
 ];
@@ -16,7 +17,7 @@ const serviceItems = [
   {
     label: "Career Mastery and Talent Acquisition",
     to: "/services/career" as const,
-    desc: "The Executive Leap.",
+    desc: "Get Noticed For Bigger Roles.",
   },
   {
     label: "Talent & Development",
@@ -245,6 +246,12 @@ export function Navbar() {
                   )}
                 </AnimatePresence>
 
+                <Link
+                  to="/services/career"
+                  className="px-4 py-3 rounded-xl text-base text-foreground hover:bg-black/5 transition"
+                >
+                  Find Jobs
+                </Link>
                 <Link
                   to="/about"
                   className="px-4 py-3 rounded-xl text-base text-foreground hover:bg-black/5 transition"

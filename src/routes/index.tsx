@@ -1,12 +1,13 @@
 import {
   motion,
+  AnimatePresence,
   useScroll,
   useTransform,
   useInView,
   useMotionValue,
   useSpring,
 } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowUpRight,
@@ -22,6 +23,10 @@ import {
   Layers,
   ShieldCheck,
   Handshake,
+  GraduationCap,
+  Globe,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import { MagneticButton } from "@/components/MagneticButton";
 import { JobSeekerForm } from "@/components/JobSeekerForm";
@@ -33,7 +38,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "ZOUM Consultancy: Jaipur's top business consultancy. 700+ placements, 42+ clients served. Expert business strategy, executive career advisory, social media marketing & AI automation across India.",
+          "ZOUM Consultancy: Jaipur's top business consultancy. 700+ placements, 42+ clients served. Business strategy, career advisory, social media marketing & AI automation across India.",
       },
       { property: "og:title", content: "ZOUM Consultancy | Scale Your Business & Career" },
       {
@@ -177,7 +182,7 @@ function Hero() {
             className="mt-5 md:mt-7 text-base md:text-lg text-muted-foreground max-w-xl"
           >
             ZOUM Consultancy scales companies and accelerates careers through data-driven
-            strategy, executive precision, and uncompromising execution.
+            strategy, clear execution, and no wasted time.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -219,7 +224,7 @@ function ClientMarquee() {
       className="relative py-6 md:py-8 border-y border-border bg-white/40 backdrop-blur overflow-hidden"
     >
       <div className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground text-center mb-4 px-6">
-        / Placed across India's most demanding operators
+        / Trusted by leading companies across India
       </div>
       <div className="relative w-full max-w-full overflow-hidden block">
         <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent z-10" />
@@ -274,13 +279,9 @@ const services = [
   {
     icon: Briefcase,
     title: "Career Mastery and Talent Acquisition",
-    headline: "The Executive Leap.",
-    body: "We position senior leaders for high-ticket roles and build elite executive teams. From personal branding to compensation negotiation, we fast-track your leadership authority.",
-    points: [
-      "Executive & C-Suite Positioning",
-      "High-Level Compensation Strategy",
-      "Boardroom Readiness & socialmedia",
-    ],
+    headline: "Get Noticed For Bigger Roles.",
+    body: "We help you stand out for the roles you're already qualified for, and negotiate better pay once you get there. From your profile to interview prep, we help you move up faster.",
+    points: ["Stand out to hiring teams", "Negotiate better pay", "Interview preparation"],
     to: "/services/career" as const,
     img: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80",
   },
@@ -289,24 +290,16 @@ const services = [
     title: "AI and IT Services",
     headline: "Let AI Handle the Busywork.",
     body: "We build simple AI tools and software that take over repetitive tasks like data entry, replying to customers, and reporting, so your team can spend time on work that actually grows the business.",
-    points: [
-      "Saves hours every week",
-      "Fewer manual mistakes",
-      "Easy for your team to use",
-    ],
+    points: ["Saves hours every week", "Fewer manual mistakes", "Easy for your team to use"],
     to: "/services/ai-automation" as const,
     img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80",
   },
-   {
+  {
     icon: Users,
     title: "Social Media Marketing",
-    headline: "Unified Excellence.",
-    body: "We build digital authority that converts attention into revenue. By aligning content, brand message, and multi-channel campaigns, your company dominates the industry conversation.",
-    points: [
-      "Brand Narrative & Voice",
-      "Multi-Channel Social Strategy",
-      "High-Converting Content Engines",
-    ],
+    headline: "Turn Attention Into Customers.",
+    body: "We build content and campaigns that get seen, and turn that attention into real leads for your business, not just likes.",
+    points: ["Content that gets seen", "Real leads, not just likes", "One clear brand voice"],
     to: "/services/socialmedia" as const,
     img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
   },
@@ -314,14 +307,38 @@ const services = [
     icon: TrendingUp,
     title: "Business Process Outsourcing",
     headline: "Scale Without Friction.",
-    body: "We fix operational bottlenecks and redesign your business model for compound growth. Streamline your processes, expand profit margins, and launch your offerings faster.",
-    points: [
-      "Process & Workflow Redesign",
-      "Profit Margin Optimization",
-      "Go-To-Market (GTM) Acceleration",
-    ],
+    body: "We find where your business is losing time and money, then fix it. Simpler processes, better margins, and faster growth.",
+    points: ["Fewer bottlenecks", "Better profit margins", "Faster growth"],
     to: "/services/bpo-operations" as const,
     img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    icon: GraduationCap,
+    title: "Talent & Development",
+    headline: "Skills That Get You Noticed.",
+    body: "English, communication, and workplace skills training that helps people show up with more confidence and get hired faster.",
+    points: ["English & communication", "Interview confidence", "Workplace skills"],
+    to: "/services/talent-development" as const,
+    img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    icon: Globe,
+    title: "Website Development",
+    headline: "A Site That Actually Works.",
+    body: "We build fast, modern websites and apps that are easy to manage and built to grow with your business, not something you'll need to redo in a year.",
+    points: ["Fast, modern builds", "Easy to update", "Built to grow with you"],
+    to: "/services/website-development" as const,
+    img: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    icon: Handshake,
+    title: "Business Consultancy",
+    headline: "One Team For Everything That Grows You.",
+    body: "Strategy, marketing, and the website behind it, run by one team instead of three vendors who don't talk to each other.",
+    points: ["One team, one plan", "Strategy plus execution", "No vendor juggling"],
+    to: "/services/business-consultancy" as const,
+    img: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80",
+    span: true,
   },
 ];
 
@@ -335,7 +352,7 @@ function ServiceCard({ s, i }: { s: (typeof services)[number]; i: number }) {
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative glass rounded-3xl p-6 md:p-7 hover-glow-lime transition-all duration-500 overflow-hidden flex flex-col h-full"
+      className={`group relative glass rounded-3xl p-6 md:p-7 hover-glow-lime transition-all duration-500 overflow-hidden flex flex-col h-full ${"span" in s && s.span ? "lg:col-span-3" : ""}`}
     >
       <div className="absolute -top-20 -right-20 h-48 w-48 rounded-full bg-lime/0 group-hover:bg-lime/30 blur-3xl transition-all duration-700" />
       <Link to={s.to} className="relative z-10 flex flex-col h-full">
@@ -432,7 +449,7 @@ const whatSetsUsApart = [
   },
   {
     icon: Zap,
-    title: "Fast Response, No Bureaucracy",
+    title: "Fast Response, No Delays",
     body: "We respond within 24 hours. No multi-week onboarding before real work starts.",
   },
 ];
@@ -525,7 +542,7 @@ function WhyChooseZoum() {
 function Philosophy() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const words = "Precision over noise. Results over rhetoric.".split(" ");
+  const words = "Precision over noise. Results over talk.".split(" ");
   return (
     <section id="about" ref={ref} className="relative px-4 sm:px-6 py-14 md:py-20">
       <div
@@ -564,8 +581,8 @@ function Philosophy() {
           transition={{ delay: 0.3 }}
           className="mt-7 text-muted-foreground max-w-xl mx-auto"
         >
-          Founded in 2020, ZOUM Placement Services is a private advisory firm partnering with
-          operators who refuse the average curve.
+          Founded in 2020, ZOUM Placement Services works with businesses and people who want
+          real results, not average ones.
         </motion.p>
 
         {/* Compact 2-col metric matrix */}
@@ -672,10 +689,48 @@ const testimonials = [
       "ZOUM mapped our workflow and cut the redundant steps. First time in years we're expanding without constantly putting out fires.",
   },
 ];
+function TestimonialSlide({ t }: { t: (typeof testimonials)[number] }) {
+  return (
+    <div className="glass-strong rounded-3xl p-7 md:p-10 flex flex-col h-full">
+      <div className="flex items-center justify-between">
+        <Quote className="h-7 w-7 text-lime" />
+        <div className="flex gap-0.5">
+          {[0, 1, 2, 3, 4].map((s) => (
+            <Star key={s} className="h-3.5 w-3.5 fill-[var(--brand)] text-[var(--brand)]" />
+          ))}
+        </div>
+      </div>
+      <blockquote className="mt-5 text-foreground text-lg md:text-xl leading-relaxed flex-1">
+        "{t.quote}"
+      </blockquote>
+      <div className="mt-5 pt-4 border-t border-border">
+        <div className="text-sm font-semibold text-foreground">{t.name}</div>
+        <div className="text-xs text-muted-foreground mt-0.5">{t.role}</div>
+        <div className="mt-3 inline-block text-[10px] uppercase tracking-[0.2em] text-lime border border-brand-deep/30 rounded-full px-2 py-0.5">
+          {t.service}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Testimonials() {
+  const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
+
+  const go = useCallback((dir: number) => {
+    setDirection(dir);
+    setIndex((prev) => (prev + dir + testimonials.length) % testimonials.length);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => go(1), 7000);
+    return () => clearInterval(timer);
+  }, [go]);
+
   return (
     <section className="relative px-4 sm:px-6 py-14 md:py-20">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -683,42 +738,114 @@ function Testimonials() {
           className="text-center mb-10 md:mb-14"
         >
           <div className="text-xs uppercase tracking-[0.3em] text-lime mb-4">
-            / proof over rhetoric
+            / real results
           </div>
           <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-tight">
-            Operators. Founders.{" "}
+            Clients. Founders.{" "}
             <span className="italic font-serif text-muted-foreground">On record.</span>
           </h2>
         </motion.div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        <div className="relative">
+          <div className="overflow-hidden">
+            <AnimatePresence mode="wait" custom={direction}>
+              <motion.div
+                key={index}
+                custom={direction}
+                initial={{ opacity: 0, x: direction > 0 ? 60 : -60 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: direction > 0 ? -60 : 60 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <TestimonialSlide t={testimonials[index]} />
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          <button
+            aria-label="Previous testimonial"
+            onClick={() => go(-1)}
+            className="absolute top-1/2 -translate-y-1/2 -left-4 md:-left-14 h-10 w-10 rounded-full glass-strong grid place-items-center hover:bg-lime hover:text-white transition"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <button
+            aria-label="Next testimonial"
+            onClick={() => go(1)}
+            className="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-14 h-10 w-10 rounded-full glass-strong grid place-items-center hover:bg-lime hover:text-white transition"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+        </div>
+
+        <div className="mt-6 flex items-center justify-center gap-2">
           {testimonials.map((t, i) => (
-            <motion.figure
+            <button
               key={t.name}
-              initial={{ opacity: 0, y: 30 }}
+              aria-label={`Go to testimonial ${i + 1}`}
+              onClick={() => {
+                setDirection(i > index ? 1 : -1);
+                setIndex(i);
+              }}
+              className={`h-1.5 rounded-full transition-all ${i === index ? "w-6 bg-lime" : "w-1.5 bg-foreground/20"}`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const applySteps = [
+  {
+    step: "1",
+    title: "Search a job",
+    desc: "Browse open roles that match your background.",
+  },
+  {
+    step: "2",
+    title: "Apply",
+    desc: "Fill in your details below. Takes about two minutes.",
+  },
+  {
+    step: "3",
+    title: "Get a response",
+    desc: "We respond within 24 hours with your next step.",
+  },
+];
+
+function HowToApply() {
+  return (
+    <section className="relative px-4 sm:px-6 py-14 md:py-20">
+      <div className="max-w-5xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-10 md:mb-14"
+        >
+          <div className="text-xs uppercase tracking-[0.3em] text-lime mb-4">/ how it works</div>
+          <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-tight">
+            Search. Apply.{" "}
+            <span className="italic font-serif text-muted-foreground">Get a job.</span>
+          </h2>
+        </motion.div>
+        <div className="grid sm:grid-cols-3 gap-5">
+          {applySteps.map((s, i) => (
+            <motion.div
+              key={s.step}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ delay: i * 0.08, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="glass-strong rounded-3xl p-6 md:p-7 flex flex-col h-full hover-glow-lime transition"
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="glass rounded-2xl p-6 text-center"
             >
-              <div className="flex items-center justify-between">
-                <Quote className="h-7 w-7 text-lime" />
-                <div className="flex gap-0.5">
-                  {[0, 1, 2, 3, 4].map((s) => (
-                    <Star key={s} className="h-3.5 w-3.5 fill-[var(--brand)] text-[var(--brand)]" />
-                  ))}
-                </div>
+              <div className="h-10 w-10 rounded-full glass-strong grid place-items-center mx-auto mb-4 font-display text-lime">
+                {s.step}
               </div>
-              <blockquote className="mt-5 text-foreground text-base leading-relaxed flex-1">
-                "{t.quote}"
-              </blockquote>
-              <figcaption className="mt-5 pt-4 border-t border-border">
-                <div className="text-sm font-semibold text-foreground">{t.name}</div>
-                <div className="text-xs text-muted-foreground mt-0.5">{t.role}</div>
-                <div className="mt-3 inline-block text-[10px] uppercase tracking-[0.2em] text-lime border border-brand-deep/30 rounded-full px-2 py-0.5">
-                  {t.service}
-                </div>
-              </figcaption>
-            </motion.figure>
+              <div className="font-display text-lg">{s.title}</div>
+              <p className="text-sm text-muted-foreground mt-2">{s.desc}</p>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -791,6 +918,7 @@ function Index() {
       <WhyChooseZoum />
       <Philosophy />
       <Testimonials />
+      <HowToApply />
       <Contact />
     </main>
   );

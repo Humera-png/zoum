@@ -145,7 +145,7 @@ function BusinessPage() {
           pill="Business Process Outsourcing"
           title="Scale Without"
           italic="Friction."
-          sub="Operations, ROI, market dominance. For operators who refuse the average curve."
+          sub="Better operations, better returns, real growth. For businesses that want real results."
         />
 
         <div className="mt-20 grid lg:grid-cols-[200px_1fr] gap-12">

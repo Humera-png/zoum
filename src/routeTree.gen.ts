@@ -21,6 +21,7 @@ import { Route as ServicesAiAutomationRouteImport } from './routes/services.ai-a
 import { Route as ServicesTalentDevelopmentRouteImport } from './routes/services.talent-development'
 import { Route as ServicesBusinessConsultancyRouteImport } from './routes/services.business-consultancy'
 import { Route as ServicesWebsiteDevelopmentRouteImport } from './routes/services.website-development'
+import { Route as JobsJobIdRouteImport } from './routes/jobs.$jobId'
 
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
@@ -82,6 +83,11 @@ const ServicesWebsiteDevelopmentRoute = ServicesWebsiteDevelopmentRouteImport.up
   path: '/services/website-development',
   getParentRoute: () => rootRouteImport,
 } as any)
+const JobsJobIdRoute = JobsJobIdRouteImport.update({
+  id: '/jobs/$jobId',
+  path: '/jobs/$jobId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -96,6 +102,7 @@ export interface FileRoutesByFullPath {
   '/services/talent-development': typeof ServicesTalentDevelopmentRoute
   '/services/business-consultancy': typeof ServicesBusinessConsultancyRoute
   '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
+  '/jobs/$jobId': typeof JobsJobIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -110,6 +117,7 @@ export interface FileRoutesByTo {
   '/services/talent-development': typeof ServicesTalentDevelopmentRoute
   '/services/business-consultancy': typeof ServicesBusinessConsultancyRoute
   '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
+  '/jobs/$jobId': typeof JobsJobIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -125,6 +133,7 @@ export interface FileRoutesById {
   '/services/talent-development': typeof ServicesTalentDevelopmentRoute
   '/services/business-consultancy': typeof ServicesBusinessConsultancyRoute
   '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
+  '/jobs/$jobId': typeof JobsJobIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -141,6 +150,7 @@ export interface FileRouteTypes {
     | '/services/talent-development'
     | '/services/business-consultancy'
     | '/services/website-development'
+    | '/jobs/$jobId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -155,6 +165,7 @@ export interface FileRouteTypes {
     | '/services/talent-development'
     | '/services/business-consultancy'
     | '/services/website-development'
+    | '/jobs/$jobId'
   id:
     | '__root__'
     | '/'
@@ -169,6 +180,7 @@ export interface FileRouteTypes {
     | '/services/talent-development'
     | '/services/business-consultancy'
     | '/services/website-development'
+    | '/jobs/$jobId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -184,6 +196,7 @@ export interface RootRouteChildren {
   ServicesTalentDevelopmentRoute: typeof ServicesTalentDevelopmentRoute
   ServicesBusinessConsultancyRoute: typeof ServicesBusinessConsultancyRoute
   ServicesWebsiteDevelopmentRoute: typeof ServicesWebsiteDevelopmentRoute
+  JobsJobIdRoute: typeof JobsJobIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -272,6 +285,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesWebsiteDevelopmentRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/jobs/$jobId': {
+      id: '/jobs/$jobId'
+      path: '/jobs/$jobId'
+      fullPath: '/jobs/$jobId'
+      preLoaderRoute: typeof JobsJobIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -288,6 +308,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesTalentDevelopmentRoute: ServicesTalentDevelopmentRoute,
   ServicesBusinessConsultancyRoute: ServicesBusinessConsultancyRoute,
   ServicesWebsiteDevelopmentRoute: ServicesWebsiteDevelopmentRoute,
+  JobsJobIdRoute: JobsJobIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

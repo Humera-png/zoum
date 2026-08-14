@@ -16,7 +16,7 @@ export const Route = createFileRoute("/services/business-strategy")({
       {
         name: "description",
         content:
-          "ZOUM provides business process outsourcing, operational transformation, growth strategy, process optimization, and executive advisory services to help companies scale efficiently.",
+          "ZOUM provides business process outsourcing, operations support, growth strategy, and process improvement to help companies scale efficiently.",
       },
 
       {
@@ -238,7 +238,7 @@ Strategic consulting for businesses looking to improve operations, accelerate gr
 
                     time: "Long-Term",
 
-                    feats: ["Executive consulting", "Transformation planning", "Scale strategy"],
+                    feats: ["Ongoing consulting", "Change planning", "Growth strategy"],
                   },
                 ].map((t, i) => (
                   <div

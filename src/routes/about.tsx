@@ -12,7 +12,7 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: "About | ZOUM Placement Services" },
       {
         property: "og:description",
-        content: "Operators, not consultants. Meet the ZOUM advisory board.",
+        content: "A team that's actually done the work, not just consultants. Meet the ZOUM advisory board.",
       },
     ],
   }),
@@ -62,8 +62,8 @@ function AboutPage() {
             transition={{ duration: 0.8 }}
             className="mt-4 font-display text-5xl md:text-7xl tracking-tight leading-[0.95]"
           >
-            A private firm of <span className="italic font-serif text-lime">operators</span>, not
-            consultants.
+            A team that's <span className="italic font-serif text-lime">done the work</span>, not
+            just consultants.
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
