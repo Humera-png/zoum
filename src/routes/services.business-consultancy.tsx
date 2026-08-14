@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { TrendingUp, Users, Code2, ArrowUpRight } from "lucide-react";
 import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageBackdrop } from "@/components/PageBackdrop";
-import { PageHeader, Section, CTA } from "./services.business";
+import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
 
 export const Route = createFileRoute("/services/business-consultancy")({
   head: () => ({
@@ -13,6 +13,10 @@ export const Route = createFileRoute("/services/business-consultancy")({
         name: "description",
         content:
           "Business consultancy for growing companies: strategy, social media marketing, and website development under one team. ZOUM Consultancy, Jaipur.",
+      },
+      {
+        name: "keywords",
+        content: "business consultancy Jaipur, growth strategy consulting India, business advisory services",
       },
       { property: "og:title", content: "Business Consultancy | ZOUM Consultancy" },
       {
@@ -50,6 +54,11 @@ function BusinessConsultancyPage() {
   return (
     <main className="pt-32 px-6 pb-20 relative">
       <PageBackdrop />
+      <ServiceSchema
+        name="Business Consultancy"
+        description="Strategy, marketing, and website development for growing companies, run by one team."
+        url="https://zoumconsultancy.com/services/business-consultancy"
+      />
       <div className="max-w-7xl mx-auto relative z-10">
         <PageHeader
           pill="Business Consultancy"

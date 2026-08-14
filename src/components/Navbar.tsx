@@ -184,6 +184,7 @@ export function Navbar() {
               exit={{ x: "100%" }}
               transition={{ type: "spring", stiffness: 320, damping: 34 }}
               className="fixed top-0 right-0 bottom-0 z-50 w-[88%] max-w-sm glass-strong md:hidden flex flex-col overflow-y-auto"
+              style={{ background: "rgba(255,255,255,0.98)" }}
             >
               <div className="flex items-center justify-between p-5 border-b border-border">
                 <div className="flex items-center gap-2.5">

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { MessageCircle, Users, Brain, Presentation } from "lucide-react";
 import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageBackdrop } from "@/components/PageBackdrop";
-import { PageHeader, Section, CTA } from "./services.business";
+import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
 
 export const Route = createFileRoute("/services/talent-development")({
   head: () => ({
@@ -13,6 +13,10 @@ export const Route = createFileRoute("/services/talent-development")({
         name: "description",
         content:
           "Upskilling programs for individuals and teams: English communication, personality development, workplace skills, and leadership training. ZOUM Consultancy, Jaipur.",
+      },
+      {
+        name: "keywords",
+        content: "skills training Jaipur, English communication training, workplace skills course, talent development India",
       },
       { property: "og:title", content: "Talent & Development | ZOUM Consultancy" },
       {
@@ -52,6 +56,11 @@ function TalentDevelopmentPage() {
   return (
     <main className="pt-32 px-6 pb-20 relative">
       <PageBackdrop />
+      <ServiceSchema
+        name="Talent & Skills Development"
+        description="English communication, workplace skills, and leadership training for individuals and teams."
+        url="https://zoumconsultancy.com/services/talent-development"
+      />
       <div className="max-w-7xl mx-auto relative z-10">
         <PageHeader
           pill="Talent & Development"

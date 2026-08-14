@@ -917,11 +917,15 @@ function Contact() {
 const faqs = [
   {
     q: "What services does ZOUM Consultancy offer?",
-    a: "ZOUM Consultancy offers two things: recruitment and job placement across India, and IT services including AI automation, AI agents, website development, and custom software development.",
+    a: "ZOUM Consultancy offers recruitment and job placement, AI automation and AI agents, website and software development, talent and skills development, social media marketing, business consultancy, and business process outsourcing (BPO).",
   },
   {
     q: "Is ZOUM a recruitment agency or an IT company?",
     a: "Both. Recruitment and IT services are our two main lines of business, run by the same team. Businesses can hire us for staffing and for technical work like websites, software, or AI automation under one roof.",
+  },
+  {
+    q: "Does ZOUM help with job placement outside Jaipur?",
+    a: "Yes. While ZOUM is based in Jaipur, we place candidates and work with businesses across India.",
   },
   {
     q: "What is AI automation and how does it help my business?",
@@ -932,12 +936,24 @@ const faqs = [
     a: "AI agents are software programs that can carry out multi-step tasks on their own, such as answering customer questions, processing requests, or handling routine workflows, without a person doing each step manually.",
   },
   {
-    q: "Does ZOUM help with job placement outside Jaipur?",
-    a: "Yes. While ZOUM is based in Jaipur, we place candidates and work with businesses across India.",
-  },
-  {
     q: "How much does it cost to build a website or software with ZOUM?",
     a: "Cost depends on scope, a marketing website is a smaller project than a custom software platform. Share what you need through the contact form and we'll give you a clear quote.",
+  },
+  {
+    q: "Does ZOUM offer training or skills development?",
+    a: "Yes. Our Talent & Development team runs English, communication, and workplace skills training that helps candidates show up with more confidence and get hired faster.",
+  },
+  {
+    q: "Can ZOUM manage our social media?",
+    a: "Yes. We build content and campaigns that get seen, and turn that attention into real leads, not just likes, across platforms like Instagram and LinkedIn.",
+  },
+  {
+    q: "What does ZOUM's business consultancy service cover?",
+    a: "Strategy, marketing, and the website behind it, run by one team instead of three separate vendors who don't talk to each other.",
+  },
+  {
+    q: "What is business process outsourcing (BPO) and does ZOUM offer it?",
+    a: "BPO means handing off a business process, like operations or back-office work, to an outside team so it runs more efficiently. ZOUM finds where a business is losing time and money and fixes it directly.",
   },
 ];
 

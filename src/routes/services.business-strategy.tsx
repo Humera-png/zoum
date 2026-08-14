@@ -4,7 +4,7 @@ import { Check, Target, BarChart3, Workflow, Rocket } from "lucide-react";
 
 import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageBackdrop } from "@/components/PageBackdrop";
-import { PageHeader, Section, CTA } from "./services.business";
+import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
 
 export const Route = createFileRoute("/services/business-strategy")({
   head: () => ({
@@ -25,6 +25,11 @@ export const Route = createFileRoute("/services/business-strategy")({
       },
 
       { rel: "canonical", href: "https://zoumconsultancy.com/services/bpo-operations" },
+
+      {
+        name: "keywords",
+        content: "business process outsourcing India, BPO services Jaipur, operations consulting, process improvement",
+      },
 
       {
         property: "og:description",
@@ -107,6 +112,11 @@ function BusinessStrategyPage() {
   return (
     <main className="pt-32 px-6 pb-20 relative">
       <PageBackdrop />
+      <ServiceSchema
+        name="Business Process Outsourcing"
+        description="Operations support, growth strategy, and process improvement to help companies scale efficiently."
+        url="https://zoumconsultancy.com/services/bpo-operations"
+      />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <PageHeader

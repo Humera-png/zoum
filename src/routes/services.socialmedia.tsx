@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 
 import { ServiceSubNav } from "@/components/ServiceSubNav";
-import { PageHeader, Section, CTA } from "./services.business";
+import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
 import { PageBackdrop } from "@/components/PageBackdrop";
 
 export const Route = createFileRoute("/services/socialmedia")({
@@ -15,6 +15,10 @@ export const Route = createFileRoute("/services/socialmedia")({
         name: "description",
         content:
           "ZOUM Consultancy: social media marketing agency in Jaipur. Strategic content, paid campaigns, brand growth, Instagram & LinkedIn management, and digital marketing across India.",
+      },
+      {
+        name: "keywords",
+        content: "social media marketing agency Jaipur, Instagram marketing India, LinkedIn management, digital marketing agency",
       },
       { property: "og:title", content: "Social Media Marketing | ZOUM Consultancy Jaipur" },
       {
@@ -313,6 +317,11 @@ function MarketingPage() {
   return (
     <main className="pt-32 px-6 pb-20 relative">
       <PageBackdrop />
+      <ServiceSchema
+        name="Social Media Marketing"
+        description="Content strategy, paid campaigns, and brand growth on Instagram, LinkedIn, and other platforms."
+        url="https://zoumconsultancy.com/services/socialmedia"
+      />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <PageHeader
