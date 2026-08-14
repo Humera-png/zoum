@@ -13,28 +13,34 @@ import {
 
 import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageBackdrop } from "@/components/PageBackdrop";
-import { PageHeader, Section, CTA } from "./services.business";
+import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
 
 export const Route = createFileRoute("/services/ai-automation")({
   head: () => ({
     meta: [
       {
-        title: "AI Automation & Software Development | ZOUM Consultancy Jaipur",
+        title: "AI Automation & AI Agents Company | ZOUM Consultancy Jaipur",
       },
       {
         name: "description",
         content:
-          "ZOUM Consultancy builds custom AI automation systems, software applications, Android & iOS apps, AI chatbots, and cloud solutions for businesses across India. Based in Jaipur.",
+          "ZOUM Consultancy is an AI automation and IT services company in Jaipur. We build AI agents, chatbots, workflow automation, custom software, and mobile apps for businesses across India.",
+      },
+      {
+        name: "keywords",
+        content:
+          "AI automation agency India, AI agents development, AI chatbot development, custom software development Jaipur, IT services company India",
       },
       {
         property: "og:title",
-        content: "AI Automation & Custom Software Development | ZOUM Consultancy",
+        content: "AI Automation & AI Agents | ZOUM Consultancy",
       },
       {
         property: "og:description",
         content:
-          "Build smarter with ZOUM: custom AI agents, software platforms, mobile apps, and cloud infrastructure for modern Indian businesses.",
+          "Build smarter with ZOUM: AI agents, workflow automation, chatbots, software platforms, and mobile apps for modern Indian businesses.",
       },
+      { rel: "canonical", href: "https://zoumconsultancy.com/services/ai-automation" },
     ],
   }),
 
@@ -137,6 +143,11 @@ function AIPage() {
   return (
     <main className="pt-32 px-6 pb-20 relative">
       <PageBackdrop />
+      <ServiceSchema
+        name="AI Automation & AI Agents"
+        description="AI automation, AI agents, chatbots, and custom software development for businesses across India."
+        url="https://zoumconsultancy.com/services/ai-automation"
+      />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <PageHeader

@@ -19,6 +19,7 @@ export const Route = createFileRoute("/services/talent-development")({
         property: "og:description",
         content: "We help individuals and teams build the skills that get them noticed and promoted.",
       },
+      { rel: "canonical", href: "https://zoumconsultancy.com/services/talent-development" },
     ],
   }),
   component: TalentDevelopmentPage,

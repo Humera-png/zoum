@@ -325,6 +325,37 @@ export function Section({
   );
 }
 
+export function ServiceSchema({
+  name,
+  description,
+  url,
+}: {
+  name: string;
+  description: string;
+  url: string;
+}) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: name,
+    name,
+    description,
+    url,
+    provider: {
+      "@type": "LocalBusiness",
+      name: "ZOUM Consultancy",
+      url: "https://zoumconsultancy.com",
+    },
+    areaServed: { "@type": "Country", name: "India" },
+  };
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
 export function CTA() {
   return (
     <div className="glass-strong rounded-3xl p-10 md:p-14 text-center relative overflow-hidden">

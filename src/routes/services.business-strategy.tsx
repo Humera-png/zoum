@@ -24,6 +24,8 @@ export const Route = createFileRoute("/services/business-strategy")({
         content: "Business Process Outsourcing | ZOUM",
       },
 
+      { rel: "canonical", href: "https://zoumconsultancy.com/services/bpo-operations" },
+
       {
         property: "og:description",
         content:

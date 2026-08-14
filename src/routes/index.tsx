@@ -34,17 +34,22 @@ import { JobSeekerForm } from "@/components/JobSeekerForm";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "ZOUM Consultancy Jaipur | Business Strategy, Career Advisory & AI Services" },
+      { title: "ZOUM Consultancy Jaipur | Recruitment Agency & IT Services Company" },
       {
         name: "description",
         content:
-          "ZOUM Consultancy: Jaipur's top business consultancy. 700+ placements, 42+ clients served. Business strategy, career advisory, social media marketing & AI automation across India.",
+          "ZOUM Consultancy is a Jaipur recruitment agency and IT services company. 700+ job placements across India, plus AI automation, AI agents, website development, and custom software.",
       },
-      { property: "og:title", content: "ZOUM Consultancy | Scale Your Business & Career" },
+      {
+        name: "keywords",
+        content:
+          "recruitment agency Jaipur, job placement India, IT services company Jaipur, AI automation agency, AI agents development, website development company India, software development company",
+      },
+      { property: "og:title", content: "ZOUM Consultancy | Recruitment Agency & IT Services Company" },
       {
         property: "og:description",
         content:
-          "Jaipur's leading consultancy for business strategy, talent placement, social media growth, and AI automation. Book a free strategy call today.",
+          "Jaipur's recruitment agency and IT services company: job placement across India, AI automation, AI agents, website & software development.",
       },
       { rel: "canonical", href: "https://zoumconsultancy.com" },
     ],
@@ -909,6 +914,77 @@ function Contact() {
   );
 }
 
+const faqs = [
+  {
+    q: "What services does ZOUM Consultancy offer?",
+    a: "ZOUM Consultancy offers two things: recruitment and job placement across India, and IT services including AI automation, AI agents, website development, and custom software development.",
+  },
+  {
+    q: "Is ZOUM a recruitment agency or an IT company?",
+    a: "Both. Recruitment and IT services are our two main lines of business, run by the same team. Businesses can hire us for staffing and for technical work like websites, software, or AI automation under one roof.",
+  },
+  {
+    q: "What is AI automation and how does it help my business?",
+    a: "AI automation means using AI tools and software to take over repetitive work, like data entry, replying to customers, or reporting, so your team spends time on work that actually grows the business instead of busywork.",
+  },
+  {
+    q: "What are AI agents?",
+    a: "AI agents are software programs that can carry out multi-step tasks on their own, such as answering customer questions, processing requests, or handling routine workflows, without a person doing each step manually.",
+  },
+  {
+    q: "Does ZOUM help with job placement outside Jaipur?",
+    a: "Yes. While ZOUM is based in Jaipur, we place candidates and work with businesses across India.",
+  },
+  {
+    q: "How much does it cost to build a website or software with ZOUM?",
+    a: "Cost depends on scope, a marketing website is a smaller project than a custom software platform. Share what you need through the contact form and we'll give you a clear quote.",
+  },
+];
+
+function FAQ() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+
+  return (
+    <section id="faq" className="relative px-4 sm:px-6 py-14 md:py-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <div className="max-w-4xl mx-auto">
+        <div className="text-xs uppercase tracking-[0.3em] text-lime mb-3 text-center">
+          / faq
+        </div>
+        <h2 className="font-display text-4xl md:text-6xl tracking-tight text-center mb-12">
+          Common questions.
+        </h2>
+        <div className="space-y-4">
+          {faqs.map((f, i) => (
+            <motion.div
+              key={f.q}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.05 }}
+              className="glass rounded-2xl p-6"
+            >
+              <h3 className="font-display text-lg">{f.q}</h3>
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{f.a}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Index() {
   return (
     <main className="relative overflow-x-hidden">
@@ -919,6 +995,7 @@ function Index() {
       <Philosophy />
       <Testimonials />
       <HowToApply />
+      <FAQ />
       <Contact />
     </main>
   );

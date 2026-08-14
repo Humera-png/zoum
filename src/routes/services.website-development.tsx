@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Globe, Layers, ShoppingCart, Wrench } from "lucide-react";
 import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageBackdrop } from "@/components/PageBackdrop";
-import { PageHeader, Section, CTA } from "./services.business";
+import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
 
 export const Route = createFileRoute("/services/website-development")({
   head: () => ({
@@ -14,11 +14,16 @@ export const Route = createFileRoute("/services/website-development")({
         content:
           "Website and web app development for growing businesses: marketing sites, e-commerce, custom web apps, and ongoing maintenance. ZOUM Consultancy, Jaipur.",
       },
+      {
+        name: "keywords",
+        content: "website development company India, web app development Jaipur, e-commerce development, custom software development",
+      },
       { property: "og:title", content: "Website Development | ZOUM Consultancy" },
       {
         property: "og:description",
         content: "Fast, modern websites and web apps built to actually hold up as your business grows.",
       },
+      { rel: "canonical", href: "https://zoumconsultancy.com/services/website-development" },
     ],
   }),
   component: WebsiteDevelopmentPage,
@@ -51,6 +56,11 @@ function WebsiteDevelopmentPage() {
   return (
     <main className="pt-32 px-6 pb-20 relative">
       <PageBackdrop />
+      <ServiceSchema
+        name="Website Development"
+        description="Website, web app, and e-commerce development for growing businesses across India."
+        url="https://zoumconsultancy.com/services/website-development"
+      />
       <div className="max-w-7xl mx-auto relative z-10">
         <PageHeader
           pill="Website Development"

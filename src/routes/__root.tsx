@@ -73,7 +73,7 @@ const structuredData = {
   name: "ZOUM Consultancy",
   alternateName: "ZOUM Placement Services",
   description:
-    "Premium business consultancy in Jaipur offering business strategy, career advisory, social media marketing, and AI automation services across India.",
+    "ZOUM Consultancy is a Jaipur-based recruitment and IT services company. We place candidates in jobs across India and build AI automation, AI agents, websites, and custom software for businesses.",
   url: "https://zoumconsultancy.com",
   logo: "https://zoumconsultancy.com/assets/zoum-logo.png",
   email: "contact@zoumconsultancy.com",
@@ -89,12 +89,15 @@ const structuredData = {
   },
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Consultancy Services",
+    name: "Recruitment & IT Services",
     itemListElement: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Recruitment & Job Placement" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI Automation & AI Agents" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Website Development" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Software Development" } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Business Process Outsourcing" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Career Advisory & Job Placement" } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Social Media Marketing" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI Automation & Software Development" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Talent & Skills Development" } },
     ],
   },
   sameAs: ["https://zoumconsultancy.com"],
@@ -105,18 +108,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "ZOUM Consultancy Jaipur | Business Strategy, Career & AI Services" },
+      { title: "ZOUM Consultancy Jaipur | Recruitment Agency & IT Services Company" },
       {
         name: "description",
         content:
-          "ZOUM Consultancy: Jaipur's premier business consultancy. Business strategy, career advisory, social media marketing, and AI automation across India.",
+          "ZOUM Consultancy: Jaipur recruitment agency and IT services company. 700+ job placements across India, plus AI automation, AI agents, website development, and custom software for businesses.",
       },
       { name: "robots", content: "index, follow" },
-      { name: "keywords", content: "business consultancy Jaipur, career advisory India, social media marketing, AI automation, placement services, ZOUM" },
-      { property: "og:title", content: "ZOUM Consultancy | Business Strategy & Career Advisory | Jaipur, India" },
+      { name: "keywords", content: "recruitment agency Jaipur, placement services India, job consultancy, IT services company, AI automation agency, AI agents development, website development company, software development India, ZOUM" },
+      { property: "og:title", content: "ZOUM Consultancy | Recruitment Agency & IT Services | Jaipur, India" },
       {
         property: "og:description",
-        content: "Scale your business and accelerate your career with ZOUM Consultancy, Jaipur's leading consultancy for strategy, talent, social media, and AI.",
+        content: "Jaipur's recruitment and IT services company: job placement across India, plus AI automation, AI agents, website development, and custom software.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://zoumconsultancy.com" },
@@ -124,8 +127,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: "ZOUM Consultancy" },
       { property: "og:locale", content: "en_IN" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "ZOUM Consultancy | Business Strategy & Career Advisory" },
-      { name: "twitter:description", content: "Scale your business and accelerate your career with Jaipur's leading consultancy." },
+      { name: "twitter:title", content: "ZOUM Consultancy | Recruitment Agency & IT Services" },
+      { name: "twitter:description", content: "Jaipur recruitment agency and IT services company: job placement, AI automation, AI agents, website & software development." },
       { name: "twitter:image", content: "https://zoumconsultancy.com/assets/zoum-logo.png" },
     ],
     links: [

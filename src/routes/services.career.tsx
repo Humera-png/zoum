@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Cpu, Landmark, HeartPulse, Factory, ShoppingBag, ShoppingCart, Radio, Plane } from "lucide-react";
 
-import { PageHeader, Section, CTA } from "./services.business";
+import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
 import { PageBackdrop } from "@/components/PageBackdrop";
 import { JobSeekerForm } from "@/components/JobSeekerForm";
 import { JobListings } from "@/components/JobListings";
@@ -12,22 +12,27 @@ export const Route = createFileRoute("/services/career")({
   head: () => ({
     meta: [
       {
-        title: "Career Advisory & Job Placement | ZOUM Consultancy Jaipur",
+        title: "Recruitment Agency & Job Placement | ZOUM Consultancy Jaipur",
       },
       {
         name: "description",
         content:
-          "ZOUM Consultancy Jaipur helps you get noticed for bigger roles and negotiate better pay. Confidential career advisory and job placement across India. 700+ placements in one year.",
+          "ZOUM Consultancy is a Jaipur recruitment agency helping candidates get noticed for bigger roles and negotiate better pay. 700+ job placements across India in one year.",
+      },
+      {
+        name: "keywords",
+        content: "recruitment agency Jaipur, job placement India, job consultancy, career advisory, hiring agency India",
       },
       {
         property: "og:title",
-        content: "Career Advisory & Job Placement | ZOUM Consultancy",
+        content: "Recruitment Agency & Job Placement | ZOUM Consultancy",
       },
       {
         property: "og:description",
         content:
-          "Get noticed for bigger roles and negotiate better pay. Career advisory and job placement across India.",
+          "Get noticed for bigger roles and negotiate better pay. Recruitment and job placement across India.",
       },
+      { rel: "canonical", href: "https://zoumconsultancy.com/services/career" },
     ],
   }),
 
@@ -81,6 +86,11 @@ function CareerPage() {
   return (
     <main className="pt-32 px-6 pb-20 relative">
       <PageBackdrop />
+      <ServiceSchema
+        name="Recruitment & Job Placement"
+        description="Recruitment and job placement services connecting candidates with employers across India."
+        url="https://zoumconsultancy.com/services/career"
+      />
 
       <div className="max-w-5xl mx-auto relative z-10">
         <PageHeader

@@ -19,6 +19,7 @@ export const Route = createFileRoute("/services/business-consultancy")({
         property: "og:description",
         content: "One consultancy for the pieces that actually move a business forward: strategy, online presence, and the tech behind it.",
       },
+      { rel: "canonical", href: "https://zoumconsultancy.com/services/business-consultancy" },
     ],
   }),
   component: BusinessConsultancyPage,
