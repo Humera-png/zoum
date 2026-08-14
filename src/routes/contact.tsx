@@ -98,7 +98,7 @@ function ContactPage() {
                   <div className="h-11 w-11 rounded-xl bg-lime grid place-items-center shrink-0 text-white">
                     <c.icon className="h-4 w-4" />
                   </div>
-                  <div>
+                  <div>                   
                     <div className="text-sm font-medium">{c.label}</div>
                     <div className="text-xs text-muted-foreground mt-0.5">{c.sub}</div>
                   </div>

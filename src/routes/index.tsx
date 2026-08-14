@@ -343,7 +343,7 @@ const services = [
     points: ["One team, one plan", "Strategy plus execution", "No vendor juggling"],
     to: "/services/business-consultancy" as const,
     img: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80",
-    span: true,
+    center: true,
   },
 ];
 
@@ -357,7 +357,7 @@ function ServiceCard({ s, i }: { s: (typeof services)[number]; i: number }) {
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-      className={`group relative glass rounded-3xl p-6 md:p-7 hover-glow-lime transition-all duration-500 overflow-hidden flex flex-col h-full ${"span" in s && s.span ? "lg:col-span-3" : ""}`}
+      className={`group relative glass rounded-3xl p-6 md:p-7 hover-glow-lime transition-all duration-500 overflow-hidden flex flex-col h-full ${"center" in s && s.center ? "lg:col-start-2" : ""}`}
     >
       <div className="absolute -top-20 -right-20 h-48 w-48 rounded-full bg-lime/0 group-hover:bg-lime/30 blur-3xl transition-all duration-700" />
       <Link to={s.to} className="relative z-10 flex flex-col h-full">
