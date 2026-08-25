@@ -174,12 +174,14 @@ import { PageTransition } from "@/components/PageTransition";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { IntroScreen } from "@/components/IntroScreen";
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
+      <IntroScreen />
       <Navbar />
       <PageTransition>
         <Outlet />
