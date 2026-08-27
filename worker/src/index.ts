@@ -157,6 +157,8 @@ export default {
       phone: form.get("phone") ?? "",
       company: form.get("company"),
       reason: form.get("reason"),
+      roleNeeded: form.get("roleNeeded") ?? undefined,
+      headcount: form.get("headcount") ?? undefined,
       message: form.get("message"),
     };
     const parsed = contactSchema.safeParse(raw);

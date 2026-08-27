@@ -15,12 +15,12 @@ const links = [
 
 const serviceItems = [
   {
-    label: "Career Mastery and Talent Acquisition",
+    label: "Career and Hiring",
     to: "/services/career" as const,
     desc: "Get Noticed For Bigger Roles.",
   },
   {
-    label: "Talent & Development",
+    label: "Talent and Hiring",
     to: "/services/talent-development" as const,
     desc: "Skills That Get You Noticed.",
   },

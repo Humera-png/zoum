@@ -5,6 +5,7 @@ import { z } from "zod";
 export const REASONS = {
   "business-strategy": "Business Strategy & Operations",
   career: "Career / Job Application",
+  "hire-talent": "Hire Talent / Recruitment Request",
   "social-media": "Social Media Marketing",
   "ai-automation": "AI Automation",
   "it-software": "IT & Software Development",
@@ -30,6 +31,9 @@ export const contactSchema = z.object({
     Object.keys(REASONS) as [ReasonKey, ...ReasonKey[]],
     { message: "Select a reason for contact" },
   ),
+  // Only meaningful when reason is "hire-talent" — optional otherwise.
+  roleNeeded: z.string().trim().max(120).optional(),
+  headcount: z.string().trim().max(40).optional(),
   message: z.string().trim().min(10, "Tell us a bit more (10+ chars)").max(1000),
   // Honeypot — real users never see or fill this field.
   website: z.string().optional(),

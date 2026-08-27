@@ -17,6 +17,8 @@ export function renderInquiryEmailHtml(data: ContactData): string {
     ["Company", data.company],
     ["Reason", REASONS[data.reason]],
   ];
+  if (data.roleNeeded) rows.push(["Role(s) needed", data.roleNeeded]);
+  if (data.headcount) rows.push(["Number of hires", data.headcount]);
   const rowsHtml = rows
     .map(
       ([label, value]) =>

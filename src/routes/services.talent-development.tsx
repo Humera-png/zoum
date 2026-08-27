@@ -8,7 +8,7 @@ import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
 export const Route = createFileRoute("/services/talent-development")({
   head: () => ({
     meta: [
-      { title: "Talent & Development | ZOUM Consultancy Jaipur" },
+      { title: "Talent and Hiring | ZOUM Consultancy Jaipur" },
       {
         name: "description",
         content:
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/services/talent-development")({
         name: "keywords",
         content: "skills training Jaipur, English communication training, workplace skills course, talent development India",
       },
-      { property: "og:title", content: "Talent & Development | ZOUM Consultancy" },
+      { property: "og:title", content: "Talent and Hiring | ZOUM Consultancy" },
       {
         property: "og:description",
         content: "We help individuals and teams build the skills that get them noticed and promoted.",
@@ -57,13 +57,13 @@ function TalentDevelopmentPage() {
     <main className="pt-32 px-6 pb-20 relative">
       <PageBackdrop />
       <ServiceSchema
-        name="Talent & Skills Development"
+        name="Talent and Hiring"
         description="English communication, workplace skills, and leadership training for individuals and teams."
         url="https://zoumconsultancy.com/services/talent-development"
       />
       <div className="max-w-7xl mx-auto relative z-10">
         <PageHeader
-          pill="Talent & Development"
+          pill="Talent and Hiring"
           title="Skills That"
           italic="Get You Noticed."
           sub="Training programs that help individuals build the communication, confidence, and workplace skills that turn a resume into an offer."

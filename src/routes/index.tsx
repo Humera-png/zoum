@@ -30,6 +30,7 @@ import {
 } from "lucide-react";
 import { MagneticButton } from "@/components/MagneticButton";
 import { JobSeekerForm } from "@/components/JobSeekerForm";
+import { HireTalentModal } from "@/components/HireTalentModal";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -159,6 +160,7 @@ function GlassVisual() {
 }
 
 function Hero() {
+  const [hireOpen, setHireOpen] = useState(false);
   return (
     <section
       id="home"
@@ -201,12 +203,13 @@ function Hero() {
             >
               Apply Here <ArrowUpRight className="h-4 w-4" />
             </MagneticButton>
-            <Link
-              to="/services/career"
+            <button
+              type="button"
+              onClick={() => setHireOpen(true)}
               className="w-full md:w-auto glass px-7 py-4 rounded-full text-sm font-semibold text-foreground hover:bg-white transition inline-flex items-center justify-center"
             >
-              Find a Job
-            </Link>
+              Hire Talent
+            </button>
           </motion.div>
         </div>
         <motion.div
@@ -217,6 +220,7 @@ function Hero() {
           <GlassVisual />
         </motion.div>
       </div>
+      <HireTalentModal open={hireOpen} onClose={() => setHireOpen(false)} />
     </section>
   );
 }
@@ -283,7 +287,7 @@ function ClientMarquee() {
 const services = [
   {
     icon: Briefcase,
-    title: "Career Mastery and Talent Acquisition",
+    title: "Career and Hiring",
     headline: "Get Noticed For Bigger Roles.",
     body: "We help you stand out for the roles you're already qualified for, and negotiate better pay once you get there. From your profile to interview prep, we help you move up faster.",
     points: ["Stand out to hiring teams", "Negotiate better pay", "Interview preparation"],
@@ -319,7 +323,7 @@ const services = [
   },
   {
     icon: GraduationCap,
-    title: "Talent & Development",
+    title: "Talent and Hiring",
     headline: "Skills That Get You Noticed.",
     body: "English, communication, and workplace skills training that helps people show up with more confidence and get hired faster.",
     points: ["English & communication", "Interview confidence", "Workplace skills"],
@@ -645,14 +649,14 @@ const testimonials = [
   {
     name: "Rajesh Kumar",
     role: "VP Engineering → CTO",
-    service: "Career Mastery and Talent Acquisition",
+    service: "Career and Hiring",
     quote:
       "ZOUM fixed my positioning and prepped me for board-level interviews. I landed the CTO role with a 2.4x compensation jump.",
   },
   {
     name: "Anita R.",
     role: "COO, Industrial Group",
-    service: "Career Mastery and Talent Acquisition",
+    service: "Career and Hiring",
     quote:
       "400 managers, one leadership program that actually stuck. Daily floor friction is gone and our team happiness score jumped 38 points.",
   },
@@ -668,7 +672,7 @@ const testimonials = [
   {
     name: "Devika Nair",
     role: "Head of Talent Acquisition",
-    service: "Career Mastery and Talent Acquisition",
+    service: "Career and Hiring",
     quote:
       "ZOUM didn't dump resumes on us. They brought three vetted leaders who fit our culture from day one.",
   },
@@ -941,7 +945,7 @@ const faqs = [
   },
   {
     q: "Does ZOUM offer training or skills development?",
-    a: "Yes. Our Talent & Development team runs English, communication, and workplace skills training that helps candidates show up with more confidence and get hired faster.",
+    a: "Yes. Our Talent and Hiring team runs English, communication, and workplace skills training that helps candidates show up with more confidence and get hired faster.",
   },
   {
     q: "Can ZOUM manage our social media?",
