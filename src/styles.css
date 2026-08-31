@@ -301,7 +301,7 @@
 
     color: white;
 
-    border: 1px solid var(--brand-deep);
+    border: 1px solid transparent;
 
     transition: 0.35s ease;
   }
