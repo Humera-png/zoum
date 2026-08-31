@@ -323,7 +323,7 @@ const services = [
   },
   {
     icon: GraduationCap,
-    title: "Talent and Hiring",
+    title: "Learning and Development (L&D)",
     headline: "Skills That Get You Noticed.",
     body: "English, communication, and workplace skills training that helps people show up with more confidence and get hired faster.",
     points: ["English & communication", "Interview confidence", "Workplace skills"],
@@ -945,7 +945,7 @@ const faqs = [
   },
   {
     q: "Does ZOUM offer training or skills development?",
-    a: "Yes. Our Talent and Hiring team runs English, communication, and workplace skills training that helps candidates show up with more confidence and get hired faster.",
+    a: "Yes. Our Learning and Development (L&D) team runs English, communication, and workplace skills training that helps candidates show up with more confidence and get hired faster.",
   },
   {
     q: "Can ZOUM manage our social media?",

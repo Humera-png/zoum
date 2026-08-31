@@ -20,7 +20,7 @@ const serviceItems = [
     desc: "Get Noticed For Bigger Roles.",
   },
   {
-    label: "Talent and Hiring",
+    label: "Learning and Development (L&D)",
     to: "/services/talent-development" as const,
     desc: "Skills That Get You Noticed.",
   },
