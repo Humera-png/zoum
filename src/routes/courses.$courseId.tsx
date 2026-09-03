@@ -1,0 +1,143 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { motion } from "framer-motion";
+import { Clock, IndianRupee, ArrowUpRight } from "lucide-react";
+import { courses } from "@/data/courses";
+import { CATEGORY_META } from "@/lib/courseCategory";
+import { PageBackdrop } from "@/components/PageBackdrop";
+import { CourseEnrollPanel } from "@/components/CourseEnrollPanel";
+
+export const Route = createFileRoute("/courses/$courseId")({
+  head: ({ params }) => {
+    const course = courses.find((c) => c.id === params.courseId);
+    return {
+      meta: [
+        {
+          title: course
+            ? `${course.title} | ZOUM Consultancy Courses`
+            : "Course | ZOUM Consultancy",
+        },
+        course
+          ? {
+              name: "description",
+              content: `${course.summary} ${course.duration}, ₹${course.priceInr.toLocaleString("en-IN")}. Enroll online.`,
+            }
+          : { name: "robots", content: "noindex" },
+      ],
+    };
+  },
+  component: CourseDetailPage,
+});
+
+function CourseSchema({ course }: { course: (typeof courses)[number] }) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    name: course.title,
+    description: course.summary,
+    url: `https://zoumconsultancy.com/courses/${course.id}`,
+    provider: {
+      "@type": "Organization",
+      name: "ZOUM Consultancy",
+      sameAs: "https://zoumconsultancy.com",
+    },
+    hasCourseInstance: {
+      "@type": "CourseInstance",
+      courseMode: "Blended",
+      courseWorkload: course.duration,
+      location: { "@type": "Place", name: "Jaipur, India / Online" },
+    },
+    offers: {
+      "@type": "Offer",
+      price: course.priceInr,
+      priceCurrency: "INR",
+      availability: "https://schema.org/InStock",
+    },
+  };
+  return (
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+  );
+}
+
+function CourseDetailPage() {
+  const { courseId } = Route.useParams();
+  const course = courses.find((c) => c.id === courseId);
+
+  return (
+    <main className="pt-32 px-6 pb-20 relative">
+      <PageBackdrop />
+      <div className="max-w-5xl mx-auto relative z-10">
+        {!course ? (
+          <div className="glass-strong rounded-3xl p-10 text-center">
+            <h1 className="font-display text-3xl mb-3">This course isn't available anymore.</h1>
+            <p className="text-muted-foreground">
+              It may have been retired, or the link is out of date. Have a look at our current
+              courses instead.
+            </p>
+            <Link
+              to="/services/talent-development"
+              className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-lime hover:underline"
+            >
+              View all courses <ArrowUpRight className="h-3.5 w-3.5" />
+            </Link>
+          </div>
+        ) : (
+          <>
+            <CourseSchema course={course} />
+            <div className="grid lg:grid-cols-[1fr_360px] gap-6 items-start">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="glass-strong rounded-3xl p-8 md:p-10"
+              >
+                <div className="text-xs uppercase tracking-[0.3em] text-lime mb-3">
+                  / {CATEGORY_META[course.category].label}
+                </div>
+                <h1 className="font-display text-3xl md:text-5xl tracking-tight">{course.title}</h1>
+                <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
+                  <span className="inline-flex items-center gap-1.5">
+                    <Clock className="h-4 w-4 text-lime" /> {course.duration}
+                  </span>
+                  <span className="inline-flex items-center gap-1.5">
+                    <IndianRupee className="h-4 w-4 text-lime" />
+                    {course.priceInr.toLocaleString("en-IN")}
+                  </span>
+                </div>
+
+                <h2 className="font-display text-xl mt-8 mb-3">About this course</h2>
+                <p className="text-muted-foreground leading-relaxed">{course.summary}</p>
+
+                {course.syllabus.length > 0 && (
+                  <>
+                    <h2 className="font-display text-xl mt-8 mb-3">What you'll learn</h2>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                      {course.syllabus.map((s) => (
+                        <li key={s} className="flex items-start gap-2">
+                          <span className="h-1.5 w-1.5 rounded-full bg-lime mt-2 shrink-0" />
+                          {s}
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className="glass-strong rounded-3xl p-6 md:p-7 lg:sticky lg:top-28"
+              >
+                <h2 className="font-display text-lg mb-1">Enroll in this course</h2>
+                <p className="text-sm text-muted-foreground mb-5">
+                  Sign in (or create an account) to enroll and pay securely.
+                </p>
+                <CourseEnrollPanel course={course} />
+              </motion.div>
+            </div>
+          </>
+        )}
+      </div>
+    </main>
+  );
+}

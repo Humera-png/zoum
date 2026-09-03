@@ -6,9 +6,12 @@
 // IMPORTANT: this file must stay in sync with worker/src/courses.ts, which
 // holds the authoritative (server-side) price for each course id — the
 // Worker never trusts a price sent from the browser.
+export type CourseCategory = "language" | "soft-skills" | "leadership" | "career" | "tech" | "data";
+
 export interface Course {
   id: string;
   title: string;
+  category: CourseCategory;
   priceInr: number; // whole rupees
   duration: string; // e.g. "6 weeks", "20 hours"
   summary: string;
@@ -21,6 +24,7 @@ export const courses: Course[] = [
   {
     id: "english-communication",
     title: "English & Communication",
+    category: "language",
     priceInr: 4999,
     duration: "4 weeks",
     summary:
@@ -35,6 +39,7 @@ export const courses: Course[] = [
   {
     id: "personality-development",
     title: "Personality Development",
+    category: "soft-skills",
     priceInr: 5999,
     duration: "3 weeks",
     summary:
@@ -49,6 +54,7 @@ export const courses: Course[] = [
   {
     id: "workplace-soft-skills",
     title: "Workplace & Soft Skills",
+    category: "soft-skills",
     priceInr: 3999,
     duration: "2 weeks",
     summary: "Time management, teamwork, and professional etiquette for people early in their career.",
@@ -62,6 +68,7 @@ export const courses: Course[] = [
   {
     id: "leadership-readiness",
     title: "Leadership Readiness",
+    category: "leadership",
     priceInr: 8999,
     duration: "6 weeks",
     summary: "Preparing high performers to step into their first management role with real support.",
@@ -75,6 +82,7 @@ export const courses: Course[] = [
   {
     id: "interview-mastery",
     title: "Interview Mastery",
+    category: "career",
     priceInr: 2999,
     duration: "1 week",
     summary:
@@ -89,6 +97,7 @@ export const courses: Course[] = [
   {
     id: "workplace-digital-skills",
     title: "Workplace Digital Skills",
+    category: "tech",
     priceInr: 3499,
     duration: "2 weeks",
     summary: "Practical training on the everyday tools every office job expects you to already know.",
@@ -102,6 +111,7 @@ export const courses: Course[] = [
   {
     id: "ai-ml-foundations",
     title: "AI & Machine Learning Foundations",
+    category: "tech",
     priceInr: 14999,
     duration: "8 weeks",
     summary:
@@ -116,6 +126,7 @@ export const courses: Course[] = [
   {
     id: "python-programming",
     title: "Python Programming for Beginners",
+    category: "tech",
     priceInr: 6999,
     duration: "6 weeks",
     summary: "Learn to code in Python from scratch, the language behind most AI, automation, and data work.",
@@ -129,6 +140,7 @@ export const courses: Course[] = [
   {
     id: "full-stack-web-development",
     title: "Full-Stack Web Development",
+    category: "tech",
     priceInr: 19999,
     duration: "12 weeks",
     summary: "Go from zero to building and deploying a real web application, front end and back end.",
@@ -142,6 +154,7 @@ export const courses: Course[] = [
   {
     id: "data-analytics",
     title: "Data Analytics with Excel & SQL",
+    category: "data",
     priceInr: 8999,
     duration: "5 weeks",
     summary: "Turn raw spreadsheets and databases into answers, a practical analytics skillset for any role.",

@@ -1,9 +1,11 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Menu, X, UserCircle2 } from "lucide-react";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 import { MagneticButton } from "./MagneticButton";
 import { Logo } from "./Logo";
+import { CLERK_ENABLED } from "@/lib/clerk";
 
 const links = [
   { label: "Home", to: "/" as const },
@@ -148,7 +150,23 @@ export function Navbar() {
           })}
         </div>
 
-        <div className="hidden md:block">
+        <div className="hidden md:flex items-center gap-2">
+          {CLERK_ENABLED && (
+            <>
+              <SignedOut>
+                <SignInButton mode="modal">
+                  <button className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-sm font-medium text-foreground/70 hover:text-foreground hover:bg-black/5 transition">
+                    <UserCircle2 className="h-4 w-4" /> Sign in
+                  </button>
+                </SignInButton>
+              </SignedOut>
+              <SignedIn>
+                <UserButton
+                  appearance={{ elements: { footer: "hidden", userButtonPopoverFooter: "hidden" } }}
+                />
+              </SignedIn>
+            </>
+          )}
           <MagneticButton
             href="/contact"
             className="btn-lime font-medium text-sm px-5 py-2.5 rounded-full"
@@ -265,9 +283,29 @@ export function Navbar() {
                 >
                   Contact
                 </Link>
+
+                {CLERK_ENABLED && (
+                  <SignedOut>
+                    <SignInButton mode="modal">
+                      <button className="px-4 py-3 rounded-xl text-base text-foreground hover:bg-black/5 transition flex items-center gap-2 text-left">
+                        <UserCircle2 className="h-4 w-4" /> Sign in
+                      </button>
+                    </SignInButton>
+                  </SignedOut>
+                )}
               </nav>
 
               <div className="mt-auto p-5 border-t border-border">
+                {CLERK_ENABLED && (
+                  <SignedIn>
+                    <div className="flex items-center gap-3 mb-4">
+                      <UserButton
+                        appearance={{ elements: { footer: "hidden", userButtonPopoverFooter: "hidden" } }}
+                      />
+                      <span className="text-sm text-muted-foreground">Your account</span>
+                    </div>
+                  </SignedIn>
+                )}
                 <Link
                   to="/contact"
                   className="btn-lime w-full text-center text-sm font-semibold px-5 py-3.5 rounded-full inline-flex items-center justify-center gap-2"

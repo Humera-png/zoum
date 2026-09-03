@@ -198,6 +198,7 @@ function RootComponent() {
   return (
     <ClerkProvider
       publishableKey={CLERK_PUBLISHABLE_KEY}
+      afterSignOutUrl="/"
       appearance={{
         elements: {
           // Hide Clerk's own branding from every widget it renders.

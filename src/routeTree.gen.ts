@@ -22,6 +22,7 @@ import { Route as ServicesTalentDevelopmentRouteImport } from './routes/services
 import { Route as ServicesBusinessConsultancyRouteImport } from './routes/services.business-consultancy'
 import { Route as ServicesWebsiteDevelopmentRouteImport } from './routes/services.website-development'
 import { Route as JobsJobIdRouteImport } from './routes/jobs.$jobId'
+import { Route as CoursesCourseIdRouteImport } from './routes/courses.$courseId'
 
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
@@ -88,6 +89,11 @@ const JobsJobIdRoute = JobsJobIdRouteImport.update({
   path: '/jobs/$jobId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CoursesCourseIdRoute = CoursesCourseIdRouteImport.update({
+  id: '/courses/$courseId',
+  path: '/courses/$courseId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -103,6 +109,7 @@ export interface FileRoutesByFullPath {
   '/services/business-consultancy': typeof ServicesBusinessConsultancyRoute
   '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
   '/jobs/$jobId': typeof JobsJobIdRoute
+  '/courses/$courseId': typeof CoursesCourseIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -118,6 +125,7 @@ export interface FileRoutesByTo {
   '/services/business-consultancy': typeof ServicesBusinessConsultancyRoute
   '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
   '/jobs/$jobId': typeof JobsJobIdRoute
+  '/courses/$courseId': typeof CoursesCourseIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -134,6 +142,7 @@ export interface FileRoutesById {
   '/services/business-consultancy': typeof ServicesBusinessConsultancyRoute
   '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
   '/jobs/$jobId': typeof JobsJobIdRoute
+  '/courses/$courseId': typeof CoursesCourseIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -151,6 +160,7 @@ export interface FileRouteTypes {
     | '/services/business-consultancy'
     | '/services/website-development'
     | '/jobs/$jobId'
+    | '/courses/$courseId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -166,6 +176,7 @@ export interface FileRouteTypes {
     | '/services/business-consultancy'
     | '/services/website-development'
     | '/jobs/$jobId'
+    | '/courses/$courseId'
   id:
     | '__root__'
     | '/'
@@ -181,6 +192,7 @@ export interface FileRouteTypes {
     | '/services/business-consultancy'
     | '/services/website-development'
     | '/jobs/$jobId'
+    | '/courses/$courseId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -197,6 +209,7 @@ export interface RootRouteChildren {
   ServicesBusinessConsultancyRoute: typeof ServicesBusinessConsultancyRoute
   ServicesWebsiteDevelopmentRoute: typeof ServicesWebsiteDevelopmentRoute
   JobsJobIdRoute: typeof JobsJobIdRoute
+  CoursesCourseIdRoute: typeof CoursesCourseIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -292,6 +305,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof JobsJobIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/courses/$courseId': {
+      id: '/courses/$courseId'
+      path: '/courses/$courseId'
+      fullPath: '/courses/$courseId'
+      preLoaderRoute: typeof CoursesCourseIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -309,6 +329,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesBusinessConsultancyRoute: ServicesBusinessConsultancyRoute,
   ServicesWebsiteDevelopmentRoute: ServicesWebsiteDevelopmentRoute,
   JobsJobIdRoute: JobsJobIdRoute,
+  CoursesCourseIdRoute: CoursesCourseIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
