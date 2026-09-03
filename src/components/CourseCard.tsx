@@ -8,9 +8,10 @@ export function CourseCard({ course }: { course: Course }) {
 
   return (
     <Link
+      id={course.id}
       to="/courses/$courseId"
       params={{ courseId: course.id }}
-      className="group relative glass rounded-3xl p-6 flex flex-col hover-glow-lime transition-all duration-500 overflow-hidden h-full"
+      className="group relative glass rounded-3xl p-6 flex flex-col hover-glow-lime transition-all duration-500 overflow-hidden h-full scroll-mt-32"
     >
       <div className="absolute -top-16 -right-16 h-40 w-40 rounded-full bg-lime/0 group-hover:bg-lime/25 blur-3xl transition-all duration-700" />
 
