@@ -10,26 +10,98 @@ import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
 export const Route = createFileRoute("/services/talent-development")({
   head: () => ({
     meta: [
-      { title: "Learning and Development (L&D) | ZOUM Consultancy Jaipur" },
+      { title: "Learning and Development (L&D) Courses | ZOUM Consultancy Jaipur" },
       {
         name: "description",
         content:
-          "Upskilling programs for individuals and teams: English communication, personality development, workplace skills, and leadership training. ZOUM Consultancy, Jaipur.",
+          "Enroll in job-ready courses from ZOUM Consultancy, Jaipur: English & Communication, Interview Mastery, Leadership Readiness, and more. Clear pricing, sign in, enroll online.",
       },
       {
         name: "keywords",
-        content: "skills training Jaipur, English communication training, workplace skills course, talent development India",
+        content:
+          "skills training course Jaipur, English communication course, interview preparation course India, personality development course, leadership training course, workplace skills course online",
       },
-      { property: "og:title", content: "Learning and Development (L&D) | ZOUM Consultancy" },
+      { property: "og:title", content: "Learning and Development (L&D) Courses | ZOUM Consultancy" },
       {
         property: "og:description",
-        content: "We help individuals and teams build the skills that get them noticed and promoted.",
+        content: "Job-ready courses with clear pricing: English & Communication, Interview Mastery, Leadership Readiness, and more.",
       },
       { rel: "canonical", href: "https://zoumconsultancy.com/services/talent-development" },
     ],
   }),
   component: TalentDevelopmentPage,
 });
+
+function CourseListSchema() {
+  if (courses.length === 0) return null;
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": courses.map((c) => ({
+      "@type": "Course",
+      name: c.title,
+      description: c.summary,
+      url: `https://zoumconsultancy.com/services/talent-development#courses`,
+      provider: {
+        "@type": "Organization",
+        name: "ZOUM Consultancy",
+        sameAs: "https://zoumconsultancy.com",
+      },
+      hasCourseInstance: {
+        "@type": "CourseInstance",
+        courseMode: "Blended",
+        courseWorkload: c.duration,
+        location: {
+          "@type": "Place",
+          name: "Jaipur, India / Online",
+        },
+      },
+      offers: {
+        "@type": "Offer",
+        price: c.priceInr,
+        priceCurrency: "INR",
+        availability: "https://schema.org/InStock",
+      },
+    })),
+  };
+  return (
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+  );
+}
+
+const courseFaqs = [
+  {
+    q: "Do I need to create an account to enroll in a course?",
+    a: "Yes. You sign in or create a free account when you enroll, so you can keep track of the courses you've paid for.",
+  },
+  {
+    q: "How do I pay for a course?",
+    a: "Payment is handled through Razorpay and supports cards, UPI, and netbanking. You pay securely after signing in, directly from the course details screen.",
+  },
+  {
+    q: "Are the courses online or in person?",
+    a: "Both. Courses run individually or in small groups, in person in Jaipur or online, depending on what works for you.",
+  },
+  {
+    q: "Can teams or companies book training for employees?",
+    a: "Yes. For team or company bookings, contact us directly instead of enrolling as an individual, and we'll set up a plan for your group.",
+  },
+];
+
+function CourseFaqSchema() {
+  if (courses.length === 0) return null;
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: courseFaqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+  return (
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+  );
+}
 
 const programs = [
   {
@@ -63,6 +135,8 @@ function TalentDevelopmentPage() {
         description="English communication, workplace skills, and leadership training for individuals and teams."
         url="https://zoumconsultancy.com/services/talent-development"
       />
+      <CourseListSchema />
+      <CourseFaqSchema />
       <div className="max-w-7xl mx-auto relative z-10">
         <PageHeader
           pill="Learning and Development (L&D)"
@@ -97,6 +171,10 @@ function TalentDevelopmentPage() {
 
             {courses.length > 0 && (
               <Section id="courses" title="Courses" kicker="/ enroll">
+                <p className="text-muted-foreground max-w-2xl -mt-4 mb-8">
+                  {courses.length} courses, each with a clear syllabus, duration, and price. Pick
+                  one, sign in, and enroll directly, no back-and-forth over email required.
+                </p>
                 <CoursesSection />
               </Section>
             )}
@@ -111,6 +189,26 @@ function TalentDevelopmentPage() {
                 </p>
               </div>
             </Section>
+
+            {courses.length > 0 && (
+              <Section id="course-faq" title="Course Questions" kicker="/ faq">
+                <div className="space-y-4">
+                  {courseFaqs.map((f, i) => (
+                    <motion.div
+                      key={f.q}
+                      initial={{ opacity: 0, y: 16 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.05 }}
+                      className="glass rounded-2xl p-6"
+                    >
+                      <h3 className="font-display text-lg">{f.q}</h3>
+                      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{f.a}</p>
+                    </motion.div>
+                  ))}
+                </div>
+              </Section>
+            )}
 
             <CTA />
           </div>
