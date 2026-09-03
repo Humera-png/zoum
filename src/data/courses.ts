@@ -99,4 +99,57 @@ export const courses: Course[] = [
       "Basic file & data organization",
     ],
   },
+  {
+    id: "ai-ml-foundations",
+    title: "AI & Machine Learning Foundations",
+    priceInr: 14999,
+    duration: "8 weeks",
+    summary:
+      "A hands-on introduction to AI and machine learning: how models actually work, and how to build and use them, not just the theory.",
+    syllabus: [
+      "Python for AI & data work",
+      "Core machine learning concepts",
+      "Working with real datasets",
+      "Using AI models & APIs in a project",
+    ],
+  },
+  {
+    id: "python-programming",
+    title: "Python Programming for Beginners",
+    priceInr: 6999,
+    duration: "6 weeks",
+    summary: "Learn to code in Python from scratch, the language behind most AI, automation, and data work.",
+    syllabus: [
+      "Python syntax & fundamentals",
+      "Working with data structures",
+      "Writing scripts that automate real tasks",
+      "A final project you build yourself",
+    ],
+  },
+  {
+    id: "full-stack-web-development",
+    title: "Full-Stack Web Development",
+    priceInr: 19999,
+    duration: "12 weeks",
+    summary: "Go from zero to building and deploying a real web application, front end and back end.",
+    syllabus: [
+      "HTML, CSS & JavaScript fundamentals",
+      "Building with a modern frontend framework",
+      "Backend APIs & databases",
+      "Deploying a live project",
+    ],
+  },
+  {
+    id: "data-analytics",
+    title: "Data Analytics with Excel & SQL",
+    priceInr: 8999,
+    duration: "5 weeks",
+    summary: "Turn raw spreadsheets and databases into answers, a practical analytics skillset for any role.",
+    syllabus: [
+      "Advanced Excel for analysis",
+      "SQL fundamentals",
+      "Building dashboards & reports",
+      "Presenting data to non-technical people",
+    ],
+  },
 ];

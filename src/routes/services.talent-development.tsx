@@ -10,21 +10,21 @@ import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
 export const Route = createFileRoute("/services/talent-development")({
   head: () => ({
     meta: [
-      { title: "Learning and Development (L&D) Courses | ZOUM Consultancy Jaipur" },
+      { title: "Courses: Soft Skills, AI & Machine Learning, Web Development | ZOUM Consultancy Jaipur" },
       {
         name: "description",
         content:
-          "Enroll in job-ready courses from ZOUM Consultancy, Jaipur: English & Communication, Interview Mastery, Leadership Readiness, and more. Clear pricing, sign in, enroll online.",
+          "Enroll in job-ready courses from ZOUM Consultancy, Jaipur: AI & Machine Learning, Python, Full-Stack Web Development, Data Analytics, English & Communication, Interview Mastery, and more. Clear pricing, sign in, enroll online.",
       },
       {
         name: "keywords",
         content:
-          "skills training course Jaipur, English communication course, interview preparation course India, personality development course, leadership training course, workplace skills course online",
+          "AI and machine learning course India, Python programming course, full stack web development course, data analytics course, skills training course Jaipur, English communication course, interview preparation course India, leadership training course",
       },
-      { property: "og:title", content: "Learning and Development (L&D) Courses | ZOUM Consultancy" },
+      { property: "og:title", content: "Courses: Soft Skills, AI & ML, Web Development | ZOUM Consultancy" },
       {
         property: "og:description",
-        content: "Job-ready courses with clear pricing: English & Communication, Interview Mastery, Leadership Readiness, and more.",
+        content: "Job-ready courses with clear pricing: AI & Machine Learning, Full-Stack Web Development, English & Communication, Interview Mastery, and more.",
       },
       { rel: "canonical", href: "https://zoumconsultancy.com/services/talent-development" },
     ],
@@ -142,7 +142,7 @@ function TalentDevelopmentPage() {
           pill="Learning and Development (L&D)"
           title="Skills That"
           italic="Get You Noticed."
-          sub="Training programs that help individuals build the communication, confidence, and workplace skills that turn a resume into an offer."
+          sub="Training programs and courses that help individuals build the workplace, technical, and AI skills that turn a resume into an offer."
         />
 
         <div className="mt-20 grid lg:grid-cols-[200px_1fr] gap-12">

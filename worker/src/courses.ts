@@ -17,6 +17,10 @@ export const COURSES: CourseRecord[] = [
   { id: "leadership-readiness", title: "Leadership Readiness", priceInr: 8999 },
   { id: "interview-mastery", title: "Interview Mastery", priceInr: 2999 },
   { id: "workplace-digital-skills", title: "Workplace Digital Skills", priceInr: 3499 },
+  { id: "ai-ml-foundations", title: "AI & Machine Learning Foundations", priceInr: 14999 },
+  { id: "python-programming", title: "Python Programming for Beginners", priceInr: 6999 },
+  { id: "full-stack-web-development", title: "Full-Stack Web Development", priceInr: 19999 },
+  { id: "data-analytics", title: "Data Analytics with Excel & SQL", priceInr: 8999 },
 ];
 
 export function findCourse(id: string): CourseRecord | undefined {
