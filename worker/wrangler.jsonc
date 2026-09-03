@@ -24,5 +24,14 @@
     }
   ],
 
+  // Courses, enrollments, and payment records. Schema in migrations/.
+  "d1_databases": [
+    {
+      "binding": "COURSES_DB",
+      "database_name": "zoum-courses",
+      "database_id": "7798765e-4cba-4811-931f-26ef3373d445"
+    }
+  ],
+
   "observability": { "enabled": true }
 }

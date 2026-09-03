@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { MessageCircle, Users, Brain, Presentation } from "lucide-react";
 import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageBackdrop } from "@/components/PageBackdrop";
+import { CoursesSection } from "@/components/CoursesSection";
+import { courses } from "@/data/courses";
 import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
 
 export const Route = createFileRoute("/services/talent-development")({
@@ -92,6 +94,12 @@ function TalentDevelopmentPage() {
                 ))}
               </div>
             </Section>
+
+            {courses.length > 0 && (
+              <Section id="courses" title="Courses" kicker="/ enroll">
+                <CoursesSection />
+              </Section>
+            )}
 
             <Section id="process" title="Who It's For" kicker="/ fit">
               <div className="glass-strong rounded-3xl p-10">

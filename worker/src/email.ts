@@ -67,6 +67,65 @@ export function renderJobApplicationEmailHtml(data: JobApplicationData): string 
 </html>`;
 }
 
+export interface EnrollmentData {
+  name: string;
+  email: string;
+  courseTitle: string;
+  amountInr: number;
+  paymentId: string;
+}
+
+export function renderEnrollmentEmailHtml(data: EnrollmentData): string {
+  const rows: [string, string][] = [
+    ["Name", data.name],
+    ["Email", data.email],
+    ["Course", data.courseTitle],
+    ["Amount paid", `₹${data.amountInr.toLocaleString("en-IN")}`],
+    ["Razorpay payment ID", data.paymentId],
+  ];
+  const rowsHtml = rows
+    .map(
+      ([label, value]) =>
+        `<tr><td style="padding:4px 12px 4px 0;color:#647067;font-size:13px;white-space:nowrap;">${escapeHtml(label)}</td><td style="padding:4px 0;font-size:14px;">${escapeHtml(value)}</td></tr>`,
+    )
+    .join("");
+
+  return `<!doctype html>
+<html>
+  <body style="font-family:Arial,Helvetica,sans-serif;color:#14241b;">
+    <h2 style="margin:0 0 16px;">New paid course enrollment — ${escapeHtml(data.courseTitle)}</h2>
+    <table cellpadding="0" cellspacing="0">${rowsHtml}</table>
+  </body>
+</html>`;
+}
+
+export async function sendEnrollmentEmail(params: {
+  apiKey: string;
+  from: string;
+  to: string;
+  data: EnrollmentData;
+}): Promise<{ ok: true } | { ok: false; status: number; body: string }> {
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${params.apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from: params.from,
+      to: [params.to],
+      reply_to: params.data.email,
+      subject: `New paid enrollment — ${params.data.courseTitle} — ${params.data.name}`,
+      html: renderEnrollmentEmailHtml(params.data),
+    }),
+  });
+
+  if (!res.ok) {
+    return { ok: false, status: res.status, body: await res.text() };
+  }
+  return { ok: true };
+}
+
 export function arrayBufferToBase64(buffer: ArrayBuffer): string {
   const bytes = new Uint8Array(buffer);
   let binary = "";

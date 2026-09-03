@@ -9,9 +9,13 @@ import {
   arrayBufferToBase64,
   sendInquiryEmail,
   sendJobApplicationEmail,
+  sendEnrollmentEmail,
   type ResendAttachment,
 } from "./email";
 import { isRateLimited } from "./ratelimit";
+import { findCourse } from "./courses";
+import { getClerkUserId } from "./clerk";
+import { createRazorpayOrder, verifyRazorpaySignature } from "./razorpay";
 
 export interface Env {
   RESEND_API_KEY: string; // secret — set via `wrangler secret put RESEND_API_KEY`
@@ -19,6 +23,10 @@ export interface Env {
   CONTACT_TO_EMAIL: string;
   CONTACT_FROM_EMAIL: string;
   RATE_LIMIT_KV: KVNamespace;
+  COURSES_DB: D1Database;
+  CLERK_SECRET_KEY: string; // secret
+  RAZORPAY_KEY_ID: string; // secret (not sensitive, but kept alongside the actual secret)
+  RAZORPAY_KEY_SECRET: string; // secret
 }
 
 function jsonResponse(body: unknown, status: number, headers: HeadersInit): Response {
@@ -31,7 +39,7 @@ function jsonResponse(body: unknown, status: number, headers: HeadersInit): Resp
 function corsHeaders(origin: string | null, allowedOrigins: string[]): HeadersInit {
   const headers: Record<string, string> = {
     "Access-Control-Allow-Methods": "POST, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
     Vary: "Origin",
   };
   // Only ever echo back an origin that's actually on the allow-list — never "*".
@@ -67,6 +75,128 @@ async function extractResume(
   };
 }
 
+/** POST /courses/order — creates a Razorpay order for a course. Requires a
+ * Clerk session token; the price is always looked up server-side by course
+ * id, never trusted from the request body. */
+async function handleCreateOrder(
+  request: Request,
+  env: Env,
+  cors: HeadersInit,
+): Promise<Response> {
+  const userId = await getClerkUserId(request, env.CLERK_SECRET_KEY);
+  if (!userId) return jsonResponse({ error: "Sign in required" }, 401, cors);
+
+  const body = (await request.json().catch(() => null)) as Record<string, unknown> | null;
+  const courseId = typeof body?.courseId === "string" ? body.courseId : null;
+  const name = typeof body?.name === "string" ? body.name.trim() : "";
+  const email = typeof body?.email === "string" ? body.email.trim() : "";
+  if (!courseId || !name || !email) {
+    return jsonResponse({ error: "Missing courseId, name, or email" }, 400, cors);
+  }
+
+  const course = findCourse(courseId);
+  if (!course) return jsonResponse({ error: "Unknown course" }, 404, cors);
+
+  const enrollmentId = crypto.randomUUID();
+  const order = await createRazorpayOrder({
+    keyId: env.RAZORPAY_KEY_ID,
+    keySecret: env.RAZORPAY_KEY_SECRET,
+    amountInr: course.priceInr,
+    receipt: enrollmentId,
+    notes: { courseId: course.id, clerkUserId: userId },
+  });
+  if (!order.ok) {
+    console.error("Razorpay order error:", order.status, order.body);
+    return jsonResponse({ error: "Failed to start checkout. Please try again shortly." }, 502, cors);
+  }
+
+  await env.COURSES_DB.prepare(
+    `INSERT INTO enrollments
+      (id, course_id, course_title, amount_inr, clerk_user_id, name, email, razorpay_order_id, status)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'created')`,
+  )
+    .bind(enrollmentId, course.id, course.title, course.priceInr, userId, name, email, order.orderId)
+    .run();
+
+  return jsonResponse(
+    {
+      orderId: order.orderId,
+      amountInr: course.priceInr,
+      keyId: env.RAZORPAY_KEY_ID,
+      courseTitle: course.title,
+    },
+    200,
+    cors,
+  );
+}
+
+/** POST /courses/verify — verifies a completed Razorpay checkout and marks
+ * the enrollment paid. This signature check is the only proof of payment;
+ * nothing is ever marked paid without it passing. */
+async function handleVerifyPayment(
+  request: Request,
+  env: Env,
+  cors: HeadersInit,
+): Promise<Response> {
+  const userId = await getClerkUserId(request, env.CLERK_SECRET_KEY);
+  if (!userId) return jsonResponse({ error: "Sign in required" }, 401, cors);
+
+  const body = (await request.json().catch(() => null)) as Record<string, unknown> | null;
+  const orderId = typeof body?.razorpay_order_id === "string" ? body.razorpay_order_id : null;
+  const paymentId = typeof body?.razorpay_payment_id === "string" ? body.razorpay_payment_id : null;
+  const signature = typeof body?.razorpay_signature === "string" ? body.razorpay_signature : null;
+  if (!orderId || !paymentId || !signature) {
+    return jsonResponse({ error: "Missing payment verification fields" }, 400, cors);
+  }
+
+  const valid = await verifyRazorpaySignature({
+    keySecret: env.RAZORPAY_KEY_SECRET,
+    orderId,
+    paymentId,
+    signature,
+  });
+  if (!valid) return jsonResponse({ error: "Payment verification failed" }, 400, cors);
+
+  const enrollment = await env.COURSES_DB.prepare(
+    `SELECT * FROM enrollments WHERE razorpay_order_id = ? AND clerk_user_id = ?`,
+  )
+    .bind(orderId, userId)
+    .first<{
+      id: string;
+      course_title: string;
+      amount_inr: number;
+      name: string;
+      email: string;
+    }>();
+  if (!enrollment) return jsonResponse({ error: "Enrollment not found" }, 404, cors);
+
+  await env.COURSES_DB.prepare(
+    `UPDATE enrollments SET status = 'paid', razorpay_payment_id = ?, updated_at = datetime('now') WHERE id = ?`,
+  )
+    .bind(paymentId, enrollment.id)
+    .run();
+
+  const emailResult = await sendEnrollmentEmail({
+    apiKey: env.RESEND_API_KEY,
+    from: env.CONTACT_FROM_EMAIL,
+    to: env.CONTACT_TO_EMAIL,
+    data: {
+      name: enrollment.name,
+      email: enrollment.email,
+      courseTitle: enrollment.course_title,
+      amountInr: enrollment.amount_inr,
+      paymentId,
+    },
+  });
+  if (!emailResult.ok) {
+    // Payment already succeeded and is recorded — a failed notification email
+    // shouldn't fail the response to the student.
+    console.error("Enrollment email error:", emailResult.status, emailResult.body);
+  }
+
+  return jsonResponse({ ok: true }, 200, cors);
+}
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const allowedOrigins = env.ALLOWED_ORIGINS.split(",").map((s) => s.trim());
@@ -86,13 +216,17 @@ export default {
     }
 
     const url = new URL(request.url);
-    if (url.pathname !== "/" && url.pathname !== "/contact" && url.pathname !== "/apply") {
-      return jsonResponse({ error: "Not found" }, 404, cors);
-    }
 
     const ip = request.headers.get("CF-Connecting-IP") ?? "unknown";
     if (await isRateLimited(env.RATE_LIMIT_KV, ip)) {
       return jsonResponse({ error: "Too many requests. Please try again in a minute." }, 429, cors);
+    }
+
+    if (url.pathname === "/courses/order") return handleCreateOrder(request, env, cors);
+    if (url.pathname === "/courses/verify") return handleVerifyPayment(request, env, cors);
+
+    if (url.pathname !== "/" && url.pathname !== "/contact" && url.pathname !== "/apply") {
+      return jsonResponse({ error: "Not found" }, 404, cors);
     }
 
     let form: FormData;

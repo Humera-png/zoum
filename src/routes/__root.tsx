@@ -170,16 +170,18 @@ function RootShell({ children }: { children: React.ReactNode }) {
   );
 }
 
+import { ClerkProvider } from "@clerk/clerk-react";
 import { PageTransition } from "@/components/PageTransition";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { IntroScreen } from "@/components/IntroScreen";
+import { CLERK_PUBLISHABLE_KEY } from "@/lib/clerk";
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
-  return (
+  const app = (
     <QueryClientProvider client={queryClient}>
       <IntroScreen />
       <Navbar />
@@ -189,5 +191,23 @@ function RootComponent() {
       <Footer />
       <WhatsAppButton />
     </QueryClientProvider>
+  );
+
+  if (!CLERK_PUBLISHABLE_KEY) return app;
+
+  return (
+    <ClerkProvider
+      publishableKey={CLERK_PUBLISHABLE_KEY}
+      appearance={{
+        elements: {
+          // Hide Clerk's own branding from every widget it renders.
+          footer: "hidden",
+          footerAction: "hidden",
+          badge: "hidden",
+        },
+      }}
+    >
+      {app}
+    </ClerkProvider>
   );
 }
