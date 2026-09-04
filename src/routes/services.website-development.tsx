@@ -34,21 +34,29 @@ const services = [
     icon: Globe,
     name: "Marketing & Business Websites",
     desc: "Fast, modern websites that load quickly, look right on every device, and are easy for your team to update.",
+    image:
+      "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1200&q=80",
   },
   {
     icon: ShoppingCart,
     name: "E-Commerce",
     desc: "Online stores built to actually convert, with payments, inventory, and checkout that just work.",
+    image:
+      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80",
   },
   {
     icon: Layers,
     name: "Custom Web Applications",
     desc: "Internal tools and customer-facing platforms built around how your business actually operates.",
+    image:
+      "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=1200&q=80",
   },
   {
     icon: Wrench,
     name: "Maintenance & Support",
     desc: "Ongoing updates, fixes, and hosting support so your site stays fast and secure after launch.",
+    image:
+      "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1200&q=80",
   },
 ];
 
@@ -118,13 +126,24 @@ function WebsiteDevelopmentPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.05 }}
-                    className="group glass node-bloom rounded-2xl p-6"
+                    className="group glass rounded-2xl overflow-hidden hover-glow-lime transition"
                   >
-                    <div className="h-10 w-10 rounded-xl glass-strong grid place-items-center mb-4 group-hover:bg-lime group-hover:text-white transition">
-                      <s.icon className="h-5 w-5" />
+                    <div className="relative aspect-[16/9] overflow-hidden">
+                      <img
+                        src={s.image}
+                        alt={s.name}
+                        loading="lazy"
+                        className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent" />
+                      <div className="absolute top-3 left-3 h-10 w-10 rounded-xl glass-strong grid place-items-center group-hover:bg-lime group-hover:text-white transition">
+                        <s.icon className="h-5 w-5" />
+                      </div>
                     </div>
-                    <div className="font-display text-xl">{s.name}</div>
-                    <div className="text-sm text-muted-foreground mt-2">{s.desc}</div>
+                    <div className="p-6">
+                      <div className="font-display text-xl">{s.name}</div>
+                      <div className="text-sm text-muted-foreground mt-2">{s.desc}</div>
+                    </div>
                   </motion.div>
                 ))}
               </div>

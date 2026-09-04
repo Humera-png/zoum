@@ -37,7 +37,7 @@ export const courses: Course[] = [
       "Your personal 7-Day BPO Career Launch Plan",
     ],
     image:
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "it-career-masterclass",
@@ -54,7 +54,7 @@ export const courses: Course[] = [
       "Your personal 7-Day IT Career Launch Plan",
     ],
     image:
-      "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "english-communication",
@@ -71,7 +71,7 @@ export const courses: Course[] = [
       "Mock interviews in English",
     ],
     image:
-      "https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "personality-development",
@@ -88,7 +88,7 @@ export const courses: Course[] = [
       "Building genuine rapport",
     ],
     image:
-      "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "workplace-soft-skills",
@@ -104,7 +104,7 @@ export const courses: Course[] = [
       "Giving & receiving feedback",
     ],
     image:
-      "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "leadership-readiness",
@@ -120,7 +120,7 @@ export const courses: Course[] = [
       "Difficult performance conversations",
     ],
     image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "interview-mastery",
@@ -137,7 +137,7 @@ export const courses: Course[] = [
       "Follow-up & evaluating offers",
     ],
     image:
-      "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "workplace-digital-skills",
@@ -153,7 +153,7 @@ export const courses: Course[] = [
       "Basic file & data organization",
     ],
     image:
-      "https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1517134191118-9d595e4c8c2b?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "ai-ml-foundations",
@@ -170,7 +170,7 @@ export const courses: Course[] = [
       "Using AI models & APIs in a project",
     ],
     image:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1555255707-c07966088b7b?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "python-programming",
@@ -186,7 +186,7 @@ export const courses: Course[] = [
       "A final project you build yourself",
     ],
     image:
-      "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "full-stack-web-development",
@@ -202,7 +202,7 @@ export const courses: Course[] = [
       "Deploying a live project",
     ],
     image:
-      "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "data-analytics",
@@ -218,6 +218,6 @@ export const courses: Course[] = [
       "Presenting data to non-technical people",
     ],
     image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
   },
 ];
