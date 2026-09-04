@@ -42,7 +42,7 @@ const board = [
   },
   {
     name: "Humera Shaikh",
-    role: "Partner, IT Services & Digital Infrastructure",
+    role: "CTO - Chief Technology Officer",
     bio: "Directs full-scale software engineering, AI architecture implementations, cloud infrastructure, and global technology systems integration.",
     linkedin: "https://www.linkedin.com/in/humerashaikhofficial/",
   },
