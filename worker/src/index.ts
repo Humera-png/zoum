@@ -27,6 +27,7 @@ export interface Env {
   CLERK_SECRET_KEY: string; // secret
   RAZORPAY_KEY_ID: string; // secret (not sensitive, but kept alongside the actual secret)
   RAZORPAY_KEY_SECRET: string; // secret
+  ADMIN_TOKEN: string; // secret — set via `wrangler secret put ADMIN_TOKEN`
 }
 
 function jsonResponse(body: unknown, status: number, headers: HeadersInit): Response {
@@ -38,7 +39,7 @@ function jsonResponse(body: unknown, status: number, headers: HeadersInit): Resp
 
 function corsHeaders(origin: string | null, allowedOrigins: string[]): HeadersInit {
   const headers: Record<string, string> = {
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type, Authorization",
     Vary: "Origin",
   };
@@ -197,6 +198,33 @@ async function handleVerifyPayment(
   return jsonResponse({ ok: true }, 200, cors);
 }
 
+/** GET /admin/data — everything stored so far (enrollments, inquiries, job
+ * applications), gated behind a single shared token rather than left open
+ * like the old /leads-api this replaces. */
+async function handleAdminData(request: Request, env: Env, cors: HeadersInit): Promise<Response> {
+  const authHeader = request.headers.get("Authorization");
+  const token = authHeader?.startsWith("Bearer ") ? authHeader.slice(7) : null;
+  if (!token || token !== env.ADMIN_TOKEN) {
+    return jsonResponse({ error: "Unauthorized" }, 401, cors);
+  }
+
+  const [enrollments, inquiries, jobApplications] = await Promise.all([
+    env.DB.prepare(`SELECT * FROM enrollments ORDER BY created_at DESC LIMIT 300`).all(),
+    env.DB.prepare(`SELECT * FROM inquiries ORDER BY created_at DESC LIMIT 300`).all(),
+    env.DB.prepare(`SELECT * FROM job_applications ORDER BY created_at DESC LIMIT 300`).all(),
+  ]);
+
+  return jsonResponse(
+    {
+      enrollments: enrollments.results,
+      inquiries: inquiries.results,
+      jobApplications: jobApplications.results,
+    },
+    200,
+    cors,
+  );
+}
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const allowedOrigins = env.ALLOWED_ORIGINS.split(",").map((s) => s.trim());
@@ -211,11 +239,16 @@ export default {
       return jsonResponse({ error: "Forbidden origin" }, 403, cors);
     }
 
+    const url = new URL(request.url);
+
+    if (url.pathname === "/admin/data") {
+      if (request.method !== "GET") return jsonResponse({ error: "Method not allowed" }, 405, cors);
+      return handleAdminData(request, env, cors);
+    }
+
     if (request.method !== "POST") {
       return jsonResponse({ error: "Method not allowed" }, 405, cors);
     }
-
-    const url = new URL(request.url);
 
     const ip = request.headers.get("CF-Connecting-IP") ?? "unknown";
     if (await isRateLimited(env.RATE_LIMIT_KV, ip)) {
