@@ -16,11 +16,46 @@ export interface Course {
   duration: string; // e.g. "6 weeks", "20 hours"
   summary: string;
   syllabus: string[];
+  image: string;
 }
 
 // Starting prices/durations — adjust these to match your actual rate card
 // before real payments go live, I don't have your verified pricing.
 export const courses: Course[] = [
+  {
+    id: "bpo-career-masterclass",
+    title: "BPO Career & Interview Readiness Masterclass",
+    category: "career",
+    priceInr: 999,
+    duration: "3 hours (live)",
+    summary:
+      "A 3-hour live masterclass that takes you from confused fresher to interview-ready for a BPO career: industry basics, professional presence, and real mock-interview practice.",
+    syllabus: [
+      "What BPO is: Voice, Non-Voice, Chat, and career growth paths",
+      "Professional communication, body language & grooming",
+      "Live mock interview practice with feedback",
+      "Your personal 7-Day BPO Career Launch Plan",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: "it-career-masterclass",
+    title: "IT Career & Interview Readiness Masterclass",
+    category: "career",
+    priceInr: 999,
+    duration: "3 hours (live)",
+    summary:
+      "A 3-hour live masterclass that helps freshers understand the IT industry, build a professional profile, and walk into their first IT interview with confidence.",
+    syllabus: [
+      "IT industry overview: development, cloud, data, cybersecurity & AI",
+      "Resume, LinkedIn & professional introduction",
+      "Live mock interview practice with feedback",
+      "Your personal 7-Day IT Career Launch Plan",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=1200&q=80",
+  },
   {
     id: "english-communication",
     title: "English & Communication",
@@ -35,6 +70,8 @@ export const courses: Course[] = [
       "Accent neutralization & pronunciation",
       "Mock interviews in English",
     ],
+    image:
+      "https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "personality-development",
@@ -50,6 +87,8 @@ export const courses: Course[] = [
       "Handling difficult conversations",
       "Building genuine rapport",
     ],
+    image:
+      "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "workplace-soft-skills",
@@ -64,6 +103,8 @@ export const courses: Course[] = [
       "Workplace etiquette",
       "Giving & receiving feedback",
     ],
+    image:
+      "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "leadership-readiness",
@@ -78,6 +119,8 @@ export const courses: Course[] = [
       "Setting goals for a team",
       "Difficult performance conversations",
     ],
+    image:
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "interview-mastery",
@@ -93,6 +136,8 @@ export const courses: Course[] = [
       "Salary negotiation",
       "Follow-up & evaluating offers",
     ],
+    image:
+      "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "workplace-digital-skills",
@@ -107,6 +152,8 @@ export const courses: Course[] = [
       "Video call & remote work etiquette",
       "Basic file & data organization",
     ],
+    image:
+      "https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "ai-ml-foundations",
@@ -122,6 +169,8 @@ export const courses: Course[] = [
       "Working with real datasets",
       "Using AI models & APIs in a project",
     ],
+    image:
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "python-programming",
@@ -136,6 +185,8 @@ export const courses: Course[] = [
       "Writing scripts that automate real tasks",
       "A final project you build yourself",
     ],
+    image:
+      "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "full-stack-web-development",
@@ -150,6 +201,8 @@ export const courses: Course[] = [
       "Backend APIs & databases",
       "Deploying a live project",
     ],
+    image:
+      "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "data-analytics",
@@ -164,5 +217,7 @@ export const courses: Course[] = [
       "Building dashboards & reports",
       "Presenting data to non-technical people",
     ],
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
   },
 ];

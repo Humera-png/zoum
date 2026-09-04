@@ -11,6 +11,8 @@ export interface CourseRecord {
 // Must stay in sync with src/data/courses.ts — this is the price that's
 // actually charged, regardless of what a client sends.
 export const COURSES: CourseRecord[] = [
+  { id: "bpo-career-masterclass", title: "BPO Career & Interview Readiness Masterclass", priceInr: 999 },
+  { id: "it-career-masterclass", title: "IT Career & Interview Readiness Masterclass", priceInr: 999 },
   { id: "english-communication", title: "English & Communication", priceInr: 4999 },
   { id: "personality-development", title: "Personality Development", priceInr: 5999 },
   { id: "workplace-soft-skills", title: "Workplace & Soft Skills", priceInr: 3999 },

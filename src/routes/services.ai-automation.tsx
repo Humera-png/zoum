@@ -9,6 +9,8 @@ import {
   Cloud,
   Smartphone,
   Code2,
+  Quote,
+  ArrowUpRight,
 } from "lucide-react";
 
 import { ServiceSubNav } from "@/components/ServiceSubNav";
@@ -29,7 +31,7 @@ export const Route = createFileRoute("/services/ai-automation")({
       {
         name: "keywords",
         content:
-          "AI automation agency India, AI agents development, AI chatbot development, custom software development Jaipur, IT services company India",
+          "AI automation agency India, AI agents development, AI chatbot development, custom software development Jaipur, IT services company India, business process automation, workflow automation company, AI integration services",
       },
       {
         property: "og:title",
@@ -240,6 +242,35 @@ function AIPage() {
                     <p className="text-sm text-muted-foreground mt-4">{r.desc}</p>
                   </motion.div>
                 ))}
+              </div>
+            </Section>
+
+            <Section id="case-studies" title="How We Work With Clients" kicker="/ case studies">
+              <div className="glass-strong rounded-3xl p-10 relative overflow-hidden mb-8">
+                <div className="absolute -left-20 -bottom-20 h-60 w-60 bg-lime/20 blur-3xl rounded-full" />
+                <Quote className="text-lime mb-5 relative" />
+                <p className="font-serif italic text-2xl md:text-3xl relative">
+                  Never sell like you need their money. They have a problem, we have the solution.
+                  Taking on a client should feel like we said yes to them.
+                </p>
+                <p className="mt-6 text-muted-foreground relative max-w-2xl">
+                  That's why we don't take on every project. We take on the ones where we're
+                  confident we can actually move the needle, then we prove it with real work, not a
+                  pitch deck.
+                </p>
+              </div>
+              <div className="glass rounded-2xl p-8 text-center">
+                <p className="text-muted-foreground max-w-xl mx-auto">
+                  We're putting together detailed, verified case studies from real client work.
+                  Rather than publish numbers we can't stand behind, we'd rather walk you through
+                  actual examples directly.
+                </p>
+                <Link
+                  to="/contact"
+                  className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-lime hover:underline"
+                >
+                  Ask us for examples <ArrowUpRight className="h-3.5 w-3.5" />
+                </Link>
               </div>
             </Section>
 

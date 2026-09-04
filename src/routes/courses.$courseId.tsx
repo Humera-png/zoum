@@ -88,8 +88,17 @@ function CourseDetailPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="glass-strong rounded-3xl p-8 md:p-10"
+                className="glass-strong rounded-3xl overflow-hidden"
               >
+                <div className="relative aspect-[21/9]">
+                  <img
+                    src={course.image}
+                    alt={course.title}
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/0 to-transparent" />
+                </div>
+                <div className="p-8 md:p-10">
                 <div className="text-xs uppercase tracking-[0.3em] text-lime mb-3">
                   / {CATEGORY_META[course.category].label}
                 </div>
@@ -120,6 +129,7 @@ function CourseDetailPage() {
                     </ul>
                   </>
                 )}
+                </div>
               </motion.div>
 
               <motion.div

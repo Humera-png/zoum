@@ -11,30 +11,33 @@ export function CourseCard({ course }: { course: Course }) {
       id={course.id}
       to="/courses/$courseId"
       params={{ courseId: course.id }}
-      className="group relative glass rounded-3xl p-6 flex flex-col hover-glow-lime transition-all duration-500 overflow-hidden h-full scroll-mt-32"
+      className="group relative glass rounded-3xl overflow-hidden flex flex-col hover-glow-lime transition-all duration-500 h-full scroll-mt-32"
     >
-      <div className="absolute -top-16 -right-16 h-40 w-40 rounded-full bg-lime/0 group-hover:bg-lime/25 blur-3xl transition-all duration-700" />
-
-      <div className="relative z-10 flex flex-col h-full">
-        <div className="flex items-center justify-between">
-          <div className="h-11 w-11 rounded-2xl glass-strong grid place-items-center group-hover:bg-lime group-hover:text-white transition">
-            <Icon className="h-5 w-5" />
-          </div>
-          <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-            {label}
-          </span>
+      <div className="relative aspect-[16/10] overflow-hidden">
+        <img
+          src={course.image}
+          alt={course.title}
+          loading="lazy"
+          className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+        <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 glass-strong rounded-full px-3 py-1.5">
+          <Icon className="h-3.5 w-3.5 text-lime" />
+          <span className="text-[10px] uppercase tracking-[0.2em] text-foreground">{label}</span>
         </div>
+        <div className="absolute bottom-3 right-3 font-display text-2xl text-white tracking-tight drop-shadow-sm">
+          ₹{course.priceInr.toLocaleString("en-IN")}
+        </div>
+      </div>
 
-        <div className="mt-4 font-display text-xl leading-snug">{course.title}</div>
+      <div className="relative z-10 flex flex-col flex-1 p-6">
+        <div className="font-display text-xl leading-snug">{course.title}</div>
         <div className="mt-2 flex items-center gap-1.5 text-xs text-muted-foreground">
           <Clock className="h-3.5 w-3.5" /> {course.duration}
         </div>
         <p className="mt-3 text-sm text-muted-foreground line-clamp-2">{course.summary}</p>
 
-        <div className="mt-4 pt-4 border-t border-border flex items-center justify-between mt-auto">
-          <span className="font-display text-2xl tracking-tight">
-            ₹{course.priceInr.toLocaleString("en-IN")}
-          </span>
+        <div className="mt-4 pt-4 border-t border-border flex items-center justify-end mt-auto">
           <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-lime bg-lime/10 rounded-full px-3 py-1.5 group-hover:bg-lime group-hover:text-white transition">
             Enroll <ArrowUpRight className="h-3.5 w-3.5" />
           </span>

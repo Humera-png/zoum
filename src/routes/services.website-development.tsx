@@ -1,6 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Globe, Layers, ShoppingCart, Wrench } from "lucide-react";
+import { Globe, Layers, ShoppingCart, Wrench, Check } from "lucide-react";
 import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageBackdrop } from "@/components/PageBackdrop";
 import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
@@ -16,7 +16,7 @@ export const Route = createFileRoute("/services/website-development")({
       },
       {
         name: "keywords",
-        content: "website development company India, web app development Jaipur, e-commerce development, custom software development",
+        content: "website development company India, web app development Jaipur, e-commerce development, custom software development, website development pricing, affordable website design India",
       },
       { property: "og:title", content: "Website Development | ZOUM Consultancy" },
       {
@@ -49,6 +49,43 @@ const services = [
     icon: Wrench,
     name: "Maintenance & Support",
     desc: "Ongoing updates, fixes, and hosting support so your site stays fast and secure after launch.",
+  },
+];
+
+const plans = [
+  {
+    tier: "Starter",
+    price: "₹10,000 – ₹12,000",
+    desc: "A clean, professional website for a business or portfolio that needs to look right, load fast, and be easy to hand over.",
+    feats: [
+      "Up to 5 pages",
+      "Mobile-friendly, fast-loading build",
+      "Contact form & WhatsApp/click-to-call",
+      "Basic on-page SEO setup",
+    ],
+  },
+  {
+    tier: "Premium",
+    price: "₹15,000 – ₹20,000",
+    desc: "For businesses that need more pages, content you can update yourself, and a site built to bring in leads.",
+    feats: [
+      "Up to 12 pages, blog/CMS included",
+      "Everything in Starter",
+      "Analytics & lead-capture setup",
+      "Stronger on-page SEO structure",
+    ],
+    highlight: true,
+  },
+  {
+    tier: "Business",
+    price: "₹20,000 – ₹50,000",
+    desc: "Custom web apps, e-commerce, or anything with real functionality behind it, priced to what you actually need.",
+    feats: [
+      "E-commerce, dashboards, or custom features",
+      "Everything in Premium",
+      "Priority build & support",
+      "Scoped after a requirements call",
+    ],
   },
 ];
 
@@ -89,6 +126,45 @@ function WebsiteDevelopmentPage() {
                     <div className="font-display text-xl">{s.name}</div>
                     <div className="text-sm text-muted-foreground mt-2">{s.desc}</div>
                   </motion.div>
+                ))}
+              </div>
+            </Section>
+
+            <Section id="pricing" title="Plans" kicker="/ pricing">
+              <p className="text-muted-foreground max-w-2xl -mt-4 mb-8">
+                Starting prices, adjust to your project. Every plan includes ongoing maintenance and
+                hosting support, billed separately once your site is live, so it keeps running without
+                you having to think about it.
+              </p>
+              <div className="grid md:grid-cols-3 gap-5">
+                {plans.map((p) => (
+                  <div
+                    key={p.tier}
+                    className={`glass-strong rounded-3xl p-8 transition ${p.highlight ? "ring-2 ring-[var(--brand-deep)] shadow-[0_24px_60px_-24px_var(--brand-glow)]" : ""}`}
+                  >
+                    {p.highlight && (
+                      <div className="text-[10px] inline-block bg-lime text-white px-2.5 py-1 rounded-full font-medium mb-3 tracking-wider uppercase">
+                        Most popular
+                      </div>
+                    )}
+                    <div className="font-display text-2xl">{p.tier}</div>
+                    <div className="font-display text-3xl mt-2">{p.price}</div>
+                    <p className="text-sm text-muted-foreground mt-3">{p.desc}</p>
+                    <ul className="mt-6 space-y-2 text-sm text-muted-foreground">
+                      {p.feats.map((f) => (
+                        <li key={f} className="flex items-center gap-2">
+                          <Check className="h-3.5 w-3.5 text-lime shrink-0" />
+                          {f}
+                        </li>
+                      ))}
+                    </ul>
+                    <Link
+                      to="/contact"
+                      className="mt-6 block text-center glass rounded-full py-3 text-sm font-semibold hover:bg-white transition"
+                    >
+                      Get a quote →
+                    </Link>
+                  </div>
                 ))}
               </div>
             </Section>
