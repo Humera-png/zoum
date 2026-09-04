@@ -71,6 +71,8 @@ const plans = [
       "Contact form & WhatsApp/click-to-call",
       "Basic on-page SEO setup",
     ],
+    image:
+      "https://images.unsplash.com/photo-1547082299-de196ea013d6?auto=format&fit=crop&w=1200&q=80",
   },
   {
     tier: "Premium",
@@ -83,6 +85,8 @@ const plans = [
       "Stronger on-page SEO structure",
     ],
     highlight: true,
+    image:
+      "https://images.unsplash.com/photo-1522252234503-e356532cafd5?auto=format&fit=crop&w=1200&q=80",
   },
   {
     tier: "Business",
@@ -94,6 +98,8 @@ const plans = [
       "Priority build & support",
       "Scoped after a requirements call",
     ],
+    image:
+      "https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&w=1200&q=80",
   },
 ];
 
@@ -159,30 +165,41 @@ function WebsiteDevelopmentPage() {
                 {plans.map((p) => (
                   <div
                     key={p.tier}
-                    className={`glass-strong rounded-3xl p-8 transition ${p.highlight ? "ring-2 ring-[var(--brand-deep)] shadow-[0_24px_60px_-24px_var(--brand-glow)]" : ""}`}
+                    className={`glass-strong rounded-3xl overflow-hidden transition ${p.highlight ? "ring-2 ring-[var(--brand-deep)] shadow-[0_24px_60px_-24px_var(--brand-glow)]" : ""}`}
                   >
-                    {p.highlight && (
-                      <div className="text-[10px] inline-block bg-lime text-white px-2.5 py-1 rounded-full font-medium mb-3 tracking-wider uppercase">
-                        Most popular
-                      </div>
-                    )}
-                    <div className="font-display text-2xl">{p.tier}</div>
-                    <div className="font-display text-3xl mt-2">{p.price}</div>
-                    <p className="text-sm text-muted-foreground mt-3">{p.desc}</p>
-                    <ul className="mt-6 space-y-2 text-sm text-muted-foreground">
-                      {p.feats.map((f) => (
-                        <li key={f} className="flex items-center gap-2">
-                          <Check className="h-3.5 w-3.5 text-lime shrink-0" />
-                          {f}
-                        </li>
-                      ))}
-                    </ul>
-                    <Link
-                      to="/contact"
-                      className="mt-6 block text-center glass rounded-full py-3 text-sm font-semibold hover:bg-white transition"
-                    >
-                      Get a quote →
-                    </Link>
+                    <div className="relative aspect-[16/9] overflow-hidden">
+                      <img
+                        src={p.image}
+                        alt={p.tier}
+                        loading="lazy"
+                        className="absolute inset-0 h-full w-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent" />
+                      {p.highlight && (
+                        <div className="absolute top-3 left-3 text-[10px] inline-block bg-lime text-white px-2.5 py-1 rounded-full font-medium tracking-wider uppercase">
+                          Most popular
+                        </div>
+                      )}
+                    </div>
+                    <div className="p-8">
+                      <div className="font-display text-2xl">{p.tier}</div>
+                      <div className="font-display text-3xl mt-2">{p.price}</div>
+                      <p className="text-sm text-muted-foreground mt-3">{p.desc}</p>
+                      <ul className="mt-6 space-y-2 text-sm text-muted-foreground">
+                        {p.feats.map((f) => (
+                          <li key={f} className="flex items-center gap-2">
+                            <Check className="h-3.5 w-3.5 text-lime shrink-0" />
+                            {f}
+                          </li>
+                        ))}
+                      </ul>
+                      <Link
+                        to="/contact"
+                        className="mt-6 block text-center glass rounded-full py-3 text-sm font-semibold hover:bg-white transition"
+                      >
+                        Get a quote →
+                      </Link>
+                    </div>
                   </div>
                 ))}
               </div>

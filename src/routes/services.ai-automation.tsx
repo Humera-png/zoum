@@ -52,66 +52,84 @@ export const Route = createFileRoute("/services/ai-automation")({
 const services = [
   {
     icon: Bot,
-
     name: "AI Automation Systems",
-
     desc: "Automate repetitive business processes with intelligent workflows, AI agents, and custom automation systems that improve speed and efficiency.",
+    image:
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
   },
-
   {
     icon: Sparkles,
-
     name: "AI Voice Assistants",
-
     desc: "Create personalized AI voice assistants for customer support, scheduling, sales, internal operations, and smarter communication.",
+    image:
+      "https://images.unsplash.com/photo-1589254065878-42c9da997008?auto=format&fit=crop&w=1200&q=80",
   },
-
   {
     icon: Database,
-
     name: "AI Chatbots & AI Agents",
-
     desc: "Deploy smart conversational AI trained on your business data to answer questions, support customers, and assist teams.",
+    image:
+      "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=1200&q=80",
   },
-
   {
     icon: Code2,
-
     name: "Custom Software Development",
-
     desc: "Build scalable software platforms, internal tools, SaaS products, and enterprise solutions designed around your business goals.",
+    image:
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80",
   },
-
   {
     icon: Smartphone,
-
     name: "Android & iOS App Development",
-
     desc: "Design and develop modern mobile applications with smooth experiences, strong performance, and scalable technology.",
+    image:
+      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80",
   },
-
   {
     icon: Cpu,
-
     name: "Web Application Development",
-
     desc: "High-performance websites and web applications built with modern frameworks, secure architecture, and growth-focused design.",
+    image:
+      "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80",
   },
-
   {
     icon: Cloud,
-
     name: "Cloud Solutions & Infrastructure",
-
     desc: "Reliable cloud systems, deployment pipelines, migrations, hosting, and infrastructure designed for business growth.",
+    image:
+      "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=1200&q=80",
   },
-
   {
     icon: Workflow,
-
     name: "AI Integrations & APIs",
-
     desc: "Connect your existing platforms with AI, automation tools, APIs, and intelligent systems that improve operations.",
+    image:
+      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
+  },
+];
+
+const partnerships = [
+  {
+    tier: "AI Starter",
+    price: "Discovery",
+    desc: "Identify automation opportunities, software requirements, and create a clear technology roadmap.",
+    image:
+      "https://images.unsplash.com/photo-1553028826-f4804a6dba3b?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    tier: "Custom Build",
+    price: "Development",
+    highlight: true,
+    desc: "Complete AI systems, mobile applications, software platforms, cloud solutions, and automation implementation.",
+    image:
+      "https://images.unsplash.com/photo-1550439062-609e1531270e?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    tier: "Long Term Partner",
+    price: "Scale",
+    desc: "Continuous technology support, optimization, improvements, and future product expansion.",
+    image:
+      "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1200&q=80",
   },
 ];
 
@@ -187,29 +205,28 @@ function AIPage() {
                 {services.map((s, i) => (
                   <motion.div
                     key={i}
-                    initial={{
-                      opacity: 0,
-                      y: 20,
-                    }}
-                    whileInView={{
-                      opacity: 1,
-                      y: 0,
-                    }}
-                    viewport={{
-                      once: true,
-                    }}
-                    transition={{
-                      delay: i * 0.05,
-                    }}
-                    className="group glass node-bloom rounded-2xl p-6"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.05 }}
+                    className="group glass rounded-2xl overflow-hidden hover-glow-lime transition"
                   >
-                    <div className="h-10 w-10 rounded-xl glass-strong grid place-items-center mb-4 group-hover:bg-lime group-hover:text-white transition">
-                      <s.icon className="h-5 w-5" />
+                    <div className="relative aspect-[16/9] overflow-hidden">
+                      <img
+                        src={s.image}
+                        alt={s.name}
+                        loading="lazy"
+                        className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent" />
+                      <div className="absolute top-3 left-3 h-10 w-10 rounded-xl glass-strong grid place-items-center group-hover:bg-lime group-hover:text-white transition">
+                        <s.icon className="h-5 w-5" />
+                      </div>
                     </div>
-
-                    <div className="font-display text-xl">{s.name}</div>
-
-                    <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{s.desc}</p>
+                    <div className="p-6">
+                      <div className="font-display text-xl">{s.name}</div>
+                      <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{s.desc}</p>
+                    </div>
                   </motion.div>
                 ))}
               </div>
@@ -276,44 +293,38 @@ function AIPage() {
 
             <Section id="pricing" title="Technology Partnerships" kicker="/ engagement">
               <div className="grid md:grid-cols-3 gap-5">
-                {[
-                  {
-                    tier: "AI Starter",
-                    price: "Discovery",
-                    desc: "Identify automation opportunities, software requirements, and create a clear technology roadmap.",
-                  },
-
-                  {
-                    tier: "Custom Build",
-                    price: "Development",
-                    highlight: true,
-                    desc: "Complete AI systems, mobile applications, software platforms, cloud solutions, and automation implementation.",
-                  },
-
-                  {
-                    tier: "Long Term Partner",
-                    price: "Scale",
-                    desc: "Continuous technology support, optimization, improvements, and future product expansion.",
-                  },
-                ].map((p, i) => (
+                {partnerships.map((p, i) => (
                   <div
                     key={i}
-                    className={`glass-strong rounded-3xl p-8 ${
-                      p.highlight ? "ring-2 ring-[var(--brand-deep)]" : ""
+                    className={`glass-strong rounded-3xl overflow-hidden transition ${
+                      p.highlight ? "ring-2 ring-[var(--brand-deep)] shadow-[0_24px_60px_-24px_var(--brand-glow)]" : ""
                     }`}
                   >
-                    <div className="font-display text-2xl">{p.tier}</div>
-
-                    <div className="font-display text-4xl mt-3">{p.price}</div>
-
-                    <p className="text-sm text-muted-foreground mt-4">{p.desc}</p>
-
-                    <Link
-                      to="/contact"
-                      className="mt-6 block text-center glass rounded-full py-3 text-sm hover:bg-white transition"
-                    >
-                      Start Project
-                    </Link>
+                    <div className="relative aspect-[16/9] overflow-hidden">
+                      <img
+                        src={p.image}
+                        alt={p.tier}
+                        loading="lazy"
+                        className="absolute inset-0 h-full w-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent" />
+                      {p.highlight && (
+                        <div className="absolute top-3 left-3 text-[10px] inline-block bg-lime text-white px-2.5 py-1 rounded-full font-medium tracking-wider uppercase">
+                          Most engaged
+                        </div>
+                      )}
+                    </div>
+                    <div className="p-8">
+                      <div className="font-display text-2xl">{p.tier}</div>
+                      <div className="font-display text-4xl mt-3">{p.price}</div>
+                      <p className="text-sm text-muted-foreground mt-4">{p.desc}</p>
+                      <Link
+                        to="/contact"
+                        className="mt-6 block text-center glass rounded-full py-3 text-sm hover:bg-white transition"
+                      >
+                        Start Project
+                      </Link>
+                    </div>
                   </div>
                 ))}
               </div>
