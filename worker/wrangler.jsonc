@@ -24,10 +24,12 @@
     }
   ],
 
-  // Courses, enrollments, and payment records. Schema in migrations/.
+  // Courses/enrollments/payments, contact inquiries, and job applications.
+  // Schema in migrations/. Name is legacy ("zoum-courses") but the binding
+  // (DB) holds all of it now.
   "d1_databases": [
     {
-      "binding": "COURSES_DB",
+      "binding": "DB",
       "database_name": "zoum-courses",
       "database_id": "7798765e-4cba-4811-931f-26ef3373d445"
     }

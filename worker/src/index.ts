@@ -23,7 +23,7 @@ export interface Env {
   CONTACT_TO_EMAIL: string;
   CONTACT_FROM_EMAIL: string;
   RATE_LIMIT_KV: KVNamespace;
-  COURSES_DB: D1Database;
+  DB: D1Database;
   CLERK_SECRET_KEY: string; // secret
   RAZORPAY_KEY_ID: string; // secret (not sensitive, but kept alongside the actual secret)
   RAZORPAY_KEY_SECRET: string; // secret
@@ -110,7 +110,7 @@ async function handleCreateOrder(
     return jsonResponse({ error: "Failed to start checkout. Please try again shortly." }, 502, cors);
   }
 
-  await env.COURSES_DB.prepare(
+  await env.DB.prepare(
     `INSERT INTO enrollments
       (id, course_id, course_title, amount_inr, clerk_user_id, name, email, razorpay_order_id, status)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'created')`,
@@ -157,7 +157,7 @@ async function handleVerifyPayment(
   });
   if (!valid) return jsonResponse({ error: "Payment verification failed" }, 400, cors);
 
-  const enrollment = await env.COURSES_DB.prepare(
+  const enrollment = await env.DB.prepare(
     `SELECT * FROM enrollments WHERE razorpay_order_id = ? AND clerk_user_id = ?`,
   )
     .bind(orderId, userId)
@@ -170,7 +170,7 @@ async function handleVerifyPayment(
     }>();
   if (!enrollment) return jsonResponse({ error: "Enrollment not found" }, 404, cors);
 
-  await env.COURSES_DB.prepare(
+  await env.DB.prepare(
     `UPDATE enrollments SET status = 'paid', razorpay_payment_id = ?, updated_at = datetime('now') WHERE id = ?`,
   )
     .bind(paymentId, enrollment.id)
@@ -270,6 +270,36 @@ export default {
         );
       }
 
+      // Store first — this is the durable record. Email is a best-effort
+      // notification on top of it, so a Resend outage never loses a
+      // submission the way it silently did before this table existed.
+      try {
+        await env.DB.prepare(
+          `INSERT INTO job_applications
+            (id, full_name, gender, dob, email, mobile, city, current_ctc, expected_ctc, company, experience, education, resume_filename)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        )
+          .bind(
+            crypto.randomUUID(),
+            parsed.data.fullName,
+            parsed.data.gender,
+            parsed.data.dob,
+            parsed.data.email,
+            parsed.data.mobile,
+            parsed.data.city,
+            parsed.data.currentCtc || null,
+            parsed.data.expectedCtc || null,
+            parsed.data.company || null,
+            parsed.data.experience || null,
+            parsed.data.education,
+            attachment?.filename ?? null,
+          )
+          .run();
+      } catch (err) {
+        console.error("D1 insert error (job_applications):", err);
+        return jsonResponse({ error: "Failed to save application. Please try again shortly." }, 500, cors);
+      }
+
       const result = await sendJobApplicationEmail({
         apiKey: env.RESEND_API_KEY,
         from: env.CONTACT_FROM_EMAIL,
@@ -277,11 +307,12 @@ export default {
         data: parsed.data,
         attachment,
       });
-
       if (!result.ok) {
+        // Already saved above — a failed notification email shouldn't tell
+        // the applicant their submission was lost.
         console.error("Resend API error:", result.status, result.body);
-        return jsonResponse({ error: "Failed to send. Please try again shortly." }, 502, cors);
       }
+
       return jsonResponse({ ok: true }, 200, cors);
     }
 
@@ -304,6 +335,30 @@ export default {
       );
     }
 
+    // Store first — durable record independent of email delivery.
+    try {
+      await env.DB.prepare(
+        `INSERT INTO inquiries
+          (id, name, email, phone, company, reason, role_needed, headcount, message)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      )
+        .bind(
+          crypto.randomUUID(),
+          parsed.data.name,
+          parsed.data.email,
+          parsed.data.phone || null,
+          parsed.data.company,
+          parsed.data.reason,
+          parsed.data.roleNeeded || null,
+          parsed.data.headcount || null,
+          parsed.data.message,
+        )
+        .run();
+    } catch (err) {
+      console.error("D1 insert error (inquiries):", err);
+      return jsonResponse({ error: "Failed to save inquiry. Please try again shortly." }, 500, cors);
+    }
+
     const result = await sendInquiryEmail({
       apiKey: env.RESEND_API_KEY,
       from: env.CONTACT_FROM_EMAIL,
@@ -311,10 +366,8 @@ export default {
       data: parsed.data,
       attachment,
     });
-
     if (!result.ok) {
       console.error("Resend API error:", result.status, result.body);
-      return jsonResponse({ error: "Failed to send. Please try again shortly." }, 502, cors);
     }
 
     return jsonResponse({ ok: true }, 200, cors);
