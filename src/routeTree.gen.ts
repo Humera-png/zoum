@@ -13,12 +13,10 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ServicessocialmediaRouteImport } from './routes/services.socialmedia.tsx'
 import { Route as ServicesCareerRouteImport } from './routes/services.career'
 import { Route as ServicesBusinessRouteImport } from './routes/services.business'
 import { Route as ServicesBpoOperationsRouteImport } from './routes/services.business-strategy.tsx'
 import { Route as ServicesAiAutomationRouteImport } from './routes/services.ai-automation'
-import { Route as ServicesTalentDevelopmentRouteImport } from './routes/services.talent-development'
 import { Route as ServicesBusinessConsultancyRouteImport } from './routes/services.business-consultancy'
 import { Route as ServicesWebsiteDevelopmentRouteImport } from './routes/services.website-development'
 import { Route as JobsJobIdRouteImport } from './routes/jobs.$jobId'
@@ -44,11 +42,6 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ServicessocialmediaRoute = ServicessocialmediaRouteImport.update({
-  id: '/services/socialmedia',
-  path: '/services/socialmedia',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ServicesCareerRoute = ServicesCareerRouteImport.update({
   id: '/services/career',
   path: '/services/career',
@@ -67,11 +60,6 @@ const ServicesBpoOperationsRoute = ServicesBpoOperationsRouteImport.update({
 const ServicesAiAutomationRoute = ServicesAiAutomationRouteImport.update({
   id: '/services/ai-automation',
   path: '/services/ai-automation',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ServicesTalentDevelopmentRoute = ServicesTalentDevelopmentRouteImport.update({
-  id: '/services/talent-development',
-  path: '/services/talent-development',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesBusinessConsultancyRoute = ServicesBusinessConsultancyRouteImport.update({
@@ -104,8 +92,6 @@ export interface FileRoutesByFullPath {
   '/services/bpo-operations': typeof ServicesBpoOperationsRoute
   '/services/business': typeof ServicesBusinessRoute
   '/services/career': typeof ServicesCareerRoute
-  '/services/socialmedia': typeof ServicessocialmediaRoute
-  '/services/talent-development': typeof ServicesTalentDevelopmentRoute
   '/services/business-consultancy': typeof ServicesBusinessConsultancyRoute
   '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
   '/jobs/$jobId': typeof JobsJobIdRoute
@@ -120,8 +106,6 @@ export interface FileRoutesByTo {
   '/services/bpo-operations': typeof ServicesBpoOperationsRoute
   '/services/business': typeof ServicesBusinessRoute
   '/services/career': typeof ServicesCareerRoute
-  '/services/socialmedia': typeof ServicessocialmediaRoute
-  '/services/talent-development': typeof ServicesTalentDevelopmentRoute
   '/services/business-consultancy': typeof ServicesBusinessConsultancyRoute
   '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
   '/jobs/$jobId': typeof JobsJobIdRoute
@@ -137,8 +121,6 @@ export interface FileRoutesById {
   '/services/bpo-operations': typeof ServicesBpoOperationsRoute
   '/services/business': typeof ServicesBusinessRoute
   '/services/career': typeof ServicesCareerRoute
-  '/services/socialmedia': typeof ServicessocialmediaRoute
-  '/services/talent-development': typeof ServicesTalentDevelopmentRoute
   '/services/business-consultancy': typeof ServicesBusinessConsultancyRoute
   '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
   '/jobs/$jobId': typeof JobsJobIdRoute
@@ -155,8 +137,6 @@ export interface FileRouteTypes {
     | '/services/bpo-operations'
     | '/services/business'
     | '/services/career'
-    | '/services/socialmedia'
-    | '/services/talent-development'
     | '/services/business-consultancy'
     | '/services/website-development'
     | '/jobs/$jobId'
@@ -171,8 +151,6 @@ export interface FileRouteTypes {
     | '/services/bpo-operations'
     | '/services/business'
     | '/services/career'
-    | '/services/socialmedia'
-    | '/services/talent-development'
     | '/services/business-consultancy'
     | '/services/website-development'
     | '/jobs/$jobId'
@@ -187,8 +165,6 @@ export interface FileRouteTypes {
     | '/services/bpo-operations'
     | '/services/business'
     | '/services/career'
-    | '/services/socialmedia'
-    | '/services/talent-development'
     | '/services/business-consultancy'
     | '/services/website-development'
     | '/jobs/$jobId'
@@ -204,8 +180,6 @@ export interface RootRouteChildren {
   ServicesBpoOperationsRoute: typeof ServicesBpoOperationsRoute
   ServicesBusinessRoute: typeof ServicesBusinessRoute
   ServicesCareerRoute: typeof ServicesCareerRoute
-  ServicessocialmediaRoute: typeof ServicessocialmediaRoute
-  ServicesTalentDevelopmentRoute: typeof ServicesTalentDevelopmentRoute
   ServicesBusinessConsultancyRoute: typeof ServicesBusinessConsultancyRoute
   ServicesWebsiteDevelopmentRoute: typeof ServicesWebsiteDevelopmentRoute
   JobsJobIdRoute: typeof JobsJobIdRoute
@@ -242,13 +216,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/services/socialmedia': {
-      id: '/services/socialmedia'
-      path: '/services/socialmedia'
-      fullPath: '/services/socialmedia'
-      preLoaderRoute: typeof ServicessocialmediaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/services/career': {
       id: '/services/career'
       path: '/services/career'
@@ -275,13 +242,6 @@ declare module '@tanstack/react-router' {
       path: '/services/ai-automation'
       fullPath: '/services/ai-automation'
       preLoaderRoute: typeof ServicesAiAutomationRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/services/talent-development': {
-      id: '/services/talent-development'
-      path: '/services/talent-development'
-      fullPath: '/services/talent-development'
-      preLoaderRoute: typeof ServicesTalentDevelopmentRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services/business-consultancy': {
@@ -324,8 +284,6 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesBpoOperationsRoute: ServicesBpoOperationsRoute,
   ServicesBusinessRoute: ServicesBusinessRoute,
   ServicesCareerRoute: ServicesCareerRoute,
-  ServicessocialmediaRoute: ServicessocialmediaRoute,
-  ServicesTalentDevelopmentRoute: ServicesTalentDevelopmentRoute,
   ServicesBusinessConsultancyRoute: ServicesBusinessConsultancyRoute,
   ServicesWebsiteDevelopmentRoute: ServicesWebsiteDevelopmentRoute,
   JobsJobIdRoute: JobsJobIdRoute,

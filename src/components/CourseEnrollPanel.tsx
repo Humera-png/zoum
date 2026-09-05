@@ -63,8 +63,7 @@ function EnrollControls({ course }: { course: Course }) {
             </>
           ) : (
             <>
-              Enroll &amp; pay ₹{course.priceInr.toLocaleString("en-IN")}{" "}
-              <ArrowUpRight className="h-4 w-4 ml-2" />
+              Enroll &amp; pay <ArrowUpRight className="h-4 w-4 ml-2" />
             </>
           )}
         </button>

@@ -17,14 +17,9 @@ const links = [
 
 const serviceItems = [
   {
-    label: "Career and Hiring",
+    label: "Find Job",
     to: "/services/career" as const,
     desc: "Get Noticed For Bigger Roles.",
-  },
-  {
-    label: "Learning and Development (L&D)",
-    to: "/services/talent-development" as const,
-    desc: "Skills That Get You Noticed.",
   },
   {
     label: "AI and IT Services",
@@ -32,19 +27,14 @@ const serviceItems = [
     desc: "Production AI Architectures.",
   },
   {
-    label: "Website Development",
+    label: "Website Development & Social Media",
     to: "/services/website-development" as const,
-    desc: "A Site That Actually Holds Up.",
+    desc: "A Digital Presence That Actually Holds Up.",
   },
   {
-    label: "Social Media Marketing",
-    to: "/services/socialmedia" as const,
-    desc: "Unified Excellence.",
-  },
-  {
-    label: "Business Consultancy",
+    label: "Business Consultancy & Training",
     to: "/services/business-consultancy" as const,
-    desc: "One Team For Everything That Grows You.",
+    desc: "Strategy For The Business, Skills For The People Running It.",
   },
   {
     label: "Business Process Outsourcing",
@@ -91,7 +81,7 @@ export function Navbar() {
           <span className="font-display text-lg tracking-tight leading-none flex flex-col min-w-0">
             <span className="text-foreground">ZOUM</span>
             <span className="text-[8px] uppercase tracking-[0.25em] text-muted-foreground mt-0.5 truncate">
-              Placement Services
+              Consultancy
             </span>
           </span>
         </Link>

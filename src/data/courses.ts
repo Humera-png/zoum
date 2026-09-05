@@ -5,27 +5,34 @@
 //
 // IMPORTANT: this file must stay in sync with worker/src/courses.ts, which
 // holds the authoritative (server-side) price for each course id — the
-// Worker never trusts a price sent from the browser.
+// Worker never trusts a price sent from the browser. Prices are still
+// charged at checkout, they're just not shown on the site right now.
 export type CourseCategory = "language" | "soft-skills" | "leadership" | "career" | "tech" | "data";
+
+// Which merged service page each course is grouped under.
+export type CoursePage = "bpo" | "ai-it" | "consultancy";
 
 export interface Course {
   id: string;
   title: string;
   category: CourseCategory;
-  priceInr: number; // whole rupees
+  page: CoursePage;
+  priceInr: number; // whole rupees — charged at checkout, not displayed
   duration: string; // e.g. "6 weeks", "20 hours"
   summary: string;
   syllabus: string[];
   image: string;
 }
 
-// Starting prices/durations — adjust these to match your actual rate card
-// before real payments go live, I don't have your verified pricing.
+// Starting prices/durations — adjust these to match your actual rate card,
+// I don't have your verified pricing. Prices aren't shown on the site but
+// are still what gets charged at checkout.
 export const courses: Course[] = [
   {
     id: "bpo-career-masterclass",
     title: "BPO Career & Interview Readiness Masterclass",
     category: "career",
+    page: "bpo",
     priceInr: 999,
     duration: "3 hours (live)",
     summary:
@@ -43,6 +50,7 @@ export const courses: Course[] = [
     id: "it-career-masterclass",
     title: "IT Career & Interview Readiness Masterclass",
     category: "career",
+    page: "ai-it",
     priceInr: 999,
     duration: "3 hours (live)",
     summary:
@@ -58,8 +66,9 @@ export const courses: Course[] = [
   },
   {
     id: "english-communication",
-    title: "English & Communication",
+    title: "Speak With Confidence: English & Communication",
     category: "language",
+    page: "consultancy",
     priceInr: 4999,
     duration: "4 weeks",
     summary:
@@ -75,8 +84,9 @@ export const courses: Course[] = [
   },
   {
     id: "personality-development",
-    title: "Personality Development",
+    title: "Own The Room: Personality Development",
     category: "soft-skills",
+    page: "consultancy",
     priceInr: 5999,
     duration: "3 weeks",
     summary:
@@ -92,8 +102,9 @@ export const courses: Course[] = [
   },
   {
     id: "workplace-soft-skills",
-    title: "Workplace & Soft Skills",
+    title: "Workplace Ready: Soft Skills That Matter",
     category: "soft-skills",
+    page: "consultancy",
     priceInr: 3999,
     duration: "2 weeks",
     summary: "Time management, teamwork, and professional etiquette for people early in their career.",
@@ -108,8 +119,9 @@ export const courses: Course[] = [
   },
   {
     id: "leadership-readiness",
-    title: "Leadership Readiness",
+    title: "Lead From Day One: Leadership Readiness",
     category: "leadership",
+    page: "consultancy",
     priceInr: 8999,
     duration: "6 weeks",
     summary: "Preparing high performers to step into their first management role with real support.",
@@ -124,8 +136,9 @@ export const courses: Course[] = [
   },
   {
     id: "interview-mastery",
-    title: "Interview Mastery",
+    title: "Crack Any Interview: Interview Mastery",
     category: "career",
+    page: "consultancy",
     priceInr: 2999,
     duration: "1 week",
     summary:
@@ -141,8 +154,9 @@ export const courses: Course[] = [
   },
   {
     id: "workplace-digital-skills",
-    title: "Workplace Digital Skills",
+    title: "Digital Skills for the Modern Workplace",
     category: "tech",
+    page: "consultancy",
     priceInr: 3499,
     duration: "2 weeks",
     summary: "Practical training on the everyday tools every office job expects you to already know.",
@@ -157,8 +171,9 @@ export const courses: Course[] = [
   },
   {
     id: "ai-ml-foundations",
-    title: "AI & Machine Learning Foundations",
+    title: "Break Into AI: Machine Learning Foundations",
     category: "tech",
+    page: "ai-it",
     priceInr: 14999,
     duration: "8 weeks",
     summary:
@@ -174,8 +189,9 @@ export const courses: Course[] = [
   },
   {
     id: "python-programming",
-    title: "Python Programming for Beginners",
+    title: "Code Your Future: Python for Beginners",
     category: "tech",
+    page: "ai-it",
     priceInr: 6999,
     duration: "6 weeks",
     summary: "Learn to code in Python from scratch, the language behind most AI, automation, and data work.",
@@ -190,8 +206,9 @@ export const courses: Course[] = [
   },
   {
     id: "full-stack-web-development",
-    title: "Full-Stack Web Development",
+    title: "Build & Launch: Full-Stack Web Development",
     category: "tech",
+    page: "ai-it",
     priceInr: 19999,
     duration: "12 weeks",
     summary: "Go from zero to building and deploying a real web application, front end and back end.",
@@ -206,8 +223,9 @@ export const courses: Course[] = [
   },
   {
     id: "data-analytics",
-    title: "Data Analytics with Excel & SQL",
+    title: "Data Skills That Get You Hired",
     category: "data",
+    page: "ai-it",
     priceInr: 8999,
     duration: "5 weeks",
     summary: "Turn raw spreadsheets and databases into answers, a practical analytics skillset for any role.",

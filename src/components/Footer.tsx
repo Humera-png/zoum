@@ -9,12 +9,10 @@ const quickLinks = [
 ];
 
 const serviceLinks = [
-  { label: "Career Mastery", to: "/services/career" as const },
-  { label: "Learning and Development (L&D)", to: "/services/talent-development" as const },
+  { label: "Find Job", to: "/services/career" as const },
   { label: "AI and IT Services", to: "/services/ai-automation" as const },
-  { label: "Website Development", to: "/services/website-development" as const },
-  { label: "Social Media Marketing", to: "/services/socialmedia" as const },
-  { label: "Business Consultancy", to: "/services/business-consultancy" as const },
+  { label: "Website Development & Social Media", to: "/services/website-development" as const },
+  { label: "Business Consultancy & Training", to: "/services/business-consultancy" as const },
   { label: "Business Process Outsourcing", to: "/services/bpo-operations" as const },
 ];
 
@@ -27,12 +25,12 @@ export function Footer() {
             <div className="flex items-center gap-2.5">
               <Logo size={30} />
               <span className="font-display text-lg tracking-tight">
-                ZOUM <span className="text-muted-foreground text-sm">Placement Services</span>
+                ZOUM <span className="text-muted-foreground text-sm">Consultancy</span>
               </span>
             </div>
             <p className="text-muted-foreground mt-4 text-sm max-w-sm leading-relaxed">
-              ZOUM Placement Services connects businesses and professionals through strategy,
-              talent, social media, and AI. Jaipur headquartered, pan-India reach.
+              ZOUM Consultancy connects businesses and professionals through strategy, talent,
+              social media, and AI. Jaipur headquartered, pan-India reach.
             </p>
             <div className="flex items-center gap-2 mt-5">
               {[
@@ -92,7 +90,7 @@ export function Footer() {
               <li className="flex items-start gap-2.5">
                 <MapPin className="h-4 w-4 text-lime mt-0.5 shrink-0" />
                 <span className="text-sm text-foreground/80 leading-relaxed">
-                  ZOUM Placement Services, Plot no 3, Madrampura, Civil Lines, Jaipur
+                  ZOUM Consultancy, Plot no 3, Madrampura, Civil Lines, Jaipur
                 </span>
               </li>
               <li className="flex items-center gap-2.5">
@@ -119,7 +117,7 @@ export function Footer() {
 
         <div className="flex flex-wrap items-center justify-between gap-4 pt-8 border-t border-border">
           <span className="text-muted-foreground text-xs">
-            © 2025 ZOUM Placement Services. All rights reserved.
+            © 2025 ZOUM Consultancy. All rights reserved.
           </span>
         </div>
       </div>

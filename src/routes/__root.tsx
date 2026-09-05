@@ -73,7 +73,7 @@ const structuredData = {
   name: "ZOUM Consultancy",
   alternateName: "ZOUM Placement Services",
   description:
-    "ZOUM Consultancy is a Jaipur-based recruitment and IT services company. We place candidates in jobs across India and build AI automation, AI agents, websites, and custom software for businesses.",
+    "ZOUM Consultancy is a Jaipur-based business consultancy, recruitment, and IT services company. We place candidates in jobs across India, run BPO operations, and build AI automation, AI agents, websites, and custom software for businesses.",
   url: "https://zoumconsultancy.com",
   logo: "https://zoumconsultancy.com/assets/zoum-logo.png",
   email: "contact@zoumconsultancy.com",

@@ -15,7 +15,11 @@ import {
 
 import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageBackdrop } from "@/components/PageBackdrop";
+import { CoursesSection } from "@/components/CoursesSection";
+import { courses } from "@/data/courses";
 import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
+
+const aiItCourses = courses.filter((c) => c.page === "ai-it");
 
 export const Route = createFileRoute("/services/ai-automation")({
   head: () => ({
@@ -290,6 +294,16 @@ function AIPage() {
                 </Link>
               </div>
             </Section>
+
+            {aiItCourses.length > 0 && (
+              <Section id="courses" title="IT & AI Career Courses" kicker="/ enroll">
+                <p className="text-muted-foreground max-w-2xl -mt-4 mb-8">
+                  Want to build a career in tech instead of just hiring for one? Learn the skills
+                  our own client work runs on.
+                </p>
+                <CoursesSection page="ai-it" />
+              </Section>
+            )}
 
             <Section id="pricing" title="Technology Partnerships" kicker="/ engagement">
               <div className="grid md:grid-cols-3 gap-5">

@@ -40,9 +40,15 @@ const board = [
     bio: "Human Resources Specialist & Business Consultant. 5+ years of operational excellence in strategic talent sourcing and business planning.",
     linkedin: "https://www.linkedin.com/in/abdur-rehman-534483221/",
   },
+   {
+    name: "Parv Jain",
+    role: "Founder",
+    bio: "Human Resources Specialist & Business Consultant. 5+ years of operational excellence in strategic talent sourcing and business planning.",
+    linkedin: "https://www.linkedin.com/in/abdur-rehman-534483221/",
+  },
   {
     name: "Humera Shaikh",
-    role: "CTO - Chief Technology Officer",
+    role: " Co - Founder and CTO",
     bio: "Directs full-scale software engineering, AI architecture implementations, cloud infrastructure, and global technology systems integration.",
     linkedin: "https://www.linkedin.com/in/humerashaikhofficial/",
   },
@@ -76,7 +82,7 @@ function AboutPage() {
             transition={{ delay: 0.2 }}
             className="mt-6 text-lg text-muted-foreground max-w-2xl"
           >
-            Founded in 2020, ZOUM Placement Services works with businesses and people who want real
+            Founded in 2020, ZOUM Consultancy works with businesses and people who want real
             results, not average ones.
           </motion.p>
         </header>

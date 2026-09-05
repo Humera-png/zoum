@@ -4,7 +4,11 @@ import { Check, Target, BarChart3, Workflow, Rocket } from "lucide-react";
 
 import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageBackdrop } from "@/components/PageBackdrop";
+import { CoursesSection } from "@/components/CoursesSection";
+import { courses } from "@/data/courses";
 import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
+
+const bpoCourses = courses.filter((c) => c.page === "bpo");
 
 export const Route = createFileRoute("/services/business-strategy")({
   head: () => ({
@@ -211,6 +215,16 @@ Strategic consulting for businesses looking to improve operations, accelerate gr
                 ))}
               </div>
             </Section>
+
+            {bpoCourses.length > 0 && (
+              <Section id="courses" title="BPO Career Course" kicker="/ enroll">
+                <p className="text-muted-foreground max-w-2xl -mt-4 mb-8">
+                  Want a career in BPO instead of outsourcing your operations to one? This is where
+                  that starts.
+                </p>
+                <CoursesSection page="bpo" />
+              </Section>
+            )}
 
             <Section id="pricing" title="Engagement Models" kicker="/ solutions">
               <div className="grid md:grid-cols-3 gap-5">

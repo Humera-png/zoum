@@ -13,7 +13,7 @@ export function Logo({
     <span className={`inline-flex items-center gap-2 ${className}`}>
       <img
         src={logoUrl}
-        alt="ZOUM Placement Services"
+        alt="ZOUM Consultancy"
         width={size}
         height={size}
         className="rounded-full object-cover shrink-0"

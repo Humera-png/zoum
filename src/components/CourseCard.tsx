@@ -25,9 +25,6 @@ export function CourseCard({ course }: { course: Course }) {
           <Icon className="h-3.5 w-3.5 text-lime" />
           <span className="text-[10px] uppercase tracking-[0.2em] text-foreground">{label}</span>
         </div>
-        <div className="absolute bottom-3 right-3 font-display text-2xl text-white tracking-tight drop-shadow-sm">
-          ₹{course.priceInr.toLocaleString("en-IN")}
-        </div>
       </div>
 
       <div className="relative z-10 flex flex-col flex-1 p-6">

@@ -23,7 +23,6 @@ import {
   Layers,
   ShieldCheck,
   Handshake,
-  GraduationCap,
   Globe,
   ChevronLeft,
   ChevronRight,
@@ -287,10 +286,9 @@ function ClientMarquee() {
 const services = [
   {
     icon: Briefcase,
-    title: "Career and Hiring",
+    title: "Find Job",
     headline: "Get Noticed For Bigger Roles.",
-    body: "We help you stand out for the roles you're already qualified for, and negotiate better pay once you get there. From your profile to interview prep, we help you move up faster.",
-    points: ["Stand out to hiring teams", "Negotiate better pay", "Interview preparation"],
+    body: "Stand out for roles you're already qualified for, and negotiate better pay once you get there.",
     to: "/services/career" as const,
     img: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80",
   },
@@ -298,56 +296,33 @@ const services = [
     icon: Cpu,
     title: "AI and IT Services",
     headline: "Let AI Handle the Busywork.",
-    body: "We build simple AI tools and software that take over repetitive tasks like data entry, replying to customers, and reporting, so your team can spend time on work that actually grows the business.",
-    points: ["Saves hours every week", "Fewer manual mistakes", "Easy for your team to use"],
+    body: "AI agents, automation, and custom software that take repetitive work off your team's plate.",
     to: "/services/ai-automation" as const,
     img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    icon: Users,
-    title: "Social Media Marketing",
-    headline: "Turn Attention Into Customers.",
-    body: "We build content and campaigns that get seen, and turn that attention into real leads for your business, not just likes.",
-    points: ["Content that gets seen", "Real leads, not just likes", "One clear brand voice"],
-    to: "/services/socialmedia" as const,
-    img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    icon: TrendingUp,
-    title: "Business Process Outsourcing",
-    headline: "Scale Without Friction.",
-    body: "We find where your business is losing time and money, then fix it. Simpler processes, better margins, and faster growth.",
-    points: ["Fewer bottlenecks", "Better profit margins", "Faster growth"],
-    to: "/services/bpo-operations" as const,
-    img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    icon: GraduationCap,
-    title: "Learning and Development (L&D)",
-    headline: "Skills That Get You Noticed.",
-    body: "English, communication, and workplace skills training that helps people show up with more confidence and get hired faster.",
-    points: ["English & communication", "Interview confidence", "Workplace skills"],
-    to: "/services/talent-development" as const,
-    img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
     icon: Globe,
-    title: "Website Development",
-    headline: "A Site That Actually Works.",
-    body: "We build fast, modern websites and apps that are easy to manage and built to grow with your business, not something you'll need to redo in a year.",
-    points: ["Fast, modern builds", "Easy to update", "Built to grow with you"],
+    title: "Website Development & Social Media",
+    headline: "A Digital Presence That Converts.",
+    body: "A fast, modern site and the social content and campaigns that bring it an audience.",
     to: "/services/website-development" as const,
     img: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=80",
   },
   {
     icon: Handshake,
-    title: "Business Consultancy",
-    headline: "One Team For Everything That Grows You.",
-    body: "Strategy, marketing, and the website behind it, run by one team instead of three vendors who don't talk to each other.",
-    points: ["One team, one plan", "Strategy plus execution", "No vendor juggling"],
+    title: "Business Consultancy & Training",
+    headline: "Strategy, Plus The Team To Run It.",
+    body: "Growth strategy and workforce training, run by one team instead of separate vendors.",
     to: "/services/business-consultancy" as const,
     img: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80",
-    center: true,
+  },
+  {
+    icon: TrendingUp,
+    title: "Business Process Outsourcing",
+    headline: "Scale Without Friction.",
+    body: "We find where your business is losing time and money, then fix it, with real BPO delivery.",
+    to: "/services/bpo-operations" as const,
+    img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
   },
 ];
 
@@ -361,7 +336,7 @@ function ServiceCard({ s, i }: { s: (typeof services)[number]; i: number }) {
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-      className={`group relative glass rounded-3xl p-6 md:p-7 hover-glow-lime transition-all duration-500 overflow-hidden flex flex-col h-full ${"center" in s && s.center ? "lg:col-start-2" : ""}`}
+      className="group relative glass rounded-3xl p-6 md:p-7 hover-glow-lime transition-all duration-500 overflow-hidden flex flex-col h-full"
     >
       <div className="absolute -top-20 -right-20 h-48 w-48 rounded-full bg-lime/0 group-hover:bg-lime/30 blur-3xl transition-all duration-700" />
       <Link to={s.to} className="relative z-10 flex flex-col h-full">
@@ -387,14 +362,7 @@ function ServiceCard({ s, i }: { s: (typeof services)[number]; i: number }) {
           {s.headline}
         </h3>
         <p className="mt-2 text-muted-foreground text-sm leading-relaxed">{s.body}</p>
-        <div className="mt-4 flex flex-wrap gap-1.5 mt-auto pt-4">
-          {s.points.map((p) => (
-            <span key={p} className="text-[11px] glass rounded-full px-2.5 py-1">
-              {p}
-            </span>
-          ))}
-        </div>
-        <div className="mt-4 pt-3 border-t border-border flex items-center justify-between">
+        <div className="mt-4 pt-3 border-t border-border flex items-center justify-between mt-auto">
           <span className="text-xs font-semibold text-lime group-hover:underline">
             Learn more
           </span>
@@ -590,7 +558,7 @@ function Philosophy() {
           transition={{ delay: 0.3 }}
           className="mt-7 text-muted-foreground max-w-xl mx-auto"
         >
-          Founded in 2020, ZOUM Placement Services works with businesses and people who want
+          Founded in 2020, ZOUM Consultancy works with businesses and people who want
           real results, not average ones.
         </motion.p>
 
@@ -649,21 +617,21 @@ const testimonials = [
   {
     name: "Rajesh Kumar",
     role: "VP Engineering → CTO",
-    service: "Career and Hiring",
+    service: "Find Job",
     quote:
       "ZOUM fixed my positioning and prepped me for board-level interviews. I landed the CTO role with a 2.4x compensation jump.",
   },
   {
     name: "Anita R.",
     role: "COO, Industrial Group",
-    service: "Career and Hiring",
+    service: "Business Consultancy & Training",
     quote:
       "400 managers, one leadership program that actually stuck. Daily floor friction is gone and our team happiness score jumped 38 points.",
   },
   {
     name: "Vikram S.",
     role: "VP of Growth & Brand Strategy",
-    service: "Social Media Marketing",
+    service: "Website Development & Social Media",
     quote:
       "We had content but no traction. In two months, ZOUM's system hit 5M+ organic impressions and turned it into 40 qualified leads.",
   },
@@ -672,14 +640,14 @@ const testimonials = [
   {
     name: "Devika Nair",
     role: "Head of Talent Acquisition",
-    service: "Career and Hiring",
+    service: "Find Job",
     quote:
       "ZOUM didn't dump resumes on us. They brought three vetted leaders who fit our culture from day one.",
   },
   {
     name: "Marcus Chen",
     role: "Co-Founder, E-Commerce Hub",
-    service: "Social Media Marketing",
+    service: "Website Development & Social Media",
     quote:
       "ZOUM rebuilt our short-form video strategy. Now TikTok and LinkedIn drive daily sales without us spending a dime on ads.",
   },

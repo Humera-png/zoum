@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Clock, IndianRupee, ArrowUpRight } from "lucide-react";
+import { Clock, ArrowUpRight } from "lucide-react";
 import { courses } from "@/data/courses";
 import { CATEGORY_META } from "@/lib/courseCategory";
 import { PageBackdrop } from "@/components/PageBackdrop";
@@ -19,7 +19,7 @@ export const Route = createFileRoute("/courses/$courseId")({
         course
           ? {
               name: "description",
-              content: `${course.summary} ${course.duration}, ₹${course.priceInr.toLocaleString("en-IN")}. Enroll online.`,
+              content: `${course.summary} ${course.duration}. Enroll online.`,
             }
           : { name: "robots", content: "noindex" },
       ],
@@ -46,12 +46,6 @@ function CourseSchema({ course }: { course: (typeof courses)[number] }) {
       courseWorkload: course.duration,
       location: { "@type": "Place", name: "Jaipur, India / Online" },
     },
-    offers: {
-      "@type": "Offer",
-      price: course.priceInr,
-      priceCurrency: "INR",
-      availability: "https://schema.org/InStock",
-    },
   };
   return (
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
@@ -74,10 +68,10 @@ function CourseDetailPage() {
               courses instead.
             </p>
             <Link
-              to="/services/talent-development"
+              to="/"
               className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-lime hover:underline"
             >
-              View all courses <ArrowUpRight className="h-3.5 w-3.5" />
+              Back to homepage <ArrowUpRight className="h-3.5 w-3.5" />
             </Link>
           </div>
         ) : (
@@ -106,10 +100,6 @@ function CourseDetailPage() {
                 <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
                   <span className="inline-flex items-center gap-1.5">
                     <Clock className="h-4 w-4 text-lime" /> {course.duration}
-                  </span>
-                  <span className="inline-flex items-center gap-1.5">
-                    <IndianRupee className="h-4 w-4 text-lime" />
-                    {course.priceInr.toLocaleString("en-IN")}
                   </span>
                 </div>
 

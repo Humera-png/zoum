@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Globe, Layers, ShoppingCart, Wrench, Check } from "lucide-react";
+import { Globe, Layers, ShoppingCart, Wrench, Check, Megaphone, PenTool, Users2 } from "lucide-react";
 import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageBackdrop } from "@/components/PageBackdrop";
 import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
@@ -8,20 +8,22 @@ import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
 export const Route = createFileRoute("/services/website-development")({
   head: () => ({
     meta: [
-      { title: "Website Development | ZOUM Consultancy Jaipur" },
+      { title: "Website Development & Social Media Marketing | ZOUM Consultancy Jaipur" },
       {
         name: "description",
         content:
-          "Website and web app development for growing businesses: marketing sites, e-commerce, custom web apps, and ongoing maintenance. ZOUM Consultancy, Jaipur.",
+          "Digital presence for growing businesses: website & web app development plus social media marketing, content, and paid campaigns, run by one team. ZOUM Consultancy, Jaipur.",
       },
       {
         name: "keywords",
-        content: "website development company India, web app development Jaipur, e-commerce development, custom software development, website development pricing, affordable website design India",
+        content:
+          "website development company India, web app development Jaipur, e-commerce development, social media marketing agency Jaipur, Instagram marketing India, LinkedIn management, digital marketing agency, digital presence company India",
       },
-      { property: "og:title", content: "Website Development | ZOUM Consultancy" },
+      { property: "og:title", content: "Website Development & Social Media Marketing | ZOUM Consultancy" },
       {
         property: "og:description",
-        content: "Fast, modern websites and web apps built to actually hold up as your business grows.",
+        content:
+          "A fast, modern site and the audience to actually visit it, built and grown by one digital team.",
       },
       { rel: "canonical", href: "https://zoumconsultancy.com/services/website-development" },
     ],
@@ -60,6 +62,24 @@ const services = [
   },
 ];
 
+const marketing = [
+  {
+    icon: PenTool,
+    name: "Brand Strategy & Content",
+    desc: "A clear brand voice and a content system that attracts attention and builds trust over time.",
+  },
+  {
+    icon: Users2,
+    name: "Social Media Management",
+    desc: "Consistent publishing, engagement, and reporting across Instagram, LinkedIn, and beyond.",
+  },
+  {
+    icon: Megaphone,
+    name: "Paid Social Campaigns",
+    desc: "Performance-focused ads on Meta and LinkedIn, targeted and tested to generate real leads.",
+  },
+];
+
 const plans = [
   {
     tier: "Starter",
@@ -91,7 +111,7 @@ const plans = [
   {
     tier: "Business",
     price: "₹20,000 – ₹50,000",
-    desc: "Custom web apps, e-commerce, or anything with real functionality behind it, priced to what you actually need.",
+    desc: "Custom web apps, e-commerce, or ongoing social media management, priced to what you actually need.",
     feats: [
       "E-commerce, dashboards, or custom features",
       "Everything in Premium",
@@ -108,16 +128,16 @@ function WebsiteDevelopmentPage() {
     <main className="pt-32 px-6 pb-20 relative">
       <PageBackdrop />
       <ServiceSchema
-        name="Website Development"
-        description="Website, web app, and e-commerce development for growing businesses across India."
+        name="Website Development & Social Media Marketing"
+        description="Website, web app, and e-commerce development plus social media marketing and paid campaigns, for growing businesses across India."
         url="https://zoumconsultancy.com/services/website-development"
       />
       <div className="max-w-7xl mx-auto relative z-10">
         <PageHeader
-          pill="Website Development"
-          title="A Site That"
-          italic="Actually Holds Up."
-          sub="We design and build websites and web applications that are fast, easy to manage, and built to grow with your business instead of needing a rebuild in a year."
+          pill="Website & Social Media"
+          title="A Digital Presence"
+          italic="That Actually Holds Up."
+          sub="A fast, modern site and the audience to visit it: web development and social media marketing, run as one digital team instead of two vendors."
         />
 
         <div className="mt-20 grid lg:grid-cols-[200px_1fr] gap-12">
@@ -155,11 +175,32 @@ function WebsiteDevelopmentPage() {
               </div>
             </Section>
 
+            <Section id="marketing" title="Then, Bring It An Audience" kicker="/ social & content">
+              <div className="grid md:grid-cols-3 gap-5">
+                {marketing.map((m, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.05 }}
+                    className="group glass node-bloom rounded-2xl p-6"
+                  >
+                    <div className="h-10 w-10 rounded-xl glass-strong grid place-items-center mb-4 group-hover:bg-lime group-hover:text-white transition">
+                      <m.icon className="h-5 w-5" />
+                    </div>
+                    <div className="font-display text-xl">{m.name}</div>
+                    <div className="text-sm text-muted-foreground mt-2">{m.desc}</div>
+                  </motion.div>
+                ))}
+              </div>
+            </Section>
+
             <Section id="pricing" title="Plans" kicker="/ pricing">
               <p className="text-muted-foreground max-w-2xl -mt-4 mb-8">
-                Starting prices, adjust to your project. Every plan includes ongoing maintenance and
-                hosting support, billed separately once your site is live, so it keeps running without
-                you having to think about it.
+                Starting prices for websites and web apps, adjust to your project. Social media
+                management is scoped separately once we know your goals. Every plan includes ongoing
+                maintenance and hosting support, billed separately once your site is live.
               </p>
               <div className="grid md:grid-cols-3 gap-5">
                 {plans.map((p) => (
