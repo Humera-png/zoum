@@ -23,6 +23,11 @@ export const COURSES: CourseRecord[] = [
   { id: "python-programming", title: "Code Your Future: Python for Beginners", priceInr: 6999 },
   { id: "full-stack-web-development", title: "Build & Launch: Full-Stack Web Development", priceInr: 19999 },
   { id: "data-analytics", title: "Data Skills That Get You Hired", priceInr: 8999 },
+  {
+    id: "automation-ai-ml-practicum",
+    title: "Automate Everything: Python, AI & Machine Learning in Practice",
+    priceInr: 12999,
+  },
 ];
 
 export function findCourse(id: string): CourseRecord | undefined {

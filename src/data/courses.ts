@@ -222,6 +222,24 @@ export const courses: Course[] = [
       "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=1200&q=80",
   },
   {
+    id: "automation-ai-ml-practicum",
+    title: "Automate Everything: Python, AI & Machine Learning in Practice",
+    category: "tech",
+    page: "ai-it",
+    priceInr: 12999,
+    duration: "8 weeks",
+    summary:
+      "A hands-on, practitioner-led course in automation engineering: use Python and AI/ML together to build systems that actually run your work for you, not just theory.",
+    syllabus: [
+      "Automation pipelines: Python scripting for real, repeatable workflows",
+      "Connecting APIs, schedulers, and data sources into one system",
+      "Applying AI/ML models to automate decisions, not just predictions",
+      "Capstone: design and ship one production-ready automation project",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
     id: "data-analytics",
     title: "Data Skills That Get You Hired",
     category: "data",
