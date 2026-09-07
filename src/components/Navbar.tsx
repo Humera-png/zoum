@@ -82,7 +82,7 @@ export function Navbar() {
         className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[min(1200px,calc(100%-2rem))] glass rounded-full px-3 py-2 flex items-center justify-between transition-all ${scrolled ? "shadow-[0_20px_60px_-30px_rgba(7,59,34,0.25)]" : ""}`}
       >
         <Link to="/" className="flex items-center pl-2 min-w-0">
-          <Logo height={48} />
+          <Logo height={56} />
         </Link>
 
         <div className="hidden md:flex items-center gap-1 text-sm relative">
@@ -180,7 +180,7 @@ export function Navbar() {
             >
               <div className="flex items-center justify-between p-5 border-b border-border">
                 <div className="flex items-center">
-                  <Logo height={38} />
+                  <Logo height={42} />
                 </div>
                 <button
                   aria-label="Close menu"
