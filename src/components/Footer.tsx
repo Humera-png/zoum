@@ -24,7 +24,7 @@ export function Footer() {
         <div className="grid md:grid-cols-4 gap-10 mb-10">
           <div className="md:col-span-2">
             <div className="flex items-center">
-              <Logo height={32} />
+              <Logo height={42} />
             </div>
             <p className="text-muted-foreground mt-4 text-sm max-w-sm leading-relaxed">
               ZOUM Consultancy connects businesses and professionals through strategy, talent,
