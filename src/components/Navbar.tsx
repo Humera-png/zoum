@@ -81,14 +81,8 @@ export function Navbar() {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[min(1200px,calc(100%-2rem))] glass rounded-full px-3 py-2 flex items-center justify-between transition-all ${scrolled ? "shadow-[0_20px_60px_-30px_rgba(7,59,34,0.25)]" : ""}`}
       >
-        <Link to="/" className="flex items-center gap-2.5 pl-2 min-w-0">
-          <Logo size={32} />
-          <span className="font-display text-lg tracking-tight leading-none flex flex-col min-w-0">
-            <span className="text-foreground">ZOUM</span>
-            <span className="text-[8px] uppercase tracking-[0.25em] text-muted-foreground mt-0.5 truncate">
-              Consultancy
-            </span>
-          </span>
+        <Link to="/" className="flex items-center pl-2 min-w-0">
+          <Logo height={36} />
         </Link>
 
         <div className="hidden md:flex items-center gap-1 text-sm relative">
@@ -185,9 +179,8 @@ export function Navbar() {
               style={{ background: "rgba(255,255,255,0.98)" }}
             >
               <div className="flex items-center justify-between p-5 border-b border-border">
-                <div className="flex items-center gap-2.5">
-                  <Logo size={28} />
-                  <span className="font-display text-base text-foreground">ZOUM</span>
+                <div className="flex items-center">
+                  <Logo height={28} />
                 </div>
                 <button
                   aria-label="Close menu"

@@ -135,7 +135,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         rel: "icon",
         type: "image/png",
-        href: "/assets/zoum-logo.png",
+        // Deliberately the older circular badge, not the new full lockup —
+        // that one is a wide image on a mostly-white square canvas and
+        // reads as blank at browser-tab size. This one is pre-cropped to
+        // read clearly as a small icon.
+        href: "/assets/zoum-favicon.png",
       },
       { rel: "canonical", href: "https://zoumconsultancy.com" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },

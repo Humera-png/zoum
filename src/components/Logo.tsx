@@ -1,29 +1,24 @@
 import logoUrl from "@/assets/zoum-logo.png";
 
+// The source file is a full horizontal lockup (icon + "zoum" wordmark +
+// subtitle baked into one image), not a standalone icon — so it renders at
+// a fixed height with the width following naturally, instead of being
+// cropped into a small circle. Anywhere this is used, don't add extra
+// "ZOUM" text next to it, the image already carries the full wordmark.
 export function Logo({
-  size = 32,
-  withWordmark = false,
+  height = 32,
   className = "",
 }: {
-  size?: number;
-  withWordmark?: boolean;
+  height?: number;
   className?: string;
 }) {
   return (
-    <span className={`inline-flex items-center gap-2 ${className}`}>
-      <img
-        src={logoUrl}
-        alt="ZOUM Consultancy"
-        width={size}
-        height={size}
-        className="rounded-full object-cover shrink-0"
-        style={{ width: size, height: size }}
-      />
-      {withWordmark && (
-        <span className="font-display tracking-tight leading-none">
-          <span className="text-foreground">ZOUM</span>
-        </span>
-      )}
-    </span>
+    <img
+      src={logoUrl}
+      alt="ZOUM Consultancy"
+      height={height}
+      className={`w-auto object-contain shrink-0 ${className}`}
+      style={{ height }}
+    />
   );
 }

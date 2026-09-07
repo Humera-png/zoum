@@ -23,11 +23,8 @@ export function Footer() {
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-4 gap-10 mb-10">
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2.5">
-              <Logo size={30} />
-              <span className="font-display text-lg tracking-tight">
-                ZOUM <span className="text-muted-foreground text-sm">Consultancy</span>
-              </span>
+            <div className="flex items-center">
+              <Logo height={32} />
             </div>
             <p className="text-muted-foreground mt-4 text-sm max-w-sm leading-relaxed">
               ZOUM Consultancy connects businesses and professionals through strategy, talent,
