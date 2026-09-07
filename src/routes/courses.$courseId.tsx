@@ -119,7 +119,7 @@ function CourseDetailPage() {
                       <p className="text-sm text-muted-foreground mb-4">
                         Select a module to see what's covered.
                       </p>
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         {course.modules.map((m, i) => {
                           const isSelected = openModule === i;
                           return (
@@ -128,14 +128,27 @@ function CourseDetailPage() {
                               type="button"
                               onClick={() => setOpenModule(i)}
                               aria-pressed={isSelected}
-                              className={`glass rounded-2xl p-4 text-left transition ${isSelected ? "ring-1 ring-lime/50 bg-lime/5" : "hover:bg-black/5"}`}
+                              className={`group relative glass rounded-2xl overflow-hidden text-left transition ${isSelected ? "ring-2 ring-lime" : "hover:-translate-y-0.5"}`}
                             >
-                              <span
-                                className={`h-7 w-7 rounded-full font-display text-xs grid place-items-center mb-2 ${isSelected ? "bg-lime text-white" : "bg-lime/15 text-lime"}`}
-                              >
-                                {i + 1}
-                              </span>
-                              <div className="text-sm font-medium leading-snug">{m.title}</div>
+                              <div className="relative aspect-[16/10] overflow-hidden">
+                                <img
+                                  src={course.image}
+                                  alt=""
+                                  loading="lazy"
+                                  className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                                <div
+                                  className={`absolute top-2.5 left-2.5 h-7 w-7 rounded-full font-display text-xs grid place-items-center ${isSelected ? "bg-lime text-white" : "glass-strong text-foreground"}`}
+                                >
+                                  {i + 1}
+                                </div>
+                              </div>
+                              <div className="p-3">
+                                <div className="text-sm font-medium leading-snug line-clamp-2">
+                                  {m.title}
+                                </div>
+                              </div>
                             </button>
                           );
                         })}

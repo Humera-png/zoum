@@ -33,11 +33,11 @@ export const Route = createFileRoute("/services/talent-development")({
   component: TalentDevelopmentPage,
 });
 
-function CourseListSchema() {
-  if (courses.length === 0) return null;
+function CourseListSchema({ courses: list }: { courses: typeof courses }) {
+  if (list.length === 0) return null;
   const schema = {
     "@context": "https://schema.org",
-    "@graph": courses.map((c) => ({
+    "@graph": list.map((c) => ({
       "@type": "Course",
       name: c.title,
       description: c.summary,
@@ -131,8 +131,6 @@ const flagshipCourses = flagshipIds
   .map((id) => courses.find((c) => c.id === id))
   .filter((c): c is (typeof courses)[number] => Boolean(c));
 
-const moreCourses = courses.filter((c) => !flagshipIds.includes(c.id));
-
 function TalentDevelopmentPage() {
   return (
     <main className="pt-32 px-6 pb-20 relative">
@@ -142,7 +140,7 @@ function TalentDevelopmentPage() {
         description="BPO, AI & IT, English communication, and workplace skills training and courses for individuals and teams."
         url="https://zoumconsultancy.com/services/talent-development"
       />
-      <CourseListSchema />
+      <CourseListSchema courses={flagshipCourses} />
       <CourseFaqSchema />
       <div className="max-w-7xl mx-auto relative z-10">
         <PageHeader
@@ -189,20 +187,6 @@ function TalentDevelopmentPage() {
                 ))}
               </div>
             </Section>
-
-            {moreCourses.length > 0 && (
-              <Section id="courses" title="More Courses" kicker="/ enroll">
-                <p className="text-muted-foreground max-w-2xl -mt-4 mb-8">
-                  {moreCourses.length} more courses, each with a clear syllabus and duration. Pick
-                  one, sign in, and enroll directly, no back-and-forth over email required.
-                </p>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                  {moreCourses.map((course) => (
-                    <CourseCard key={course.id} course={course} />
-                  ))}
-                </div>
-              </Section>
-            )}
 
             <Section id="process" title="Who It's For" kicker="/ fit">
               <div className="glass-strong rounded-3xl p-10">

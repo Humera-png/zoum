@@ -28,7 +28,7 @@ export function CourseCard({ course }: { course: Course }) {
       </div>
 
       <div className="relative z-10 flex flex-col flex-1 p-6">
-        <div className="font-display text-xl leading-snug">{course.title}</div>
+        <div className="font-display text-sm leading-snug line-clamp-2">{course.title}</div>
         <div className="mt-2 flex items-center gap-1.5 text-xs text-muted-foreground">
           <Clock className="h-3.5 w-3.5" /> {course.duration}
         </div>
