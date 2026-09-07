@@ -23,6 +23,7 @@ import {
   Layers,
   ShieldCheck,
   Handshake,
+  GraduationCap,
   Globe,
   ChevronLeft,
   ChevronRight,
@@ -310,9 +311,9 @@ const services = [
   },
   {
     icon: Handshake,
-    title: "Business Consultancy & Training",
-    headline: "Strategy, Plus The Team To Run It.",
-    body: "Growth strategy and workforce training, run by one team instead of separate vendors.",
+    title: "Business Consultancy",
+    headline: "A Growth Plan You Can Run.",
+    body: "Strategy, operations, and performance systems for businesses ready to scale.",
     to: "/services/business-consultancy" as const,
     img: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80",
   },
@@ -323,6 +324,14 @@ const services = [
     body: "We find where your business is losing time and money, then fix it, with real BPO delivery.",
     to: "/services/bpo-operations" as const,
     img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    icon: GraduationCap,
+    title: "Learning and Development (L&D)",
+    headline: "Skills That Get You Noticed.",
+    body: "BPO, AI & IT, English, and Python courses, each with 3 modules and a clear path to enroll.",
+    to: "/services/talent-development" as const,
+    img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
   },
 ];
 
@@ -624,7 +633,7 @@ const testimonials = [
   {
     name: "Anita R.",
     role: "COO, Industrial Group",
-    service: "Business Consultancy & Training",
+    service: "Learning and Development (L&D)",
     quote:
       "400 managers, one leadership program that actually stuck. Daily floor friction is gone and our team happiness score jumped 38 points.",
   },

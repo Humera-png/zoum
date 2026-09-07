@@ -12,8 +12,9 @@ const serviceLinks = [
   { label: "Find Job", to: "/services/career" as const },
   { label: "AI and IT Services", to: "/services/ai-automation" as const },
   { label: "Website Development & Social Media", to: "/services/website-development" as const },
-  { label: "Business Consultancy & Training", to: "/services/business-consultancy" as const },
+  { label: "Business Consultancy", to: "/services/business-consultancy" as const },
   { label: "Business Process Outsourcing", to: "/services/bpo-operations" as const },
+  { label: "Learning and Development (L&D)", to: "/services/talent-development" as const },
 ];
 
 export function Footer() {

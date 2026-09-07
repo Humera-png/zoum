@@ -32,14 +32,19 @@ const serviceItems = [
     desc: "A Digital Presence That Actually Holds Up.",
   },
   {
-    label: "Business Consultancy & Training",
+    label: "Business Consultancy",
     to: "/services/business-consultancy" as const,
-    desc: "Strategy For The Business, Skills For The People Running It.",
+    desc: "A Growth Plan Your Team Can Actually Run.",
   },
   {
     label: "Business Process Outsourcing",
     to: "/services/bpo-operations" as const,
     desc: "Scale Without Friction.",
+  },
+  {
+    label: "Learning and Development (L&D)",
+    to: "/services/talent-development" as const,
+    desc: "Skills That Get You Noticed.",
   },
 ];
 

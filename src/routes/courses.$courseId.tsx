@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion } from "framer-motion";
-import { Clock, ArrowUpRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { Clock, ArrowUpRight, ChevronDown } from "lucide-react";
 import { courses } from "@/data/courses";
 import { CATEGORY_META } from "@/lib/courseCategory";
 import { PageBackdrop } from "@/components/PageBackdrop";
@@ -55,6 +56,7 @@ function CourseSchema({ course }: { course: (typeof courses)[number] }) {
 function CourseDetailPage() {
   const { courseId } = Route.useParams();
   const course = courses.find((c) => c.id === courseId);
+  const [openModule, setOpenModule] = useState(0);
 
   return (
     <main className="pt-32 px-6 pb-20 relative">
@@ -93,32 +95,75 @@ function CourseDetailPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/0 to-transparent" />
                 </div>
                 <div className="p-8 md:p-10">
-                <div className="text-xs uppercase tracking-[0.3em] text-lime mb-3">
-                  / {CATEGORY_META[course.category].label}
-                </div>
-                <h1 className="font-display text-3xl md:text-5xl tracking-tight">{course.title}</h1>
-                <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
-                  <span className="inline-flex items-center gap-1.5">
-                    <Clock className="h-4 w-4 text-lime" /> {course.duration}
-                  </span>
-                </div>
+                  <div className="text-xs uppercase tracking-[0.3em] text-lime mb-3">
+                    / {CATEGORY_META[course.category].label}
+                  </div>
+                  <h1 className="font-display text-3xl md:text-5xl tracking-tight">{course.title}</h1>
+                  <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
+                    <span className="inline-flex items-center gap-1.5">
+                      <Clock className="h-4 w-4 text-lime" /> {course.duration}
+                    </span>
+                    <span className="inline-flex items-center gap-1.5">
+                      {course.modules.length} modules
+                    </span>
+                  </div>
 
-                <h2 className="font-display text-xl mt-8 mb-3">About this course</h2>
-                <p className="text-muted-foreground leading-relaxed">{course.summary}</p>
+                  <h2 className="font-display text-xl mt-8 mb-3">About this course</h2>
+                  <p className="text-muted-foreground leading-relaxed">{course.summary}</p>
 
-                {course.syllabus.length > 0 && (
-                  <>
-                    <h2 className="font-display text-xl mt-8 mb-3">What you'll learn</h2>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                      {course.syllabus.map((s) => (
-                        <li key={s} className="flex items-start gap-2">
-                          <span className="h-1.5 w-1.5 rounded-full bg-lime mt-2 shrink-0" />
-                          {s}
-                        </li>
-                      ))}
-                    </ul>
-                  </>
-                )}
+                  {course.modules.length > 0 && (
+                    <>
+                      <h2 className="font-display text-xl mt-8 mb-3" id="modules">
+                        Course modules
+                      </h2>
+                      <p className="text-sm text-muted-foreground mb-4">
+                        Tap a module to see what's covered.
+                      </p>
+                      <div className="space-y-3">
+                        {course.modules.map((m, i) => {
+                          const isOpen = openModule === i;
+                          return (
+                            <div
+                              key={m.title}
+                              className={`glass rounded-2xl overflow-hidden transition ${isOpen ? "ring-1 ring-lime/50" : ""}`}
+                            >
+                              <button
+                                type="button"
+                                onClick={() => setOpenModule(isOpen ? -1 : i)}
+                                aria-expanded={isOpen}
+                                className="w-full flex items-center gap-4 p-4 md:p-5 text-left"
+                              >
+                                <span className="h-8 w-8 shrink-0 rounded-full bg-lime/15 text-lime font-display text-sm grid place-items-center">
+                                  {i + 1}
+                                </span>
+                                <span className="flex-1 font-display text-base md:text-lg">
+                                  {m.title}
+                                </span>
+                                <ChevronDown
+                                  className={`h-4 w-4 text-muted-foreground shrink-0 transition-transform ${isOpen ? "rotate-180" : ""}`}
+                                />
+                              </button>
+                              <AnimatePresence initial={false}>
+                                {isOpen && (
+                                  <motion.div
+                                    initial={{ height: 0, opacity: 0 }}
+                                    animate={{ height: "auto", opacity: 1 }}
+                                    exit={{ height: 0, opacity: 0 }}
+                                    transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                                    className="overflow-hidden"
+                                  >
+                                    <p className="px-4 md:px-5 pb-5 pl-16 text-sm text-muted-foreground leading-relaxed">
+                                      {m.description}
+                                    </p>
+                                  </motion.div>
+                                )}
+                              </AnimatePresence>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </>
+                  )}
                 </div>
               </motion.div>
 

@@ -37,19 +37,19 @@ const board = [
   {
     name: "Abdur Rehman",
     role: "Founder",
-    bio: "Human Resources Specialist & Business Consultant. 5+ years of operational excellence in strategic talent sourcing and business planning.",
+    bio: "Human Resources Specialist & Business Consultant with 5+ years of operational excellence in strategic talent sourcing and business planning. Abdur built ZOUM's recruitment engine from the ground up: the sourcing process, client relationships, and vetting standards that stand behind every candidate we put forward. He sets the direction on the consultancy side of the business, working directly with client companies to turn a hiring need or a growth problem into a plan that's actually realistic to execute.",
     linkedin: "https://www.linkedin.com/in/abdur-rehman-534483221/",
   },
-   {
+  {
     name: "Parv Jain",
     role: "Founder",
-    bio: "Human Resources Specialist & Business Consultant. 5+ years of operational excellence in strategic talent sourcing and business planning.",
+    bio: "Human Resources Specialist & Business Consultant with 5+ years of operational excellence in strategic talent sourcing and business planning. Parv leads client operations and business development, the relationships and delivery standards that keep ZOUM accountable to the results it promises. He's closely involved in shaping the training and consultancy programs, making sure what gets taught or advised actually matches what employers are hiring for right now.",
     linkedin: "https://www.linkedin.com/in/abdur-rehman-534483221/",
   },
   {
     name: "Humera Shaikh",
-    role: " Co - Founder and CTO",
-    bio: "Directs full-scale software engineering, AI architecture implementations, cloud infrastructure, and global technology systems integration.",
+    role: "Co-Founder & CTO",
+    bio: "Directs full-scale software engineering, AI architecture implementations, cloud infrastructure, and global technology systems integration. Humera built and runs the technology behind ZOUM end to end: the website, the AI automation and agent systems built for clients, the course and payments platform, and the infrastructure all of it runs on. Her background is in computer science with a focus on automation, Python, and AI/ML, which is also the foundation for the AI & IT services and courses ZOUM offers today.",
     linkedin: "https://www.linkedin.com/in/humerashaikhofficial/",
   },
 ];
@@ -116,7 +116,7 @@ function AboutPage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid md:grid-cols-3 gap-5">
             {board.map((m, i) => (
               <motion.div
                 key={m.name}
@@ -124,34 +124,35 @@ function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.06 }}
-                className="group glass rounded-3xl overflow-hidden hover-glow-lime transition flex flex-col justify-between h-full"
+                className="group glass rounded-3xl overflow-hidden hover-glow-lime transition flex flex-col h-full"
               >
-                <div>
-                  <div className="aspect-[4/5] overflow-hidden bg-zinc-900/30 relative flex items-center justify-center border-b border-zinc-800/40">
-                    <div className="font-display text-5xl font-bold tracking-tighter text-zinc-700 select-none group-hover:text-lime transition duration-500">
-                      {initialsOf(m.name)}
-                    </div>
+                <div className="aspect-[5/4] overflow-hidden bg-zinc-900/30 relative flex items-center justify-center border-b border-zinc-800/40">
+                  <div className="font-display text-6xl font-bold tracking-tighter text-zinc-700 select-none group-hover:text-lime transition duration-500">
+                    {initialsOf(m.name)}
                   </div>
-                  <div className="p-5">
-                    <div className="text-[11px] uppercase tracking-wider text-lime font-medium">
-                      {m.role}
-                    </div>
-                    <div className="font-display text-xl font-bold mt-1 flex items-center justify-between tracking-tight">
-                      {m.name}
-                      {m.linkedin && (
-                        <a href={m.linkedin} target="_blank" rel="noreferrer">
-                          <Linkedin className="h-4 w-4 text-muted-foreground hover:text-lime transition" />
-                        </a>
-                      )}
-                    </div>
-                    <p className="text-xs text-muted-foreground mt-2 leading-relaxed font-normal">
-                      {m.bio}
-                    </p>
+                </div>
+                <div className="p-6 flex-1 flex flex-col">
+                  <div className="text-[11px] uppercase tracking-wider text-lime font-medium">
+                    {m.role}
                   </div>
+                  <div className="font-display text-2xl font-bold mt-1 flex items-center justify-between tracking-tight">
+                    {m.name}
+                    {m.linkedin && (
+                      <a href={m.linkedin} target="_blank" rel="noreferrer">
+                        <Linkedin className="h-4 w-4 text-muted-foreground hover:text-lime transition" />
+                      </a>
+                    )}
+                  </div>
+                  <p className="text-sm text-muted-foreground mt-3 leading-relaxed font-normal">
+                    {m.bio}
+                  </p>
                 </div>
               </motion.div>
             ))}
           </div>
+          <p className="text-xs text-muted-foreground mt-6">
+            Real photos of the team are on the way, replacing the initials above.
+          </p>
         </section>
 
         <section className="mt-32">
