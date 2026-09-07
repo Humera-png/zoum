@@ -79,80 +79,78 @@ function CourseDetailPage() {
         ) : (
           <>
             <CourseSchema course={course} />
-            <div className="grid lg:grid-cols-[1fr_360px] gap-6 items-start">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="glass-strong rounded-3xl overflow-hidden"
-              >
-                <div className="relative aspect-[21/9]">
-                  <img
-                    src={course.image}
-                    alt={course.title}
-                    className="absolute inset-0 h-full w-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/0 to-transparent" />
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="glass-strong rounded-3xl overflow-hidden"
+            >
+              <div className="relative aspect-[21/9]">
+                <img
+                  src={course.image}
+                  alt={course.title}
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/0 to-transparent" />
+              </div>
+              <div className="p-8 md:p-10">
+                <div className="text-xs uppercase tracking-[0.3em] text-lime mb-3">
+                  / {CATEGORY_META[course.category].label}
                 </div>
-                <div className="p-8 md:p-10">
-                  <div className="text-xs uppercase tracking-[0.3em] text-lime mb-3">
-                    / {CATEGORY_META[course.category].label}
-                  </div>
-                  <h1 className="font-display text-xl md:text-2xl tracking-tight">{course.title}</h1>
-                  <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
-                    <span className="inline-flex items-center gap-1.5">
-                      <Clock className="h-4 w-4 text-lime" /> {course.duration}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5">
-                      {course.modules.length} modules
-                    </span>
-                  </div>
+                <h1 className="font-display text-xl md:text-2xl tracking-tight">{course.title}</h1>
+                <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
+                  <span className="inline-flex items-center gap-1.5">
+                    <Clock className="h-4 w-4 text-lime" /> {course.duration}
+                  </span>
+                  <span className="inline-flex items-center gap-1.5">
+                    {course.modules.length} modules
+                  </span>
+                </div>
 
-                  <h2 className="font-display text-xl mt-8 mb-3">About this course</h2>
-                  <p className="text-muted-foreground leading-relaxed">{course.summary}</p>
+                <h2 className="font-display text-xl mt-8 mb-3">About this course</h2>
+                <p className="text-muted-foreground leading-relaxed">{course.summary}</p>
 
-                  {course.modules.length > 0 && (
-                    <>
-                      <h2 className="font-display text-xl mt-8 mb-3" id="modules">
-                        Course modules
-                      </h2>
-                      <p className="text-sm text-muted-foreground mb-4">
-                        Select a module to see what's covered.
-                      </p>
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        {course.modules.map((m, i) => {
-                          const isSelected = openModule === i;
-                          return (
-                            <button
-                              key={m.title}
-                              type="button"
-                              onClick={() => setOpenModule(i)}
-                              aria-pressed={isSelected}
-                              className={`group relative glass rounded-2xl overflow-hidden text-left transition ${isSelected ? "ring-2 ring-lime" : "hover:-translate-y-0.5"}`}
-                            >
-                              <div className="relative aspect-[16/10] overflow-hidden">
-                                <img
-                                  src={course.image}
-                                  alt=""
-                                  loading="lazy"
-                                  className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-                                <div
-                                  className={`absolute top-2.5 left-2.5 h-7 w-7 rounded-full font-display text-xs grid place-items-center ${isSelected ? "bg-lime text-white" : "glass-strong text-foreground"}`}
-                                >
-                                  {i + 1}
-                                </div>
+                {course.modules.length > 0 && (
+                  <>
+                    <h2 className="font-display text-xl mt-8 mb-3" id="modules">
+                      Course modules
+                    </h2>
+                    <p className="text-sm text-muted-foreground mb-4">
+                      Select a module to see what's covered and enroll.
+                    </p>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                      {course.modules.map((m, i) => {
+                        const isSelected = openModule === i;
+                        return (
+                          <button
+                            key={m.title}
+                            type="button"
+                            onClick={() => setOpenModule(i)}
+                            aria-pressed={isSelected}
+                            className={`group relative glass rounded-2xl overflow-hidden text-left transition ${isSelected ? "ring-2 ring-lime" : "hover:-translate-y-0.5"}`}
+                          >
+                            <div className="relative aspect-[4/3] overflow-hidden">
+                              <img
+                                src={course.image}
+                                alt=""
+                                loading="lazy"
+                                className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                              <div
+                                className={`absolute top-3 left-3 h-9 w-9 rounded-full font-display text-sm grid place-items-center ${isSelected ? "bg-lime text-white" : "glass-strong text-foreground"}`}
+                              >
+                                {i + 1}
                               </div>
-                              <div className="p-3">
-                                <div className="text-sm font-medium leading-snug line-clamp-2">
-                                  {m.title}
-                                </div>
-                              </div>
-                            </button>
-                          );
-                        })}
-                      </div>
+                            </div>
+                            <div className="p-4">
+                              <div className="text-base font-medium leading-snug">{m.title}</div>
+                            </div>
+                          </button>
+                        );
+                      })}
+                    </div>
+                    <div className="glass-strong rounded-2xl p-6 md:p-7 mt-5">
                       <AnimatePresence mode="wait">
                         {course.modules[openModule] && (
                           <motion.div
@@ -161,7 +159,6 @@ function CourseDetailPage() {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -8 }}
                             transition={{ duration: 0.2 }}
-                            className="glass-strong rounded-2xl p-5 mt-4"
                           >
                             <div className="text-xs uppercase tracking-wider text-lime mb-1.5">
                               Module {openModule + 1}
@@ -175,24 +172,21 @@ function CourseDetailPage() {
                           </motion.div>
                         )}
                       </AnimatePresence>
-                    </>
-                  )}
-                </div>
-              </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="glass-strong rounded-3xl p-6 md:p-7 lg:sticky lg:top-28"
-              >
-                <h2 className="font-display text-lg mb-1">Enroll in this course</h2>
-                <p className="text-sm text-muted-foreground mb-5">
-                  Sign in (or create an account) to enroll and pay securely.
-                </p>
-                <CourseEnrollPanel course={course} />
-              </motion.div>
-            </div>
+                      <div className="mt-6 pt-6 border-t border-border">
+                        <h3 className="font-display text-lg mb-1">Enroll in this course</h3>
+                        <p className="text-sm text-muted-foreground mb-5">
+                          Sign in (or create an account) to enroll and pay securely.
+                        </p>
+                        <div className="max-w-md">
+                          <CourseEnrollPanel course={course} />
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                )}
+              </div>
+            </motion.div>
           </>
         )}
       </div>

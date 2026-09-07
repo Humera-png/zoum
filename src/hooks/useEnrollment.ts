@@ -12,6 +12,13 @@ interface OrderResponse {
   courseTitle: string;
 }
 
+export interface EnrollmentIntake {
+  name: string;
+  phone: string;
+  education: string;
+  purpose: string;
+}
+
 export function useEnrollment() {
   const { getToken } = useAuth();
   const { user } = useUser();
@@ -19,7 +26,7 @@ export function useEnrollment() {
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
 
-  const enroll = async (course: Course) => {
+  const enroll = async (course: Course, intake: EnrollmentIntake) => {
     if (!CONTACT_API_URL) {
       setStatus("error");
       setMessage("Enrollment isn't configured yet. Email us at contact@zoumconsultancy.com.");
@@ -31,7 +38,7 @@ export function useEnrollment() {
     setMessage("");
 
     try {
-      const name = user?.fullName || user?.username || "Student";
+      const name = intake.name || user?.fullName || user?.username || "Student";
       const email = user?.primaryEmailAddress?.emailAddress || "";
       if (!email) throw new Error("Add an email address to your account before enrolling.");
 
@@ -41,7 +48,14 @@ export function useEnrollment() {
       const orderRes = await fetch(`${base}/courses/order`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
-        body: JSON.stringify({ courseId: course.id, name, email }),
+        body: JSON.stringify({
+          courseId: course.id,
+          name,
+          email,
+          phone: intake.phone,
+          education: intake.education,
+          purpose: intake.purpose,
+        }),
       });
       if (!orderRes.ok) {
         const body = await orderRes.json().catch(() => null);
@@ -59,7 +73,7 @@ export function useEnrollment() {
           order_id: order.orderId,
           name: "ZOUM Consultancy",
           description: order.courseTitle,
-          prefill: { name, email },
+          prefill: { name, email, contact: intake.phone },
           theme: { color: "#1fcb6b" },
           handler: (response) => {
             (async () => {

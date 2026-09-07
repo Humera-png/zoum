@@ -70,6 +70,9 @@ export function renderJobApplicationEmailHtml(data: JobApplicationData): string 
 export interface EnrollmentData {
   name: string;
   email: string;
+  phone: string;
+  education: string;
+  purpose: string;
   courseTitle: string;
   amountInr: number;
   paymentId: string;
@@ -79,6 +82,9 @@ export function renderEnrollmentEmailHtml(data: EnrollmentData): string {
   const rows: [string, string][] = [
     ["Name", data.name],
     ["Email", data.email],
+    ["Phone", data.phone],
+    ["Education", data.education],
+    ["Purpose", data.purpose],
     ["Course", data.courseTitle],
     ["Amount paid", `₹${data.amountInr.toLocaleString("en-IN")}`],
     ["Razorpay payment ID", data.paymentId],

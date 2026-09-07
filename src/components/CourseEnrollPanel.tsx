@@ -1,11 +1,135 @@
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import { Check, Loader2, ArrowUpRight } from "lucide-react";
 import { Link } from "@tanstack/react-router";
-import { SignInButton } from "@clerk/clerk-react";
+import { SignInButton, useUser } from "@clerk/clerk-react";
 import type { Course } from "@/data/courses";
 import { CLERK_ENABLED } from "@/lib/clerk";
 import { useEnrollment } from "@/hooks/useEnrollment";
 import { useAuthReady } from "@/hooks/useAuthReady";
+
+type EnrollFn = ReturnType<typeof useEnrollment>["enroll"];
+
+const inputClass =
+  "w-full rounded-lg border border-border bg-background px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-lime/50";
+
+const PURPOSE_OPTIONS = [
+  "Get my first job",
+  "Switch careers",
+  "Upskill for my current job",
+  "Personal interest",
+  "Other",
+];
+
+// Collected once, right before payment — name/phone/education/purpose, so
+// there's real context on who enrolled and why, not just a name and email.
+function IntakeForm({
+  course,
+  enroll,
+  loading,
+  status,
+  message,
+}: {
+  course: Course;
+  enroll: EnrollFn;
+  loading: boolean;
+  status: "idle" | "success" | "error";
+  message: string;
+}) {
+  const { user } = useUser();
+  const [name, setName] = useState(user?.fullName || user?.username || "");
+  const [phone, setPhone] = useState("");
+  const [education, setEducation] = useState("");
+  const [purpose, setPurpose] = useState("");
+  const email = user?.primaryEmailAddress?.emailAddress || "";
+
+  const canSubmit = name.trim() && phone.trim() && education.trim() && purpose.trim();
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!canSubmit || loading) return;
+    await enroll(course, {
+      name: name.trim(),
+      phone: phone.trim(),
+      education: education.trim(),
+      purpose: purpose.trim(),
+    });
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-3">
+      <div>
+        <label className="text-xs text-muted-foreground mb-1 block">Full name</label>
+        <input
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+          className={inputClass}
+          placeholder="Your name"
+        />
+      </div>
+      <div>
+        <label className="text-xs text-muted-foreground mb-1 block">Email</label>
+        <input value={email} readOnly disabled className={`${inputClass} opacity-60`} />
+      </div>
+      <div>
+        <label className="text-xs text-muted-foreground mb-1 block">Phone number</label>
+        <input
+          type="tel"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          required
+          className={inputClass}
+          placeholder="Your phone number"
+        />
+      </div>
+      <div>
+        <label className="text-xs text-muted-foreground mb-1 block">Highest education</label>
+        <input
+          value={education}
+          onChange={(e) => setEducation(e.target.value)}
+          required
+          className={inputClass}
+          placeholder="e.g. B.Com, 12th pass, MBA"
+        />
+      </div>
+      <div>
+        <label className="text-xs text-muted-foreground mb-1 block">Why this course?</label>
+        <select
+          value={purpose}
+          onChange={(e) => setPurpose(e.target.value)}
+          required
+          className={inputClass}
+        >
+          <option value="" disabled>
+            Select one
+          </option>
+          {PURPOSE_OPTIONS.map((p) => (
+            <option key={p} value={p}>
+              {p}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <button
+        type="submit"
+        disabled={!canSubmit || loading}
+        className="w-full inline-flex items-center justify-center bg-[#10b981] text-white px-6 py-4 rounded-xl font-semibold shadow-md transition-all active:scale-[0.98] disabled:opacity-60"
+      >
+        {loading ? (
+          <>
+            <Loader2 className="h-4 w-4 mr-2 animate-spin" /> Processing...
+          </>
+        ) : (
+          <>
+            Next: Pay <ArrowUpRight className="h-4 w-4 ml-2" />
+          </>
+        )}
+      </button>
+      {status === "error" && <p className="text-xs text-destructive text-center">{message}</p>}
+    </form>
+  );
+}
 
 // Only ever mounted when CLERK_ENABLED is true (see CourseEnrollPanel below)
 // — safe to call Clerk hooks unconditionally here, since a ClerkProvider
@@ -51,26 +175,7 @@ function EnrollControls({ course }: { course: Course }) {
 
   if (isSignedIn) {
     return (
-      <div>
-        <button
-          onClick={() => enroll(course)}
-          disabled={loading}
-          className="w-full inline-flex items-center justify-center bg-[#10b981] text-white px-6 py-4 rounded-xl font-semibold shadow-md transition-all active:scale-[0.98] disabled:opacity-60"
-        >
-          {loading ? (
-            <>
-              <Loader2 className="h-4 w-4 mr-2 animate-spin" /> Processing...
-            </>
-          ) : (
-            <>
-              Enroll &amp; pay <ArrowUpRight className="h-4 w-4 ml-2" />
-            </>
-          )}
-        </button>
-        {status === "error" && (
-          <p className="mt-2 text-xs text-destructive text-center">{message}</p>
-        )}
-      </div>
+      <IntakeForm course={course} enroll={enroll} loading={loading} status={status} message={message} />
     );
   }
 

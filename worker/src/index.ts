@@ -91,8 +91,15 @@ async function handleCreateOrder(
   const courseId = typeof body?.courseId === "string" ? body.courseId : null;
   const name = typeof body?.name === "string" ? body.name.trim() : "";
   const email = typeof body?.email === "string" ? body.email.trim() : "";
-  if (!courseId || !name || !email) {
-    return jsonResponse({ error: "Missing courseId, name, or email" }, 400, cors);
+  const phone = typeof body?.phone === "string" ? body.phone.trim() : "";
+  const education = typeof body?.education === "string" ? body.education.trim() : "";
+  const purpose = typeof body?.purpose === "string" ? body.purpose.trim() : "";
+  if (!courseId || !name || !email || !phone || !education || !purpose) {
+    return jsonResponse(
+      { error: "Missing courseId, name, email, phone, education, or purpose" },
+      400,
+      cors,
+    );
   }
 
   const course = findCourse(courseId);
@@ -113,10 +120,22 @@ async function handleCreateOrder(
 
   await env.DB.prepare(
     `INSERT INTO enrollments
-      (id, course_id, course_title, amount_inr, clerk_user_id, name, email, razorpay_order_id, status)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'created')`,
+      (id, course_id, course_title, amount_inr, clerk_user_id, name, email, phone, education, purpose, razorpay_order_id, status)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'created')`,
   )
-    .bind(enrollmentId, course.id, course.title, course.priceInr, userId, name, email, order.orderId)
+    .bind(
+      enrollmentId,
+      course.id,
+      course.title,
+      course.priceInr,
+      userId,
+      name,
+      email,
+      phone,
+      education,
+      purpose,
+      order.orderId,
+    )
     .run();
 
   return jsonResponse(
@@ -168,6 +187,9 @@ async function handleVerifyPayment(
       amount_inr: number;
       name: string;
       email: string;
+      phone: string | null;
+      education: string | null;
+      purpose: string | null;
     }>();
   if (!enrollment) return jsonResponse({ error: "Enrollment not found" }, 404, cors);
 
@@ -184,6 +206,9 @@ async function handleVerifyPayment(
     data: {
       name: enrollment.name,
       email: enrollment.email,
+      phone: enrollment.phone ?? "",
+      education: enrollment.education ?? "",
+      purpose: enrollment.purpose ?? "",
       courseTitle: enrollment.course_title,
       amountInr: enrollment.amount_inr,
       paymentId,

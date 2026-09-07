@@ -17,6 +17,9 @@ interface Enrollment {
   amount_inr: number;
   name: string;
   email: string;
+  phone: string | null;
+  education: string | null;
+  purpose: string | null;
   status: string;
   created_at: string;
 }
@@ -178,6 +181,9 @@ function AdminDashboard() {
               ["created_at", "Date", (v) => new Date(v).toLocaleString()],
               ["name", "Name"],
               ["email", "Email"],
+              ["phone", "Phone"],
+              ["education", "Education"],
+              ["purpose", "Purpose"],
               ["course_title", "Course"],
               ["amount_inr", "Amount", (v) => `₹${Number(v).toLocaleString("en-IN")}`],
               ["status", "Status"],
