@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { Clock, ArrowUpRight, ChevronDown } from "lucide-react";
+import { Clock, ArrowUpRight } from "lucide-react";
 import { courses } from "@/data/courses";
 import { CATEGORY_META } from "@/lib/courseCategory";
 import { PageBackdrop } from "@/components/PageBackdrop";
@@ -98,7 +98,7 @@ function CourseDetailPage() {
                   <div className="text-xs uppercase tracking-[0.3em] text-lime mb-3">
                     / {CATEGORY_META[course.category].label}
                   </div>
-                  <h1 className="font-display text-3xl md:text-5xl tracking-tight">{course.title}</h1>
+                  <h1 className="font-display text-xl md:text-2xl tracking-tight">{course.title}</h1>
                   <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
                     <span className="inline-flex items-center gap-1.5">
                       <Clock className="h-4 w-4 text-lime" /> {course.duration}
@@ -117,51 +117,51 @@ function CourseDetailPage() {
                         Course modules
                       </h2>
                       <p className="text-sm text-muted-foreground mb-4">
-                        Tap a module to see what's covered.
+                        Select a module to see what's covered.
                       </p>
-                      <div className="space-y-3">
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                         {course.modules.map((m, i) => {
-                          const isOpen = openModule === i;
+                          const isSelected = openModule === i;
                           return (
-                            <div
+                            <button
                               key={m.title}
-                              className={`glass rounded-2xl overflow-hidden transition ${isOpen ? "ring-1 ring-lime/50" : ""}`}
+                              type="button"
+                              onClick={() => setOpenModule(i)}
+                              aria-pressed={isSelected}
+                              className={`glass rounded-2xl p-4 text-left transition ${isSelected ? "ring-1 ring-lime/50 bg-lime/5" : "hover:bg-black/5"}`}
                             >
-                              <button
-                                type="button"
-                                onClick={() => setOpenModule(isOpen ? -1 : i)}
-                                aria-expanded={isOpen}
-                                className="w-full flex items-center gap-4 p-4 md:p-5 text-left"
+                              <span
+                                className={`h-7 w-7 rounded-full font-display text-xs grid place-items-center mb-2 ${isSelected ? "bg-lime text-white" : "bg-lime/15 text-lime"}`}
                               >
-                                <span className="h-8 w-8 shrink-0 rounded-full bg-lime/15 text-lime font-display text-sm grid place-items-center">
-                                  {i + 1}
-                                </span>
-                                <span className="flex-1 font-display text-base md:text-lg">
-                                  {m.title}
-                                </span>
-                                <ChevronDown
-                                  className={`h-4 w-4 text-muted-foreground shrink-0 transition-transform ${isOpen ? "rotate-180" : ""}`}
-                                />
-                              </button>
-                              <AnimatePresence initial={false}>
-                                {isOpen && (
-                                  <motion.div
-                                    initial={{ height: 0, opacity: 0 }}
-                                    animate={{ height: "auto", opacity: 1 }}
-                                    exit={{ height: 0, opacity: 0 }}
-                                    transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                                    className="overflow-hidden"
-                                  >
-                                    <p className="px-4 md:px-5 pb-5 pl-16 text-sm text-muted-foreground leading-relaxed">
-                                      {m.description}
-                                    </p>
-                                  </motion.div>
-                                )}
-                              </AnimatePresence>
-                            </div>
+                                {i + 1}
+                              </span>
+                              <div className="text-sm font-medium leading-snug">{m.title}</div>
+                            </button>
                           );
                         })}
                       </div>
+                      <AnimatePresence mode="wait">
+                        {course.modules[openModule] && (
+                          <motion.div
+                            key={openModule}
+                            initial={{ opacity: 0, y: 8 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -8 }}
+                            transition={{ duration: 0.2 }}
+                            className="glass-strong rounded-2xl p-5 mt-4"
+                          >
+                            <div className="text-xs uppercase tracking-wider text-lime mb-1.5">
+                              Module {openModule + 1}
+                            </div>
+                            <div className="font-display text-lg mb-2">
+                              {course.modules[openModule].title}
+                            </div>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
+                              {course.modules[openModule].description}
+                            </p>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </>
                   )}
                 </div>
