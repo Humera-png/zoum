@@ -22,6 +22,11 @@ const serviceItems = [
     desc: "Get Noticed For Bigger Roles.",
   },
   {
+    label: "Learning and Development (L&D)",
+    to: "/services/talent-development" as const,
+    desc: "Skills That Get You Noticed.",
+  },
+  {
     label: "AI and IT Services",
     to: "/services/ai-automation" as const,
     desc: "Production AI Architectures.",
@@ -40,11 +45,6 @@ const serviceItems = [
     label: "Business Process Outsourcing",
     to: "/services/bpo-operations" as const,
     desc: "Scale Without Friction.",
-  },
-  {
-    label: "Learning and Development (L&D)",
-    to: "/services/talent-development" as const,
-    desc: "Skills That Get You Noticed.",
   },
 ];
 

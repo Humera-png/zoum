@@ -294,6 +294,14 @@ const services = [
     img: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80",
   },
   {
+    icon: GraduationCap,
+    title: "Learning and Development (L&D)",
+    headline: "Skills That Get You Noticed.",
+    body: "BPO, AI & IT, English, and Python courses, each with 3 modules and a clear path to enroll.",
+    to: "/services/talent-development" as const,
+    img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
     icon: Cpu,
     title: "AI and IT Services",
     headline: "Let AI Handle the Busywork.",
@@ -324,14 +332,6 @@ const services = [
     body: "We find where your business is losing time and money, then fix it, with real BPO delivery.",
     to: "/services/bpo-operations" as const,
     img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    icon: GraduationCap,
-    title: "Learning and Development (L&D)",
-    headline: "Skills That Get You Noticed.",
-    body: "BPO, AI & IT, English, and Python courses, each with 3 modules and a clear path to enroll.",
-    to: "/services/talent-development" as const,
-    img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
   },
 ];
 
