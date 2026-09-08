@@ -132,6 +132,16 @@ Strategic consulting for businesses looking to improve operations, accelerate gr
 "
         />
 
+        <div className="mt-10 relative aspect-[21/9] rounded-3xl overflow-hidden glass-strong">
+          <img
+            src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1600&q=80"
+            alt="A BPO team at work"
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-transparent" />
+        </div>
+
         <div className="mt-20 grid lg:grid-cols-[200px_1fr] gap-12">
           <ServiceSubNav />
 

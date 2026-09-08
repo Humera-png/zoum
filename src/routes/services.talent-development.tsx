@@ -161,6 +161,16 @@ function TalentDevelopmentPage() {
           sub="Training programs and courses that help individuals build the workplace, technical, and AI skills that turn a resume into an offer."
         />
 
+        <div className="mt-10 relative aspect-[21/9] rounded-3xl overflow-hidden glass-strong">
+          <img
+            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80"
+            alt="An instructor teaching a class"
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-transparent" />
+        </div>
+
         <div className="mt-20 grid lg:grid-cols-[200px_1fr] gap-12">
           <ServiceSubNav />
           <div className="space-y-32">

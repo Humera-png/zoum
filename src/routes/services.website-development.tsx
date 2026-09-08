@@ -67,16 +67,22 @@ const marketing = [
     icon: PenTool,
     name: "Brand Strategy & Content",
     desc: "A clear brand voice and a content system that attracts attention and builds trust over time.",
+    image:
+      "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=1200&q=80",
   },
   {
     icon: Users2,
     name: "Social Media Management",
     desc: "Consistent publishing, engagement, and reporting across Instagram, LinkedIn, and beyond.",
+    image:
+      "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=1200&q=80",
   },
   {
     icon: Megaphone,
     name: "Paid Social Campaigns",
     desc: "Performance-focused ads on Meta and LinkedIn, targeted and tested to generate real leads.",
+    image:
+      "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=1200&q=80",
   },
 ];
 
@@ -184,13 +190,24 @@ function WebsiteDevelopmentPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.05 }}
-                    className="group glass node-bloom rounded-2xl p-6"
+                    className="group glass rounded-2xl overflow-hidden hover-glow-lime transition"
                   >
-                    <div className="h-10 w-10 rounded-xl glass-strong grid place-items-center mb-4 group-hover:bg-lime group-hover:text-white transition">
-                      <m.icon className="h-5 w-5" />
+                    <div className="relative aspect-[16/9] overflow-hidden">
+                      <img
+                        src={m.image}
+                        alt={m.name}
+                        loading="lazy"
+                        className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent" />
+                      <div className="absolute top-3 left-3 h-10 w-10 rounded-xl glass-strong grid place-items-center group-hover:bg-lime group-hover:text-white transition">
+                        <m.icon className="h-5 w-5" />
+                      </div>
                     </div>
-                    <div className="font-display text-xl">{m.name}</div>
-                    <div className="text-sm text-muted-foreground mt-2">{m.desc}</div>
+                    <div className="p-6">
+                      <div className="font-display text-xl">{m.name}</div>
+                      <div className="text-sm text-muted-foreground mt-2">{m.desc}</div>
+                    </div>
                   </motion.div>
                 ))}
               </div>

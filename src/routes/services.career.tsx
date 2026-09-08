@@ -16,7 +16,7 @@ export const Route = createFileRoute("/services/career")({
       {
         name: "description",
         content:
-          "ZOUM Consultancy is a Jaipur recruitment agency helping candidates get noticed for bigger roles and negotiate better pay. 5000+ job placements across India, 100+ companies served.",
+          "ZOUM Consultancy's recruitment service helps candidates get noticed for bigger roles and negotiate better pay. 5000+ job placements across India, 100+ companies served.",
       },
       {
         name: "keywords",
@@ -98,6 +98,16 @@ function CareerPage() {
           italic="Bigger Roles."
           sub="We help people get noticed for the roles they're already qualified for, and negotiate better pay once they get there."
         />
+
+        <div className="mt-10 relative aspect-[21/9] rounded-3xl overflow-hidden glass-strong">
+          <img
+            src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1600&q=80"
+            alt="A candidate in a job interview"
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-transparent" />
+        </div>
 
         <div className="mt-20 space-y-32">
           <Section id="expertise" title="Our Expertise" kicker="/ industries">

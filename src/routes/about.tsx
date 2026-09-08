@@ -7,11 +7,11 @@ import { PageBackdrop } from "@/components/PageBackdrop";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About ZOUM Consultancy | Recruitment & IT Services Company, Jaipur" },
+      { title: "About ZOUM Consultancy | Jaipur Business Consultancy" },
       {
         name: "description",
         content:
-          "ZOUM Consultancy is a Jaipur recruitment and IT services company. Meet the team behind our job placement, AI automation, and software development work.",
+          "ZOUM Consultancy is a Jaipur-based consultancy. Meet the team behind our recruitment, AI automation, and software development work.",
       },
       { property: "og:title", content: "About ZOUM Consultancy" },
       {
@@ -37,13 +37,13 @@ const board = [
   {
     name: "Abdur Rehman",
     role: "Founder",
-    bio: "Human Resources Specialist & Business Consultant with 5+ years of operational excellence in strategic talent sourcing and business planning. Abdur built ZOUM's recruitment engine from the ground up: the sourcing process, client relationships, and vetting standards that stand behind every candidate we put forward. He sets the direction on the consultancy side of the business, working directly with client companies to turn a hiring need or a growth problem into a plan that's actually realistic to execute.",
+    bio: "Abdur leads recruitment and business consultancy at ZOUM. A Human Resources Specialist & Business Consultant with 5+ years of experience in strategic talent sourcing and business planning, he built ZOUM's recruitment engine from the ground up: the sourcing process, client relationships, and vetting standards that stand behind every candidate we put forward. He sets the direction on the consultancy side of the business, working directly with client companies to turn a hiring need or a growth problem into a plan that's actually realistic to execute.",
     linkedin: "https://www.linkedin.com/in/abdur-rehman-534483221/",
   },
   {
     name: "Parv Jain",
     role: "Founder",
-    bio: "Human Resources Specialist & Business Consultant with 5+ years of operational excellence in strategic talent sourcing and business planning. Parv leads client operations and business development, the relationships and delivery standards that keep ZOUM accountable to the results it promises. He's closely involved in shaping the training and consultancy programs, making sure what gets taught or advised actually matches what employers are hiring for right now.",
+    bio: "Parv leads client operations and business development at ZOUM, the relationships and delivery standards that keep the company accountable to the results it promises. Also a Human Resources Specialist & Business Consultant with 5+ years of experience in strategic talent sourcing and business planning, he's closely involved in shaping ZOUM's L&D courses and consultancy programs, making sure what gets taught or advised actually matches what employers are hiring for right now.",
     linkedin: "https://www.linkedin.com/in/parv-jain-50020232b/",
   },
   {

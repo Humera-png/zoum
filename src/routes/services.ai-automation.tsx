@@ -30,12 +30,12 @@ export const Route = createFileRoute("/services/ai-automation")({
       {
         name: "description",
         content:
-          "ZOUM Consultancy is an AI automation and IT services company in Jaipur. We build AI agents, chatbots, workflow automation, custom software, and mobile apps for businesses across India.",
+          "ZOUM Consultancy is an AI automation and IT consultancy in Jaipur. We build AI agents, chatbots, workflow automation, custom software, and mobile apps for businesses across India.",
       },
       {
         name: "keywords",
         content:
-          "AI automation agency India, AI agents development, AI chatbot development, custom software development Jaipur, IT services company India, business process automation, workflow automation company, AI integration services",
+          "AI automation agency India, AI agents development, AI chatbot development, custom software development Jaipur, IT consultancy India, business process automation, workflow automation company, AI integration services",
       },
       {
         property: "og:title",

@@ -31,11 +31,12 @@ import {
 import { MagneticButton } from "@/components/MagneticButton";
 import { JobSeekerForm } from "@/components/JobSeekerForm";
 import { HireTalentModal } from "@/components/HireTalentModal";
+import { courses } from "@/data/courses";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "ZOUM Consultancy Jaipur | Recruitment Agency & IT Services Company" },
+      { title: "ZOUM Consultancy Jaipur | Business Consultancy, Recruitment & IT Services" },
       {
         name: "description",
         content:
@@ -44,19 +45,85 @@ export const Route = createFileRoute("/")({
       {
         name: "keywords",
         content:
-          "recruitment agency Jaipur, job placement India, IT services company Jaipur, AI automation agency, AI agents development, website development company India, software development company",
+          "business consultancy Jaipur, recruitment agency Jaipur, job placement India, IT consultancy Jaipur, AI automation agency, AI agents development, website development company India, software development company",
       },
-      { property: "og:title", content: "ZOUM Consultancy | Recruitment Agency & IT Services Company" },
+      { property: "og:title", content: "ZOUM Consultancy | Business Consultancy, Recruitment & IT Services" },
       {
         property: "og:description",
         content:
-          "Jaipur's recruitment agency and IT services company: job placement across India, AI automation, AI agents, website & software development.",
+          "Jaipur's consultancy: job placement across India, AI automation, AI agents, website & software development, business consultancy.",
       },
       { rel: "canonical", href: "https://zoumconsultancy.com" },
     ],
   }),
   component: Index,
 });
+
+// Ads its own courses in the big glass panel of the hero visual, instead of
+// leaving that space empty. Cycles a few real courses on a timer.
+const heroAdIds = [
+  "bpo-career-masterclass",
+  "it-career-masterclass",
+  "business-consultancy-masterclass",
+  "ai-ml-foundations",
+];
+const heroAdCourses = heroAdIds
+  .map((id) => courses.find((c) => c.id === id))
+  .filter((c): c is (typeof courses)[number] => Boolean(c));
+
+function HeroCourseAd() {
+  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    if (heroAdCourses.length < 2) return;
+    const t = setInterval(() => setIndex((i) => (i + 1) % heroAdCourses.length), 4000);
+    return () => clearInterval(t);
+  }, []);
+  const course = heroAdCourses[index];
+  if (!course) return null;
+
+  return (
+    <Link to="/courses/$courseId" params={{ courseId: course.id }} className="absolute inset-0 group">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={course.id}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.6 }}
+          className="absolute inset-0"
+        >
+          <img
+            src={course.image}
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover opacity-40 group-hover:opacity-55 transition-opacity duration-500"
+          />
+        </motion.div>
+      </AnimatePresence>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-black/10" />
+      <div className="absolute inset-0 [background-image:radial-gradient(rgba(255,255,255,0.35)_1px,transparent_1px)] [background-size:16px_16px] opacity-20" />
+      <div className="absolute top-5 left-5 inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.25em] text-lime font-semibold">
+        <span className="h-1.5 w-1.5 rounded-full bg-lime animate-pulse" /> Enroll now
+      </div>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={course.id}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.4 }}
+          className="absolute inset-x-5 bottom-5"
+        >
+          <div className="font-display text-white text-lg leading-snug line-clamp-2">
+            {course.title}
+          </div>
+          <div className="mt-1.5 inline-flex items-center gap-1 text-xs font-semibold text-white/90 group-hover:underline">
+            View course <ArrowUpRight className="h-3 w-3" />
+          </div>
+        </motion.div>
+      </AnimatePresence>
+    </Link>
+  );
+}
 
 function GlassVisual() {
   const ref = useRef<HTMLDivElement>(null);
@@ -100,9 +167,11 @@ function GlassVisual() {
         <motion.div
           animate={{ y: [0, -12, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute inset-8 rounded-3xl glass-strong"
+          className="absolute inset-8 rounded-3xl glass-strong overflow-hidden"
           style={{ transform: "translateZ(40px)" }}
-        />
+        >
+          <HeroCourseAd />
+        </motion.div>
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
@@ -253,35 +322,13 @@ function SectorsStrip() {
           {row.map((s, i) => (
             <div
               key={`${s.label}-${i}`}
-              className="inline-flex items-center gap-2 bg-white/70 border border-slate-200/50 px-5 py-3 mx-1 h-16 rounded-xl shadow-sm transition-all duration-500 cursor-default hover:border-emerald-500/40 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center gap-2 w-[230px] shrink-0 bg-white/70 border border-slate-200/50 px-4 py-3 mx-1 h-16 rounded-xl shadow-sm transition-all duration-500 cursor-default hover:border-emerald-500/40 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] hover:-translate-y-0.5"
             >
               <s.icon className="h-4 w-4 text-lime shrink-0" />
-              <span className="text-sm font-medium text-foreground">{s.label}</span>
+              <span className="text-sm font-medium text-foreground whitespace-nowrap">{s.label}</span>
             </div>
           ))}
         </motion.div>
-      </div>
-
-      {/* Static portfolio metrics block */}
-      <div className="max-w-5xl mx-auto mt-5 md:mt-7 px-4 sm:px-6">
-        <div className="glass-strong rounded-2xl grid grid-cols-2 divide-x divide-border overflow-hidden">
-          <div className="p-6 md:p-8 text-center">
-            <div className="font-display text-4xl md:text-6xl tracking-tight text-foreground leading-none">
-              5000+
-            </div>
-            <div className="mt-3 text-[10px] md:text-xs uppercase tracking-[0.25em] text-muted-foreground">
-              PLACEMENTS
-            </div>
-          </div>
-          <div className="p-6 md:p-8 text-center">
-            <div className="font-display text-4xl md:text-6xl tracking-tight text-foreground leading-none">
-              100+
-            </div>
-            <div className="mt-3 text-[10px] md:text-xs uppercase tracking-[0.25em] text-muted-foreground">
-              COMPANIES SERVED
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
@@ -899,8 +946,8 @@ const faqs = [
     a: "ZOUM Consultancy offers recruitment and job placement, AI automation and AI agents, website and software development, talent and skills development, social media marketing, business consultancy, and business process outsourcing (BPO).",
   },
   {
-    q: "Is ZOUM a recruitment agency or an IT company?",
-    a: "Both. Recruitment and IT services are our two main lines of business, run by the same team. Businesses can hire us for staffing and for technical work like websites, software, or AI automation under one roof.",
+    q: "Is ZOUM a recruitment agency, an IT company, or a consultancy?",
+    a: "ZOUM is a consultancy. Recruitment and IT are two of our service lines, alongside business consultancy, BPO, website & social media, and L&D, all run by the same team. Businesses can hire us for staffing, technical work like websites, software, or AI automation, or broader strategy and operations, under one roof.",
   },
   {
     q: "Does ZOUM help with job placement outside Jaipur?",

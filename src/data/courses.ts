@@ -49,7 +49,7 @@ const MASTERCLASS_TERMS = [
 export const courses: Course[] = [
   {
     id: "bpo-career-masterclass",
-    title: "BPO Career & Interview Readiness Masterclass",
+    title: "BPO Career & Interview Masterclass",
     category: "career",
     page: "bpo",
     priceInr: 999,
@@ -81,7 +81,7 @@ export const courses: Course[] = [
   },
   {
     id: "it-career-masterclass",
-    title: "IT Career & Interview Readiness Masterclass",
+    title: "IT Career & Interview Masterclass",
     category: "career",
     page: "ai-it",
     priceInr: 999,
@@ -113,7 +113,7 @@ export const courses: Course[] = [
   },
   {
     id: "business-consultancy-masterclass",
-    title: "Business Consultancy Career & Interview Readiness Masterclass",
+    title: "Business Consultancy Masterclass",
     category: "career",
     page: "consultancy",
     priceInr: 999,
