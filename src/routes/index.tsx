@@ -82,15 +82,15 @@ function HeroCourseAd() {
   if (!course) return null;
 
   return (
-    <div className="absolute top-5 left-5 w-[60%]">
+    <Link
+      to="/courses/$courseId"
+      params={{ courseId: course.id }}
+      className="group relative z-10 block w-[70%] max-w-[220px] pointer-events-auto"
+    >
       <div className="text-[10px] uppercase tracking-[0.25em] text-lime font-semibold inline-flex items-center gap-1.5 mb-2">
         <span className="h-1.5 w-1.5 rounded-full bg-lime animate-pulse" /> Enroll now
       </div>
-      <Link
-        to="/courses/$courseId"
-        params={{ courseId: course.id }}
-        className="group relative block aspect-[4/3] rounded-2xl overflow-hidden"
-      >
+      <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.img
             key={course.id}
@@ -104,7 +104,7 @@ function HeroCourseAd() {
           />
         </AnimatePresence>
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
-      </Link>
+      </div>
       <AnimatePresence mode="wait">
         <motion.div
           key={course.id}
@@ -117,16 +117,12 @@ function HeroCourseAd() {
           <div className="font-display text-foreground text-xs leading-snug line-clamp-2">
             {course.title}
           </div>
-          <Link
-            to="/courses/$courseId"
-            params={{ courseId: course.id }}
-            className="mt-1 inline-flex items-center gap-1 text-[11px] font-semibold text-lime hover:underline"
-          >
+          <span className="mt-1 inline-flex items-center gap-1 text-[11px] font-semibold text-lime group-hover:underline">
             View course <ArrowUpRight className="h-2.5 w-2.5" />
-          </Link>
+          </span>
         </motion.div>
       </AnimatePresence>
-    </div>
+    </Link>
   );
 }
 
@@ -169,60 +165,47 @@ function GlassVisual() {
         style={{ rotateX: rx, rotateY: ry, transformStyle: "preserve-3d" }}
         className="relative h-full w-full"
       >
-        <motion.div
-          animate={{ y: [0, -12, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute inset-8 rounded-3xl glass-strong overflow-hidden"
+        {/* Center stage: the course ad gets the middle of the panel to itself */}
+        <div
+          className="absolute inset-x-10 top-28 bottom-6 rounded-3xl glass-strong overflow-hidden flex items-center justify-center p-6"
           style={{ transform: "translateZ(40px)" }}
         >
           <HeroCourseAd />
-        </motion.div>
+        </div>
+
         <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-          className="absolute top-20 right-0 h-48 w-48 rounded-3xl glass-strong overflow-hidden"
-          style={{ transform: "translateZ(80px)" }}
+          animate={{ y: [0, -10, 0] }}
+          transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 1.6 }}
+          className="absolute top-3 left-1/2 -translate-x-1/2 glass-strong rounded-full px-4 py-2 text-[11px] font-medium text-foreground whitespace-nowrap"
+          style={{ transform: "translateZ(70px)" }}
         >
-          <div className="p-5 text-xs text-muted-foreground">PLACEMENTS</div>
-          <div className="px-5 font-display text-4xl">
-            <span className="text-foreground">5000+</span>
-          </div>
-          <div
-            className="mt-4 mx-5 h-16 rounded-md"
-            style={{ background: "linear-gradient(to top, rgba(31,203,107,0.65), transparent)" }}
-          />
+          5 Service Lines. One Team.
+        </motion.div>
+
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+          className="absolute top-11 left-1/2 -translate-x-[calc(100%+6px)] glass-strong rounded-2xl px-4 py-2.5 text-center"
+          style={{ transform: "translateZ(90px)" }}
+        >
+          <div className="text-[9px] uppercase tracking-wider text-muted-foreground">Placements</div>
+          <div className="font-display text-xl text-foreground leading-tight">5000+</div>
         </motion.div>
         <motion.div
           animate={{ y: [0, -8, 0] }}
           transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-12 left-0 h-40 w-56 rounded-3xl glass-strong p-5"
-          style={{ transform: "translateZ(120px)" }}
+          className="absolute top-11 left-1/2 translate-x-[6px] glass-strong rounded-2xl px-4 py-2.5 text-center"
+          style={{ transform: "translateZ(90px)" }}
         >
-          <div className="text-[11px] text-muted-foreground">COMPANIES SERVED</div>
-          <div className="mt-1 font-display text-3xl text-foreground">100+</div>
-          <div className="mt-3 flex -space-x-2">
-            {[0, 1, 2, 3].map((i) => (
-              <div
-                key={i}
-                className="h-7 w-7 rounded-full border border-foreground/20"
-                style={{ background: i === 3 ? "var(--brand)" : "rgba(255,255,255,0.85)" }}
-              />
-            ))}
-          </div>
+          <div className="text-[9px] uppercase tracking-wider text-muted-foreground">Companies</div>
+          <div className="font-display text-xl text-foreground leading-tight">100+</div>
         </motion.div>
-        <motion.div
-          animate={{ y: [0, -10, 0] }}
-          transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 1.6 }}
-          className="absolute top-4 left-4 glass-strong rounded-full px-4 py-2 text-[11px] font-medium text-foreground"
-          style={{ transform: "translateZ(60px)" }}
-        >
-          5 Service Lines. One Team.
-        </motion.div>
-        <div className="absolute inset-0 rounded-full border border-foreground/10" />
+
+        <div className="pointer-events-none absolute inset-0 rounded-full border border-foreground/10" />
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-12 rounded-full border border-dashed border-foreground/15"
+          className="pointer-events-none absolute inset-12 rounded-full border border-dashed border-foreground/15"
         />
       </motion.div>
     </div>
