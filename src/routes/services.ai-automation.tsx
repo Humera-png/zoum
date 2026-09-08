@@ -11,6 +11,8 @@ import {
   Code2,
   Quote,
   ArrowUpRight,
+  Package,
+  Truck,
 } from "lucide-react";
 
 import { ServiceSubNav } from "@/components/ServiceSubNav";
@@ -137,6 +139,45 @@ const partnerships = [
   },
 ];
 
+const caseStudies = [
+  {
+    icon: Workflow,
+    name: "LeadFlowTool",
+    tag: "Built with n8n",
+    desc: "Manages every lead follow-up automatically, sending the right email at the right time so a lead never goes cold because someone forgot to reply.",
+  },
+  {
+    icon: Package,
+    name: "Order Processing Automation",
+    tag: "Built with n8n",
+    desc: "Takes an order from placement to fulfillment without manual handling at each step, cutting the busywork out of order operations.",
+  },
+  {
+    icon: Database,
+    name: "Lead Generation Automation",
+    tag: "Built with n8n",
+    desc: "Finds, qualifies, and routes new leads automatically, so the sales team spends time talking to people, not hunting for them.",
+  },
+  {
+    icon: Truck,
+    name: "Supply Chain Automation",
+    tag: "Built with n8n",
+    desc: "Automates coordination between suppliers, inventory, and orders, catching issues before they turn into delays.",
+  },
+  {
+    icon: Sparkles,
+    name: "Jarvis AI Voice Assistant",
+    tag: "AI voice",
+    desc: "A custom AI voice assistant built for real business use: scheduling, customer support, and internal operations, handled by voice.",
+  },
+  {
+    icon: Bot,
+    name: "AI Chatbot",
+    tag: "AI chatbot",
+    desc: "A conversational AI chatbot trained on real business data, answering customer and team questions instantly instead of making them wait.",
+  },
+];
+
 const results = [
   {
     title: "Business Automation",
@@ -205,7 +246,7 @@ function AIPage() {
             </Section>
 
             <Section id="services" title="What We Build" kicker="/ capabilities">
-              <div className="grid md:grid-cols-2 gap-5">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {services.map((s, i) => (
                   <motion.div
                     key={i}
@@ -215,7 +256,7 @@ function AIPage() {
                     transition={{ delay: i * 0.05 }}
                     className="group glass rounded-2xl overflow-hidden hover-glow-lime transition"
                   >
-                    <div className="relative aspect-[16/9] overflow-hidden">
+                    <div className="relative aspect-[16/10] overflow-hidden">
                       <img
                         src={s.image}
                         alt={s.name}
@@ -223,13 +264,13 @@ function AIPage() {
                         className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent" />
-                      <div className="absolute top-3 left-3 h-10 w-10 rounded-xl glass-strong grid place-items-center group-hover:bg-lime group-hover:text-white transition">
-                        <s.icon className="h-5 w-5" />
+                      <div className="absolute top-2.5 left-2.5 h-8 w-8 rounded-lg glass-strong grid place-items-center group-hover:bg-lime group-hover:text-white transition">
+                        <s.icon className="h-4 w-4" />
                       </div>
                     </div>
-                    <div className="p-6">
-                      <div className="font-display text-xl">{s.name}</div>
-                      <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{s.desc}</p>
+                    <div className="p-4">
+                      <div className="font-display text-base">{s.name}</div>
+                      <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">{s.desc}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -266,7 +307,7 @@ function AIPage() {
               </div>
             </Section>
 
-            <Section id="case-studies" title="How We Work With Clients" kicker="/ case studies">
+            <Section id="case-studies" title="What We've Actually Built" kicker="/ case studies">
               <div className="glass-strong rounded-3xl p-10 relative overflow-hidden mb-8">
                 <div className="absolute -left-20 -bottom-20 h-60 w-60 bg-lime/20 blur-3xl rounded-full" />
                 <Quote className="text-lime mb-5 relative" />
@@ -280,17 +321,38 @@ function AIPage() {
                   pitch deck.
                 </p>
               </div>
-              <div className="glass rounded-2xl p-8 text-center">
-                <p className="text-muted-foreground max-w-xl mx-auto">
-                  We're putting together detailed, verified case studies from real client work.
-                  Rather than publish numbers we can't stand behind, we'd rather walk you through
-                  actual examples directly.
-                </p>
+              <p className="text-muted-foreground max-w-2xl mb-6">
+                Real systems built and run by our own team, not agency mockups.
+              </p>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {caseStudies.map((c, i) => (
+                  <motion.div
+                    key={c.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.05 }}
+                    className="group glass rounded-2xl p-5 hover-glow-lime transition"
+                  >
+                    <div className="flex items-start justify-between">
+                      <div className="h-9 w-9 rounded-lg glass-strong grid place-items-center group-hover:bg-lime group-hover:text-white transition">
+                        <c.icon className="h-4 w-4" />
+                      </div>
+                      <span className="text-[10px] uppercase tracking-wider text-lime border border-lime/30 rounded-full px-2 py-0.5">
+                        {c.tag}
+                      </span>
+                    </div>
+                    <div className="font-display text-base mt-3">{c.name}</div>
+                    <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">{c.desc}</p>
+                  </motion.div>
+                ))}
+              </div>
+              <div className="mt-6 text-center">
                 <Link
                   to="/contact"
-                  className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-lime hover:underline"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-lime hover:underline"
                 >
-                  Ask us for examples <ArrowUpRight className="h-3.5 w-3.5" />
+                  Ask us for a walkthrough <ArrowUpRight className="h-3.5 w-3.5" />
                 </Link>
               </div>
             </Section>

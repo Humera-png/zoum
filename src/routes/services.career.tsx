@@ -99,7 +99,7 @@ function CareerPage() {
           sub="We help people get noticed for the roles they're already qualified for, and negotiate better pay once they get there."
         />
 
-        <div className="mt-10 relative aspect-[21/9] rounded-3xl overflow-hidden glass-strong">
+        <div className="mt-10 relative aspect-[3/1] max-h-64 rounded-3xl overflow-hidden glass-strong">
           <img
             src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1600&q=80"
             alt="A handshake after a successful job interview"

@@ -150,7 +150,7 @@ function WebsiteDevelopmentPage() {
           <ServiceSubNav />
           <div className="space-y-32">
             <Section id="overview" title="What We Build" kicker="/ capabilities">
-              <div className="grid md:grid-cols-2 gap-5">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {services.map((s, i) => (
                   <motion.div
                     key={i}
@@ -160,7 +160,7 @@ function WebsiteDevelopmentPage() {
                     transition={{ delay: i * 0.05 }}
                     className="group glass rounded-2xl overflow-hidden hover-glow-lime transition"
                   >
-                    <div className="relative aspect-[16/9] overflow-hidden">
+                    <div className="relative aspect-[16/10] overflow-hidden">
                       <img
                         src={s.image}
                         alt={s.name}
@@ -168,13 +168,13 @@ function WebsiteDevelopmentPage() {
                         className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent" />
-                      <div className="absolute top-3 left-3 h-10 w-10 rounded-xl glass-strong grid place-items-center group-hover:bg-lime group-hover:text-white transition">
-                        <s.icon className="h-5 w-5" />
+                      <div className="absolute top-2.5 left-2.5 h-8 w-8 rounded-lg glass-strong grid place-items-center group-hover:bg-lime group-hover:text-white transition">
+                        <s.icon className="h-4 w-4" />
                       </div>
                     </div>
-                    <div className="p-6">
-                      <div className="font-display text-xl">{s.name}</div>
-                      <div className="text-sm text-muted-foreground mt-2">{s.desc}</div>
+                    <div className="p-4">
+                      <div className="font-display text-base">{s.name}</div>
+                      <div className="text-xs text-muted-foreground mt-1.5 leading-relaxed">{s.desc}</div>
                     </div>
                   </motion.div>
                 ))}

@@ -161,7 +161,7 @@ function TalentDevelopmentPage() {
           sub="Training programs and courses that help individuals build the workplace, technical, and AI skills that turn a resume into an offer."
         />
 
-        <div className="mt-10 relative aspect-[21/9] rounded-3xl overflow-hidden glass-strong">
+        <div className="mt-10 relative aspect-[3/1] max-h-64 rounded-3xl overflow-hidden glass-strong">
           <img
             src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1600&q=80"
             alt="An instructor presenting to a class"
@@ -210,8 +210,8 @@ function TalentDevelopmentPage() {
             </Section>
 
             <Section id="process" title="Who It's For" kicker="/ fit">
-              <div className="glass-strong rounded-3xl p-10">
-                <p className="text-muted-foreground">
+              <div className="glass-strong rounded-2xl p-6 max-w-2xl">
+                <p className="text-muted-foreground text-sm leading-relaxed">
                   Recent graduates preparing for interviews, working professionals who want to
                   communicate with more confidence, and teams that need a consistent baseline of
                   workplace skills. Programs run individually or in small groups, in person in

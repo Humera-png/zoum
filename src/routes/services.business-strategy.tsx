@@ -132,7 +132,7 @@ Strategic consulting for businesses looking to improve operations, accelerate gr
 "
         />
 
-        <div className="mt-10 relative aspect-[21/9] rounded-3xl overflow-hidden glass-strong">
+        <div className="mt-10 relative aspect-[3/1] max-h-64 rounded-3xl overflow-hidden glass-strong">
           <img
             src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1600&q=80"
             alt="A BPO team at work"
