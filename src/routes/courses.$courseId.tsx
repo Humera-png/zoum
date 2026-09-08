@@ -110,20 +110,6 @@ function CourseDetailPage() {
                 <h2 className="font-display text-xl mt-8 mb-3">About this course</h2>
                 <p className="text-muted-foreground leading-relaxed">{course.summary}</p>
 
-                {course.pros && course.pros.length > 0 && (
-                  <>
-                    <h2 className="font-display text-xl mt-8 mb-3">Why this course</h2>
-                    <ul className="space-y-2.5">
-                      {course.pros.map((p) => (
-                        <li key={p} className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                          <Check className="h-4 w-4 text-lime shrink-0 mt-0.5" />
-                          {p}
-                        </li>
-                      ))}
-                    </ul>
-                  </>
-                )}
-
                 <div className="mt-8 glass rounded-2xl p-6 flex items-start gap-4">
                   <div className="h-10 w-10 rounded-xl bg-lime/15 text-lime grid place-items-center shrink-0">
                     <Award className="h-5 w-5" />
@@ -199,6 +185,22 @@ function CourseDetailPage() {
                             <p className="text-sm text-muted-foreground leading-relaxed">
                               {course.modules[openModule].description}
                             </p>
+
+                            {course.pros && course.pros.length > 0 && (
+                              <>
+                                <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mt-5 mb-2">
+                                  Why this course
+                                </div>
+                                <ul className="space-y-2">
+                                  {course.pros.map((p) => (
+                                    <li key={p} className="flex items-start gap-2 text-sm text-muted-foreground">
+                                      <Check className="h-3.5 w-3.5 text-lime shrink-0 mt-0.5" />
+                                      {p}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </>
+                            )}
                           </motion.div>
                         )}
                       </AnimatePresence>

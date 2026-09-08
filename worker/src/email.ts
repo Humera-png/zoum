@@ -105,6 +105,55 @@ export function renderEnrollmentEmailHtml(data: EnrollmentData): string {
 </html>`;
 }
 
+// Sent to the student themselves, confirming their seat — separate from
+// sendEnrollmentEmail below, which notifies the ZOUM team internally.
+export function renderEnrollmentConfirmationEmailHtml(data: EnrollmentData): string {
+  return `<!doctype html>
+<html>
+  <body style="font-family:Arial,Helvetica,sans-serif;color:#14241b;max-width:480px;">
+    <h2 style="margin:0 0 16px;">You're in, ${escapeHtml(data.name)}! 🎉</h2>
+    <p style="margin:0 0 16px;font-size:14px;line-height:1.6;">
+      Your seat for <strong>${escapeHtml(data.courseTitle)}</strong> is confirmed. Payment of
+      ₹${data.amountInr.toLocaleString("en-IN")} has been received.
+    </p>
+    <p style="margin:0 0 16px;font-size:14px;line-height:1.6;">
+      We'll reach out with the schedule and joining details shortly. If you have any questions in
+      the meantime, just reply to this email.
+    </p>
+    <p style="margin:24px 0 0;font-size:13px;color:#647067;">
+      Payment reference: ${escapeHtml(data.paymentId)}
+    </p>
+    <p style="margin:16px 0 0;font-size:14px;">— The ZOUM Consultancy team</p>
+  </body>
+</html>`;
+}
+
+export async function sendEnrollmentConfirmationEmail(params: {
+  apiKey: string;
+  from: string;
+  to: string;
+  data: EnrollmentData;
+}): Promise<{ ok: true } | { ok: false; status: number; body: string }> {
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${params.apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from: params.from,
+      to: [params.to],
+      subject: `Your seat is confirmed — ${params.data.courseTitle}`,
+      html: renderEnrollmentConfirmationEmailHtml(params.data),
+    }),
+  });
+
+  if (!res.ok) {
+    return { ok: false, status: res.status, body: await res.text() };
+  }
+  return { ok: true };
+}
+
 export async function sendEnrollmentEmail(params: {
   apiKey: string;
   from: string;

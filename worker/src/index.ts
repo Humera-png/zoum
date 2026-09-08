@@ -10,6 +10,7 @@ import {
   sendInquiryEmail,
   sendJobApplicationEmail,
   sendEnrollmentEmail,
+  sendEnrollmentConfirmationEmail,
   type ResendAttachment,
 } from "./email";
 import { isRateLimited } from "./ratelimit";
@@ -199,25 +200,40 @@ async function handleVerifyPayment(
     .bind(paymentId, enrollment.id)
     .run();
 
-  const emailResult = await sendEnrollmentEmail({
-    apiKey: env.RESEND_API_KEY,
-    from: env.CONTACT_FROM_EMAIL,
-    to: env.CONTACT_TO_EMAIL,
-    data: {
-      name: enrollment.name,
-      email: enrollment.email,
-      phone: enrollment.phone ?? "",
-      education: enrollment.education ?? "",
-      purpose: enrollment.purpose ?? "",
-      courseTitle: enrollment.course_title,
-      amountInr: enrollment.amount_inr,
-      paymentId,
-    },
-  });
-  if (!emailResult.ok) {
+  const enrollmentData = {
+    name: enrollment.name,
+    email: enrollment.email,
+    phone: enrollment.phone ?? "",
+    education: enrollment.education ?? "",
+    purpose: enrollment.purpose ?? "",
+    courseTitle: enrollment.course_title,
+    amountInr: enrollment.amount_inr,
+    paymentId,
+  };
+
+  // Two separate emails: one notifies the ZOUM team internally, the other
+  // confirms the seat to the student themselves, from contact@ specifically.
+  const [teamEmailResult, studentEmailResult] = await Promise.all([
+    sendEnrollmentEmail({
+      apiKey: env.RESEND_API_KEY,
+      from: env.CONTACT_FROM_EMAIL,
+      to: env.CONTACT_TO_EMAIL,
+      data: enrollmentData,
+    }),
+    sendEnrollmentConfirmationEmail({
+      apiKey: env.RESEND_API_KEY,
+      from: `ZOUM Consultancy <${env.CONTACT_TO_EMAIL}>`,
+      to: enrollment.email,
+      data: enrollmentData,
+    }),
+  ]);
+  if (!teamEmailResult.ok) {
     // Payment already succeeded and is recorded — a failed notification email
     // shouldn't fail the response to the student.
-    console.error("Enrollment email error:", emailResult.status, emailResult.body);
+    console.error("Enrollment team email error:", teamEmailResult.status, teamEmailResult.body);
+  }
+  if (!studentEmailResult.ok) {
+    console.error("Enrollment confirmation email error:", studentEmailResult.status, studentEmailResult.body);
   }
 
   return jsonResponse({ ok: true }, 200, cors);
