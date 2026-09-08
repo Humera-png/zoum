@@ -49,7 +49,7 @@ const board = [
   {
     name: "Humera Shaikh",
     role: "Co-Founder & CTO",
-    bio: "Directs full-scale software engineering, AI architecture implementations, cloud infrastructure, and global technology systems integration. Humera built and runs the technology behind ZOUM end to end: the website, the AI automation and agent systems built for clients, the course and payments platform, and the infrastructure all of it runs on. Her background is in computer science with a focus on automation, Python, and AI/ML, which is also the foundation for the AI & IT services and courses ZOUM offers today.",
+    bio: "Humera is the reason ZOUM's technology actually works, not just exists on paper. She built this website herself, the AI automation and agent systems ZOUM ships for clients, and the course and payments platform students enroll through, then built the infrastructure to keep all of it running without her having to babysit it. Her background is in computer science with a deep focus on automation, Python, and AI/ML, the same expertise behind the AI & IT services and courses ZOUM offers today. As Co-Founder and CTO, her real job is making sure technology is never the reason ZOUM can't move fast.",
     linkedin: "https://www.linkedin.com/in/humerashaikhofficial/",
   },
 ];
