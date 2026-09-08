@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Globe, Layers, ShoppingCart, Wrench, Check, Megaphone, PenTool, Users2 } from "lucide-react";
+import { Globe, Layers, ShoppingCart, Wrench, Check, Megaphone, PenTool, Users2, Boxes } from "lucide-react";
 import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageBackdrop } from "@/components/PageBackdrop";
 import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
@@ -83,6 +83,15 @@ const marketing = [
     desc: "Performance-focused ads on Meta and LinkedIn, targeted and tested to generate real leads.",
     image:
       "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=1200&q=80",
+  },
+];
+
+const caseStudies = [
+  {
+    icon: Boxes,
+    name: "NaviaLabs",
+    tag: "Web app · Built by our team",
+    desc: "An AI-powered inventory management and procurement platform for manufacturers, distributors, and wholesalers, preventing stockouts, automating reordering, and forecasting demand.",
   },
 ];
 
@@ -208,6 +217,31 @@ function WebsiteDevelopmentPage() {
                       <div className="font-display text-xl">{m.name}</div>
                       <div className="text-sm text-muted-foreground mt-2">{m.desc}</div>
                     </div>
+                  </motion.div>
+                ))}
+              </div>
+            </Section>
+
+            <Section id="case-studies" title="What We've Actually Built" kicker="/ case studies">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {caseStudies.map((c) => (
+                  <motion.div
+                    key={c.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="group glass rounded-2xl p-5 hover-glow-lime transition"
+                  >
+                    <div className="flex items-start justify-between">
+                      <div className="h-9 w-9 rounded-lg glass-strong grid place-items-center group-hover:bg-lime group-hover:text-white transition">
+                        <c.icon className="h-4 w-4" />
+                      </div>
+                      <span className="text-[10px] uppercase tracking-wider text-lime border border-lime/30 rounded-full px-2 py-0.5">
+                        {c.tag}
+                      </span>
+                    </div>
+                    <div className="font-display text-base mt-3">{c.name}</div>
+                    <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">{c.desc}</p>
                   </motion.div>
                 ))}
               </div>

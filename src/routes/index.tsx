@@ -85,12 +85,12 @@ function HeroCourseAd() {
     <Link
       to="/courses/$courseId"
       params={{ courseId: course.id }}
-      className="group relative z-10 block w-[70%] max-w-[220px] pointer-events-auto"
+      className="group relative z-10 flex h-full w-full flex-col pointer-events-auto"
     >
-      <div className="text-[10px] uppercase tracking-[0.25em] text-lime font-semibold inline-flex items-center gap-1.5 mb-2">
+      <div className="text-[10px] uppercase tracking-[0.25em] text-lime font-semibold inline-flex items-center gap-1.5 mb-3 shrink-0">
         <span className="h-1.5 w-1.5 rounded-full bg-lime animate-pulse" /> Enroll now
       </div>
-      <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+      <div className="relative flex-1 min-h-0 rounded-2xl overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.img
             key={course.id}
@@ -100,28 +100,28 @@ function HeroCourseAd() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.6 }}
-            className="absolute inset-0 h-full w-full object-cover opacity-60 group-hover:opacity-75 transition-opacity duration-500"
+            className="absolute inset-0 h-full w-full object-cover opacity-70 group-hover:opacity-85 transition-opacity duration-500"
           />
         </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={course.id}
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.4 }}
+            className="absolute inset-x-4 bottom-4"
+          >
+            <div className="font-display text-white text-base leading-snug line-clamp-2">
+              {course.title}
+            </div>
+            <span className="mt-1.5 inline-flex items-center gap-1 text-xs font-semibold text-white group-hover:underline">
+              View course <ArrowUpRight className="h-3 w-3" />
+            </span>
+          </motion.div>
+        </AnimatePresence>
       </div>
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={course.id}
-          initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -6 }}
-          transition={{ duration: 0.4 }}
-          className="mt-2"
-        >
-          <div className="font-display text-foreground text-xs leading-snug line-clamp-2">
-            {course.title}
-          </div>
-          <span className="mt-1 inline-flex items-center gap-1 text-[11px] font-semibold text-lime group-hover:underline">
-            View course <ArrowUpRight className="h-2.5 w-2.5" />
-          </span>
-        </motion.div>
-      </AnimatePresence>
     </Link>
   );
 }
@@ -167,7 +167,7 @@ function GlassVisual() {
       >
         {/* Center stage: the course ad gets the middle of the panel to itself */}
         <div
-          className="absolute inset-x-10 top-28 bottom-6 rounded-3xl glass-strong overflow-hidden flex items-center justify-center p-6"
+          className="absolute inset-x-10 top-28 bottom-6 rounded-3xl glass-strong overflow-hidden p-4"
           style={{ transform: "translateZ(40px)" }}
         >
           <HeroCourseAd />
