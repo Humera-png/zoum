@@ -44,7 +44,7 @@ const board = [
     name: "Parv Jain",
     role: "Founder",
     bio: "Human Resources Specialist & Business Consultant with 5+ years of operational excellence in strategic talent sourcing and business planning. Parv leads client operations and business development, the relationships and delivery standards that keep ZOUM accountable to the results it promises. He's closely involved in shaping the training and consultancy programs, making sure what gets taught or advised actually matches what employers are hiring for right now.",
-    linkedin: "https://www.linkedin.com/in/abdur-rehman-534483221/",
+    linkedin: "https://www.linkedin.com/in/parv-jain-50020232b/",
   },
   {
     name: "Humera Shaikh",
@@ -89,16 +89,16 @@ function AboutPage() {
 
         <section className="mt-20 max-w-3xl">
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-            ZOUM Consultancy is a Jaipur-based recruitment and IT services company working with
-            businesses and job seekers across India. On the recruitment side, we help candidates get
-            noticed for roles they're already qualified for and negotiate better pay once they get
-            there, we've placed 700+ people in the past year alone. On the IT side, we build AI
-            automation and AI agents that take over repetitive work, along with websites and custom
-            software that businesses actually own and can grow with, not something they'll need to
-            redo in a year. Alongside that, we run talent and skills training, social media
-            marketing, business consultancy, and business process outsourcing for companies that want
-            one team instead of five different vendors. Every person on our team has actually done
-            the work we advise on, not just talked about it.
+            ZOUM Consultancy is a Jaipur-based consultancy working with businesses and job seekers
+            across India. On the recruitment side, we help candidates get noticed for roles they're
+            already qualified for and negotiate better pay once they get there, we've placed 5000+
+            people so far, across 100+ companies. On the IT side, we build AI automation and AI
+            agents that take over repetitive work, along with websites and custom software that
+            businesses actually own and can grow with, not something they'll need to redo in a
+            year. Alongside that, we run talent and skills training, social media marketing,
+            business consultancy, and business process outsourcing for companies that want one team
+            instead of five different vendors. Every person on our team has actually done the work
+            we advise on, not just talked about it.
           </p>
         </section>
 
@@ -162,8 +162,8 @@ function AboutPage() {
               style={{ background: "rgba(31,203,107,0.35)" }}
             />
             {[
-              { v: 150, suffix: "+", label: "Companies Scaled" },
-              { v: 700, suffix: "+", label: "Careers Placed" },
+              { v: 100, suffix: "+", label: "Companies Served" },
+              { v: 5000, suffix: "+", label: "Careers Placed" },
             ].map((s, i) => (
               <div key={i} className="relative text-center md:text-left">
                 <div className="font-display text-5xl md:text-6xl tracking-tight">

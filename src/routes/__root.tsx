@@ -112,7 +112,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "ZOUM Consultancy: Jaipur recruitment agency and IT services company. 700+ job placements across India, plus AI automation, AI agents, website development, and custom software for businesses.",
+          "ZOUM Consultancy: Jaipur-based consultancy. 5000+ job placements across India, plus AI automation, AI agents, website development, social media, BPO, and business consultancy for businesses.",
       },
       { name: "robots", content: "index, follow" },
       { name: "keywords", content: "recruitment agency Jaipur, placement services India, job consultancy, IT services company, AI automation agency, AI agents development, website development company, software development India, ZOUM" },

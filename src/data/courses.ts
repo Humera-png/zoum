@@ -13,8 +13,9 @@ export type CourseCategory = "language" | "soft-skills" | "leadership" | "career
 // Which merged service page each course is grouped under.
 export type CoursePage = "bpo" | "ai-it" | "consultancy";
 
-// Every course is taught as exactly 3 modules. Clicking a module on the
-// course page expands its description in place — no separate module route.
+// Most courses are taught as 3 modules; the career masterclasses (BPO, IT,
+// Business Consultancy) are 2. Clicking a module on the course page expands
+// its description in place — no separate module route.
 export interface CourseModule {
   title: string;
   description: string;
@@ -28,9 +29,19 @@ export interface Course {
   priceInr: number; // whole rupees — charged at checkout, not displayed
   duration: string; // e.g. "6 weeks", "20 hours"
   summary: string;
-  modules: CourseModule[]; // exactly 3
+  modules: CourseModule[];
+  pros?: string[]; // shown as a bullet list on the course page, if present
+  terms?: string[]; // Terms & Conditions bullets, shown on the course page, if present
   image: string;
 }
+
+// Shared Terms & Conditions for the career masterclasses (BPO, IT, Business
+// Consultancy) — same fee structure and disclaimers apply to all three.
+const MASTERCLASS_TERMS = [
+  "This is a one-time fee. Don't pay any additional money to anyone in connection with this course, including instructors, under any circumstances.",
+  "We provide placement assistance and guidance if you put in the work — placement itself is not guaranteed.",
+  "You may be asked to sign a non-disclosure agreement as part of the program.",
+];
 
 // Starting prices/durations — adjust these to match your actual rate card,
 // I don't have your verified pricing. Prices aren't shown on the site but
@@ -42,26 +53,29 @@ export const courses: Course[] = [
     category: "career",
     page: "bpo",
     priceInr: 999,
-    duration: "3 hours (live)",
+    duration: "Live masterclass, then 2 classes/week",
     summary:
-      "A 3-hour live masterclass that takes you from confused fresher to interview-ready for a BPO career: industry basics, professional presence, and real mock-interview practice.",
+      "Start with a live masterclass that takes you from confused fresher to interview-ready for a BPO career, then keep going with an enhanced program that runs twice a week and covers everything else.",
     modules: [
       {
-        title: "BPO Industry & Career Paths",
+        title: "BPO Masterclass",
         description:
-          "What BPO actually is: Voice, Non-Voice, and Chat process types, how each one works day to day, and the realistic career growth paths from associate to team lead and beyond.",
+          "A live session covering what BPO actually is (Voice, Non-Voice, and Chat process types), the realistic career growth paths from associate to team lead, professional presence and communication, and live mock-interview practice with feedback. You leave with your own 7-Day BPO Career Launch Plan.",
       },
       {
-        title: "Professional Presence & Communication",
+        title: "Enhanced Program — 2 Classes a Week",
         description:
-          "The communication, body language, and grooming that make a hiring manager take you seriously in the first 30 seconds, and how to carry that presence through a full shift.",
-      },
-      {
-        title: "Mock Interviews & Your Launch Plan",
-        description:
-          "Live mock interview practice with direct feedback, followed by your own personal 7-Day BPO Career Launch Plan so you know exactly what to do the moment class ends.",
+          "After the masterclass, continue with an ongoing enhanced program, 2 classes a week, that goes deeper: real process training, extended mock interviews, and continued support until you're genuinely job-ready, not just introduced to the basics.",
       },
     ],
+    pros: [
+      "Live, interactive masterclass, not a recorded video course",
+      "Real mock interviews with direct, honest feedback",
+      "Ongoing 2-classes-a-week program after the masterclass, not a one-and-done session",
+      "A personal 7-Day BPO Career Launch Plan you actually leave with",
+      "Placement assistance and guidance from a team that's done this before",
+    ],
+    terms: MASTERCLASS_TERMS,
     image:
       "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=80",
   },
@@ -71,28 +85,63 @@ export const courses: Course[] = [
     category: "career",
     page: "ai-it",
     priceInr: 999,
-    duration: "3 hours (live)",
+    duration: "Live masterclass, then 2 classes/week",
     summary:
-      "A 3-hour live masterclass that helps freshers understand the IT industry, build a professional profile, and walk into their first IT interview with confidence.",
+      "Start with a live masterclass that helps freshers understand the IT industry and walk into their first interview with confidence, then keep going with an enhanced program that runs twice a week and covers everything else.",
     modules: [
       {
-        title: "The IT Industry Landscape",
+        title: "IT Masterclass",
         description:
-          "A clear map of where the jobs actually are: development, cloud, data, cybersecurity, and AI, and which of those paths fits your background and interests best.",
+          "A live session covering the IT industry landscape (development, cloud, data, cybersecurity, and AI), rebuilding your resume and LinkedIn so recruiters actually stop scrolling, and live mock-interview practice with feedback. You leave with your own 7-Day IT Career Launch Plan.",
       },
       {
-        title: "Resume, LinkedIn & Personal Branding",
+        title: "Enhanced Program — 2 Classes a Week",
         description:
-          "Rebuild your resume and LinkedIn so recruiters actually stop scrolling, plus how to introduce yourself professionally in thirty seconds or less.",
-      },
-      {
-        title: "Mock Interviews & Your Launch Plan",
-        description:
-          "Live mock interview practice with direct feedback, followed by your own personal 7-Day IT Career Launch Plan so you know exactly what to do the moment class ends.",
+          "After the masterclass, continue with an ongoing enhanced program, 2 classes a week, that goes deeper: technical fundamentals, extended mock interviews, and continued support until you're genuinely job-ready, not just introduced to the basics.",
       },
     ],
+    pros: [
+      "Live, interactive masterclass, not a recorded video course",
+      "Real mock interviews with direct, honest feedback",
+      "Ongoing 2-classes-a-week program after the masterclass, not a one-and-done session",
+      "A personal 7-Day IT Career Launch Plan you actually leave with",
+      "Placement assistance and guidance from a team that's done this before",
+    ],
+    terms: MASTERCLASS_TERMS,
     image:
       "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: "business-consultancy-masterclass",
+    title: "Business Consultancy Career & Interview Readiness Masterclass",
+    category: "career",
+    page: "consultancy",
+    priceInr: 999,
+    duration: "Live masterclass, then 2 classes/week",
+    summary:
+      "Start with a live masterclass on breaking into business consulting, then keep going with an enhanced program that runs twice a week and covers everything else.",
+    modules: [
+      {
+        title: "Business Consultancy Masterclass",
+        description:
+          "A live session covering what business consulting actually involves, the core frameworks consultants use to diagnose and solve business problems, how to present yourself and your thinking to a client or interviewer, and live mock-interview practice with feedback. You leave with your own 7-Day Consulting Career Launch Plan.",
+      },
+      {
+        title: "Enhanced Program — 2 Classes a Week",
+        description:
+          "After the masterclass, continue with an ongoing enhanced program, 2 classes a week, that goes deeper: case-study practice, client communication, and continued support until you're genuinely ready for consulting roles, not just introduced to the basics.",
+      },
+    ],
+    pros: [
+      "Live, interactive masterclass, not a recorded video course",
+      "Real mock interviews with direct, honest feedback",
+      "Ongoing 2-classes-a-week program after the masterclass, not a one-and-done session",
+      "A personal 7-Day Consulting Career Launch Plan you actually leave with",
+      "Placement assistance and guidance from a team that's done this before",
+    ],
+    terms: MASTERCLASS_TERMS,
+    image:
+      "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "english-communication",

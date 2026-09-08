@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { Clock, ArrowUpRight } from "lucide-react";
+import { Clock, ArrowUpRight, Check, Award, ShieldCheck } from "lucide-react";
 import { courses } from "@/data/courses";
 import { CATEGORY_META } from "@/lib/courseCategory";
 import { PageBackdrop } from "@/components/PageBackdrop";
@@ -110,6 +110,34 @@ function CourseDetailPage() {
                 <h2 className="font-display text-xl mt-8 mb-3">About this course</h2>
                 <p className="text-muted-foreground leading-relaxed">{course.summary}</p>
 
+                {course.pros && course.pros.length > 0 && (
+                  <>
+                    <h2 className="font-display text-xl mt-8 mb-3">Why this course</h2>
+                    <ul className="space-y-2.5">
+                      {course.pros.map((p) => (
+                        <li key={p} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                          <Check className="h-4 w-4 text-lime shrink-0 mt-0.5" />
+                          {p}
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+
+                <div className="mt-8 glass rounded-2xl p-6 flex items-start gap-4">
+                  <div className="h-10 w-10 rounded-xl bg-lime/15 text-lime grid place-items-center shrink-0">
+                    <Award className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <div className="font-display text-base">Taught by people who've done the work</div>
+                    <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
+                      Our instructors are working professionals with real, hands-on industry
+                      experience, not people who only teach about it. That's the same standard
+                      ZOUM holds itself to across every service we run.
+                    </p>
+                  </div>
+                </div>
+
                 {course.modules.length > 0 && (
                   <>
                     <h2 className="font-display text-xl mt-8 mb-3" id="modules">
@@ -118,7 +146,9 @@ function CourseDetailPage() {
                     <p className="text-sm text-muted-foreground mb-4">
                       Select a module to see what's covered and enroll.
                     </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                    <div
+                      className={`grid grid-cols-1 gap-5 ${course.modules.length >= 3 ? "sm:grid-cols-3" : "sm:grid-cols-2"}`}
+                    >
                       {course.modules.map((m, i) => {
                         const isSelected = openModule === i;
                         return (
@@ -183,6 +213,22 @@ function CourseDetailPage() {
                         </div>
                       </div>
                     </div>
+                  </>
+                )}
+
+                {course.terms && course.terms.length > 0 && (
+                  <>
+                    <h2 className="font-display text-lg mt-8 mb-3 flex items-center gap-2">
+                      <ShieldCheck className="h-4 w-4 text-lime" /> Terms & Conditions
+                    </h2>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                      {course.terms.map((t) => (
+                        <li key={t} className="flex items-start gap-2">
+                          <span className="h-1.5 w-1.5 rounded-full bg-lime mt-2 shrink-0" />
+                          {t}
+                        </li>
+                      ))}
+                    </ul>
                   </>
                 )}
               </div>

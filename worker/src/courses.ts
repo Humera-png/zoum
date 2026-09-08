@@ -13,6 +13,11 @@ export interface CourseRecord {
 export const COURSES: CourseRecord[] = [
   { id: "bpo-career-masterclass", title: "BPO Career & Interview Readiness Masterclass", priceInr: 999 },
   { id: "it-career-masterclass", title: "IT Career & Interview Readiness Masterclass", priceInr: 999 },
+  {
+    id: "business-consultancy-masterclass",
+    title: "Business Consultancy Career & Interview Readiness Masterclass",
+    priceInr: 999,
+  },
   { id: "english-communication", title: "Speak With Confidence: English & Communication", priceInr: 4999 },
   { id: "personality-development", title: "Own The Room: Personality Development", priceInr: 5999 },
   { id: "workplace-soft-skills", title: "Workplace Ready: Soft Skills That Matter", priceInr: 3999 },

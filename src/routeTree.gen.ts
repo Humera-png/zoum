@@ -18,7 +18,6 @@ import { Route as ServicesBusinessRouteImport } from './routes/services.business
 import { Route as ServicesBpoOperationsRouteImport } from './routes/services.business-strategy.tsx'
 import { Route as ServicesAiAutomationRouteImport } from './routes/services.ai-automation'
 import { Route as ServicesTalentDevelopmentRouteImport } from './routes/services.talent-development'
-import { Route as ServicesBusinessConsultancyRouteImport } from './routes/services.business-consultancy'
 import { Route as ServicesWebsiteDevelopmentRouteImport } from './routes/services.website-development'
 import { Route as JobsJobIdRouteImport } from './routes/jobs.$jobId'
 import { Route as CoursesCourseIdRouteImport } from './routes/courses.$courseId'
@@ -68,11 +67,6 @@ const ServicesTalentDevelopmentRoute = ServicesTalentDevelopmentRouteImport.upda
   path: '/services/talent-development',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ServicesBusinessConsultancyRoute = ServicesBusinessConsultancyRouteImport.update({
-  id: '/services/business-consultancy',
-  path: '/services/business-consultancy',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ServicesWebsiteDevelopmentRoute = ServicesWebsiteDevelopmentRouteImport.update({
   id: '/services/website-development',
   path: '/services/website-development',
@@ -99,7 +93,6 @@ export interface FileRoutesByFullPath {
   '/services/business': typeof ServicesBusinessRoute
   '/services/career': typeof ServicesCareerRoute
   '/services/talent-development': typeof ServicesTalentDevelopmentRoute
-  '/services/business-consultancy': typeof ServicesBusinessConsultancyRoute
   '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
   '/jobs/$jobId': typeof JobsJobIdRoute
   '/courses/$courseId': typeof CoursesCourseIdRoute
@@ -114,7 +107,6 @@ export interface FileRoutesByTo {
   '/services/business': typeof ServicesBusinessRoute
   '/services/career': typeof ServicesCareerRoute
   '/services/talent-development': typeof ServicesTalentDevelopmentRoute
-  '/services/business-consultancy': typeof ServicesBusinessConsultancyRoute
   '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
   '/jobs/$jobId': typeof JobsJobIdRoute
   '/courses/$courseId': typeof CoursesCourseIdRoute
@@ -130,7 +122,6 @@ export interface FileRoutesById {
   '/services/business': typeof ServicesBusinessRoute
   '/services/career': typeof ServicesCareerRoute
   '/services/talent-development': typeof ServicesTalentDevelopmentRoute
-  '/services/business-consultancy': typeof ServicesBusinessConsultancyRoute
   '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
   '/jobs/$jobId': typeof JobsJobIdRoute
   '/courses/$courseId': typeof CoursesCourseIdRoute
@@ -147,7 +138,6 @@ export interface FileRouteTypes {
     | '/services/business'
     | '/services/career'
     | '/services/talent-development'
-    | '/services/business-consultancy'
     | '/services/website-development'
     | '/jobs/$jobId'
     | '/courses/$courseId'
@@ -162,7 +152,6 @@ export interface FileRouteTypes {
     | '/services/business'
     | '/services/career'
     | '/services/talent-development'
-    | '/services/business-consultancy'
     | '/services/website-development'
     | '/jobs/$jobId'
     | '/courses/$courseId'
@@ -177,7 +166,6 @@ export interface FileRouteTypes {
     | '/services/business'
     | '/services/career'
     | '/services/talent-development'
-    | '/services/business-consultancy'
     | '/services/website-development'
     | '/jobs/$jobId'
     | '/courses/$courseId'
@@ -193,7 +181,6 @@ export interface RootRouteChildren {
   ServicesBusinessRoute: typeof ServicesBusinessRoute
   ServicesCareerRoute: typeof ServicesCareerRoute
   ServicesTalentDevelopmentRoute: typeof ServicesTalentDevelopmentRoute
-  ServicesBusinessConsultancyRoute: typeof ServicesBusinessConsultancyRoute
   ServicesWebsiteDevelopmentRoute: typeof ServicesWebsiteDevelopmentRoute
   JobsJobIdRoute: typeof JobsJobIdRoute
   CoursesCourseIdRoute: typeof CoursesCourseIdRoute
@@ -264,13 +251,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesTalentDevelopmentRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/services/business-consultancy': {
-      id: '/services/business-consultancy'
-      path: '/services/business-consultancy'
-      fullPath: '/services/business-consultancy'
-      preLoaderRoute: typeof ServicesBusinessConsultancyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/services/website-development': {
       id: '/services/website-development'
       path: '/services/website-development'
@@ -305,7 +285,6 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesBusinessRoute: ServicesBusinessRoute,
   ServicesCareerRoute: ServicesCareerRoute,
   ServicesTalentDevelopmentRoute: ServicesTalentDevelopmentRoute,
-  ServicesBusinessConsultancyRoute: ServicesBusinessConsultancyRoute,
   ServicesWebsiteDevelopmentRoute: ServicesWebsiteDevelopmentRoute,
   JobsJobIdRoute: JobsJobIdRoute,
   CoursesCourseIdRoute: CoursesCourseIdRoute,

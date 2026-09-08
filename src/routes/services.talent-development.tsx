@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { MessageCircle, Users, Brain, Presentation } from "lucide-react";
+import { MessageCircle, Users, Brain, Presentation, Handshake } from "lucide-react";
 import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageBackdrop } from "@/components/PageBackdrop";
 import { CourseCard } from "@/components/CourseCard";
@@ -10,22 +10,22 @@ import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
 export const Route = createFileRoute("/services/talent-development")({
   head: () => ({
     meta: [
-      { title: "Courses: BPO, AI & IT, English, Python | ZOUM Consultancy Jaipur" },
+      { title: "Courses: BPO, IT, Business Consultancy & AI Masterclasses | ZOUM Consultancy Jaipur" },
       {
         name: "description",
         content:
-          "Enroll in job-ready courses from ZOUM Consultancy, Jaipur: BPO Career Masterclass, AI & Machine Learning, Python, English & Communication, Interview Mastery, and more. Sign in, enroll online.",
+          "Enroll in job-ready courses from ZOUM Consultancy, Jaipur: BPO Career Masterclass, IT Career Masterclass, Business Consultancy Masterclass, AI & Machine Learning, and more. Sign in, enroll online.",
       },
       {
         name: "keywords",
         content:
-          "BPO training course India, AI and machine learning course India, Python programming course, English communication course, interview preparation course India, leadership training course, skills training course Jaipur",
+          "BPO training course India, IT career masterclass, business consultancy course India, AI and machine learning course India, interview preparation course India, leadership training course, skills training course Jaipur",
       },
-      { property: "og:title", content: "Courses: BPO, AI & IT, English, Python | ZOUM Consultancy" },
+      { property: "og:title", content: "Courses: BPO, IT, Business Consultancy & AI | ZOUM Consultancy" },
       {
         property: "og:description",
         content:
-          "Job-ready courses with clear modules: BPO Career Masterclass, AI & Machine Learning, English & Communication, Python, and more.",
+          "Job-ready courses with clear modules: BPO Career Masterclass, IT Career Masterclass, Business Consultancy Masterclass, AI & Machine Learning, and more.",
       },
       { rel: "canonical", href: "https://zoumconsultancy.com/services/talent-development" },
     ],
@@ -119,14 +119,25 @@ const programs = [
     name: "Leadership Readiness",
     desc: "Preparing high performers to step into their first management role with real support.",
   },
+  {
+    icon: Handshake,
+    name: "Business Consultancy Careers",
+    desc: "Frameworks, client communication, and interview readiness for people breaking into consulting.",
+  },
 ];
 
-// The 4 headline tracks, in this exact order — this is the order they
-// should appear as cards on this page. Each links straight to its own
-// course page (3 modules, sign-in, and payment) — this is also what any
-// ad campaign should link to directly (e.g. the BPO card's course), not
-// this page, so someone clicking an ad lands straight on that one course.
-const flagshipIds = ["bpo-career-masterclass", "ai-ml-foundations", "english-communication", "python-programming"];
+// The headline tracks, in this exact order — this is the order they should
+// appear as cards on this page. Each links straight to its own course page
+// (its own modules, sign-in, and payment) — this is also what any ad
+// campaign should link to directly (e.g. the BPO card's course), not this
+// page, so someone clicking an ad lands straight on that one course.
+const flagshipIds = [
+  "bpo-career-masterclass",
+  "it-career-masterclass",
+  "business-consultancy-masterclass",
+  "ai-ml-foundations",
+  "automation-ai-ml-practicum",
+];
 const flagshipCourses = flagshipIds
   .map((id) => courses.find((c) => c.id === id))
   .filter((c): c is (typeof courses)[number] => Boolean(c));
@@ -156,10 +167,10 @@ function TalentDevelopmentPage() {
             {flagshipCourses.length > 0 && (
               <Section id="tracks" title="Pick Your Track" kicker="/ start here">
                 <p className="text-muted-foreground max-w-2xl -mt-4 mb-8">
-                  Four tracks, each its own course with 3 modules. Pick one, see what's inside, and
-                  enroll directly from that page.
+                  {flagshipCourses.length} tracks, each its own course. Pick one, see what's
+                  inside, and enroll directly from that page.
                 </p>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
                   {flagshipCourses.map((course) => (
                     <CourseCard key={course.id} course={course} />
                   ))}

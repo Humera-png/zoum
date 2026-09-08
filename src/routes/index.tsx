@@ -39,7 +39,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "ZOUM Consultancy is a Jaipur recruitment agency and IT services company. 700+ job placements across India, plus AI automation, AI agents, website development, and custom software.",
+          "ZOUM Consultancy is a Jaipur-based consultancy: 5000+ job placements across India, plus AI automation, AI agents, website development, social media, BPO, and business consultancy.",
       },
       {
         name: "keywords",
@@ -57,18 +57,6 @@ export const Route = createFileRoute("/")({
   }),
   component: Index,
 });
-
-const marqueeClients = [
-  { name: "Teleperformance", src: "/assets/teleperformance.png" },
-  { name: "Genpact", src: "/assets/genpact.png" },
-  { name: "Accenture", src: "/assets/accenture.png" },
-  { name: "Infosys", src: "/assets/infosys.png" },
-  { name: "Knack Global", src: "/assets/knackglobal.jpg" },
-  { name: "AGS Health", src: "/assets/agshealth.jpg" },
-  { name: "Timoespro", src: "/assets/timespro.jpg" },
-  { name: "KGK", src: "/assets/kgkrealestate.jpg" },
-  { name: "Celebal Tech", src: "/assets/celebeltech.jpg" },
-];
 
 function GlassVisual() {
   const ref = useRef<HTMLDivElement>(null);
@@ -121,9 +109,9 @@ function GlassVisual() {
           className="absolute top-20 right-0 h-48 w-48 rounded-3xl glass-strong overflow-hidden"
           style={{ transform: "translateZ(80px)" }}
         >
-          <div className="p-5 text-xs text-muted-foreground">PLACEMENTS IN 1 YEAR</div>
+          <div className="p-5 text-xs text-muted-foreground">PLACEMENTS</div>
           <div className="px-5 font-display text-4xl">
-            <span className="text-foreground">700+</span>
+            <span className="text-foreground">5000+</span>
           </div>
           <div
             className="mt-4 mx-5 h-16 rounded-md"
@@ -136,8 +124,8 @@ function GlassVisual() {
           className="absolute bottom-12 left-0 h-40 w-56 rounded-3xl glass-strong p-5"
           style={{ transform: "translateZ(120px)" }}
         >
-          <div className="text-[11px] text-muted-foreground">CLIENTS PLACED · Q4</div>
-          <div className="mt-1 font-display text-3xl text-foreground">42</div>
+          <div className="text-[11px] text-muted-foreground">COMPANIES SERVED</div>
+          <div className="mt-1 font-display text-3xl text-foreground">100+</div>
           <div className="mt-3 flex -space-x-2">
             {[0, 1, 2, 3].map((i) => (
               <div
@@ -147,6 +135,14 @@ function GlassVisual() {
               />
             ))}
           </div>
+        </motion.div>
+        <motion.div
+          animate={{ y: [0, -10, 0] }}
+          transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 1.6 }}
+          className="absolute top-4 left-4 glass-strong rounded-full px-4 py-2 text-[11px] font-medium text-foreground"
+          style={{ transform: "translateZ(60px)" }}
+        >
+          5 Service Lines. One Team.
         </motion.div>
         <div className="absolute inset-0 rounded-full border border-foreground/10" />
         <motion.div
@@ -225,35 +221,42 @@ function Hero() {
   );
 }
 
-function ClientMarquee() {
-  const row = [...marqueeClients, ...marqueeClients];
+const sectors = [
+  { label: "Job Placement", icon: Briefcase },
+  { label: "KPO", icon: Headphones },
+  { label: "BPO", icon: TrendingUp },
+  { label: "L&D", icon: GraduationCap },
+  { label: "Website Development", icon: Globe },
+  { label: "Social Media", icon: Users },
+  { label: "AI & IT Services", icon: Cpu },
+  { label: "Business Consultancy", icon: Handshake },
+];
+
+function SectorsStrip() {
+  const row = [...sectors, ...sectors];
   return (
     <section
-      aria-label="Client roster"
+      aria-label="Sectors we serve"
       className="relative py-6 md:py-8 border-y border-border bg-white/40 backdrop-blur overflow-hidden"
     >
       <div className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground text-center mb-4 px-6">
-        / Trusted by leading companies across India
+        / Consultancy services across every sector
       </div>
       <div className="relative w-full max-w-full overflow-hidden block">
         <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent z-10" />
         <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent z-10" />
         <motion.div
-          className="flex gap-12 whitespace-nowrap"
+          className="flex gap-3 whitespace-nowrap"
           animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
         >
-          {row.map((c, i) => (
+          {row.map((s, i) => (
             <div
-              key={`${c.name}-${i}`}
-              className="inline-flex items-center justify-center bg-white/70 border border-slate-200/50 px-5 py-3 mx-3 h-16 min-w-[130px] rounded-xl shadow-sm transition-all duration-500 cursor-pointer hover:border-emerald-500/40 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] hover:-translate-y-0.5 active:border-emerald-500/40 active:shadow-[0_0_20px_rgba(16,185,129,0.15)] active:-translate-y-0.5"
+              key={`${s.label}-${i}`}
+              className="inline-flex items-center gap-2 bg-white/70 border border-slate-200/50 px-5 py-3 mx-1 h-16 rounded-xl shadow-sm transition-all duration-500 cursor-default hover:border-emerald-500/40 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] hover:-translate-y-0.5"
             >
-              <img
-                src={c.src}
-                alt={c.name}
-                className="h-8 w-auto max-w-[110px] object-contain transition-all duration-500 filter grayscale-[30%] opacity-90 hover:grayscale-0 hover:opacity-100 active:grayscale-0 active:opacity-100"
-                loading="lazy"
-              />
+              <s.icon className="h-4 w-4 text-lime shrink-0" />
+              <span className="text-sm font-medium text-foreground">{s.label}</span>
             </div>
           ))}
         </motion.div>
@@ -264,18 +267,18 @@ function ClientMarquee() {
         <div className="glass-strong rounded-2xl grid grid-cols-2 divide-x divide-border overflow-hidden">
           <div className="p-6 md:p-8 text-center">
             <div className="font-display text-4xl md:text-6xl tracking-tight text-foreground leading-none">
-              700+
+              5000+
             </div>
             <div className="mt-3 text-[10px] md:text-xs uppercase tracking-[0.25em] text-muted-foreground">
-              PLACEMENTS IN 1 YEAR
+              PLACEMENTS
             </div>
           </div>
           <div className="p-6 md:p-8 text-center">
             <div className="font-display text-4xl md:text-6xl tracking-tight text-foreground leading-none">
-              42
+              100+
             </div>
             <div className="mt-3 text-[10px] md:text-xs uppercase tracking-[0.25em] text-muted-foreground">
-              CLIENTS PLACED · Q4
+              COMPANIES SERVED
             </div>
           </div>
         </div>
@@ -291,15 +294,15 @@ const services = [
     headline: "Get Noticed For Bigger Roles.",
     body: "Stand out for roles you're already qualified for, and negotiate better pay once you get there.",
     to: "/services/career" as const,
-    img: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80",
+    img: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1200&q=80",
   },
   {
     icon: GraduationCap,
     title: "Learning and Development (L&D)",
     headline: "Skills That Get You Noticed.",
-    body: "BPO, AI & IT, English, and Python courses, each with 3 modules and a clear path to enroll.",
+    body: "BPO, IT, business consultancy, and AI masterclasses, each with a clear path to enroll.",
     to: "/services/talent-development" as const,
-    img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
+    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80",
   },
   {
     icon: Cpu,
@@ -316,14 +319,6 @@ const services = [
     body: "A fast, modern site and the social content and campaigns that bring it an audience.",
     to: "/services/website-development" as const,
     img: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    icon: Handshake,
-    title: "Business Consultancy",
-    headline: "A Growth Plan You Can Run.",
-    body: "Strategy, operations, and performance systems for businesses ready to scale.",
-    to: "/services/business-consultancy" as const,
-    img: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80",
   },
   {
     icon: TrendingUp,
@@ -345,9 +340,12 @@ function ServiceCard({ s, i }: { s: (typeof services)[number]; i: number }) {
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative glass rounded-3xl p-6 md:p-7 hover-glow-lime transition-all duration-500 overflow-hidden flex flex-col h-full"
+      className="group relative glass rounded-3xl p-6 md:p-7 hover-glow-lime hover:-translate-y-1.5 transition-all duration-500 overflow-hidden flex flex-col h-full"
     >
       <div className="absolute -top-20 -right-20 h-48 w-48 rounded-full bg-lime/0 group-hover:bg-lime/30 blur-3xl transition-all duration-700" />
+      <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-3xl">
+        <div className="absolute -inset-y-12 -left-1/3 w-1/3 -rotate-12 bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 group-hover:translate-x-[420%] transition-all duration-1000 ease-out" />
+      </div>
       <Link to={s.to} className="relative z-10 flex flex-col h-full">
         <div className="relative aspect-[16/9] rounded-2xl overflow-hidden mb-5 glass-strong">
           <img
@@ -430,7 +428,7 @@ const whatSetsUsApart = [
   },
   {
     icon: Award,
-    title: "700+ Placements, Proven Results",
+    title: "5000+ Placements, Proven Results",
     body: "A track record you can check, not a promise you have to take on faith.",
   },
   {
@@ -581,18 +579,18 @@ function Philosophy() {
         >
           <div className="px-6 py-7 md:py-8 text-center">
             <div className="font-display text-3xl md:text-5xl tracking-tight text-foreground leading-none">
-              700+
+              5000+
             </div>
             <div className="mt-3 text-[10px] md:text-xs uppercase tracking-[0.25em] text-muted-foreground">
-              Placements in a year
+              Placements
             </div>
           </div>
           <div className="px-6 py-7 md:py-8 text-center">
             <div className="font-display text-3xl md:text-5xl tracking-tight text-foreground leading-none">
-              42
+              100+
             </div>
             <div className="mt-3 text-[10px] md:text-xs uppercase tracking-[0.25em] text-muted-foreground">
-              Clients placed
+              Companies served
             </div>
           </div>
         </motion.div>
@@ -863,7 +861,7 @@ function Contact() {
           <div className="mt-6 space-y-3 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-lime" />
-              700+ placements across every level
+              5000+ placements across every level
             </div>
             <div className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-lime" />
@@ -986,7 +984,7 @@ function Index() {
   return (
     <main className="relative overflow-x-hidden">
       <Hero />
-      <ClientMarquee />
+      <SectorsStrip />
       <Services />
       <WhyChooseZoum />
       <Philosophy />
