@@ -101,8 +101,8 @@ function CareerPage() {
 
         <div className="mt-10 relative aspect-[21/9] rounded-3xl overflow-hidden glass-strong">
           <img
-            src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1600&q=80"
-            alt="A candidate in a job interview"
+            src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1600&q=80"
+            alt="A handshake after a successful job interview"
             loading="lazy"
             className="absolute inset-0 h-full w-full object-cover"
           />

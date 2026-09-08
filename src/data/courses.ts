@@ -284,7 +284,7 @@ export const courses: Course[] = [
       },
     ],
     image:
-      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "workplace-digital-skills",

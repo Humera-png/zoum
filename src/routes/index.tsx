@@ -82,46 +82,51 @@ function HeroCourseAd() {
   if (!course) return null;
 
   return (
-    <Link to="/courses/$courseId" params={{ courseId: course.id }} className="absolute inset-0 group">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={course.id}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.6 }}
-          className="absolute inset-0"
-        >
-          <img
-            src={course.image}
-            alt=""
-            className="absolute inset-0 h-full w-full object-cover opacity-40 group-hover:opacity-55 transition-opacity duration-500"
-          />
-        </motion.div>
-      </AnimatePresence>
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-black/10" />
-      <div className="absolute inset-0 [background-image:radial-gradient(rgba(255,255,255,0.35)_1px,transparent_1px)] [background-size:16px_16px] opacity-20" />
-      <div className="absolute top-5 left-5 inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.25em] text-lime font-semibold">
+    <div className="absolute top-5 left-5 w-[60%]">
+      <div className="text-[10px] uppercase tracking-[0.25em] text-lime font-semibold inline-flex items-center gap-1.5 mb-2">
         <span className="h-1.5 w-1.5 rounded-full bg-lime animate-pulse" /> Enroll now
       </div>
+      <Link
+        to="/courses/$courseId"
+        params={{ courseId: course.id }}
+        className="group relative block aspect-[4/3] rounded-2xl overflow-hidden"
+      >
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={course.id}
+            src={course.image}
+            alt=""
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6 }}
+            className="absolute inset-0 h-full w-full object-cover opacity-60 group-hover:opacity-75 transition-opacity duration-500"
+          />
+        </AnimatePresence>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
+      </Link>
       <AnimatePresence mode="wait">
         <motion.div
           key={course.id}
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
+          exit={{ opacity: 0, y: -6 }}
           transition={{ duration: 0.4 }}
-          className="absolute inset-x-5 bottom-5"
+          className="mt-2"
         >
-          <div className="font-display text-white text-lg leading-snug line-clamp-2">
+          <div className="font-display text-foreground text-xs leading-snug line-clamp-2">
             {course.title}
           </div>
-          <div className="mt-1.5 inline-flex items-center gap-1 text-xs font-semibold text-white/90 group-hover:underline">
-            View course <ArrowUpRight className="h-3 w-3" />
-          </div>
+          <Link
+            to="/courses/$courseId"
+            params={{ courseId: course.id }}
+            className="mt-1 inline-flex items-center gap-1 text-[11px] font-semibold text-lime hover:underline"
+          >
+            View course <ArrowUpRight className="h-2.5 w-2.5" />
+          </Link>
         </motion.div>
       </AnimatePresence>
-    </Link>
+    </div>
   );
 }
 
@@ -341,7 +346,7 @@ const services = [
     headline: "Get Noticed For Bigger Roles.",
     body: "Stand out for roles you're already qualified for, and negotiate better pay once you get there.",
     to: "/services/career" as const,
-    img: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1200&q=80",
+    img: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80",
   },
   {
     icon: GraduationCap,
@@ -349,7 +354,7 @@ const services = [
     headline: "Skills That Get You Noticed.",
     body: "BPO, IT, business consultancy, and AI masterclasses, each with a clear path to enroll.",
     to: "/services/talent-development" as const,
-    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80",
+    img: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1200&q=80",
   },
   {
     icon: Cpu,

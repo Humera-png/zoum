@@ -163,8 +163,8 @@ function TalentDevelopmentPage() {
 
         <div className="mt-10 relative aspect-[21/9] rounded-3xl overflow-hidden glass-strong">
           <img
-            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80"
-            alt="An instructor teaching a class"
+            src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1600&q=80"
+            alt="An instructor presenting to a class"
             loading="lazy"
             className="absolute inset-0 h-full w-full object-cover"
           />
