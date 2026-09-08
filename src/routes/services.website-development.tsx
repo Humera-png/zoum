@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Globe, Layers, ShoppingCart, Wrench, Check, X, Clock, Megaphone, PenTool, Users2 } from "lucide-react";
+import { Globe, Layers, ShoppingCart, Wrench, Check, Megaphone, PenTool, Users2 } from "lucide-react";
 import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageBackdrop } from "@/components/PageBackdrop";
 import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
@@ -83,53 +83,26 @@ const marketing = [
 const plans = [
   {
     tier: "Starter Website",
-    type: "Static Single Page",
-    pages: "1 (scroll-based)",
-    database: "No",
     price: "₹10,000 – ₹12,000",
-    timeline: "12 weeks",
-    hosting: "Not included — scoped based on your requirement",
-    desc: "Best for new businesses, budget-conscious, that need an immediate online presence.",
+    desc: "A single-page, scroll-based site for a new business that needs an immediate online presence.",
     feats: [
-      "Professional landing page design",
-      "Home section with business info",
-      "Services section (scroll-based)",
-      "About/team section",
-      "Contact form",
-      "Mobile responsive",
-      "SSL certificate (HTTPS)",
+      "1 scroll-based landing page",
+      "Home, services & about sections",
+      "Contact form, mobile responsive",
+      "SSL certificate included",
     ],
-    notIncluded: ["Online booking", "Blog/gallery", "SEO", "Analytics", "Hosting"],
     image:
       "https://images.unsplash.com/photo-1547082299-de196ea013d6?auto=format&fit=crop&w=1200&q=80",
   },
   {
     tier: "Premium Website",
-    type: "Dynamic Multi-Page",
-    pages: "7+ real pages",
-    database: "Yes",
     price: "₹18,000 – ₹22,000",
-    timeline: "3-4 weeks",
-    hosting: "Not included — scoped based on your requirement",
-    desc: "Best for growing businesses that need essential features on a moderate budget.",
+    desc: "A 7+ page dynamic site for a growing business that needs the essential features covered.",
     feats: [
-      "7+ actual separate pages",
-      "Home, Services, About, Team pages",
-      "Contact page with form",
-      "Blog page (template)",
-      "Photo gallery (basic)",
-      "Basic appointment/booking form",
-      "Mobile responsive",
-      "SSL certificate",
-    ],
-    notIncluded: [
-      "Online booking system",
-      "Google My Business integration",
-      "Blog content",
-      "Advanced gallery",
-      "SEO",
-      "Analytics",
-      "Hosting",
+      "7+ real, separate pages",
+      "Blog page & photo gallery",
+      "Appointment/booking form",
+      "Mobile responsive, SSL certificate",
     ],
     highlight: true,
     image:
@@ -137,27 +110,14 @@ const plans = [
   },
   {
     tier: "Business Website",
-    type: "Dynamic Professional",
-    pages: "8+ pages",
-    database: "Yes",
     price: "₹30,000 – ₹50,000",
-    timeline: "4-5 weeks",
-    hosting: "1 Year Free!",
-    desc: "Best for established businesses that want maximum visibility with a full-service solution.",
+    desc: "An 8+ page full-service solution for an established business that wants maximum visibility.",
     feats: [
-      "8+ professional pages",
-      "All Premium features",
-      "Appointment/booking form",
-      "Blog section (template)",
-      "Before-after gallery",
-      "Basic SEO setup",
-      "Email configuration",
-      "Basic analytics",
-      "Lead capture forms",
-      "Google My Business optimization",
-      "1 year free hosting",
+      "8+ pages, everything in Premium",
+      "Booking form, blog & before-after gallery",
+      "Basic SEO, analytics & lead capture",
+      "1 year of hosting included free",
     ],
-    notIncluded: ["Advanced SEO", "Blog content writing", "Client portal", "Online payments"],
     image:
       "https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&w=1200&q=80",
   },
@@ -238,9 +198,9 @@ function WebsiteDevelopmentPage() {
 
             <Section id="pricing" title="Plans" kicker="/ pricing">
               <p className="text-muted-foreground max-w-2xl -mt-4 mb-8">
-                One-time investment, adjusted to your project. Social media management is scoped
-                separately once we know your goals. Anything marked "not included" below is still
-                available afterward, as ongoing maintenance.
+                Starting prices, adjusted to your project. Social media management is scoped
+                separately once we know your goals. Hosting is included free for a year on the
+                Business plan; billed separately for Starter and Premium once your site is live.
               </p>
               <div className="grid md:grid-cols-3 gap-5">
                 {plans.map((p) => (
@@ -265,50 +225,15 @@ function WebsiteDevelopmentPage() {
                     <div className="p-8">
                       <div className="font-display text-2xl">{p.tier}</div>
                       <div className="font-display text-3xl mt-2">{p.price}</div>
-                      <div className="flex items-center gap-1.5 text-xs text-muted-foreground mt-2">
-                        <Clock className="h-3.5 w-3.5 text-lime" /> {p.timeline}
-                      </div>
                       <p className="text-sm text-muted-foreground mt-3">{p.desc}</p>
-
-                      <div className="mt-4 flex flex-wrap gap-1.5 text-[11px] text-muted-foreground">
-                        <span className="glass rounded-full px-2.5 py-1">{p.type}</span>
-                        <span className="glass rounded-full px-2.5 py-1">{p.pages}</span>
-                        <span className="glass rounded-full px-2.5 py-1">DB: {p.database}</span>
-                      </div>
-
-                      <div className="mt-4 text-xs text-muted-foreground">
-                        <span className="font-semibold text-foreground">Hosting: </span>
-                        {p.hosting}
-                      </div>
-
-                      <div className="mt-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                        What you get
-                      </div>
-                      <ul className="mt-2 space-y-2 text-sm text-muted-foreground">
+                      <ul className="mt-6 space-y-2 text-sm text-muted-foreground">
                         {p.feats.map((f) => (
-                          <li key={f} className="flex items-start gap-2">
-                            <Check className="h-3.5 w-3.5 text-lime shrink-0 mt-0.5" />
+                          <li key={f} className="flex items-center gap-2">
+                            <Check className="h-3.5 w-3.5 text-lime shrink-0" />
                             {f}
                           </li>
                         ))}
                       </ul>
-
-                      {p.notIncluded.length > 0 && (
-                        <>
-                          <div className="mt-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                            Not included (build via maintenance)
-                          </div>
-                          <ul className="mt-2 space-y-2 text-sm text-muted-foreground/70">
-                            {p.notIncluded.map((f) => (
-                              <li key={f} className="flex items-start gap-2">
-                                <X className="h-3.5 w-3.5 text-muted-foreground/50 shrink-0 mt-0.5" />
-                                {f}
-                              </li>
-                            ))}
-                          </ul>
-                        </>
-                      )}
-
                       <Link
                         to="/contact"
                         className="mt-6 block text-center glass rounded-full py-3 text-sm font-semibold hover:bg-white transition"
