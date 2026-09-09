@@ -135,6 +135,7 @@ const flagshipIds = [
   "bpo-career-masterclass",
   "it-career-masterclass",
   "business-consultancy-masterclass",
+  "ai-automation-n8n-masterclass",
   "ai-ml-foundations",
   "automation-ai-ml-practicum",
 ];
@@ -180,7 +181,7 @@ function TalentDevelopmentPage() {
                   {flagshipCourses.length} tracks, each its own course. Pick one, see what's
                   inside, and enroll directly from that page.
                 </p>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
                   {flagshipCourses.map((course) => (
                     <CourseCard key={course.id} course={course} />
                   ))}

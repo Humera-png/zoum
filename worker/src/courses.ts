@@ -18,6 +18,7 @@ export const COURSES: CourseRecord[] = [
     title: "Business Consultancy Career & Interview Readiness Masterclass",
     priceInr: 999,
   },
+  { id: "ai-automation-n8n-masterclass", title: "AI Automation Masterclass — n8n", priceInr: 1499 },
   { id: "english-communication", title: "Speak With Confidence: English & Communication", priceInr: 4999 },
   { id: "personality-development", title: "Own The Room: Personality Development", priceInr: 5999 },
   { id: "workplace-soft-skills", title: "Workplace Ready: Soft Skills That Matter", priceInr: 3999 },

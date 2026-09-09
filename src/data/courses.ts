@@ -1,21 +1,7 @@
-// Real, priced courses go here. Empty by default on purpose — we don't sell
-// courses that don't exist yet with invented prices. The catalog, detail
-// page, sign-in, and checkout flow all handle zero or many entries
-// correctly; add real courses (with real prices) to make them live.
-//
-// IMPORTANT: this file must stay in sync with worker/src/courses.ts, which
-// holds the authoritative (server-side) price for each course id — the
-// Worker never trusts a price sent from the browser. Prices are still
-// charged at checkout, they're just not shown on the site right now —
-// people get the price from the ad/post that sent them here.
 export type CourseCategory = "language" | "soft-skills" | "leadership" | "career" | "tech" | "data";
 
-// Which merged service page each course is grouped under.
 export type CoursePage = "bpo" | "ai-it" | "consultancy";
 
-// Most courses are taught as 3 modules; the career masterclasses (BPO, IT,
-// Business Consultancy) are 2. Clicking a module on the course page expands
-// its description in place — no separate module route.
 export interface CourseModule {
   title: string;
   description: string;
@@ -35,17 +21,11 @@ export interface Course {
   image: string;
 }
 
-// Shared Terms & Conditions for the career masterclasses (BPO, IT, Business
-// Consultancy) — same fee structure and disclaimers apply to all three.
 const MASTERCLASS_TERMS = [
   "This is a one-time fee. Don't pay any additional money to anyone in connection with this course, including instructors, under any circumstances.",
   "We provide placement assistance and guidance if you put in the work — placement itself is not guaranteed.",
   "You may be asked to sign a non-disclosure agreement as part of the program.",
 ];
-
-// Starting prices/durations — adjust these to match your actual rate card,
-// I don't have your verified pricing. Prices aren't shown on the site but
-// are still what gets charged at checkout.
 export const courses: Course[] = [
   {
     id: "bpo-career-masterclass",
@@ -142,6 +122,38 @@ export const courses: Course[] = [
     terms: MASTERCLASS_TERMS,
     image:
       "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: "ai-automation-n8n-masterclass",
+    title: "AI Automation Masterclass — n8n",
+    category: "tech",
+    page: "ai-it",
+    priceInr: 1499,
+    duration: "Live masterclass, then 2 classes/week",
+    summary:
+      "Start with a live masterclass building real AI-powered automations in n8n, the workflow tool behind ZOUM's own automation systems, then keep going with an enhanced program that runs twice a week and covers everything else.",
+    modules: [
+      {
+        title: "n8n Automation Masterclass",
+        description:
+          "A live session covering what n8n actually is and why teams are moving to it for AI-era automation, the core building blocks (triggers, nodes, credentials, expressions), and a live build from scratch: a real lead-follow-up automation that uses an AI node to draft and send a response on its own, the same pattern behind tools like LeadFlowTool. You leave with your own 7-Day Automation Build Plan.",
+      },
+      {
+        title: "Enhanced Program — 2 Classes a Week",
+        description:
+          "After the masterclass, continue with an ongoing enhanced program, 2 classes a week, that goes deeper: order processing and lead generation automations, connecting APIs that don't have a native n8n node, error handling and scheduling, and building your own automation project from an idea you actually want to ship.",
+      },
+    ],
+    pros: [
+      "Live, interactive masterclass, not a recorded video course",
+      "Taught using real automations already in production, not toy examples",
+      "Real hands-on builds with direct, honest feedback",
+      "Ongoing 2-classes-a-week program after the masterclass, not a one-and-done session",
+      "A personal 7-Day Automation Build Plan you actually leave with",
+    ],
+    terms: MASTERCLASS_TERMS,
+    image:
+      "https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "english-communication",
