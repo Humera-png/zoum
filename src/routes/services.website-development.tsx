@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Globe, Layers, ShoppingCart, Wrench, Check, Megaphone, PenTool, Users2, Boxes } from "lucide-react";
+import { Globe, Layers, ShoppingCart, Wrench, Check, Megaphone, PenTool, Users2, Boxes, ArrowUpRight } from "lucide-react";
 import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageBackdrop } from "@/components/PageBackdrop";
 import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
@@ -92,6 +92,7 @@ const caseStudies = [
     name: "NaviaLabs",
     tag: "Web app · Built by our team",
     desc: "An AI-powered inventory management and procurement platform for manufacturers, distributors, and wholesalers, preventing stockouts, automating reordering, and forecasting demand.",
+    url: "https://navialabs.vercel.app",
   },
 ];
 
@@ -225,12 +226,15 @@ function WebsiteDevelopmentPage() {
             <Section id="case-studies" title="What We've Actually Built" kicker="/ case studies">
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {caseStudies.map((c) => (
-                  <motion.div
+                  <motion.a
                     key={c.name}
+                    href={c.url}
+                    target="_blank"
+                    rel="noreferrer"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="group glass rounded-2xl p-5 hover-glow-lime transition"
+                    className="group glass rounded-2xl p-5 hover-glow-lime transition block"
                   >
                     <div className="flex items-start justify-between">
                       <div className="h-9 w-9 rounded-lg glass-strong grid place-items-center group-hover:bg-lime group-hover:text-white transition">
@@ -240,9 +244,12 @@ function WebsiteDevelopmentPage() {
                         {c.tag}
                       </span>
                     </div>
-                    <div className="font-display text-base mt-3">{c.name}</div>
+                    <div className="font-display text-base mt-3 flex items-center gap-1.5">
+                      {c.name}
+                      <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground group-hover:text-lime transition" />
+                    </div>
                     <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">{c.desc}</p>
-                  </motion.div>
+                  </motion.a>
                 ))}
               </div>
             </Section>
