@@ -180,6 +180,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { IntroScreen } from "@/components/IntroScreen";
+import { GradientCursor } from "@/components/GradientCursor";
 import { CLERK_PUBLISHABLE_KEY } from "@/lib/clerk";
 
 function RootComponent() {
@@ -188,6 +189,7 @@ function RootComponent() {
   const app = (
     <QueryClientProvider client={queryClient}>
       <IntroScreen />
+      <GradientCursor />
       <Navbar />
       <PageTransition>
         <Outlet />

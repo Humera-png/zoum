@@ -43,7 +43,7 @@ export function IntroScreen() {
             transition={{ delay: 0.35, duration: 0.7 }}
             className="mt-4 text-sm uppercase tracking-[0.3em] text-muted-foreground"
           >
-            Recruitment &amp; IT Services
+            Consultancy
           </motion.p>
         </motion.div>
       )}

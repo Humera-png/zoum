@@ -63,7 +63,7 @@ export const courses: Course[] = [
           "A live session covering what BPO actually is (Voice, Non-Voice, and Chat process types), the realistic career growth paths from associate to team lead, professional presence and communication, and live mock-interview practice with feedback. You leave with your own 7-Day BPO Career Launch Plan.",
       },
       {
-        title: "Enhanced Program — 2 Classes a Week",
+        title: "Advanced Course with 2 ,aterclass",
         description:
           "After the masterclass, continue with an ongoing enhanced program, 2 classes a week, that goes deeper: real process training, extended mock interviews, and continued support until you're genuinely job-ready, not just introduced to the basics.",
       },
