@@ -43,12 +43,14 @@ const board = [
   {
     name: "Parv Jain",
     role: "Founder",
+    image: "/assets/parv-founder.jpg",
     bio: "Parv leads client operations and business development at ZOUM, the relationships and delivery standards that keep the company accountable to the results it promises. Also a Human Resources Specialist & Business Consultant with 5+ years of experience in strategic talent sourcing and business planning, he's closely involved in shaping ZOUM's L&D courses and consultancy programs, making sure what gets taught or advised actually matches what employers are hiring for right now.",
     linkedin: "https://www.linkedin.com/in/parv-jain-50020232b/",
   },
   {
     name: "Humera Shaikh",
     role: "Co-Founder & CTO",
+    image: "/assets/humera-shaikh.png",
     bio: "Humera is the reason ZOUM's technology actually works, not just exists on paper. She built this website herself, the AI automation and agent systems ZOUM ships for clients, and the course and payments platform students enroll through, then built the infrastructure to keep all of it running without her having to babysit it. Her background is in computer science with a deep focus on automation, Python, and AI/ML, the same expertise behind the AI & IT services and courses ZOUM offers today. As Co-Founder and CTO, her real job is making sure technology is never the reason ZOUM can't move fast.",
     linkedin: "https://www.linkedin.com/in/humerashaikhofficial/",
   },
@@ -127,9 +129,18 @@ function AboutPage() {
                 className="group glass rounded-3xl overflow-hidden hover-glow-lime transition flex flex-col h-full"
               >
                 <div className="aspect-[5/4] overflow-hidden bg-zinc-900/30 relative flex items-center justify-center border-b border-zinc-800/40">
-                  <div className="font-display text-6xl font-bold tracking-tighter text-zinc-700 select-none group-hover:text-lime transition duration-500">
-                    {initialsOf(m.name)}
-                  </div>
+                  {m.image ? (
+                    <img
+                      src={m.image}
+                      alt={m.name}
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                  ) : (
+                    <div className="font-display text-6xl font-bold tracking-tighter text-zinc-700 select-none group-hover:text-lime transition duration-500">
+                      {initialsOf(m.name)}
+                    </div>
+                  )}
                 </div>
                 <div className="p-6 flex-1 flex flex-col">
                   <div className="text-[11px] uppercase tracking-wider text-lime font-medium">
@@ -151,7 +162,7 @@ function AboutPage() {
             ))}
           </div>
           <p className="text-xs text-muted-foreground mt-6">
-            Real photos of the team are on the way, replacing the initials above.
+            Abdur's photo is on the way, replacing the initials above.
           </p>
         </section>
 

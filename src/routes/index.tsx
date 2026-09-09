@@ -329,7 +329,7 @@ const services = [
     headline: "Get Noticed For Bigger Roles.",
     body: "Stand out for roles you're already qualified for, and negotiate better pay once you get there.",
     to: "/services/career" as const,
-    img: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80",
+    img: "/assets/interview-handshake.jpg",
   },
   {
     icon: GraduationCap,
@@ -337,7 +337,7 @@ const services = [
     headline: "Skills That Get You Noticed.",
     body: "BPO, IT, business consultancy, and AI masterclasses, each with a clear path to enroll.",
     to: "/services/talent-development" as const,
-    img: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1200&q=80",
+    img: "/assets/lnd-instructor.jpg",
   },
   {
     icon: Cpu,
