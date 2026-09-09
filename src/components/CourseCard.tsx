@@ -13,7 +13,7 @@ export function CourseCard({ course }: { course: Course }) {
       params={{ courseId: course.id }}
       className="group relative glass rounded-3xl overflow-hidden flex flex-col hover-glow-lime transition-all duration-500 h-full scroll-mt-32"
     >
-      <div className="relative aspect-[16/10] overflow-hidden">
+      <div className="relative aspect-[16/9] overflow-hidden">
         <img
           src={course.image}
           alt={course.title}
@@ -27,8 +27,8 @@ export function CourseCard({ course }: { course: Course }) {
         </div>
       </div>
 
-      <div className="relative z-10 flex flex-col flex-1 p-6">
-        <div className="font-display text-sm leading-snug line-clamp-2">{course.title}</div>
+      <div className="relative z-10 flex flex-col flex-1 p-7">
+        <div className="font-display text-xl leading-snug line-clamp-2">{course.title}</div>
         <div className="mt-2 flex items-center gap-1.5 text-xs text-muted-foreground">
           <Clock className="h-3.5 w-3.5" /> {course.duration}
         </div>

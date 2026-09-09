@@ -1,6 +1,22 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Globe, Layers, ShoppingCart, Wrench, Check, Megaphone, PenTool, Users2, Boxes, ArrowUpRight } from "lucide-react";
+import {
+  Globe,
+  Layers,
+  ShoppingCart,
+  Wrench,
+  Check,
+  Megaphone,
+  PenTool,
+  Users2,
+  Boxes,
+  ArrowUpRight,
+  Workflow,
+  Share2,
+  BookOpen,
+  Coins,
+  HeartPulse,
+} from "lucide-react";
 import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageBackdrop } from "@/components/PageBackdrop";
 import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
@@ -93,6 +109,41 @@ const caseStudies = [
     tag: "Web app · Built by our team",
     desc: "An AI-powered inventory management and procurement platform for manufacturers, distributors, and wholesalers, preventing stockouts, automating reordering, and forecasting demand.",
     url: "https://navialabs.vercel.app",
+  },
+  {
+    icon: Workflow,
+    name: "NAMI",
+    tag: "Web app · Built by our team",
+    desc: "A marketing site and service platform for an automation consultancy, with an interactive audit tool and a clear delivery process baked into the site itself.",
+    url: "https://namiautomationsystems.vercel.app/",
+  },
+  {
+    icon: Share2,
+    name: "FlowSync",
+    tag: "Web app · Built by our team",
+    desc: "A no-code, drag-and-drop workflow automation builder that connects everyday business tools together, no engineering required.",
+    url: "https://flowsyncc.netlify.app",
+  },
+  {
+    icon: BookOpen,
+    name: "AI Knowledge-Base Assistant",
+    tag: "Web app · Built by our team",
+    desc: "A RAG-powered chat assistant that answers questions directly from a private knowledge base instead of generic web search.",
+    url: "https://islamicadvisor-anaichatbot.netlify.app",
+  },
+  {
+    icon: Coins,
+    name: "HyperMoon",
+    tag: "Web app · Built by our team",
+    desc: "A Web3 rewards and governance hub with staking and voting built in.",
+    url: "https://hypermoon.netlify.app",
+  },
+  {
+    icon: HeartPulse,
+    name: "Khidma",
+    tag: "Web app · Built by our team",
+    desc: "A mental-health counselling platform redesigned around privacy and accessibility for the people who actually use it.",
+    url: "https://khidma.live",
   },
 ];
 

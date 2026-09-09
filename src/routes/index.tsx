@@ -308,13 +308,32 @@ function SectorsStrip() {
           transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
         >
           {row.map((s, i) => (
-            <div
+            <motion.div
               key={`${s.label}-${i}`}
-              className="inline-flex items-center justify-center gap-2 w-[230px] shrink-0 bg-white/70 border border-slate-200/50 px-4 py-3 mx-1 h-16 rounded-xl shadow-sm transition-all duration-500 cursor-default hover:border-emerald-500/40 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] hover:-translate-y-0.5"
+              animate={{ y: [0, -6, 0] }}
+              transition={{
+                duration: 2.6,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: (i % sectors.length) * 0.15,
+              }}
+              className="group inline-flex items-center justify-center gap-2 w-[230px] shrink-0 border border-slate-200/50 px-4 py-3 mx-1 h-16 rounded-xl shadow-sm transition-all duration-500 cursor-default hover:border-emerald-500/40 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)]"
+              style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.85), rgba(31,203,107,0.08))" }}
             >
-              <s.icon className="h-4 w-4 text-lime shrink-0" />
+              <motion.span
+                animate={{ rotate: [0, 12, 0] }}
+                transition={{
+                  duration: 2.6,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: (i % sectors.length) * 0.15,
+                }}
+                className="shrink-0 grid place-items-center h-6 w-6 rounded-full bg-lime/15 group-hover:bg-lime group-hover:text-white transition"
+              >
+                <s.icon className="h-3.5 w-3.5 text-lime group-hover:text-white transition" />
+              </motion.span>
               <span className="text-sm font-medium text-foreground whitespace-nowrap">{s.label}</span>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
       </div>
