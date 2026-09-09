@@ -37,14 +37,14 @@ const board = [
   {
     name: "Abdur Rehman",
     role: "Founder",
-    bio: "Abdur leads recruitment and business consultancy at ZOUM. A Human Resources Specialist & Business Consultant with 5+ years of experience in strategic talent sourcing and business planning, he built ZOUM's recruitment engine from the ground up: the sourcing process, client relationships, and vetting standards that stand behind every candidate we put forward. He sets the direction on the consultancy side of the business, working directly with client companies to turn a hiring need or a growth problem into a plan that's actually realistic to execute.",
+    bio: "Abdur built ZOUM's recruitment engine from the ground up: the sourcing process, client relationships, and vetting standards that stand behind every candidate we put forward. 5+ years in strategic talent sourcing and business planning is the foundation he brings to the consultancy side of ZOUM too, working directly with client companies to turn a hiring need or a growth problem into a plan that's actually realistic to execute.",
     linkedin: "https://www.linkedin.com/in/abdur-rehman-534483221/",
   },
   {
     name: "Parv Jain",
     role: "Founder",
     image: "/assets/parv-founder.jpg",
-    bio: "Parv leads client operations and business development at ZOUM, the relationships and delivery standards that keep the company accountable to the results it promises. Also a Human Resources Specialist & Business Consultant with 5+ years of experience in strategic talent sourcing and business planning, he's closely involved in shaping ZOUM's L&D courses and consultancy programs, making sure what gets taught or advised actually matches what employers are hiring for right now.",
+    bio: "Parv owns client operations and business development at ZOUM. His background is in HR leadership: talent acquisition, payroll & statutory compliance, employee relations, and performance management, built up managing hiring and HR operations for placement firms in Jaipur. That hands-on HR experience is why he stays closely involved in ZOUM's L&D courses and consultancy programs, making sure what gets taught or advised actually matches what employers are hiring for right now.",
     linkedin: "https://www.linkedin.com/in/parv-jain-50020232b/",
   },
   {
@@ -167,20 +167,22 @@ function AboutPage() {
         </section>
 
         <section className="mt-32">
-          <div className="glass-strong rounded-3xl p-10 md:p-14 grid md:grid-cols-2 gap-10 relative overflow-hidden">
+          <div className="glass-strong rounded-3xl p-10 md:p-14 grid grid-cols-2 lg:grid-cols-4 gap-10 relative overflow-hidden">
             <div
               className="ambient-orb h-72 w-72 -top-20 left-1/2 -translate-x-1/2"
               style={{ background: "rgba(31,203,107,0.35)" }}
             />
             {[
-              { v: 100, suffix: "+", label: "Companies Served" },
               { v: 5000, suffix: "+", label: "Careers Placed" },
+              { v: 100, suffix: "+", label: "Companies Served" },
+              { v: 5, suffix: "", label: "Service Lines" },
+              { v: 2020, suffix: "", label: "Founded" },
             ].map((s, i) => (
-              <div key={i} className="relative text-center md:text-left">
-                <div className="font-display text-5xl md:text-6xl tracking-tight">
+              <div key={i} className="relative text-center">
+                <div className="font-display text-4xl md:text-6xl tracking-tight">
                   <Counter to={s.v} suffix={s.suffix} />
                 </div>
-                <div className="mt-3 text-sm text-muted-foreground uppercase tracking-wider">
+                <div className="mt-3 text-xs md:text-sm text-muted-foreground uppercase tracking-wider">
                   {s.label}
                 </div>
               </div>

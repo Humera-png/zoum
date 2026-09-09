@@ -32,7 +32,7 @@ export function Footer() {
             <div className="flex items-center gap-2 mt-5">
               {[
                 { Icon: Twitter, href: "#" },
-                { Icon: Linkedin, href: "#" },
+                { Icon: Linkedin, href: "https://www.linkedin.com/company/zoum-consultancy/" },
                 {
                   Icon: Instagram,
                   href: "https://www.instagram.com/zoumplacementservices?igsh=MWh3cnFrbXliMjlwdA==",

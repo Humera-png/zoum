@@ -53,17 +53,17 @@ export const courses: Course[] = [
     category: "career",
     page: "bpo",
     priceInr: 999,
-    duration: "Live masterclass, then 2 classes/week",
+    duration: "Live classes by Experts",
     summary:
       "Start with a live masterclass that takes you from confused fresher to interview-ready for a BPO career, then keep going with an enhanced program that runs twice a week and covers everything else.",
     modules: [
       {
-        title: "BPO Masterclass",
+        title: "BPO Masterclass - 3 hours live",
         description:
           "A live session covering what BPO actually is (Voice, Non-Voice, and Chat process types), the realistic career growth paths from associate to team lead, professional presence and communication, and live mock-interview practice with feedback. You leave with your own 7-Day BPO Career Launch Plan.",
       },
       {
-        title: "Advanced Course with 2 ,aterclass",
+        title: "Advanced Course with 2 Masterclasses",
         description:
           "After the masterclass, continue with an ongoing enhanced program, 2 classes a week, that goes deeper: real process training, extended mock interviews, and continued support until you're genuinely job-ready, not just introduced to the basics.",
       },
