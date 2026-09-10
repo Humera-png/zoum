@@ -1,11 +1,12 @@
-import { useState, type FormEvent } from "react";
-import { Check, Loader2, ArrowUpRight } from "lucide-react";
+import { useState, useEffect, type FormEvent } from "react";
+import { Check, Loader2, ArrowUpRight, MessageCircle } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { SignInButton, useUser } from "@clerk/clerk-react";
 import type { Course } from "@/data/courses";
 import { CLERK_ENABLED } from "@/lib/clerk";
 import { useEnrollment } from "@/hooks/useEnrollment";
 import { useAuthReady } from "@/hooks/useAuthReady";
+import { EnrollmentSuccessModal } from "./EnrollmentSuccessModal";
 
 type EnrollFn = ReturnType<typeof useEnrollment>["enroll"];
 
@@ -57,6 +58,10 @@ function IntakeForm({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-3">
+      <div>
+        <label className="text-xs text-muted-foreground mb-1 block">Course</label>
+        <input value={course.title} readOnly disabled className={`${inputClass} opacity-60`} />
+      </div>
       <div>
         <label className="text-xs text-muted-foreground mb-1 block">Full name</label>
         <input
@@ -135,15 +140,40 @@ function IntakeForm({
 // — safe to call Clerk hooks unconditionally here, since a ClerkProvider
 // ancestor is guaranteed to exist in that case.
 function EnrollControls({ course }: { course: Course }) {
-  const { enroll, loading, status, message } = useEnrollment();
+  const { enroll, loading, status, message, communityUrl, enrolledCourseTitle } = useEnrollment();
   const { ready, isSignedIn, connected } = useAuthReady();
   const [unavailableNotice, setUnavailableNotice] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (status === "success") setModalOpen(true);
+  }, [status]);
 
   if (status === "success") {
     return (
-      <div className="flex items-center gap-2 text-sm font-semibold text-lime">
-        <Check className="h-4 w-4" /> {message}
-      </div>
+      <>
+        <div className="space-y-3">
+          <div className="flex items-center gap-2 text-sm font-semibold text-lime">
+            <Check className="h-4 w-4" /> {message}
+          </div>
+          {communityUrl && (
+            <a
+              href={communityUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="w-full inline-flex items-center justify-center gap-2 bg-[#25D366] text-white px-6 py-3.5 rounded-xl font-semibold shadow-md transition-all active:scale-[0.98]"
+            >
+              <MessageCircle className="h-4 w-4" /> Join the WhatsApp community
+            </a>
+          )}
+        </div>
+        <EnrollmentSuccessModal
+          open={modalOpen}
+          onClose={() => setModalOpen(false)}
+          courseTitle={enrolledCourseTitle || course.title}
+          communityUrl={communityUrl}
+        />
+      </>
     );
   }
 

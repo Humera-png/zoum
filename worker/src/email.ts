@@ -76,6 +76,7 @@ export interface EnrollmentData {
   courseTitle: string;
   amountInr: number;
   paymentId: string;
+  communityUrl?: string;
 }
 
 export function renderEnrollmentEmailHtml(data: EnrollmentData): string {
@@ -108,6 +109,19 @@ export function renderEnrollmentEmailHtml(data: EnrollmentData): string {
 // Sent to the student themselves, confirming their seat — separate from
 // sendEnrollmentEmail below, which notifies the ZOUM team internally.
 export function renderEnrollmentConfirmationEmailHtml(data: EnrollmentData): string {
+  const community = data.communityUrl
+    ? `<p style="margin:0 0 16px;font-size:14px;line-height:1.6;">
+      Next step: join our WhatsApp community. That's where we post the schedule, meeting links,
+      and every update for your course.
+    </p>
+    <p style="margin:0 0 20px;">
+      <a href="${escapeHtml(data.communityUrl)}" style="display:inline-block;background:#1fcb6b;color:#fff;text-decoration:none;font-weight:600;font-size:14px;padding:12px 22px;border-radius:9999px;">Join the WhatsApp community →</a>
+    </p>`
+    : `<p style="margin:0 0 16px;font-size:14px;line-height:1.6;">
+      We'll reach out with the schedule and joining details shortly. If you have any questions in
+      the meantime, just reply to this email.
+    </p>`;
+
   return `<!doctype html>
 <html>
   <body style="font-family:Arial,Helvetica,sans-serif;color:#14241b;max-width:480px;">
@@ -116,10 +130,7 @@ export function renderEnrollmentConfirmationEmailHtml(data: EnrollmentData): str
       Your seat for <strong>${escapeHtml(data.courseTitle)}</strong> is confirmed. Payment of
       ₹${data.amountInr.toLocaleString("en-IN")} has been received.
     </p>
-    <p style="margin:0 0 16px;font-size:14px;line-height:1.6;">
-      We'll reach out with the schedule and joining details shortly. If you have any questions in
-      the meantime, just reply to this email.
-    </p>
+    ${community}
     <p style="margin:24px 0 0;font-size:13px;color:#647067;">
       Payment reference: ${escapeHtml(data.paymentId)}
     </p>

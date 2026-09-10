@@ -31,6 +31,21 @@ export interface Env {
   ADMIN_TOKEN: string; // secret — set via `wrangler secret put ADMIN_TOKEN`
 }
 
+// Only these keys can be written through POST /admin/settings.
+const WRITABLE_SETTING_KEYS = new Set(["whatsapp_community_url"]);
+
+async function getSetting(env: Env, key: string): Promise<string> {
+  try {
+    const row = await env.DB.prepare("SELECT value FROM settings WHERE key = ?")
+      .bind(key)
+      .first<{ value: string }>();
+    return row?.value ?? "";
+  } catch (err) {
+    console.error("getSetting error:", err);
+    return "";
+  }
+}
+
 function jsonResponse(body: unknown, status: number, headers: HeadersInit): Response {
   return new Response(JSON.stringify(body), {
     status,
@@ -200,6 +215,8 @@ async function handleVerifyPayment(
     .bind(paymentId, enrollment.id)
     .run();
 
+  const communityUrl = await getSetting(env, "whatsapp_community_url");
+
   const enrollmentData = {
     name: enrollment.name,
     email: enrollment.email,
@@ -209,6 +226,7 @@ async function handleVerifyPayment(
     courseTitle: enrollment.course_title,
     amountInr: enrollment.amount_inr,
     paymentId,
+    communityUrl: communityUrl || undefined,
   };
 
   // Two separate emails: one notifies the ZOUM team internally, the other
@@ -236,7 +254,7 @@ async function handleVerifyPayment(
     console.error("Enrollment confirmation email error:", studentEmailResult.status, studentEmailResult.body);
   }
 
-  return jsonResponse({ ok: true }, 200, cors);
+  return jsonResponse({ ok: true, communityUrl: communityUrl || null }, 200, cors);
 }
 
 /** GET /admin/data — everything stored so far (enrollments, inquiries, job
@@ -249,21 +267,55 @@ async function handleAdminData(request: Request, env: Env, cors: HeadersInit): P
     return jsonResponse({ error: "Unauthorized" }, 401, cors);
   }
 
-  const [enrollments, inquiries, jobApplications] = await Promise.all([
+  const [enrollments, inquiries, jobApplications, settings] = await Promise.all([
     env.DB.prepare(`SELECT * FROM enrollments ORDER BY created_at DESC LIMIT 300`).all(),
     env.DB.prepare(`SELECT * FROM inquiries ORDER BY created_at DESC LIMIT 300`).all(),
     env.DB.prepare(`SELECT * FROM job_applications ORDER BY created_at DESC LIMIT 300`).all(),
+    env.DB.prepare(`SELECT key, value FROM settings`).all<{ key: string; value: string }>(),
   ]);
+
+  const settingsMap: Record<string, string> = {};
+  for (const row of settings.results ?? []) settingsMap[row.key] = row.value;
 
   return jsonResponse(
     {
       enrollments: enrollments.results,
       inquiries: inquiries.results,
       jobApplications: jobApplications.results,
+      settings: settingsMap,
     },
     200,
     cors,
   );
+}
+
+/** POST /admin/settings — update one allowlisted setting. Token-gated the
+ * same way as GET /admin/data. Body: { key, value }. */
+async function handleUpdateSetting(request: Request, env: Env, cors: HeadersInit): Promise<Response> {
+  const authHeader = request.headers.get("Authorization");
+  const token = authHeader?.startsWith("Bearer ") ? authHeader.slice(7) : null;
+  if (!token || token !== env.ADMIN_TOKEN) {
+    return jsonResponse({ error: "Unauthorized" }, 401, cors);
+  }
+
+  const body = (await request.json().catch(() => null)) as Record<string, unknown> | null;
+  const key = typeof body?.key === "string" ? body.key : "";
+  const value = typeof body?.value === "string" ? body.value.trim() : "";
+  if (!WRITABLE_SETTING_KEYS.has(key)) {
+    return jsonResponse({ error: "Unknown setting key" }, 400, cors);
+  }
+  if (value && !/^https?:\/\//i.test(value)) {
+    return jsonResponse({ error: "Value must be a URL starting with https://" }, 400, cors);
+  }
+
+  await env.DB.prepare(
+    `INSERT INTO settings (key, value, updated_at) VALUES (?, ?, datetime('now'))
+     ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = datetime('now')`,
+  )
+    .bind(key, value)
+    .run();
+
+  return jsonResponse({ ok: true, key, value }, 200, cors);
 }
 
 export default {
@@ -285,6 +337,11 @@ export default {
     if (url.pathname === "/admin/data") {
       if (request.method !== "GET") return jsonResponse({ error: "Method not allowed" }, 405, cors);
       return handleAdminData(request, env, cors);
+    }
+
+    if (url.pathname === "/admin/settings") {
+      if (request.method !== "POST") return jsonResponse({ error: "Method not allowed" }, 405, cors);
+      return handleUpdateSetting(request, env, cors);
     }
 
     if (request.method !== "POST") {

@@ -25,6 +25,8 @@ export function useEnrollment() {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
+  const [communityUrl, setCommunityUrl] = useState<string | null>(null);
+  const [enrolledCourseTitle, setEnrolledCourseTitle] = useState("");
 
   const enroll = async (course: Course, intake: EnrollmentIntake) => {
     if (!CONTACT_API_URL) {
@@ -88,6 +90,10 @@ export function useEnrollment() {
                   body: JSON.stringify(response),
                 });
                 if (!verifyRes.ok) throw new Error("Payment verification failed.");
+                const verifyBody = (await verifyRes.json().catch(() => null)) as
+                  | { communityUrl?: string | null }
+                  | null;
+                setCommunityUrl(verifyBody?.communityUrl ?? null);
                 resolve();
               } catch (err) {
                 reject(err instanceof Error ? err : new Error("Payment verification failed."));
@@ -100,8 +106,9 @@ export function useEnrollment() {
         });
       });
 
+      setEnrolledCourseTitle(course.title);
       setStatus("success");
-      setMessage("You're enrolled! We've sent a confirmation to our team.");
+      setMessage("Payment received. A confirmation has been emailed to you.");
     } catch (err) {
       console.error("Enrollment error:", err);
       setStatus("error");
@@ -111,5 +118,5 @@ export function useEnrollment() {
     }
   };
 
-  return { enroll, loading, status, message };
+  return { enroll, loading, status, message, communityUrl, enrolledCourseTitle };
 }

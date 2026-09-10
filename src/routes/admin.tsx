@@ -51,6 +51,7 @@ interface AdminData {
   enrollments: Enrollment[];
   inquiries: Inquiry[];
   jobApplications: JobApplication[];
+  settings: Record<string, string>;
 }
 
 function AdminDashboard() {
@@ -59,7 +60,9 @@ function AdminDashboard() {
   const [data, setData] = useState<AdminData | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [tab, setTab] = useState<"enrollments" | "inquiries" | "applications">("enrollments");
+  const [tab, setTab] = useState<"enrollments" | "inquiries" | "applications" | "settings">(
+    "enrollments",
+  );
 
   const fetchData = async (t: string) => {
     if (!CONTACT_API_URL) {
@@ -91,6 +94,23 @@ function AdminDashboard() {
   useEffect(() => {
     if (token) fetchData(token);
   }, [token]);
+
+  const saveSetting = async (key: string, value: string) => {
+    if (!CONTACT_API_URL) return { ok: false, error: "API not configured" };
+    try {
+      const res = await fetch(`${CONTACT_API_URL.replace(/\/$/, "")}/admin/settings`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ key, value }),
+      });
+      const body = await res.json().catch(() => null);
+      if (!res.ok) return { ok: false, error: body?.error ?? `Request failed (${res.status})` };
+      setData((d) => (d ? { ...d, settings: { ...d.settings, [key]: value } } : d));
+      return { ok: true };
+    } catch {
+      return { ok: false, error: "Failed to save. Please try again." };
+    }
+  };
 
   if (!token) {
     return (
@@ -156,6 +176,7 @@ function AdminDashboard() {
               ["enrollments", `Course Enrollments (${data?.enrollments.length ?? 0})`],
               ["inquiries", `Contact Inquiries (${data?.inquiries.length ?? 0})`],
               ["applications", `Job Applications (${data?.jobApplications.length ?? 0})`],
+              ["settings", "Settings"],
             ] as const
           ).map(([key, label]) => (
             <button
@@ -174,21 +195,27 @@ function AdminDashboard() {
         {error && <p className="text-red-400 mb-4">{error}</p>}
 
         {data && tab === "enrollments" && (
-          <Table
-            rows={data.enrollments}
-            empty="No course enrollments yet."
-            columns={[
-              ["created_at", "Date", (v) => new Date(v).toLocaleString()],
-              ["name", "Name"],
-              ["email", "Email"],
-              ["phone", "Phone"],
-              ["education", "Education"],
-              ["purpose", "Purpose"],
-              ["course_title", "Course"],
-              ["amount_inr", "Amount", (v) => `₹${Number(v).toLocaleString("en-IN")}`],
-              ["status", "Status"],
-            ]}
-          />
+          <>
+            <CourseSummary enrollments={data.enrollments} />
+            <Table
+              rows={data.enrollments}
+              empty="No course enrollments yet."
+              columns={[
+                ["created_at", "Date", (v) => new Date(v).toLocaleString()],
+                ["name", "Name"],
+                ["email", "Email"],
+                ["phone", "Phone"],
+                ["education", "Education"],
+                ["purpose", "Purpose"],
+                ["course_title", "Course"],
+                ["amount_inr", "Amount", (v) => `₹${Number(v).toLocaleString("en-IN")}`],
+                ["status", "Status"],
+              ]}
+            />
+          </>
+        )}
+        {data && tab === "settings" && (
+          <SettingsPanel settings={data.settings} onSave={saveSetting} />
         )}
         {data && tab === "inquiries" && (
           <Table
@@ -222,6 +249,86 @@ function AdminDashboard() {
           />
         )}
       </div>
+    </div>
+  );
+}
+
+// Per-course rollup so scheduling 400 people across many courses is legible:
+// how many paid, how many total, per course.
+function CourseSummary({ enrollments }: { enrollments: Enrollment[] }) {
+  if (enrollments.length === 0) return null;
+  const byCourse = new Map<string, { total: number; paid: number }>();
+  for (const e of enrollments) {
+    const cur = byCourse.get(e.course_title) ?? { total: 0, paid: 0 };
+    cur.total += 1;
+    if (e.status === "paid") cur.paid += 1;
+    byCourse.set(e.course_title, cur);
+  }
+  const rows = [...byCourse.entries()].sort((a, b) => b[1].paid - a[1].paid);
+
+  return (
+    <div className="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {rows.map(([course, c]) => (
+        <div key={course} className="bg-slate-900 border border-slate-800 rounded-xl p-4">
+          <div className="text-sm text-slate-200 truncate" title={course}>
+            {course}
+          </div>
+          <div className="mt-1 text-2xl font-semibold text-white">
+            {c.paid}
+            <span className="text-sm text-slate-500 font-normal"> paid</span>
+          </div>
+          <div className="text-xs text-slate-500">{c.total} total (incl. unpaid)</div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function SettingsPanel({
+  settings,
+  onSave,
+}: {
+  settings: Record<string, string>;
+  onSave: (key: string, value: string) => Promise<{ ok: boolean; error?: string }>;
+}) {
+  const [waUrl, setWaUrl] = useState(settings["whatsapp_community_url"] ?? "");
+  const [saving, setSaving] = useState(false);
+  const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);
+
+  const save = async () => {
+    setSaving(true);
+    setMsg(null);
+    const res = await onSave("whatsapp_community_url", waUrl.trim());
+    setSaving(false);
+    setMsg(res.ok ? { ok: true, text: "Saved." } : { ok: false, text: res.error ?? "Failed." });
+  };
+
+  return (
+    <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 max-w-xl">
+      <h2 className="text-white font-semibold mb-1">WhatsApp community link</h2>
+      <p className="text-slate-400 text-sm mb-4">
+        Shown to students in a popup and in their confirmation email right after they pay. Leave
+        blank to hide it until you have a link.
+      </p>
+      <input
+        type="url"
+        value={waUrl}
+        onChange={(e) => setWaUrl(e.target.value)}
+        placeholder="https://chat.whatsapp.com/..."
+        className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-white mb-3"
+      />
+      <button
+        onClick={save}
+        disabled={saving}
+        className="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 disabled:opacity-60 text-white rounded-lg text-sm font-medium transition"
+      >
+        {saving ? "Saving..." : "Save"}
+      </button>
+      {msg && (
+        <span className={`ml-3 text-sm ${msg.ok ? "text-emerald-400" : "text-red-400"}`}>
+          {msg.text}
+        </span>
+      )}
     </div>
   );
 }
