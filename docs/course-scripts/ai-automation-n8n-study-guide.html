@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AI Automation Masterclass — n8n | Student Study Guide</title>
+<style>
+  @page { size: A4; margin: 20mm 18mm 16mm 18mm; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif; color: #14241B; font-size: 10.5pt; line-height: 1.5; margin: 0; }
+  h1,h2,h3,h4 { font-family: "Segoe UI Semibold","Segoe UI",Arial,sans-serif; color: #0e2a1c; line-height: 1.25; }
+  h1 { font-size: 23pt; margin: 0 0 4pt; }
+  h2 { font-size: 14.5pt; margin: 24pt 0 8pt; padding-bottom: 4pt; border-bottom: 2px solid #1fcb6b; }
+  h3 { font-size: 11.5pt; margin: 15pt 0 4pt; color: #0e7c42; }
+  h4 { font-size: 10.5pt; margin: 10pt 0 2pt; }
+  p { margin: 0 0 7pt; }
+  ul,ol { margin: 0 0 9pt; padding-left: 18pt; }
+  li { margin: 0 0 4pt; }
+  strong { color: #0e2a1c; }
+  code { font-family: "Consolas",monospace; background: #f1f5f2; padding: 1px 4px; border-radius: 3px; font-size: 9.5pt; }
+  pre { background: #0e2a1c; color: #e8f5ee; font-family: "Consolas",monospace; font-size: 9pt; padding: 10pt 12pt; border-radius: 6px; overflow-x: auto; white-space: pre-wrap; margin: 8pt 0; }
+  .cover { padding: 36pt 0 18pt; border-bottom: 3px solid #1fcb6b; margin-bottom: 10pt; }
+  .cover .brand { font-size: 11pt; letter-spacing: 3px; text-transform: uppercase; color: #0e7c42; font-weight: 600; }
+  .cover .sub { font-size: 12pt; color: #4b5a52; margin-top: 6pt; }
+  .callout { background: #f1faf4; border-left: 3px solid #1fcb6b; padding: 9pt 12pt; margin: 10pt 0; border-radius: 0 6px 6px 0; }
+  .note { background: #fff8ec; border-left: 3px solid #e0a63c; padding: 8pt 12pt; margin: 9pt 0; border-radius: 0 6px 6px 0; font-size: 10pt; }
+  table { width: 100%; border-collapse: collapse; margin: 10pt 0; font-size: 9.5pt; }
+  th,td { text-align: left; padding: 6pt 8pt; border-bottom: 1px solid #e2e8e4; vertical-align: top; }
+  th { background: #0e2a1c; color: #fff; font-weight: 600; }
+  .step { border: 1px solid #e2e8e4; border-radius: 8px; padding: 10pt 14pt; margin: 9pt 0; page-break-inside: avoid; }
+  .step .n { display: inline-block; background: #0e2a1c; color: #fff; font-size: 8.5pt; font-weight: 600; padding: 2px 9px; border-radius: 20px; letter-spacing: .5px; }
+  .pagebreak { page-break-before: always; }
+  .foot { margin-top: 22pt; padding-top: 8pt; border-top: 1px solid #e2e8e4; font-size: 8.5pt; color: #6b7a72; }
+  .flow { font-family: "Consolas",monospace; background:#eef6f1; border:1px solid #d3e6da; border-radius:6px; padding:8pt 12pt; font-size:9.5pt; margin:8pt 0; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="brand">ZOUM Consultancy</div>
+  <h1>AI Automation Masterclass — n8n</h1>
+  <div class="sub">Student study guide &amp; workbook</div>
+</div>
+
+<h3>How to use this guide</h3>
+<ul>
+  <li><strong>Read Part 1 before the live session.</strong> If the vocabulary is already familiar, the hands-on time is spent building, not catching up.</li>
+  <li><strong>Keep it open during the session</strong> as a reference — every step of the live build is written out in Part 2.</li>
+  <li><strong>After the session</strong>, work through the practice exercises (Part 4) and the 7-Day Build Plan (Part 5).</li>
+</ul>
+
+<h2>Before the session — setup checklist (15 minutes)</h2>
+<table>
+  <tr><th style="width:20pt">✓</th><th>Item</th><th>How</th></tr>
+  <tr><td></td><td>An n8n account</td><td>Sign up for the free trial at <strong>n8n.io</strong>, or run it locally with <code>npx n8n</code> if you have Node installed. The instructor will confirm which the class uses.</td></tr>
+  <tr><td></td><td>A browser</td><td>Chrome or Firefox, logged in, pop-up blocker off for the n8n tab.</td></tr>
+  <tr><td></td><td>Somewhere to send test output</td><td>A Gmail account you can connect, or the shared Slack/Discord channel the instructor provides.</td></tr>
+  <tr><td></td><td>(Optional) An AI API key</td><td>An OpenAI or Anthropic key. Not required — a sandbox key is handed out during class.</td></tr>
+  <tr><td></td><td>A real task in mind</td><td>One repetitive thing you do at work the same way every time. You will build an automation for it at the end.</td></tr>
+</table>
+
+<div class="pagebreak"></div>
+<h2>Part 1 — Core concepts</h2>
+
+<h3>1.1 Automation is just "when X happens, do Y"</h3>
+<p>
+  Every automation, however complex, is a chain: something starts it, then steps run in order. If you
+  can describe a task as "first this, then this, then this," you can automate it. The skill this
+  course builds is <strong>seeing your work as chains</strong>.
+</p>
+
+<h3>1.2 What n8n is</h3>
+<p>
+  n8n is a <strong>visual workflow tool</strong>. Instead of writing a program, you place boxes called
+  <strong>nodes</strong> on a <strong>canvas</strong> and connect them with lines. Each node does one
+  small job. n8n runs the chain for you every time the trigger fires.
+</p>
+<ul>
+  <li><strong>Canvas</strong> — where you build. Left → right is the order things run.</li>
+  <li><strong>Node</strong> — one step. Click it to open its settings on the left; after it runs, its output data shows on the right.</li>
+  <li><strong>Execution</strong> — one run of the workflow. The <strong>Executions</strong> tab keeps a history of every run and what each node did.</li>
+  <li><strong>Active / inactive</strong> — a workflow only runs on its own (from a webhook or schedule) when you toggle it <strong>Active</strong>, top-right. While building, you just click "Test workflow".</li>
+</ul>
+
+<h3>1.3 Triggers — how a workflow starts</h3>
+<p>A workflow starts with a <strong>trigger</strong> node. Start with one; you can add more later.</p>
+<table>
+  <tr><th>Trigger</th><th>Fires when…</th><th>Use for</th></tr>
+  <tr><td>Manual Trigger</td><td>you click "Test workflow"</td><td>building and testing</td></tr>
+  <tr><td>Webhook</td><td>an HTTP request hits its URL</td><td>a form submission, another app calling you</td></tr>
+  <tr><td>Schedule Trigger</td><td>a time you set (e.g. every hour)</td><td>reports, recurring checks, reminders</td></tr>
+</table>
+<p>
+  The <strong>Webhook</strong> node gives you two URLs: a <strong>Test URL</strong> (works while you've
+  clicked "Listen for test event") and a <strong>Production URL</strong> (works once the workflow is
+  Active). In class we use the Test URL.
+</p>
+
+<h3>1.4 Nodes and data flow</h3>
+<p>
+  When a node runs it produces <strong>output data</strong> — a list of items, each a JSON object. The
+  next node receives that as its <strong>input</strong>. So any node can use anything an earlier node
+  produced. Data looks like this:
+</p>
+<pre>{
+  "name": "Priya",
+  "email": "priya@example.com",
+  "message": "Do you take on inventory automation for a mid-size distributor?"
+}</pre>
+
+<h3>1.5 Expressions — using a value from an earlier step</h3>
+<p>To pull a value from earlier in the chain, switch a field to <strong>Expression</strong> mode and write:</p>
+<pre>{{ $json.message }}</pre>
+<ul>
+  <li><code>$json</code> — the current input item's data</li>
+  <li><code>.message</code> — the field you want</li>
+  <li>field name with a space: <code>{{ $json["field name"] }}</code></li>
+  <li>reach a specific earlier node: <code>{{ $('Webhook').item.json.email }}</code></li>
+</ul>
+<p>
+  This is the <strong>only</strong> piece of syntax in the whole class. Quick check: with the JSON
+  above, what does <code>{{ $json.name }}</code> return? &nbsp;→&nbsp; <code>Priya</code>
+</p>
+
+<h3>1.6 Credentials</h3>
+<p>
+  API keys and logins are stored once as <strong>credentials</strong>, separate from any node. You
+  create a credential (e.g. "OpenAI account"), then any node picks it from a dropdown. After you save
+  it the key is never shown again and never appears in the workflow itself — so a workflow is safe to
+  share or export.
+</p>
+
+<div class="pagebreak"></div>
+<h2>Part 2 — Guided build: AI-powered lead follow-up automation</h2>
+<p><strong>Goal:</strong> when a new lead arrives, an AI reads their message, drafts a personal reply, and sends it.</p>
+<div class="flow">Webhook (lead arrives) &nbsp;→&nbsp; AI node (draft reply) &nbsp;→&nbsp; Send (email / Slack)</div>
+
+<div class="step">
+  <span class="n">STEP 1</span>
+  <h4>Webhook trigger</h4>
+  <ol>
+    <li>New workflow. Add a <strong>Webhook</strong> node.</li>
+    <li>Set <strong>HTTP Method</strong> to <code>POST</code>.</li>
+    <li>Copy the <strong>Test URL</strong>.</li>
+    <li>Click <strong>Listen for test event</strong> — the node is now waiting.</li>
+  </ol>
+</div>
+
+<div class="step">
+  <span class="n">STEP 2</span>
+  <h4>Send a test lead</h4>
+  <p>Send this request (the instructor shows how — browser console, or a shared tool):</p>
+  <pre>POST  &lt;your test URL&gt;
+Content-Type: application/json
+
+{ "name": "Priya",
+  "email": "priya@example.com",
+  "message": "Do you take on inventory automation for a mid-size distributor?" }</pre>
+  <p>The Webhook node turns green and shows the data. You now have <code>$json.name</code>, <code>$json.email</code>, <code>$json.message</code> available to every node after it.</p>
+</div>
+
+<div class="step">
+  <span class="n">STEP 3</span>
+  <h4>AI node</h4>
+  <ol>
+    <li>Add an <strong>OpenAI</strong> or <strong>Anthropic</strong> node (operation "Message a model"), or a <strong>Basic LLM Chain</strong>.</li>
+    <li>Select the credential (sandbox key provided in class).</li>
+    <li>Model: a small, fast one is fine for this.</li>
+    <li>User message / prompt, in Expression mode:</li>
+  </ol>
+  <pre>Write a warm, specific 3-sentence follow-up reply to this inquiry.
+Do not invent details or make promises about pricing or timelines.
+
+Inquiry: {{ $json.message }}</pre>
+  <ol start="5"><li>Run the node. Read the reply it generated.</li></ol>
+  <div class="note"><strong>Why the "do not invent" line matters:</strong> the prompt tells the AI what <em>not</em> to do. Without it, a model will happily make up a price or a delivery date. Telling it the boundaries is part of the job.</div>
+</div>
+
+<div class="step">
+  <span class="n">STEP 4</span>
+  <h4>Send the reply</h4>
+  <p>Use whichever the class is set up for:</p>
+  <ul>
+    <li><strong>Gmail</strong> node → "Send" → To: <code>{{ $('Webhook').item.json.email }}</code>, Subject: <code>Thanks for reaching out</code>, Message: the AI node's output.</li>
+    <li><strong>Slack / Discord</strong> node → post to a channel, Text: the AI node's output. (Best stand-in when email credentials aren't available.)</li>
+  </ul>
+</div>
+
+<div class="step">
+  <span class="n">STEP 5</span>
+  <h4>Test the whole chain</h4>
+  <p>Send 2–3 different leads with different messages. Confirm the AI writes a genuinely different, relevant reply each time — not a template with a name swapped in.</p>
+</div>
+
+<div class="callout">
+  <strong>What you just learned:</strong> the <strong>trigger → AI decision → action</strong> pattern.
+  Order processing, support triage, and lead scoring are the same three pieces with different nodes.
+</div>
+
+<h2>Part 3 — The three automation patterns</h2>
+<p>Almost everything you will build is one of these three shapes. When you have a task, first ask which one it is:</p>
+<ol>
+  <li><strong>Trigger → AI decision → action</strong> — lead follow-up, support triage, content drafting</li>
+  <li><strong>Trigger → fetch → transform → store</strong> — reporting, syncing data between apps, enrichment</li>
+  <li><strong>Schedule → check → act if needed</strong> — monitoring, reminders, recurring jobs</li>
+</ol>
+
+<div class="pagebreak"></div>
+<h2>Part 4 — Practice exercises</h2>
+<p>Do these after the session. Each one builds on the last.</p>
+<ol>
+  <li><strong>Echo bot.</strong> Webhook → a Set / Edit Fields node that outputs <code>Hello {{ $json.name }}</code>. Test it.</li>
+  <li><strong>Auto-categorize.</strong> Webhook (a support message) → AI node that replies with <em>only one word</em>: <code>billing</code>, <code>technical</code>, or <code>other</code>.</li>
+  <li><strong>Daily quote.</strong> Schedule Trigger (once a day) → HTTP Request to a free public quotes API → Slack / Discord post.</li>
+  <li><strong>Lead router.</strong> Take your Part 2 build. Add an <strong>IF</strong> node after the webhook: if <code>message</code> contains "urgent", send to one channel; otherwise the normal one.</li>
+  <li><strong>Your task.</strong> The repetitive task you brought to class. Decide which of the three patterns it is, write the node chain on paper, then build it.</li>
+</ol>
+
+<h2>Part 5 — The 7-Day Automation Build Plan</h2>
+<table>
+  <tr><th style="width:60pt">Day</th><th>Do</th></tr>
+  <tr><td>1–2</td><td>Pick one repetitive task from your own work. Write it in one sentence.</td></tr>
+  <tr><td>3</td><td>Which of the three patterns is it? Write the node chain on paper.</td></tr>
+  <tr><td>4</td><td>Work out what credentials / APIs you need. Get access to them.</td></tr>
+  <tr><td>5–6</td><td>Build it in n8n. Get it working with one test input.</td></tr>
+  <tr><td>7</td><td>Test with 3 real inputs. Fix what breaks. Toggle it Active.</td></tr>
+</table>
+<div class="callout">Bring the result to the first enhanced-program class for feedback.</div>
+
+<h2>Part 6 — Troubleshooting</h2>
+<table>
+  <tr><th>Symptom</th><th>Likely cause</th><th>Fix</th></tr>
+  <tr><td>Webhook shows nothing after you send a request</td><td>not in "listen" mode, or wrong URL / method</td><td>click "Listen for test event" again; check POST vs GET; use the Test URL, not the Production one</td></tr>
+  <tr><td>Expression shows <code>[undefined]</code></td><td>wrong field name or wrong node reference</td><td>check exact spelling and case; look at the input panel for the real field name</td></tr>
+  <tr><td>AI node: "invalid API key"</td><td>credential wrong or not selected</td><td>re-select the credential on the node; re-enter the key</td></tr>
+  <tr><td>AI node: "rate limit"</td><td>too many runs on a shared key</td><td>wait a minute; the instructor rotates the sandbox key</td></tr>
+  <tr><td>Gmail node won't connect</td><td>needs OAuth consent set up</td><td>use the Slack / Discord node instead for class</td></tr>
+  <tr><td>Workflow doesn't run on its own</td><td>not toggled Active, or still using the Test URL</td><td>toggle Active (top-right); switch to the Production URL</td></tr>
+</table>
+
+<h2>Part 7 — Keep learning</h2>
+<ul>
+  <li><strong>n8n official docs</strong> — <code>docs.n8n.io</code>: the "Try it out" quickstart and the per-node reference</li>
+  <li><strong>n8n community forum</strong> — <code>community.n8n.io</code></li>
+  <li><strong>Template library</strong> — inside n8n, top nav → Templates. Open other people's workflows and read how they're wired</li>
+  <li><strong>The enhanced program</strong> (2 classes / week) covers: error handling, connecting APIs with no native node, scheduling at scale, and shipping your own project</li>
+</ul>
+
+<h2>Terms &amp; Conditions</h2>
+<ol>
+  <li>This is a one-time fee. Don't pay any additional money to anyone in connection with this course, including instructors, under any circumstances.</li>
+  <li>We provide placement assistance and guidance if you put in the work — placement itself is not guaranteed.</li>
+  <li>You may be asked to sign a non-disclosure agreement as part of the program.</li>
+</ol>
+
+<div class="foot">
+  ZOUM Consultancy · AI Automation Masterclass — n8n · Student study guide. The public course page is at zoumconsultancy.com.
+</div>
+
+</body>
+</html>
