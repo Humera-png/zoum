@@ -1,0 +1,12 @@
+# SPA fallback for Apache / LiteSpeed hosts (e.g. Hostinger).
+# Vercel ignores this file and uses vercel.json instead.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  # Serve real files and directories as-is
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+  # Everything else falls back to the SPA entry point
+  RewriteRule ^ /index.html [L]
+</IfModule>
