@@ -37,6 +37,7 @@ const board = [
   {
     name: "Abdur Rehman",
     role: "Founder",
+    image: "/assets/abdur-founder.jpg",
     bio: "Abdur built ZOUM's recruitment engine from the ground up: the sourcing process, client relationships, and vetting standards that stand behind every candidate we put forward. 5+ years in strategic talent sourcing and business planning is the foundation he brings to the consultancy side of ZOUM too, working directly with client companies to turn a hiring need or a growth problem into a plan that's actually realistic to execute.",
     linkedin: "https://www.linkedin.com/in/abdur-rehman-534483221/",
   },
@@ -128,13 +129,13 @@ function AboutPage() {
                 transition={{ delay: i * 0.06 }}
                 className="group glass rounded-3xl overflow-hidden hover-glow-lime transition flex flex-col h-full"
               >
-                <div className="aspect-[5/4] overflow-hidden bg-zinc-900/30 relative flex items-center justify-center border-b border-zinc-800/40">
+                <div className="aspect-[4/5] overflow-hidden bg-zinc-900/30 relative flex items-center justify-center border-b border-zinc-800/40">
                   {m.image ? (
                     <img
                       src={m.image}
                       alt={m.name}
                       loading="lazy"
-                      className="absolute inset-0 h-full w-full object-cover"
+                      className="absolute inset-0 h-full w-full object-cover object-top"
                     />
                   ) : (
                     <div className="font-display text-6xl font-bold tracking-tighter text-zinc-700 select-none group-hover:text-lime transition duration-500">
@@ -161,9 +162,6 @@ function AboutPage() {
               </motion.div>
             ))}
           </div>
-          <p className="text-xs text-muted-foreground mt-6">
-            Abdur's photo is on the way, replacing the initials above.
-          </p>
         </section>
 
         <section className="mt-32">
