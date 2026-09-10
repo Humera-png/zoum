@@ -11,6 +11,7 @@ const REASONS = [
   { value: "social-media", label: "Social Media Marketing" },
   { value: "ai-automation", label: "AI Automation" },
   { value: "it-software", label: "IT & Software Development" },
+  { value: "learning-development", label: "Learning & Development" },
   { value: "general", label: "General Inquiry" },
 ] as const;
 

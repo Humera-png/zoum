@@ -9,6 +9,7 @@ export const REASONS = {
   "social-media": "Social Media Marketing",
   "ai-automation": "AI Automation",
   "it-software": "IT & Software Development",
+  "learning-development": "Learning & Development",
   general: "General Inquiry",
 } as const;
 
