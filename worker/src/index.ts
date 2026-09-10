@@ -121,6 +121,19 @@ async function handleCreateOrder(
   const course = findCourse(courseId);
   if (!course) return jsonResponse({ error: "Unknown course" }, 404, cors);
 
+  // Razorpay not configured yet — give a clear message instead of a generic
+  // "try again" that looks like a transient bug.
+  if (!env.RAZORPAY_KEY_ID || !env.RAZORPAY_KEY_SECRET) {
+    return jsonResponse(
+      {
+        error:
+          "Online payments aren't live yet. Email contact@zoumconsultancy.com to reserve your seat and we'll get you in.",
+      },
+      503,
+      cors,
+    );
+  }
+
   const enrollmentId = crypto.randomUUID();
   const order = await createRazorpayOrder({
     keyId: env.RAZORPAY_KEY_ID,
