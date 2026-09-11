@@ -142,10 +142,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         rel: "icon",
         type: "image/png",
-        // Deliberately the older circular badge, not the new full lockup —
-        // that one is a wide image on a mostly-white square canvas and
-        // reads as blank at browser-tab size. This one is pre-cropped to
-        // read clearly as a small icon.
+        // Cropped from the current logo's icon mark (green, white background)
+        // — the full lockup (icon + wordmark) is a wide image on a mostly-
+        // white square canvas and reads as blank at browser-tab size, so
+        // this is pre-cropped to just the icon for clarity at that size.
         href: "/assets/zoum-favicon.png",
       },
       { rel: "canonical", href: "https://zoumconsultancy.com" },

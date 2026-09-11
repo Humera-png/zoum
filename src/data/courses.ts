@@ -125,7 +125,7 @@ export const courses: Course[] = [
   },
   {
     id: "ai-automation-n8n-masterclass",
-    title: "AI Automation Masterclass — n8n",
+    title: "AI Automation Masterclass (n8n)",
     category: "tech",
     page: "ai-it",
     priceInr: 1499,
