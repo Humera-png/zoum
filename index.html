@@ -4,6 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ZOUM Consultancy</title>
+    <!--
+      Google AdSense: hardcoded directly in the static HTML (not injected
+      via React/TanStack Router head management) because this app is a
+      client-rendered SPA — the AdSense site-verification crawler fetches
+      the raw HTML and doesn't run the JS that would otherwise add this tag,
+      so the router-managed version never got seen and verification failed.
+    -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2748464050751133"
+      crossorigin="anonymous"
+    ></script>
+    <meta name="google-adsense-account" content="ca-pub-2748464050751133" />
   </head>
 
   <body class="bg-[#FAFAFA] text-[#14241B]">

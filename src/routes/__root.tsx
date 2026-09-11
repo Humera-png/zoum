@@ -10,12 +10,12 @@ import {
 
 import appCss from "../styles.css?url";
 
-// Google AdSense — set once the account is approved and you have a publisher
-// ID (looks like "ca-pub-1234567890123456"), via VITE_ADSENSE_CLIENT_ID in
-// Vercel's env vars. It's a public identifier (not a secret) that's visible
-// in every AdSense site's page source, so it's safe as a VITE_ var. Until
-// it's set, no AdSense script loads at all.
-const ADSENSE_CLIENT_ID = import.meta.env.VITE_ADSENSE_CLIENT_ID as string | undefined;
+// Google AdSense's script tag and verification meta live directly in
+// index.html, not here. This app is a client-rendered SPA, and the
+// AdSense site-verification crawler fetches the raw HTML without running
+// JS — tags added via TanStack Router's head() (React-managed, injected
+// after mount) never show up in that raw fetch, so verification failed
+// until the tag was hardcoded into the static HTML instead.
 
 function NotFoundComponent() {
   return (
@@ -137,19 +137,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:title", content: "ZOUM Consultancy | Business Consultancy, Recruitment & IT Services" },
       { name: "twitter:description", content: "Jaipur consultancy: job placement, AI automation, AI agents, website & software development, business consultancy." },
       { name: "twitter:image", content: "https://zoumconsultancy.com/assets/zoum-logo.png" },
-      ...(ADSENSE_CLIENT_ID
-        ? [{ name: "google-adsense-account", content: ADSENSE_CLIENT_ID }]
-        : []),
     ],
-    scripts: ADSENSE_CLIENT_ID
-      ? [
-          {
-            src: `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`,
-            async: true,
-            crossOrigin: "anonymous" as const,
-          },
-        ]
-      : [],
     links: [
       {
         rel: "icon",
