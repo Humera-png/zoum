@@ -6,11 +6,15 @@ export function Counter({
   suffix = "",
   prefix = "",
   duration = 2.2,
+  noGroup = false,
 }: {
   to: number;
   suffix?: string;
   prefix?: string;
   duration?: number;
+  // Skip thousands separators — for years and other numbers that should
+  // never read as "2,020".
+  noGroup?: boolean;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.3 });
@@ -27,7 +31,7 @@ export function Counter({
   return (
     <span ref={ref}>
       {prefix}
-      {Math.round(val).toLocaleString()}
+      {noGroup ? Math.round(val) : Math.round(val).toLocaleString()}
       {suffix}
     </span>
   );

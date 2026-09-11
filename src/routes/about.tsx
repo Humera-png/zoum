@@ -174,11 +174,11 @@ function AboutPage() {
               { v: 5000, suffix: "+", label: "Careers Placed" },
               { v: 100, suffix: "+", label: "Companies Served" },
               { v: 5, suffix: "", label: "Service Lines" },
-              { v: 2020, suffix: "", label: "Founded" },
+              { v: 2020, suffix: "", label: "Founded", noGroup: true },
             ].map((s, i) => (
               <div key={i} className="relative text-center">
                 <div className="font-display text-4xl md:text-6xl tracking-tight">
-                  <Counter to={s.v} suffix={s.suffix} />
+                  <Counter to={s.v} suffix={s.suffix} noGroup={s.noGroup} />
                 </div>
                 <div className="mt-3 text-xs md:text-sm text-muted-foreground uppercase tracking-wider">
                   {s.label}
