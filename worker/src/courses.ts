@@ -25,14 +25,14 @@ export const COURSES: CourseRecord[] = [
   { id: "leadership-readiness", title: "Lead From Day One: Leadership Readiness", priceInr: 8999 },
   { id: "interview-mastery", title: "Crack Any Interview: Interview Mastery", priceInr: 2999 },
   { id: "workplace-digital-skills", title: "Digital Skills for the Modern Workplace", priceInr: 3499 },
-  { id: "ai-ml-foundations", title: "Break Into AI: Machine Learning Foundations", priceInr: 14999 },
+  { id: "ai-ml-foundations", title: "Break Into AI: Machine Learning Foundations", priceInr: 999 },
   { id: "python-programming", title: "Code Your Future: Python for Beginners", priceInr: 6999 },
   { id: "full-stack-web-development", title: "Build & Launch: Full-Stack Web Development", priceInr: 19999 },
   { id: "data-analytics", title: "Data Skills That Get You Hired", priceInr: 8999 },
   {
     id: "automation-ai-ml-practicum",
     title: "Automate Everything: Python, AI & Machine Learning in Practice",
-    priceInr: 12999,
+    priceInr: 999,
   },
 ];
 

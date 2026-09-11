@@ -65,7 +65,7 @@ export const courses: Course[] = [
     category: "career",
     page: "ai-it",
     priceInr: 999,
-    duration: "Live masterclass, then 2 classes/week",
+    duration: "Live classes by Experts",
     summary:
       "Start with a live masterclass that helps freshers understand the IT industry and walk into their first interview with confidence, then keep going with an enhanced program that runs twice a week and covers everything else.",
     modules: [
@@ -97,7 +97,7 @@ export const courses: Course[] = [
     category: "career",
     page: "consultancy",
     priceInr: 999,
-    duration: "Live masterclass, then 2 classes/week",
+    duration: "Live classes by Experts",
     summary:
       "Start with a live masterclass on breaking into business consulting, then keep going with an enhanced program that runs twice a week and covers everything else.",
     modules: [
@@ -129,7 +129,7 @@ export const courses: Course[] = [
     category: "tech",
     page: "ai-it",
     priceInr: 1499,
-    duration: "Live masterclass, then 2 classes/week",
+    duration: "Live classes by Experts",
     summary:
       "Start with a live masterclass building real AI-powered automations in n8n, the workflow tool behind ZOUM's own automation systems, then keep going with an enhanced program that runs twice a week and covers everything else.",
     modules: [
@@ -161,7 +161,7 @@ export const courses: Course[] = [
     category: "language",
     page: "consultancy",
     priceInr: 4999,
-    duration: "4 weeks",
+    duration: "Live classes by Experts",
     summary:
       "Spoken and written English training built for real workplace situations, not textbook drills.",
     modules: [
@@ -190,7 +190,7 @@ export const courses: Course[] = [
     category: "soft-skills",
     page: "consultancy",
     priceInr: 5999,
-    duration: "3 weeks",
+    duration: "Live classes by Experts",
     summary:
       "Confidence, presence, and interpersonal skills that come through in interviews and on the job.",
     modules: [
@@ -219,7 +219,7 @@ export const courses: Course[] = [
     category: "soft-skills",
     page: "consultancy",
     priceInr: 3999,
-    duration: "2 weeks",
+    duration: "Live classes by Experts",
     summary: "Time management, teamwork, and professional etiquette for people early in their career.",
     modules: [
       {
@@ -247,7 +247,7 @@ export const courses: Course[] = [
     category: "leadership",
     page: "consultancy",
     priceInr: 8999,
-    duration: "6 weeks",
+    duration: "Live classes by Experts",
     summary: "Preparing high performers to step into their first management role with real support.",
     modules: [
       {
@@ -275,7 +275,7 @@ export const courses: Course[] = [
     category: "career",
     page: "consultancy",
     priceInr: 2999,
-    duration: "1 week",
+    duration: "Live classes by Experts",
     summary:
       "A focused crash course to help you walk into interviews prepared and negotiate the offer you deserve.",
     modules: [
@@ -304,7 +304,7 @@ export const courses: Course[] = [
     category: "tech",
     page: "consultancy",
     priceInr: 3499,
-    duration: "2 weeks",
+    duration: "Live classes by Experts",
     summary: "Practical training on the everyday tools every office job expects you to already know.",
     modules: [
       {
@@ -331,27 +331,30 @@ export const courses: Course[] = [
     title: "Break Into AI: Machine Learning Foundations",
     category: "tech",
     page: "ai-it",
-    priceInr: 14999,
-    duration: "8 weeks",
+    priceInr: 999,
+    duration: "Live classes by Experts",
     summary:
-      "A hands-on introduction to AI and machine learning: how models actually work, and how to build and use them, not just the theory.",
+      "A live, hands-on weekend masterclass into AI and machine learning: how models actually work, and how to build and evaluate one yourself, not just the theory.",
     modules: [
       {
-        title: "Python for AI & Data Work",
+        title: "Saturday — Python for Data & How Machine Learning Actually Works",
         description:
-          "The specific Python skills AI and data work actually depend on, taught by using them, not memorizing syntax in isolation.",
+          "A live session covering the specific Python and Pandas skills AI work actually depends on, then what machine learning actually is: supervised vs. unsupervised learning, training vs. test data, and why a model that's memorized its training data isn't the same as one that's learned something useful. Ends with a live demo training a real model on a real dataset.",
       },
       {
-        title: "Core Machine Learning Concepts",
+        title: "Day 2 — Build, Evaluate & Ship Your Own Model",
         description:
-          "How machine learning models actually work under the hood, explained in plain language, and where each type of model fits.",
-      },
-      {
-        title: "Real Datasets, AI APIs & a Final Project",
-        description:
-          "Work with real, messy datasets, integrate AI models and APIs into a project, and finish with something you actually built yourself.",
+          "Hands-on: you train and evaluate your own model with scikit-learn, learn why accuracy alone can lie to you, and call an AI API from your own code, not just a chat window. You leave with a working mini project and a personal plan for what to learn next.",
       },
     ],
+    pros: [
+      "Live, interactive masterclass, not a recorded video course",
+      "You train and evaluate a real model yourself, on real data, not a slide about one",
+      "Taught by people who use AI/ML in production, not just in theory",
+      "A personal plan for what to learn next, that you actually leave with",
+      "Placement assistance and guidance from a team that's done this before",
+    ],
+    terms: MASTERCLASS_TERMS,
     image:
       "https://images.unsplash.com/photo-1555255707-c07966088b7b?auto=format&fit=crop&w=1200&q=80",
   },
@@ -361,7 +364,7 @@ export const courses: Course[] = [
     category: "tech",
     page: "ai-it",
     priceInr: 6999,
-    duration: "6 weeks",
+    duration: "Live classes by Experts",
     summary: "Learn to code in Python from scratch, the language behind most AI, automation, and data work.",
     modules: [
       {
@@ -389,7 +392,7 @@ export const courses: Course[] = [
     category: "tech",
     page: "ai-it",
     priceInr: 19999,
-    duration: "12 weeks",
+    duration: "Live classes by Experts",
     summary: "Go from zero to building and deploying a real web application, front end and back end.",
     modules: [
       {
@@ -417,7 +420,7 @@ export const courses: Course[] = [
     category: "data",
     page: "ai-it",
     priceInr: 8999,
-    duration: "5 weeks",
+    duration: "Live classes by Experts",
     summary: "Turn raw spreadsheets and databases into answers, a practical analytics skillset for any role.",
     modules: [
       {
@@ -444,27 +447,30 @@ export const courses: Course[] = [
     title: "Automate Everything: Python, AI & Machine Learning in Practice",
     category: "tech",
     page: "ai-it",
-    priceInr: 12999,
-    duration: "8 weeks",
+    priceInr: 999,
+    duration: "Live classes by Experts",
     summary:
-      "A hands-on, practitioner-led course in automation engineering: use Python and AI/ML together to build systems that actually run your work for you, not just theory.",
+      "A live, practitioner-led 2-day masterclass in automation engineering: use Python and AI/ML together to build a system that actually runs your work for you, not just theory.",
     modules: [
       {
-        title: "Python Automation Pipelines",
+        title: "Day 1 — Python Automation Pipelines",
         description:
-          "Writing Python scripts for real, repeatable workflows, the kind that actually replace hours of manual work every week.",
+          "A live session covering the automation mindset (what's actually worth automating), writing Python scripts for real repeatable workflows, and error handling and logging, so a script that runs unattended fails loudly instead of silently. Ends with a live demo automating a real report from scratch.",
       },
       {
-        title: "Connecting APIs, Schedulers & Data Sources",
+        title: "Day 2 — APIs, Scheduling & AI-Driven Automation",
         description:
-          "Wiring APIs, schedulers, and data sources together into one system, so automations run on their own instead of needing to be triggered by hand.",
-      },
-      {
-        title: "Applying AI/ML + Capstone Project",
-        description:
-          "Using AI and ML models to automate decisions, not just predictions, ending in a capstone: design and ship one production-ready automation project.",
+          "Hands-on: connecting APIs, schedulers, and data sources into one working pipeline, then using an AI model to automate a decision, not just a prediction. You leave with one working automation you built yourself and a personal 7-Day Automation Build Plan.",
       },
     ],
+    pros: [
+      "Live, interactive masterclass, not a recorded video course",
+      "You build and ship one real automation yourself, not a toy example",
+      "Taught using automations already running in production",
+      "A personal 7-Day Automation Build Plan you actually leave with",
+      "Placement assistance and guidance from a team that's done this before",
+    ],
+    terms: MASTERCLASS_TERMS,
     image:
       "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=80",
   },
