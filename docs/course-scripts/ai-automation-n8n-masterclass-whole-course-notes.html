@@ -2,39 +2,42 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>AI Automation Masterclass (n8n) | Whole Course Notes</title>
+<title>AI Automation Masterclass (n8n) | Whole Teaching Notes</title>
 <style>
   @page { size: A4; margin: 20mm 18mm 18mm 18mm; }
   * { box-sizing: border-box; }
   html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  body { font-family:"Segoe UI","Helvetica Neue",Arial,sans-serif; color:#14241B; font-size:10.5pt; line-height:1.5; margin:0; }
+  body { font-family:"Segoe UI","Helvetica Neue",Arial,sans-serif; color:#14241B; font-size:10.5pt; line-height:1.55; margin:0; }
   h1,h2,h3,h4 { font-family:"Segoe UI Semibold","Segoe UI",Arial,sans-serif; color:#0e2a1c; line-height:1.25; }
-  h1 { font-size:22pt; margin:0 0 4pt; }
-  h2 { font-size:14.5pt; margin:24pt 0 8pt; padding-bottom:4pt; border-bottom:2px solid #1fcb6b; }
-  h3 { font-size:11.5pt; margin:14pt 0 4pt; color:#0e7c42; }
-  h4 { font-size:10.5pt; margin:9pt 0 2pt; }
+  h1 { font-size:21pt; margin:0 0 4pt; }
+  h2 { font-size:14.5pt; margin:22pt 0 8pt; padding-bottom:4pt; border-bottom:2px solid #1fcb6b; }
+  h3 { font-size:12pt; margin:16pt 0 5pt; color:#0e7c42; }
+  h4 { font-size:10.5pt; margin:10pt 0 3pt; }
   p { margin:0 0 7pt; }
   ul,ol { margin:0 0 9pt; padding-left:18pt; }
   li { margin:0 0 4pt; }
   strong { color:#0e2a1c; }
   code { font-family:"Consolas",monospace; background:#f1f5f2; padding:1px 4px; border-radius:3px; font-size:9.5pt; }
   pre { background:#0e2a1c; color:#e8f5ee; font-family:"Consolas",monospace; font-size:9pt; padding:10pt 12pt; border-radius:6px; overflow-x:auto; white-space:pre-wrap; margin:8pt 0; }
-  .cover { padding:36pt 0 18pt; border-bottom:3px solid #1fcb6b; margin-bottom:10pt; }
+  .cover { padding:34pt 0 16pt; border-bottom:3px solid #1fcb6b; margin-bottom:10pt; }
   .cover .brand { font-size:11pt; letter-spacing:3px; text-transform:uppercase; color:#0e7c42; font-weight:600; }
   .cover .sub { font-size:12pt; color:#4b5a52; margin-top:6pt; }
   .meta-grid { display:grid; grid-template-columns:1fr 1fr; gap:6pt 24pt; margin:14pt 0 4pt; }
   .meta-grid div { font-size:10pt; }
   .meta-grid .k { color:#6b7a72; text-transform:uppercase; font-size:8.5pt; letter-spacing:1px; }
-  .callout { background:#f1faf4; border-left:3px solid #1fcb6b; padding:9pt 12pt; margin:10pt 0; border-radius:0 6px 6px 0; }
+  .callout { background:#f1faf4; border-left:3px solid #1fcb6b; padding:9pt 12pt; margin:9pt 0; border-radius:0 6px 6px 0; }
   .note { background:#fff8ec; border-left:3px solid #e0a63c; padding:8pt 12pt; margin:9pt 0; border-radius:0 6px 6px 0; font-size:10pt; }
-  .seg { border:1px solid #e2e8e4; border-radius:8px; padding:10pt 14pt; margin:8pt 0; page-break-inside:avoid; }
+  .mistake { background:#fdf1f1; border-left:3px solid #d4534f; padding:8pt 12pt; margin:9pt 0; border-radius:0 6px 6px 0; font-size:10pt; }
+  .seg { border:1px solid #e2e8e4; border-radius:8px; padding:11pt 14pt; margin:9pt 0; page-break-inside:avoid; }
   .seg .time { display:inline-block; background:#0e2a1c; color:#fff; font-size:8.5pt; font-weight:600; padding:2px 9px; border-radius:20px; letter-spacing:.5px; }
   table { width:100%; border-collapse:collapse; margin:10pt 0; font-size:9.5pt; }
   th,td { text-align:left; padding:6pt 8pt; border-bottom:1px solid #e2e8e4; vertical-align:top; }
   th { background:#0e2a1c; color:#fff; font-weight:600; }
   .pill { display:inline-block; background:#e6f7ee; color:#0e7c42; font-size:8.5pt; padding:2px 8px; border-radius:20px; margin-right:4px; }
   .pagebreak { page-break-before:always; }
-  .foot { margin-top:22pt; padding-top:8pt; border-top:1px solid #e2e8e4; font-size:8.5pt; color:#6b7a72; }
+  .foot { margin-top:20pt; padding-top:8pt; border-top:1px solid #e2e8e4; font-size:8.5pt; color:#6b7a72; }
+  .qa { margin:6pt 0 6pt 0; padding-left:10pt; border-left:2px solid #cfe3d6; }
+  .qa .q { font-style:italic; color:#0e7c42; }
 </style>
 </head>
 <body>
@@ -42,129 +45,289 @@
 <div class="cover">
   <div class="brand">ZOUM Consultancy</div>
   <h1>AI Automation Masterclass (n8n)</h1>
-  <div class="sub">Whole course notes — overview, full class content, and outcome</div>
+  <div class="sub">Whole teaching notes — full 3-hour class, with explanations, talking points &amp; code</div>
 </div>
 
 <div class="meta-grid">
-  <div><div class="k">Format</div>Live classes by experts — hands-on build, not slides</div>
-  <div><div class="k">Structure</div>3-hour live masterclass, then an ongoing enhanced program, 2 classes a week</div>
-  <div><div class="k">Audience</div>Anyone comfortable using a computer. No coding or automation experience needed</div>
+  <div><div class="k">Format</div>Live class by expert — hands-on build, not slides</div>
+  <div><div class="k">Total time</div>3 hours, one sitting, one 10-minute break</div>
+  <div><div class="k">Audience</div>Zero prior coding or automation experience assumed</div>
   <div><div class="k">Fee</div>₹1,499 — one-time (see Terms)</div>
-  <div><div class="k">Tools</div>A laptop, browser, an n8n account, an AI API key (a sandbox key is provided in class)</div>
-  <div><div class="k">Taught by</div>ZOUM's automation team, using systems already running in production</div>
+  <div><div class="k">Tools</div>A laptop, browser, n8n account, an AI API key (sandbox key provided)</div>
+  <div><div class="k">Outcome</div>Everyone leaves having personally built and tested one working AI automation</div>
 </div>
 
 <div class="callout">
-  <strong>Outcome:</strong> every attendee personally builds and tests one working AI-powered
-  automation from an empty canvas in the 3-hour masterclass, and leaves with a personal 7-Day
-  Automation Build Plan. Continuing into the enhanced program, they go on to build order-processing,
-  lead-generation, and their own automation project.
+  <strong>How to use these notes:</strong> each block below is written to actually teach from — the
+  explanation is what to say, the code is what to type together with the room, and the "common
+  mistake" and "if asked" boxes are there for the moments that come up in every run of this class.
 </div>
 
-<h2>What you'll learn</h2>
-<ul>
-  <li>What n8n actually is and why it's used for AI-era automation over Zapier/Make</li>
-  <li>The building blocks: triggers, nodes, data flow, expressions, credentials</li>
-  <li>How to build a real AI-powered automation end to end: webhook → AI decision → action</li>
-  <li>How to connect any API into an automation, even ones with no native n8n node</li>
-  <li>(Enhanced program) order processing, lead generation, error handling, scheduling, and shipping your own project</li>
-</ul>
-
-<h2>Full class content — the 3-hour masterclass</h2>
+<h2>Session map</h2>
 <table>
-  <tr><th style="width:80pt">Time</th><th>Segment</th></tr>
-  <tr><td>0:00–0:15</td><td>Open — why this matters, the goal for the session</td></tr>
-  <tr><td>0:15–0:40</td><td>What n8n actually is — the mental model, interface demo</td></tr>
-  <tr><td>0:40–1:10</td><td>Core building blocks, hands-on — triggers, nodes, expressions, credentials</td></tr>
-  <tr><td>1:10–1:20</td><td>Break</td></tr>
-  <tr><td>1:20–2:20</td><td>The real build — an AI-powered lead follow-up automation</td></tr>
-  <tr><td>2:20–2:45</td><td>Where this goes from here — connecting any API, the enhanced program</td></tr>
-  <tr><td>2:45–3:00</td><td>Close — the 7-Day Automation Build Plan, terms, Q&amp;A</td></tr>
+  <tr><th style="width:80pt">Time</th><th>Block</th><th>Minutes</th></tr>
+  <tr><td>0:00–0:15</td><td>Open — framing &amp; goal-setting</td><td>15</td></tr>
+  <tr><td>0:15–0:45</td><td>What n8n actually is</td><td>30</td></tr>
+  <tr><td>0:45–1:20</td><td>Core building blocks, hands-on</td><td>35</td></tr>
+  <tr><td>1:20–1:30</td><td>Break</td><td>10</td></tr>
+  <tr><td>1:30–2:35</td><td>The real build — AI lead follow-up automation</td><td>65</td></tr>
+  <tr><td>2:35–2:50</td><td>Where this goes from here</td><td>15</td></tr>
+  <tr><td>2:50–3:00</td><td>Close — the 7-Day Build Plan, terms, Q&amp;A</td><td>10</td></tr>
 </table>
 
+<div class="pagebreak"></div>
 <div class="seg">
-  <span class="time">0:00 – 0:15</span>
-  <h4>Open</h4>
-  <p>The instructor's own credibility: automation here wasn't learned from a course, it was built to
-  solve real problems — LeadFlowTool, order processing, lead generation, supply-chain automation, all
-  running in production, all built in n8n. Ask the room: "Who has a repetitive task at work they do
-  the exact same way every time?" Take 2–3 answers, write one on the board to return to at the end.
-  Set the goal: "By the time we're done, you will have personally built one real automation."</p>
+  <span class="time">0:00 – 0:15 · OPEN</span>
+  <h3>Framing &amp; goal-setting</h3>
+  <p><strong>Explanation to give the room:</strong> Start with your own story, not a slide. Everything
+  you're about to teach was built to solve a real problem, not learned from a course: LeadFlowTool
+  (lead follow-up), an order-processing pipeline, a lead-generation pipeline, a supply-chain
+  automation — all running in production today, all built in n8n. Say this plainly: "I'm not going
+  to teach you a tool. I'm going to teach you the exact three-piece pattern behind every one of
+  those systems, and by the end of today you will have built one yourself."</p>
+  <p><strong>Warm-up (do this out loud, don't skip it):</strong> ask "Who here has a task at work they
+  do the exact same way, every single time?" Take 2–3 answers. Write ONE of them on the board — you
+  will come back to it at 2:50 as the seed for their 7-Day Build Plan. This does two things: it
+  proves the room already has automation candidates without knowing it, and it gives you a personal
+  hook to close the class with later.</p>
+  <p><strong>Set the goal explicitly, word for word:</strong> "By 2:35 today, you will have personally
+  built and tested one real, working automation. Not watched me build one. Built one, on your own
+  laptop, with your own hands on the keyboard."</p>
+  <div class="qa">
+    <p class="q">If asked: "Do I need to know how to code for this?"</p>
+    <p>No. Answer immediately and move on: "n8n is visual — you connect boxes, you don't write a
+    program. The only syntax in the entire class is one small expression, and we drill it until it's
+    automatic." Don't over-explain this early; it lands better once they've seen the canvas.</p>
+  </div>
 </div>
 
 <div class="seg">
-  <span class="time">0:15 – 0:40</span>
-  <h4>What n8n actually is</h4>
-  <p>n8n is a visual workflow tool: connect nodes instead of writing a program. The mental model:
-  <code>Trigger → Action → Action → Action</code>. Why n8n over Zapier/Make: self-hostable, no
-  per-task pricing wall, first-class AI nodes. Live demo: open n8n, show the canvas, add a Manual
-  Trigger, add a Set node, run it once.</p>
-</div>
-
-<div class="seg">
-  <span class="time">0:40 – 1:10</span>
-  <h4>Core building blocks — hands-on</h4>
-  <p>Everyone builds alongside the instructor: <strong>Triggers</strong> (Manual, Webhook, Schedule —
-  everyone adds a Webhook Trigger and sends a test request); <strong>Nodes &amp; data flow</strong>
-  (an HTTP Request node reading the trigger's output); <strong>Expressions</strong> — the one syntax
-  concept in the class:</p>
-  <pre>{{ $json.fieldName }}</pre>
-  <p><strong>Credentials</strong> — how n8n stores API keys separate from any node. Checkpoint: everyone
-  has a webhook trigger with at least one node reading its data before moving on.</p>
-</div>
-
-<div class="seg">
-  <span class="time">1:20 – 2:20</span>
-  <h4>The real build — AI-powered lead follow-up automation</h4>
-  <p>The centerpiece, built by everyone from an empty canvas:</p>
-  <ol>
-    <li><strong>Trigger</strong>: Webhook, simulating a new lead — <code>{ "name": "Priya", "email": "priya@example.com", "message": "Do you take on inventory automation?" }</code></li>
-    <li><strong>AI node</strong> (OpenAI/Claude): prompt — <code>Write a warm, specific 3-sentence follow-up reply to this inquiry: {{ $json.message }}</code></li>
-    <li><strong>Action</strong>: send the reply via Email or Slack/Discord</li>
-    <li><strong>Test</strong>: 2–3 different fake leads, showing the AI drafts a genuinely different reply each time</li>
-    <li><strong>Name the pattern</strong>: "trigger → AI decision → action" — the same shape as order processing, lead gen, supply-chain automation, just different nodes</li>
-  </ol>
-  <p>15–20 minutes for people to build it themselves, instructor circulating.</p>
-</div>
-
-<div class="seg">
-  <span class="time">2:20 – 2:45</span>
-  <h4>Where this goes from here</h4>
-  <p>Show (don't build) an HTTP Request node calling an API with no native n8n node — "you can
-  automate anything with an API." Warm intro to the enhanced program: order processing, lead
-  generation, connecting any API, error handling, scheduling, and shipping your own project.</p>
-</div>
-
-<div class="seg">
-  <span class="time">2:45 – 3:00</span>
-  <h4>Close — the 7-Day Automation Build Plan</h4>
-  <table>
-    <tr><td style="width:70pt"><strong>Day 1–2</strong></td><td>Pick one repetitive task from your own work</td></tr>
-    <tr><td><strong>Day 3–4</strong></td><td>Map it as Trigger → Action → Action on paper</td></tr>
-    <tr><td><strong>Day 5–6</strong></td><td>Build it in n8n using what was covered today</td></tr>
-    <tr><td><strong>Day 7</strong></td><td>Test with 3 real inputs, fix what breaks</td></tr>
-  </table>
-  <p>Close with the standard terms (below), then Q&amp;A.</p>
+  <span class="time">0:15 – 0:45 · WHAT N8N ACTUALLY IS</span>
+  <h3>The mental model, why n8n, and the interface</h3>
+  <p><strong>Definition (say this, then draw it):</strong> "n8n is a visual workflow tool. Instead of
+  writing a program from scratch, you place boxes called nodes on a canvas and connect them with
+  lines. Each node does exactly one job." Draw on the board: <code>Trigger → Action → Action →
+  Action</code>. Underline that this is the whole idea — a workflow is just that chain, and n8n runs
+  it automatically every time the trigger fires. Every single thing built today, and everything in
+  the enhanced program afterward, is a variation of this one diagram.</p>
+  <p><strong>Why n8n and not Zapier or Make (someone will ask this):</strong> three concrete reasons,
+  in this order because the third is the one that matters for this class: (1) self-hostable, so
+  there's no vendor lock-in; (2) no per-task pricing wall, so a workflow that runs a thousand times a
+  day doesn't suddenly cost a thousand times more; (3) — the important one — n8n has first-class
+  nodes for calling AI models directly inside a workflow, which is the entire point of today's build.</p>
+  <p><strong>Interface walkthrough (you drive, room watches, nobody touches their laptop yet):</strong>
+  open a blank n8n canvas. Point out, in order: the canvas itself (empty space where nodes go), the
+  node panel (click <strong>+</strong> to search and add a node), the top-right <strong>Active</strong>
+  toggle (off while building — a workflow only runs on its own once this is on), and the
+  <strong>Executions</strong> tab (a history of every run, which node did what). Add a Manual Trigger
+  node, add a Set node after it, connect them, click <strong>Test workflow</strong>, and show the
+  green checkmark and the output panel on the right. This single minute of demo removes 80% of the
+  "where do I click" questions later.</p>
+  <div class="mistake">
+    <strong>Common mistake to pre-empt:</strong> people confuse "Test workflow" (runs it once, right
+    now, for you to see) with "Active" (makes it run automatically forever from its trigger). Say
+    this distinction out loud now — it prevents confusion in the break-out build later.
+  </div>
 </div>
 
 <div class="pagebreak"></div>
-<h2>The enhanced program — 2 classes a week (after the masterclass)</h2>
+<div class="seg">
+  <span class="time">0:45 – 1:20 · CORE BUILDING BLOCKS, HANDS-ON</span>
+  <h3>Everyone builds alongside you now — triggers, data flow, expressions, credentials</h3>
+  <p>This is the first block where every attendee opens their own n8n account and types along. Go
+  slowly here; rushing this block is the single biggest cause of people getting lost in the 1:30
+  build. Four concepts, in this order:</p>
+
+  <h4>1. Triggers</h4>
+  <p><strong>Explain the three types</strong> with one line each: Manual Trigger fires when you click
+  "Test workflow" (good for building); Webhook fires when an HTTP request hits its URL (good for
+  "something happened elsewhere and told us"); Schedule Trigger fires on a timer (good for "check
+  this every hour"). Today's build uses a Webhook, because a lead form submission is exactly "an
+  HTTP request telling us something happened."</p>
+  <p><strong>Live, together:</strong> everyone adds a Webhook node, sets <strong>HTTP Method</strong>
+  to <code>POST</code>, and clicks <strong>Listen for test event</strong>. Point out the two URLs it
+  shows — Test URL (works only while listening, what we use today) and Production URL (works once
+  the workflow is Active, mention it exists, don't dwell). Everyone copies the Test URL, then sends
+  one request to it (from a browser console, or a shared tool you provide):</p>
+  <pre>POST &lt;test URL&gt;
+Content-Type: application/json
+
+{ "name": "Priya", "email": "priya@example.com",
+  "message": "Do you take on inventory automation for a mid-size distributor?" }</pre>
+  <p>The node turns green and shows this JSON in its output panel. Point at the screen and say: "This
+  is now data. Every node after this one can reach into it."</p>
+
+  <h4>2. Nodes &amp; data flow</h4>
+  <p><strong>Explain:</strong> "A node's output becomes the next node's input — always, no
+  exceptions. That's the entire data model of n8n." Add an HTTP Request node after the webhook (no
+  real request needed yet — just show that its input panel already contains the webhook's JSON).
+  This is the moment people mentally connect "boxes on a canvas" to "a real program."</p>
+
+  <h4>3. Expressions — the one syntax concept in the whole class</h4>
+  <p><strong>Introduce it directly:</strong> "To pull a value out of a previous node, you write an
+  expression." Show the syntax on the board first, then in the tool:</p>
+  <pre>{{ $json.message }}</pre>
+  <p>Break it down piece by piece, out loud: <code>$json</code> means "the data arriving at this
+  node right now"; <code>.message</code> is the specific field you want. If a field name has a space
+  in it, show the alternative: <code>{{ $json["field name"] }}</code>. If you need a value from a
+  node further back than the immediately previous one, show: <code>{{ $('Webhook').item.json.email
+  }}</code> — name the node in quotes, then walk down to the field.</p>
+  <div class="qa">
+    <p class="q">If asked: "Why does the field sometimes show as undefined?"</p>
+    <p>Almost always a typo or wrong case in the field name — say this now so it's not a mystery
+    later: "Click the node and look at its actual output panel; copy the field name exactly from
+    there instead of typing it from memory."</p>
+  </div>
+  <p><strong>Drill it:</strong> ask the room, using the JSON sent above, "what does <code>{{
+  $json.name }}</code> return?" Wait for someone to say "Priya" out loud before moving on. This is
+  the only real "test" in the class and it matters — expressions are used constantly for the rest of
+  the day.</p>
+
+  <h4>4. Credentials</h4>
+  <p><strong>Explain briefly, this doesn't need much time:</strong> "API keys are saved once, as a
+  credential, separate from any single node. Any node can then select that credential from a
+  dropdown. Once saved, the key itself is never shown again — so a workflow is safe to export or
+  share without leaking a secret." No hands-on step here yet; credentials get created live in the
+  next block when the AI node needs one.</p>
+  <div class="callout">
+    <strong>Checkpoint — do not move on until this is true for most of the room:</strong> everyone has
+    a Webhook Trigger, has sent it a test request, and can see the JSON in its output panel. Walk the
+    room and check hands, don't just ask "everyone good?" out loud.
+  </div>
+</div>
+
+<div class="pagebreak"></div>
+<div class="seg">
+  <span class="time">1:30 – 2:35 · THE REAL BUILD</span>
+  <h3>An AI-powered lead follow-up automation, built by everyone from an empty canvas</h3>
+  <p><strong>Set the shape on the board before anyone touches a keyboard:</strong></p>
+  <pre>Webhook (a lead arrives)  →  AI node (draft a reply)  →  Action (send it)</pre>
+  <p>Say explicitly: "This is the same three-piece pattern from this morning's diagram, with real
+  nodes in each slot. Once you can build this, you can build order processing, lead scoring, support
+  triage — same shape, different nodes."</p>
+
+  <h4>Step 1 — Trigger (10 min)</h4>
+  <p>Everyone builds a fresh Webhook node exactly as in the previous block (POST, Listen for test
+  event, copy the Test URL). This repetition is deliberate — the goal is that by the third time
+  they've set up a webhook today, it's automatic.</p>
+
+  <h4>Step 2 — Send a realistic test lead (5 min)</h4>
+  <pre>POST &lt;test URL&gt;
+Content-Type: application/json
+
+{ "name": "Priya", "email": "priya@example.com",
+  "message": "Do you take on inventory automation for a mid-size distributor?" }</pre>
+  <p>Confirm out loud that everyone sees the green checkmark and the JSON before moving to the AI
+  node — this is the step most likely to have a straggler, and the AI step is much harder to debug
+  if the webhook data isn't actually there yet.</p>
+
+  <h4>Step 3 — AI node (20 min, the heart of the class)</h4>
+  <p><strong>Add:</strong> an OpenAI or Anthropic node, operation "Message a model" (or a Basic LLM
+  Chain node — either works, pick whichever the room's sandbox key supports). Select the sandbox
+  credential you're providing for the class. Model: any small, fast one — this doesn't need to be
+  the most capable model available, it needs to be fast enough that people aren't waiting.</p>
+  <p><strong>The prompt — write this on the board first, then type it together, in Expression mode:</strong></p>
+  <pre>Write a warm, specific 3-sentence follow-up reply to this inquiry.
+Do not invent details or make promises about pricing or timelines.
+
+Inquiry: {{ $json.message }}</pre>
+  <p><strong>Explain why the second line exists — this is the single most important teaching moment
+  in the class:</strong> "A language model will happily invent a price or a delivery date if you
+  don't tell it not to. Writing the boundary into the prompt is not optional politeness — it's the
+  actual engineering. The prompt is the interface; what you put in it is what governs the system's
+  behavior." Run the node. Read the output out loud. Ask the room: "Is this templated, or did it
+  actually respond to what Priya asked?" — get them to notice it referenced "inventory automation"
+  and "distributor" specifically.</p>
+  <div class="mistake">
+    <strong>Common mistake:</strong> forgetting to switch the prompt field into Expression mode before
+    typing <code>{{ $json.message }}</code> — it gets sent as a literal string instead of being
+    evaluated. If someone's AI node output looks confused or literally contains curly braces, this is
+    almost always why.
+  </div>
+
+  <h4>Step 4 — Action: send the reply (10 min)</h4>
+  <p>Whichever the room has credentials for:</p>
+  <ul>
+    <li><strong>Gmail</strong> node → Send → To: <code>{{ $('Webhook').item.json.email }}</code>,
+    Subject: <code>Thanks for reaching out</code>, Message: the AI node's output field.</li>
+    <li><strong>Slack/Discord</strong> node → post to a channel, Text: the AI node's output. This is
+    the more reliable option for a room full of people without pre-set-up email credentials.</li>
+  </ul>
+
+  <h4>Step 5 — Test the whole chain (15 min)</h4>
+  <p>Send 2–3 different fake leads with genuinely different messages through the same webhook.
+  Project one person's screen and read the AI's replies out loud for each — the goal is for the room
+  to hear, not just see, that the tone and content actually change per message.</p>
+
+  <h4>Step 6 — Name the pattern (5 min)</h4>
+  <p><strong>Say this explicitly, it's the payoff line of the whole class:</strong> "What you just
+  built is trigger → AI decision → action. Order processing is trigger → AI decision → action. Lead
+  scoring is trigger → AI decision → action. Support triage is trigger → AI decision → action. The
+  nodes change. The shape doesn't."</p>
+  <div class="callout">
+    Give the room 15–20 minutes inside this block to actually build it themselves rather than only
+    watching one demo — circulate, don't just present. This is where the real learning happens.
+  </div>
+</div>
+
+<div class="seg">
+  <span class="time">2:35 – 2:50 · WHERE THIS GOES FROM HERE</span>
+  <h3>Any API, and a warm (not cold) intro to the enhanced program</h3>
+  <p><strong>Show, don't build:</strong> add an HTTP Request node and point out it can call literally
+  any API on the internet, including ones with no dedicated n8n node. Say: "Everything we did today
+  used a purpose-built node. This one node means you're not limited to what n8n has built — you can
+  automate anything with an API." This single sentence answers the #1 question you'll otherwise get
+  asked individually after class, so answer it for the whole room here.</p>
+  <p><strong>Enhanced program intro — frame it as "what comes next," not a pitch:</strong> order
+  processing automation, lead generation automation (the full LeadFlowTool pattern), connecting APIs
+  with no native node in depth, error handling, scheduling, and each person shipping their own
+  project idea, twice a week, ongoing.</p>
+</div>
+
+<div class="seg">
+  <span class="time">2:50 – 3:00 · CLOSE</span>
+  <h3>The 7-Day Automation Build Plan, terms, Q&amp;A</h3>
+  <table>
+    <tr><td style="width:70pt"><strong>Day 1–2</strong></td><td>Pick the task written on the board at 0:00</td></tr>
+    <tr><td><strong>Day 3–4</strong></td><td>Map it as Trigger → Action → Action, on paper, before opening n8n</td></tr>
+    <tr><td><strong>Day 5–6</strong></td><td>Build it, using today's three pieces</td></tr>
+    <tr><td><strong>Day 7</strong></td><td>Test with 3 real inputs, fix what breaks</td></tr>
+  </table>
+  <p><strong>State the terms plainly, word for word, don't soften them:</strong> "This is a one-time
+  fee — don't pay anyone anything extra in connection with this course, under any circumstances. We
+  provide placement guidance if you put in the work; placement itself isn't guaranteed. You may be
+  asked to sign an NDA as part of the program." Then open the floor for Q&amp;A until time runs out.</p>
+</div>
+
+<div class="pagebreak"></div>
+<h2>Appendix — full enhanced-program syllabus (2 classes/week, ongoing)</h2>
 <table>
-  <tr><th>Topic</th><th>What you build</th></tr>
-  <tr><td>Order processing automation</td><td>Intake → validate → route → confirm</td></tr>
-  <tr><td>Lead generation automation</td><td>Source → enrich → score → hand off, the LeadFlowTool pattern in full</td></tr>
-  <tr><td>Connecting any API</td><td>HTTP Request nodes for services with no native n8n node — auth, pagination, rate limits</td></tr>
-  <tr><td>Error handling</td><td>Retries, error branches, alerting yourself when something fails</td></tr>
-  <tr><td>Scheduling at scale</td><td>Cron schedules, queueing, avoiding duplicate runs</td></tr>
-  <tr><td>Your own project</td><td>Each participant ships one automation from an idea they want to run</td></tr>
+  <tr><th>Topic</th><th>What's actually built</th></tr>
+  <tr><td>Order processing automation</td><td>Intake → validate → route → confirm, with data stored somewhere queryable</td></tr>
+  <tr><td>Lead generation automation</td><td>Source → enrich → score → hand off — the full LeadFlowTool pattern</td></tr>
+  <tr><td>Connecting any API</td><td>Auth, pagination, and rate limits on HTTP Request nodes for services with no native n8n node</td></tr>
+  <tr><td>Error handling</td><td>Retries, error branches, and alerting yourself when a step fails</td></tr>
+  <tr><td>Scheduling at scale</td><td>Cron schedules, queueing, and avoiding duplicate runs</td></tr>
+  <tr><td>Your own project</td><td>Each participant ships one real automation from their own idea</td></tr>
 </table>
 
-<h2>What you leave with</h2>
+<h2>Appendix — glossary</h2>
+<table>
+  <tr><th style="width:110pt">Term</th><th>Plain meaning</th></tr>
+  <tr><td>Node</td><td>One step in a workflow; does exactly one job</td></tr>
+  <tr><td>Trigger</td><td>The node that starts a workflow</td></tr>
+  <tr><td>Execution</td><td>One run of a workflow, start to finish</td></tr>
+  <tr><td>Expression</td><td>The <code>{{ }}</code> syntax used to pull a value from another node</td></tr>
+  <tr><td>Credential</td><td>A saved API key/login a node can use without exposing it</td></tr>
+  <tr><td>Active</td><td>The toggle that makes a workflow run automatically from its own trigger</td></tr>
+</table>
+
+<h2>Appendix — what you leave with</h2>
 <ul>
-  <li>One working AI-powered automation you personally built, tested, and understand</li>
-  <li>The "trigger → AI decision → action" pattern, reusable for almost any business process</li>
+  <li>One working AI-powered automation, personally built and tested</li>
+  <li>The trigger → AI decision → action pattern, reusable for almost any business process</li>
   <li>A personal 7-Day Automation Build Plan</li>
-  <li>Continued access to a 2-classes-a-week program to keep building</li>
+  <li>Continued access to the 2-classes-a-week enhanced program</li>
 </ul>
 
 <h2>Terms &amp; Conditions</h2>
@@ -175,7 +338,7 @@
 </ol>
 
 <div class="foot">
-  ZOUM Consultancy · AI Automation Masterclass (n8n) · Whole course notes.
+  ZOUM Consultancy · AI Automation Masterclass (n8n) · Whole teaching notes.
   The public course page is at zoumconsultancy.com.
 </div>
 

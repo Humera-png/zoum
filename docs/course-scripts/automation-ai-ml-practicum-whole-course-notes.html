@@ -2,39 +2,42 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Automate Everything: Python, AI & Machine Learning in Practice | Whole Course Notes</title>
+<title>Automate Everything: Python, AI & Machine Learning in Practice | Whole Teaching Notes</title>
 <style>
   @page { size: A4; margin: 20mm 18mm 18mm 18mm; }
   * { box-sizing: border-box; }
   html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  body { font-family:"Segoe UI","Helvetica Neue",Arial,sans-serif; color:#14241B; font-size:10.5pt; line-height:1.5; margin:0; }
+  body { font-family:"Segoe UI","Helvetica Neue",Arial,sans-serif; color:#14241B; font-size:10.5pt; line-height:1.55; margin:0; }
   h1,h2,h3,h4 { font-family:"Segoe UI Semibold","Segoe UI",Arial,sans-serif; color:#0e2a1c; line-height:1.25; }
-  h1 { font-size:21pt; margin:0 0 4pt; }
-  h2 { font-size:14.5pt; margin:24pt 0 8pt; padding-bottom:4pt; border-bottom:2px solid #1fcb6b; }
-  h3 { font-size:11.5pt; margin:14pt 0 4pt; color:#0e7c42; }
-  h4 { font-size:10.5pt; margin:9pt 0 2pt; }
+  h1 { font-size:19pt; margin:0 0 4pt; }
+  h2 { font-size:14.5pt; margin:22pt 0 8pt; padding-bottom:4pt; border-bottom:2px solid #1fcb6b; }
+  h3 { font-size:12pt; margin:16pt 0 5pt; color:#0e7c42; }
+  h4 { font-size:10.5pt; margin:10pt 0 3pt; }
   p { margin:0 0 7pt; }
   ul,ol { margin:0 0 9pt; padding-left:18pt; }
   li { margin:0 0 4pt; }
   strong { color:#0e2a1c; }
   code { font-family:"Consolas",monospace; background:#f1f5f2; padding:1px 4px; border-radius:3px; font-size:9.5pt; }
   pre { background:#0e2a1c; color:#e8f5ee; font-family:"Consolas",monospace; font-size:9pt; padding:10pt 12pt; border-radius:6px; overflow-x:auto; white-space:pre-wrap; margin:8pt 0; }
-  .cover { padding:36pt 0 18pt; border-bottom:3px solid #1fcb6b; margin-bottom:10pt; }
+  .cover { padding:34pt 0 16pt; border-bottom:3px solid #1fcb6b; margin-bottom:10pt; }
   .cover .brand { font-size:11pt; letter-spacing:3px; text-transform:uppercase; color:#0e7c42; font-weight:600; }
   .cover .sub { font-size:12pt; color:#4b5a52; margin-top:6pt; }
   .meta-grid { display:grid; grid-template-columns:1fr 1fr; gap:6pt 24pt; margin:14pt 0 4pt; }
   .meta-grid div { font-size:10pt; }
   .meta-grid .k { color:#6b7a72; text-transform:uppercase; font-size:8.5pt; letter-spacing:1px; }
-  .callout { background:#f1faf4; border-left:3px solid #1fcb6b; padding:9pt 12pt; margin:10pt 0; border-radius:0 6px 6px 0; }
+  .callout { background:#f1faf4; border-left:3px solid #1fcb6b; padding:9pt 12pt; margin:9pt 0; border-radius:0 6px 6px 0; }
   .note { background:#fff8ec; border-left:3px solid #e0a63c; padding:8pt 12pt; margin:9pt 0; border-radius:0 6px 6px 0; font-size:10pt; }
-  .seg { border:1px solid #e2e8e4; border-radius:8px; padding:10pt 14pt; margin:8pt 0; page-break-inside:avoid; }
+  .mistake { background:#fdf1f1; border-left:3px solid #d4534f; padding:8pt 12pt; margin:9pt 0; border-radius:0 6px 6px 0; font-size:10pt; }
+  .seg { border:1px solid #e2e8e4; border-radius:8px; padding:11pt 14pt; margin:9pt 0; page-break-inside:avoid; }
   .seg .time { display:inline-block; background:#0e2a1c; color:#fff; font-size:8.5pt; font-weight:600; padding:2px 9px; border-radius:20px; letter-spacing:.5px; }
   table { width:100%; border-collapse:collapse; margin:10pt 0; font-size:9.5pt; }
   th,td { text-align:left; padding:6pt 8pt; border-bottom:1px solid #e2e8e4; vertical-align:top; }
   th { background:#0e2a1c; color:#fff; font-weight:600; }
   .pill { display:inline-block; background:#e6f7ee; color:#0e7c42; font-size:8.5pt; padding:2px 8px; border-radius:20px; margin-right:4px; }
   .pagebreak { page-break-before:always; }
-  .foot { margin-top:22pt; padding-top:8pt; border-top:1px solid #e2e8e4; font-size:8.5pt; color:#6b7a72; }
+  .foot { margin-top:20pt; padding-top:8pt; border-top:1px solid #e2e8e4; font-size:8.5pt; color:#6b7a72; }
+  .qa { margin:6pt 0 6pt 0; padding-left:10pt; border-left:2px solid #cfe3d6; }
+  .qa .q { font-style:italic; color:#0e7c42; }
 </style>
 </head>
 <body>
@@ -42,146 +45,257 @@
 <div class="cover">
   <div class="brand">ZOUM Consultancy</div>
   <h1>Automate Everything: Python, AI &amp; Machine Learning in Practice</h1>
-  <div class="sub">Whole course notes — overview, full class content, and outcome</div>
+  <div class="sub">Whole teaching notes — full 2-day, 3-hours-a-day class, with explanations, examples &amp; code</div>
 </div>
 
 <div class="meta-grid">
-  <div><div class="k">Format</div>Live classes by experts — hands-on build, not slides</div>
-  <div><div class="k">Structure</div>2-day live masterclass, Saturday &amp; Sunday, 3 hours each day</div>
-  <div><div class="k">Audience</div>Basic Python helpful but not required; built for people who want to automate real work</div>
+  <div><div class="k">Format</div>Live class by experts — hands-on build, not slides</div>
+  <div><div class="k">Total time</div>Saturday 3 hours + Sunday 3 hours, one 10-min break each day</div>
+  <div><div class="k">Audience</div>Basic Python helpful but not required</div>
   <div><div class="k">Fee</div>₹999 — one-time (see Terms)</div>
-  <div><div class="k">Tools</div>Python, pandas/openpyxl, the <code>requests</code> library, APScheduler, an AI API</div>
-  <div><div class="k">Taught by</div>ZOUM's automation team, using systems already running in production</div>
+  <div><div class="k">Tools</div>Python, pandas/openpyxl, <code>requests</code>, APScheduler, an AI API</div>
+  <div><div class="k">Outcome</div>One real automation, built end to end, running unattended</div>
 </div>
 
 <div class="callout">
-  <strong>Outcome:</strong> by the end of Sunday, every attendee has personally built one real
-  automation — script, error handling, an API connection, and an AI-driven decision point — running
-  end to end, plus a personal 7-Day Automation Build Plan.
+  <strong>How to use these notes:</strong> the explanation text is what to say to the room; the code
+  is typed live, together; "if asked" and "common mistake" boxes cover what comes up in nearly every
+  run of this class.
 </div>
 
-<h2>What you'll learn</h2>
-<ul>
-  <li>How to spot which repetitive tasks are actually worth automating</li>
-  <li>Writing Python scripts that read/write real files and spreadsheets</li>
-  <li>Error handling and logging, so a script that runs unattended fails loudly, not silently</li>
-  <li>Connecting APIs and scheduling a job to run on its own</li>
-  <li>Using an AI model to automate a decision, not just a prediction</li>
-</ul>
-
-<h2>Full class content — Saturday (3 hours)</h2>
+<h2>Session map</h2>
 <table>
-  <tr><th style="width:80pt">Time</th><th>Segment</th></tr>
-  <tr><td>0:00–0:15</td><td>Open — the automation mindset</td></tr>
-  <tr><td>0:15–1:00</td><td>Live demo: automating a real report from scratch</td></tr>
+  <tr><th style="width:60pt">Day</th><th style="width:80pt">Time</th><th>Block</th></tr>
+  <tr><td rowspan="6">Sat</td><td>0:00–0:15</td><td>Open — the automation mindset</td></tr>
+  <tr><td>0:15–1:00</td><td>Live build: automating a real report from scratch</td></tr>
   <tr><td>1:00–1:10</td><td>Break</td></tr>
   <tr><td>1:10–2:10</td><td>Hands-on: everyone builds their own file/data automation</td></tr>
   <tr><td>2:10–2:50</td><td>Error handling &amp; logging</td></tr>
   <tr><td>2:50–3:00</td><td>Recap, what to bring Sunday</td></tr>
-</table>
-
-<div class="seg">
-  <span class="time">0:00 – 0:15</span>
-  <h4>Open — the automation mindset</h4>
-  <p>Not everything should be automated. Ask the room for 2–3 repetitive tasks from their own work;
-  write one on the board. The test: is it repetitive <em>and</em> stable (doesn't change shape every
-  time)? If yes, it's worth automating — that's the task each attendee will build toward by Sunday.</p>
-</div>
-
-<div class="seg">
-  <span class="time">0:15 – 1:00</span>
-  <h4>Live demo: automating a real report</h4>
-  <p>Instructor builds, live, a script that replaces a report someone currently makes by hand:</p>
-  <pre>import pandas as pd
-df = pd.read_excel("weekly_report.xlsx")
-summary = df.groupby("region")["sales"].sum()
-summary.to_excel("summary_output.xlsx")
-print("Report generated:", summary)</pre>
-  <p>The point isn't the specific code — it's showing the whole arc: a manual weekly task, turned
-  into a script that runs in seconds.</p>
-</div>
-
-<div class="seg">
-  <span class="time">1:10 – 2:10</span>
-  <h4>Hands-on: build your own file/data automation</h4>
-  <p>Everyone builds a version of the Saturday-morning demo using their own (or a provided sample)
-  spreadsheet — reading a file, transforming it, writing an output — with the instructor circulating.</p>
-</div>
-
-<div class="seg">
-  <span class="time">2:10 – 2:50</span>
-  <h4>Error handling &amp; logging</h4>
-  <pre>import logging
-logging.basicConfig(filename="run.log", level=logging.INFO)
-try:
-    result = risky_step()
-    logging.info(f"Success: {result}")
-except Exception as e:
-    logging.error(f"Failed: {e}")</pre>
-  <div class="note"><strong>Core idea:</strong> a script that fails silently is worse than one that
-  never existed — it gives false confidence. Everyone adds logging and error handling to their
-  Saturday automation before the day ends.</div>
-</div>
-
-<div class="pagebreak"></div>
-<h2>Full class content — Sunday (3 hours)</h2>
-<table>
-  <tr><th style="width:80pt">Time</th><th>Segment</th></tr>
-  <tr><td>0:00–0:10</td><td>Recap Saturday</td></tr>
+  <tr><td rowspan="6">Sun</td><td>0:00–0:10</td><td>Recap Saturday</td></tr>
   <tr><td>0:10–1:00</td><td>Working with APIs</td></tr>
   <tr><td>1:00–1:10</td><td>Break</td></tr>
   <tr><td>1:10–1:40</td><td>Scheduling — running jobs on their own</td></tr>
   <tr><td>1:40–2:40</td><td>Using AI to automate a decision — build your capstone</td></tr>
-  <tr><td>2:40–3:00</td><td>Close — the 7-Day Automation Build Plan, terms, Q&amp;A</td></tr>
+  <tr><td>2:40–3:00</td><td>Close — the 7-Day Build Plan, terms, Q&amp;A</td></tr>
 </table>
 
+<div class="pagebreak"></div>
+<h2>SATURDAY</h2>
+
 <div class="seg">
-  <span class="time">0:10 – 1:00</span>
-  <h4>Working with APIs</h4>
+  <span class="time">0:00 – 0:15 · OPEN</span>
+  <h3>The automation mindset</h3>
+  <p><strong>Open with the test, not a definition:</strong> "Not everything should be automated. The
+  test is two questions: is this repetitive, and is it stable — does it happen the same way every
+  time? If both are yes, it's worth automating. If it changes shape every time, or happens once a
+  year, automating it usually costs more effort than it saves."</p>
+  <p><strong>Ask the room:</strong> "Give me 2–3 things you or your team do manually, the same way,
+  regularly." Take several answers, write them on the board with how often each happens and roughly
+  how long it takes by hand. This list becomes the seed for Sunday's capstone — say that now, so
+  people are already thinking ahead.</p>
+  <p><strong>Set the goal:</strong> "By 2:40 tomorrow, you will have one real automation running —
+  something that actually replaces a task you just named, not a toy example."</p>
+</div>
+
+<div class="seg">
+  <span class="time">0:15 – 1:00 · LIVE BUILD: AUTOMATING A REAL REPORT</span>
+  <h3>The whole arc, demonstrated once before anyone touches a keyboard</h3>
+  <p><strong>Frame it:</strong> "I'm going to build, live, a script that replaces a report someone
+  currently makes by hand every week. Watch the whole arc — the specific code matters less than
+  seeing 'manual task' become 'script that runs in seconds.'"</p>
+  <pre>import pandas as pd
+
+df = pd.read_excel("weekly_report.xlsx")
+print(df.head())                       # look at the raw data first
+
+summary = df.groupby("region")["sales"].sum()
+print(summary)
+
+summary.to_excel("summary_output.xlsx")
+print("Report generated.")</pre>
+  <p><strong>Explain each line as you go:</strong> "<code>read_excel</code> loads the spreadsheet
+  exactly the way someone opens it by hand. <code>groupby</code> does in one line what someone
+  currently does with pivot tables and a coffee break. <code>to_excel</code> writes a new file — the
+  finished report, generated by a script instead of a person."</p>
+  <div class="qa">
+    <p class="q">If asked: "What if my data isn't in Excel?"</p>
+    <p>"Pandas reads CSV, Excel, and can pull straight from a database or an API — the shape of the
+    work is identical: load it, transform it, output it. Today we use Excel because it's the most
+    common starting point in real offices."</p>
+  </div>
+</div>
+
+<div class="seg">
+  <span class="time">1:10 – 2:10 · HANDS-ON: YOUR OWN FILE/DATA AUTOMATION</span>
+  <h3>Everyone builds a version of the demo, on their own data</h3>
+  <p>Provide a sample spreadsheet for anyone without one of their own. Everyone works through, with
+  the instructor circulating rather than presenting:</p>
+  <ol>
+    <li>Load the file with <code>pd.read_excel</code> or <code>pd.read_csv</code></li>
+    <li>Look at it with <code>.head()</code> before doing anything else — "never transform data you
+    haven't looked at"</li>
+    <li>Produce one useful transformation — a group total, a filter, a sort</li>
+    <li>Write the result to a new output file</li>
+  </ol>
+  <div class="mistake">
+    <strong>Common mistake:</strong> trying to write output to a file that's still open in Excel on
+    the same machine — it'll throw a permissions error. Tell the room this up front: close the source
+    file, or always write to a differently-named output file.
+  </div>
+  <div class="callout">
+    <strong>Checkpoint:</strong> everyone should have a script that reads a file and writes a
+    transformed output before moving to error handling. Walk the room and check.
+  </div>
+</div>
+
+<div class="seg">
+  <span class="time">2:10 – 2:50 · ERROR HANDLING &amp; LOGGING</span>
+  <h3>The difference between a script and a system you can trust</h3>
+  <p><strong>Open with the core idea, before any code:</strong> "A script that fails silently is
+  worse than one that never existed — it gives you false confidence that something ran when it
+  didn't. Today we make sure that never happens."</p>
+  <pre>import logging
+
+logging.basicConfig(filename="run.log", level=logging.INFO,
+                     format="%(asctime)s %(levelname)s %(message)s")
+
+try:
+    result = risky_step()
+    logging.info(f"Success: {result}")
+except Exception as e:
+    logging.error(f"Failed: {e}")
+    raise</pre>
+  <p><strong>Explain each piece:</strong> "<code>try/except</code> means 'attempt this, and if it
+  breaks, don't crash silently — catch it and say what happened.' <code>logging.info</code> writes a
+  timestamped line to a file every time something succeeds; <code>logging.error</code> does the same
+  for failures. The <code>raise</code> at the end re-throws the error after logging it — we want a
+  record <em>and</em> we still want to know loudly that something failed."</p>
+  <p>Everyone adds this pattern around the risky step in their own Saturday script — the file read,
+  or the transformation, whichever is more likely to break on bad input.</p>
+</div>
+
+<div class="seg">
+  <span class="time">2:50 – 3:00 · RECAP</span>
+  <h3>What to bring Sunday</h3>
+  <p>One sentence each: the automation test (repetitive + stable); Pandas load → transform → write;
+  never fail silently. Remind everyone their Saturday script is the foundation Sunday's API,
+  scheduling, and AI-decision steps get added onto.</p>
+</div>
+
+<div class="pagebreak"></div>
+<h2>SUNDAY</h2>
+
+<div class="seg">
+  <span class="time">0:00 – 0:10 · RECAP SATURDAY</span>
+  <h3>Fast recap</h3>
+  <p>One sentence each on: the automation test, load/transform/write, try/except + logging. Move
+  quickly — the room needs the full remaining time for APIs, scheduling, and the capstone.</p>
+</div>
+
+<div class="seg">
+  <span class="time">0:10 – 1:00 · WORKING WITH APIS</span>
+  <h3>Pulling and pushing data programmatically</h3>
+  <p><strong>Frame it:</strong> "Yesterday's automation used a file that already existed. Most real
+  automations also need to reach out to another service — check a price, look up a customer, post a
+  message. That's an API call."</p>
   <pre>import requests
-response = requests.get("https://api.example.com/data", headers={"Authorization": "Bearer TOKEN"})
-data = response.json()</pre>
-  <p>Everyone pulls data from a real public API and feeds it into their Saturday pipeline as a
-  second data source — the shape almost every real business automation takes.</p>
-</div>
 
-<div class="seg">
-  <span class="time">1:10 – 1:40</span>
-  <h4>Scheduling</h4>
-  <pre>from apscheduler.schedulers.blocking import BlockingScheduler
-scheduler = BlockingScheduler()
-scheduler.add_job(my_automation, 'cron', hour=6)
-scheduler.start()</pre>
-  <p>The difference between a script you have to remember to run and one that just runs.</p>
-</div>
-
-<div class="seg">
-  <span class="time">1:40 – 2:40</span>
-  <h4>Using AI to automate a decision — build your capstone</h4>
-  <pre>response = ai_client.messages.create(
-    model="...",
-    messages=[{"role": "user", "content": f"Classify this record as urgent, normal, or low: {record}"}]
+response = requests.get(
+    "https://api.example.com/data",
+    headers={"Authorization": "Bearer TOKEN"},
+    params={"page": 1}
 )
-category = response.content
-# route or act based on category, automatically</pre>
-  <p>Everyone adds one AI-driven decision point to their pipeline from the weekend — the AI's output
-  becomes an input to the next automated step, not a report someone reads and acts on manually.
-  Instructor circulates to help finish each person's working capstone automation.</p>
+data = response.json()
+print(data)</pre>
+  <p><strong>Explain line by line:</strong> "<code>requests.get</code> sends a request to a URL, the
+  same way your browser does when you visit a page. The <code>headers</code> dictionary carries
+  authentication — most real APIs need a token to prove who's asking. <code>params</code> passes
+  extra options, like which page of results you want. <code>.json()</code> turns the raw response
+  into a Python dictionary you can actually work with."</p>
+  <div class="mistake">
+    <strong>Common mistake:</strong> a 401 or 403 response means the auth header is missing or wrong
+    — not that the URL is broken. Teach the room to check the status code first:
+    <code>response.status_code</code>, before assuming the whole request failed.
+  </div>
+  <p>Everyone pulls data from one real public API (instructor provides a free, no-signup option) and
+  feeds it into their Saturday pipeline as a second data source — the shape almost every real
+  business automation takes: a file, plus an API, combined.</p>
 </div>
 
 <div class="seg">
-  <span class="time">2:40 – 3:00</span>
-  <h4>Close — the 7-Day Automation Build Plan</h4>
+  <span class="time">1:10 – 1:40 · SCHEDULING</span>
+  <h3>The difference between a script you remember to run and one that just runs</h3>
+  <pre>from apscheduler.schedulers.blocking import BlockingScheduler
+
+def my_automation():
+    print("Running the automation...")
+    # the Saturday + API logic goes here
+
+scheduler = BlockingScheduler()
+scheduler.add_job(my_automation, 'cron', hour=6, minute=0)
+scheduler.start()</pre>
+  <p><strong>Explain:</strong> "This wraps everything built so far into a function, then tells
+  APScheduler to call that function every day at 6am, forever, without anyone starting it by hand.
+  This one block is what turns a script into a system." Mention cron as the equivalent for anyone
+  running on a Linux server rather than a local Python process — same idea, different tool.</p>
+</div>
+
+<div class="seg">
+  <span class="time">1:40 – 2:40 · USING AI TO AUTOMATE A DECISION</span>
+  <h3>Build your capstone — the AI's output becomes an automated action</h3>
+  <p><strong>Frame the shift explicitly:</strong> "Everything so far moves and transforms data. This
+  step makes a decision — using AI to decide what happens next, automatically, not just report a
+  number for a person to act on."</p>
+  <pre>response = ai_client.messages.create(
+    model="claude-...",
+    max_tokens=50,
+    messages=[{
+        "role": "user",
+        "content": f"Classify this record as urgent, normal, or low. Reply with one word only.\n\nRecord: {record}"
+    }]
+)
+category = response.content.strip().lower()
+
+if category == "urgent":
+    send_alert(record)
+else:
+    log_normally(record)</pre>
+  <p><strong>Explain the key idea:</strong> "The AI's answer — 'urgent,' 'normal,' or 'low' — becomes
+  a Python <code>if</code> condition. The automation now branches based on what the AI decided,
+  without a person reading anything first. That's the whole difference between 'AI that reports' and
+  'AI that acts.'"</p>
+  <p><strong>Build the capstone now:</strong> each attendee adds one AI-driven decision point to
+  their own Saturday+Sunday pipeline — instructor circulates to help finish a genuinely working
+  automation for as many people as possible before time runs out.</p>
+</div>
+
+<div class="seg">
+  <span class="time">2:40 – 3:00 · CLOSE</span>
+  <h3>The 7-Day Automation Build Plan, terms, Q&amp;A</h3>
   <table>
-    <tr><td style="width:70pt"><strong>Day 1–2</strong></td><td>Pick the real task you named on Saturday morning</td></tr>
-    <tr><td><strong>Day 3–4</strong></td><td>Map it as Trigger → Action → Action on paper</td></tr>
-    <tr><td><strong>Day 5–6</strong></td><td>Build it using what was covered this weekend</td></tr>
+    <tr><td style="width:70pt"><strong>Day 1–2</strong></td><td>Pick the real task named on Saturday morning</td></tr>
+    <tr><td><strong>Day 3–4</strong></td><td>Map it as Trigger → Action → Action, on paper</td></tr>
+    <tr><td><strong>Day 5–6</strong></td><td>Build it using this weekend's pieces</td></tr>
     <tr><td><strong>Day 7</strong></td><td>Run it unattended a few times, fix what breaks</td></tr>
   </table>
-  <p>Close with the standard terms, then Q&amp;A.</p>
+  <p><strong>State the terms plainly:</strong> "This is a one-time fee — no additional payments to
+  anyone in connection with this course, under any circumstances. We provide placement guidance if
+  you put in the work; placement isn't guaranteed. You may be asked to sign an NDA as part of the
+  program." Then Q&amp;A until time runs out.</p>
 </div>
 
-<h2>What you leave with</h2>
+<div class="pagebreak"></div>
+<h2>Appendix — troubleshooting</h2>
+<table>
+  <tr><th>Symptom</th><th>Likely cause</th><th>Fix</th></tr>
+  <tr><td>Script works manually but fails when scheduled</td><td>relative file paths, or environment differences</td><td>use absolute paths; log the working directory at start</td></tr>
+  <tr><td>API call returns 401/403</td><td>bad or expired token</td><td>re-check the auth header; regenerate the key</td></tr>
+  <tr><td>Excel file won't open after script runs</td><td>file was still open elsewhere during write</td><td>close it first; write to a new file name</td></tr>
+  <tr><td>Scheduler doesn't fire</td><td>process wasn't left running, or wrong timezone</td><td>keep the process alive (or use a real cron job); check server timezone</td></tr>
+</table>
+
+<h2>Appendix — what you leave with</h2>
 <ul>
   <li>One real automation you built yourself: script, error handling, an API connection, scheduling, and an AI-driven decision point</li>
   <li>The habit of logging and error handling, not just "it worked once"</li>
@@ -196,7 +310,7 @@ category = response.content
 </ol>
 
 <div class="foot">
-  ZOUM Consultancy · Automate Everything: Python, AI &amp; Machine Learning in Practice · Whole course notes.
+  ZOUM Consultancy · Automate Everything: Python, AI &amp; Machine Learning in Practice · Whole teaching notes.
   The public course page is at zoumconsultancy.com.
 </div>
 

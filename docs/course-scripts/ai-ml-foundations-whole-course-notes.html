@@ -2,39 +2,42 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Break Into AI: Machine Learning Foundations | Whole Course Notes</title>
+<title>Break Into AI: Machine Learning Foundations | Whole Teaching Notes</title>
 <style>
   @page { size: A4; margin: 20mm 18mm 18mm 18mm; }
   * { box-sizing: border-box; }
   html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  body { font-family:"Segoe UI","Helvetica Neue",Arial,sans-serif; color:#14241B; font-size:10.5pt; line-height:1.5; margin:0; }
+  body { font-family:"Segoe UI","Helvetica Neue",Arial,sans-serif; color:#14241B; font-size:10.5pt; line-height:1.55; margin:0; }
   h1,h2,h3,h4 { font-family:"Segoe UI Semibold","Segoe UI",Arial,sans-serif; color:#0e2a1c; line-height:1.25; }
-  h1 { font-size:22pt; margin:0 0 4pt; }
-  h2 { font-size:14.5pt; margin:24pt 0 8pt; padding-bottom:4pt; border-bottom:2px solid #1fcb6b; }
-  h3 { font-size:11.5pt; margin:14pt 0 4pt; color:#0e7c42; }
-  h4 { font-size:10.5pt; margin:9pt 0 2pt; }
+  h1 { font-size:20pt; margin:0 0 4pt; }
+  h2 { font-size:14.5pt; margin:22pt 0 8pt; padding-bottom:4pt; border-bottom:2px solid #1fcb6b; }
+  h3 { font-size:12pt; margin:16pt 0 5pt; color:#0e7c42; }
+  h4 { font-size:10.5pt; margin:10pt 0 3pt; }
   p { margin:0 0 7pt; }
   ul,ol { margin:0 0 9pt; padding-left:18pt; }
   li { margin:0 0 4pt; }
   strong { color:#0e2a1c; }
   code { font-family:"Consolas",monospace; background:#f1f5f2; padding:1px 4px; border-radius:3px; font-size:9.5pt; }
   pre { background:#0e2a1c; color:#e8f5ee; font-family:"Consolas",monospace; font-size:9pt; padding:10pt 12pt; border-radius:6px; overflow-x:auto; white-space:pre-wrap; margin:8pt 0; }
-  .cover { padding:36pt 0 18pt; border-bottom:3px solid #1fcb6b; margin-bottom:10pt; }
+  .cover { padding:34pt 0 16pt; border-bottom:3px solid #1fcb6b; margin-bottom:10pt; }
   .cover .brand { font-size:11pt; letter-spacing:3px; text-transform:uppercase; color:#0e7c42; font-weight:600; }
   .cover .sub { font-size:12pt; color:#4b5a52; margin-top:6pt; }
   .meta-grid { display:grid; grid-template-columns:1fr 1fr; gap:6pt 24pt; margin:14pt 0 4pt; }
   .meta-grid div { font-size:10pt; }
   .meta-grid .k { color:#6b7a72; text-transform:uppercase; font-size:8.5pt; letter-spacing:1px; }
-  .callout { background:#f1faf4; border-left:3px solid #1fcb6b; padding:9pt 12pt; margin:10pt 0; border-radius:0 6px 6px 0; }
+  .callout { background:#f1faf4; border-left:3px solid #1fcb6b; padding:9pt 12pt; margin:9pt 0; border-radius:0 6px 6px 0; }
   .note { background:#fff8ec; border-left:3px solid #e0a63c; padding:8pt 12pt; margin:9pt 0; border-radius:0 6px 6px 0; font-size:10pt; }
-  .seg { border:1px solid #e2e8e4; border-radius:8px; padding:10pt 14pt; margin:8pt 0; page-break-inside:avoid; }
+  .mistake { background:#fdf1f1; border-left:3px solid #d4534f; padding:8pt 12pt; margin:9pt 0; border-radius:0 6px 6px 0; font-size:10pt; }
+  .seg { border:1px solid #e2e8e4; border-radius:8px; padding:11pt 14pt; margin:9pt 0; page-break-inside:avoid; }
   .seg .time { display:inline-block; background:#0e2a1c; color:#fff; font-size:8.5pt; font-weight:600; padding:2px 9px; border-radius:20px; letter-spacing:.5px; }
   table { width:100%; border-collapse:collapse; margin:10pt 0; font-size:9.5pt; }
   th,td { text-align:left; padding:6pt 8pt; border-bottom:1px solid #e2e8e4; vertical-align:top; }
   th { background:#0e2a1c; color:#fff; font-weight:600; }
   .pill { display:inline-block; background:#e6f7ee; color:#0e7c42; font-size:8.5pt; padding:2px 8px; border-radius:20px; margin-right:4px; }
   .pagebreak { page-break-before:always; }
-  .foot { margin-top:22pt; padding-top:8pt; border-top:1px solid #e2e8e4; font-size:8.5pt; color:#6b7a72; }
+  .foot { margin-top:20pt; padding-top:8pt; border-top:1px solid #e2e8e4; font-size:8.5pt; color:#6b7a72; }
+  .qa { margin:6pt 0 6pt 0; padding-left:10pt; border-left:2px solid #cfe3d6; }
+  .qa .q { font-style:italic; color:#0e7c42; }
 </style>
 </head>
 <body>
@@ -42,158 +45,313 @@
 <div class="cover">
   <div class="brand">ZOUM Consultancy</div>
   <h1>Break Into AI: Machine Learning Foundations</h1>
-  <div class="sub">Whole course notes — overview, full class content, and outcome</div>
+  <div class="sub">Whole teaching notes — full 2-day, 3-hours-a-day class, with explanations, examples &amp; code</div>
 </div>
 
 <div class="meta-grid">
-  <div><div class="k">Format</div>Live classes by experts — hands-on build, not slides</div>
-  <div><div class="k">Structure</div>2-day live masterclass, Saturday &amp; Sunday, 3 hours each day</div>
-  <div><div class="k">Audience</div>Complete beginners welcome. No coding or math background required</div>
+  <div><div class="k">Format</div>Live class by experts — hands-on build, not slides</div>
+  <div><div class="k">Total time</div>Saturday 3 hours + Sunday 3 hours, one 10-min break each day</div>
+  <div><div class="k">Audience</div>Complete beginners — zero coding or math background assumed</div>
   <div><div class="k">Fee</div>₹999 — one-time (see Terms)</div>
-  <div><div class="k">Tools</div>A laptop and a free Google account for Google Colab — nothing to install</div>
-  <div><div class="k">Taught by</div>ZOUM's AI/ML team, using tools used in real production work</div>
+  <div><div class="k">Tools</div>A laptop and a free Google account for Google Colab</div>
+  <div><div class="k">Outcome</div>A trained, honestly-evaluated model + one AI API call, both built by hand</div>
 </div>
 
 <div class="callout">
-  <strong>Outcome:</strong> by the end of Sunday, every attendee has personally trained and evaluated
-  a real machine learning model on real data, called an AI API from their own code, and built one
-  small project of their own — with a personal plan for what to learn next.
+  <strong>How to use these notes:</strong> the explanation text is what to say to the room; the code
+  is typed live, together, line by line; "if asked" boxes cover the questions that come up in nearly
+  every run of this class.
 </div>
 
-<h2>What you'll learn</h2>
-<ul>
-  <li>The Python and Pandas skills AI/data work actually depends on</li>
-  <li>What machine learning actually is — supervised vs. unsupervised, training vs. test data, and why overfitting is the single most important trap to understand</li>
-  <li>How to train and evaluate a real model with scikit-learn, and why accuracy alone can lie to you</li>
-  <li>How to call an AI API (OpenAI/Anthropic) from your own Python code, not just a chat window</li>
-  <li>How to take a small project from raw data to a working, evaluated result</li>
-</ul>
-
-<h2>Full class content — Saturday (3 hours)</h2>
+<h2>Session map</h2>
 <table>
-  <tr><th style="width:80pt">Time</th><th>Segment</th></tr>
-  <tr><td>0:00–0:15</td><td>Open — why AI/ML is worth learning properly, the goal for the weekend</td></tr>
+  <tr><th style="width:60pt">Day</th><th style="width:80pt">Time</th><th>Block</th></tr>
+  <tr><td rowspan="6">Sat</td><td>0:00–0:15</td><td>Open — honest framing, the goal for the weekend</td></tr>
   <tr><td>0:15–1:00</td><td>Python &amp; Pandas essentials, hands-on</td></tr>
   <tr><td>1:00–1:10</td><td>Break</td></tr>
-  <tr><td>1:10–1:40</td><td>What machine learning actually is</td></tr>
-  <tr><td>1:40–2:40</td><td>Live demo: training a real model on a real dataset</td></tr>
-  <tr><td>2:40–3:00</td><td>Recap, Q&amp;A, what to bring Sunday</td></tr>
+  <tr><td>1:10–1:45</td><td>What machine learning actually is</td></tr>
+  <tr><td>1:45–2:45</td><td>Live build: training a real model</td></tr>
+  <tr><td>2:45–3:00</td><td>Recap, what to bring Sunday</td></tr>
+  <tr><td rowspan="6">Sun</td><td>0:00–0:10</td><td>Recap Saturday</td></tr>
+  <tr><td>0:10–1:00</td><td>Evaluating a model honestly</td></tr>
+  <tr><td>1:00–1:10</td><td>Break</td></tr>
+  <tr><td>1:10–1:45</td><td>Calling an AI API from Python</td></tr>
+  <tr><td>1:45–2:40</td><td>Mini project, hands-on</td></tr>
+  <tr><td>2:40–3:00</td><td>Close — presentations, next steps, terms, Q&amp;A</td></tr>
 </table>
 
+<div class="pagebreak"></div>
+<h2>SATURDAY</h2>
+
 <div class="seg">
-  <span class="time">0:00 – 0:15</span>
-  <h4>Open</h4>
-  <p>Set expectations honestly: this is not a math theory course. Every idea gets used in code within
-  the same hour it's introduced. Ask the room what they want to be able to do with AI/ML by Sunday
-  evening — write a few answers on the board to return to during the final-project discussion.</p>
+  <span class="time">0:00 – 0:15 · OPEN</span>
+  <h3>Honest framing &amp; the goal for the weekend</h3>
+  <p><strong>Say this first, plainly:</strong> "This is not a math theory course. You will not sit
+  through slides about calculus. Every single idea we cover gets used in real code within the same
+  hour it's introduced — by you, not just watched." This matters because most people arrive
+  half-expecting a lecture, and naming the format up front changes how they engage from minute one.</p>
+  <p><strong>Ask the room:</strong> "By Sunday evening, what do you actually want to be able to do
+  with AI or ML?" Take several answers, write two or three on the board. You'll return to this list
+  at 1:45 on Sunday when everyone picks their mini-project topic — having it already written down
+  removes the "I don't know what to build" stall.</p>
+  <p><strong>Name the shape of the two days:</strong> "Saturday is: get comfortable with the data
+  tools, then train your first model. Sunday is: learn to actually trust or distrust that model, use
+  an AI API from code, and build something small of your own."</p>
 </div>
 
 <div class="seg">
-  <span class="time">0:15 – 1:00</span>
-  <h4>Python &amp; Pandas essentials, hands-on</h4>
-  <p>Everyone opens Google Colab. Live-coded together: variables, a loop, a function — then straight
-  into Pandas:</p>
+  <span class="time">0:15 – 1:00 · PYTHON &amp; PANDAS ESSENTIALS</span>
+  <h3>Getting comfortable with code, then the real toolkit</h3>
+  <p><strong>Everyone opens Google Colab</strong> (colab.research.google.com, sign in with any Google
+  account, New Notebook). Explain in one sentence why: "It runs Python in your browser — nothing to
+  install, and it's free." This removes the single biggest early time-sink in any beginner coding
+  class: environment setup.</p>
+  <p><strong>Live-code the absolute basics together, fast — 10 minutes, no more:</strong></p>
+  <pre>name = "Priya"
+age = 27
+print(f"{name} is {age} years old")
+
+numbers = [4, 8, 15, 16, 23, 42]
+total = 0
+for n in numbers:
+    total += n
+print("Total:", total)
+
+def average(values):
+    return sum(values) / len(values)
+
+print(average(numbers))</pre>
+  <p><strong>Explain each piece as you type it, briefly:</strong> a variable stores a value; an
+  f-string lets you drop a variable into text with <code>{ }</code>; a <code>for</code> loop repeats
+  an action once per item in a list; a <code>def</code> is a function — a named, reusable block of
+  code. Don't dwell — this is scaffolding for what's next, not the point of the day.</p>
+  <p><strong>Now the actual daily toolkit — Pandas:</strong></p>
   <pre>import pandas as pd
+
 df = pd.read_csv("dataset.csv")
-df.head()
-df.groupby("category")["value"].mean()</pre>
-  <p>Loading a real CSV, filtering rows, grouping, and spotting missing values — the actual daily
-  toolkit for AI/data work, not abstract syntax drills.</p>
+df.head()               # look at the first 5 rows
+df.shape                 # (rows, columns)
+df["column_name"].mean() # average of one column
+df.groupby("category")["value"].mean()  # average, per group
+df.isna().sum()           # how many missing values, per column</pre>
+  <p><strong>Explain what each line answers, in plain English, right after typing it:</strong>
+  "<code>head()</code> answers 'what does this data even look like.' <code>groupby</code> answers
+  'what's the average value, broken down by category' — this is the single most-used Pandas
+  operation in real work. <code>isna().sum()</code> answers 'where are the holes in this data' —
+  and there are always holes in real data."</p>
+  <div class="mistake">
+    <strong>Common mistake:</strong> forgetting the dataset needs to be uploaded to the Colab session
+    (or loaded from a URL) before <code>read_csv</code> can find it. Show the folder icon on Colab's
+    left sidebar and the upload button before anyone hits this error and stalls.
+  </div>
+  <div class="qa">
+    <p class="q">If asked: "Do I need to memorize all of Pandas?"</p>
+    <p>No — say this directly: "Nobody memorizes Pandas. Professionals look up the exact method name
+    constantly. What you need is to recognize the shape of the problem — 'I need a group average,'
+    'I need to find missing values' — and know it's a one-line lookup away."</p>
+  </div>
 </div>
 
 <div class="seg">
-  <span class="time">1:10 – 1:40</span>
-  <h4>What machine learning actually is</h4>
-  <p>Supervised vs. unsupervised learning. Training data vs. test data. The single most important
-  idea in the whole weekend: a model that scores perfectly on data it already saw has usually just
-  memorized it (overfitting) — the only score that matters is on data it's never seen.</p>
-  <div class="note"><strong>Live check:</strong> "If a model gets 99% on training data and 60% on
-  test data, what happened?" — walk the room to the answer together rather than stating it.</div>
-</div>
-
-<div class="seg">
-  <span class="time">1:40 – 2:40</span>
-  <h4>Live demo: training a real model</h4>
-  <p>Everyone trains their first model together, on a real dataset, using scikit-learn:</p>
-  <pre>from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-model = LogisticRegression()
-model.fit(X_train, y_train)
-print(model.score(X_test, y_test))</pre>
-  <p>Everyone sees their own accuracy number — used immediately on Sunday to show why that single
-  number isn't the whole story.</p>
-</div>
-
-<div class="seg">
-  <span class="time">2:40 – 3:00</span>
-  <h4>Recap &amp; what to bring Sunday</h4>
-  <p>Recap the day in one sentence per concept. Ask everyone to think of one dataset or question
-  they'd personally want to explore — used for Sunday's mini project.</p>
+  <span class="time">1:10 – 1:45 · WHAT MACHINE LEARNING ACTUALLY IS</span>
+  <h3>The single idea that matters more than any algorithm name</h3>
+  <p><strong>Definitions, said plainly and in this order:</strong> "Supervised learning: the data
+  already has the right answers attached, and the model learns to predict them for new data.
+  Unsupervised learning: there are no right answers given — the model finds structure on its own.
+  Almost everything in this class, and almost everything used in industry, is supervised."</p>
+  <p><strong>Training data vs. test data — draw this on the board:</strong> "You never let a model
+  grade its own homework. You train it on one set of examples, then check it on a separate set it's
+  never seen. That second set is the only honest measure of whether it actually learned anything."</p>
+  <p><strong>The single most important idea in the whole weekend — say the word "overfitting" and
+  then explain it with a story, not a definition:</strong> "Imagine a student who memorizes last
+  year's exact exam paper instead of learning the subject. They'll ace that exact paper and fail a
+  new one testing the same material. A model that scores 99% on training data and 60% on test data
+  did exactly that — it memorized, it didn't learn."</p>
+  <div class="qa">
+    <p class="q">Live check — ask this out loud and wait for an answer before continuing:</p>
+    <p>"If a model gets 99% on training data and 60% on test data, what's wrong with it?" Don't
+    answer it yourself — let the room arrive at "overfitting" together. This is the one moment in the
+    weekend worth slowing down for.</p>
+  </div>
+  <p><strong>One more term, quickly:</strong> a <strong>feature</strong> is one input column the
+  model uses (e.g. "age," "income"); a <strong>label</strong> is the correct answer it's trying to
+  predict (e.g. "will this customer churn: yes/no"). Every supervised model is: some features in,
+  one label out.</p>
 </div>
 
 <div class="pagebreak"></div>
-<h2>Full class content — Sunday (3 hours)</h2>
-<table>
-  <tr><th style="width:80pt">Time</th><th>Segment</th></tr>
-  <tr><td>0:00–0:10</td><td>Recap Saturday in 10 minutes</td></tr>
-  <tr><td>0:10–1:00</td><td>Evaluating a model honestly — precision, recall, confusion matrix</td></tr>
-  <tr><td>1:00–1:10</td><td>Break</td></tr>
-  <tr><td>1:10–1:40</td><td>Calling an AI API from Python</td></tr>
-  <tr><td>1:40–2:40</td><td>Mini project — hands-on, instructor circulating</td></tr>
-  <tr><td>2:40–3:00</td><td>Close — presentations, what to learn next, terms, Q&amp;A</td></tr>
-</table>
-
 <div class="seg">
-  <span class="time">0:10 – 1:00</span>
-  <h4>Evaluating a model honestly</h4>
-  <p>Accuracy, precision, recall, and the confusion matrix:</p>
-  <pre>from sklearn.metrics import confusion_matrix, classification_report
-print(confusion_matrix(y_test, model.predict(X_test)))
-print(classification_report(y_test, model.predict(X_test)))</pre>
-  <p>Why accuracy alone can lie: on imbalanced data (e.g. 95% of cases are "normal"), a model that
-  always guesses "normal" scores 95% while being useless. Everyone checks their own Saturday model's
-  precision/recall, not just its accuracy.</p>
+  <span class="time">1:45 – 2:45 · LIVE BUILD: TRAINING A REAL MODEL</span>
+  <h3>Everyone trains their first model, together, on a real dataset</h3>
+  <p><strong>Set it up:</strong> use a simple public dataset (something with a clear yes/no or
+  category label works best for a first model — the instructor picks one appropriate to the room
+  and shares the load line). Load it exactly as practiced earlier:</p>
+  <pre>import pandas as pd
+df = pd.read_csv("dataset.csv")
+df.head()</pre>
+  <p><strong>Split it into features (X) and the label (y):</strong></p>
+  <pre>X = df.drop(columns=["target_column"])
+y = df["target_column"]</pre>
+  <p><strong>Explain:</strong> "X is everything the model is allowed to look at. y is the answer
+  we're hiding from it during training so we can check it later."</p>
+  <p><strong>Split into training and test sets — tie this directly back to 1:10's explanation:</strong></p>
+  <pre>from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)</pre>
+  <p>Say out loud: "20% held back, untouched, for the honest check. This line is where the idea from
+  an hour ago becomes real code."</p>
+  <p><strong>Train the model:</strong></p>
+  <pre>from sklearn.linear_model import LogisticRegression
+model = LogisticRegression(max_iter=1000)
+model.fit(X_train, y_train)
+print("Test accuracy:", model.score(X_test, y_test))</pre>
+  <p><strong>Explain <code>fit</code> in one sentence:</strong> "This line is the actual 'learning' —
+  it adjusts the model's internal numbers until it's as good as it can be at predicting y_train from
+  X_train." Everyone runs this and sees their own accuracy number.</p>
+  <div class="mistake">
+    <strong>Common mistake:</strong> passing text columns straight into <code>fit()</code> — scikit-
+    learn needs numbers. If someone hits a "could not convert string to float" error, that's why;
+    either drop non-numeric columns for this first pass, or mention (don't teach yet) that
+    categorical encoding is a Day 2/enhanced-program topic.
+  </div>
+  <p><strong>Land the punchline for the day:</strong> "You just did the actual job. Everything from
+  here — evaluating it properly, calling an AI API, your own project tomorrow — builds directly on
+  this one number you just produced."</p>
 </div>
 
 <div class="seg">
-  <span class="time">1:10 – 1:40</span>
-  <h4>Calling an AI API from Python</h4>
+  <span class="time">2:45 – 3:00 · RECAP</span>
+  <h3>What to bring Sunday</h3>
+  <p>Recap in one sentence per concept: Pandas loads and questions data; supervised learning predicts
+  labels from features; train/test split is how you check honestly; overfitting is memorizing instead
+  of learning. Ask everyone to think overnight of one dataset or question they'd personally want to
+  explore — this becomes tomorrow's mini project.</p>
+</div>
+
+<div class="pagebreak"></div>
+<h2>SUNDAY</h2>
+
+<div class="seg">
+  <span class="time">0:00 – 0:10 · RECAP SATURDAY</span>
+  <h3>Fast recap, then straight into new material</h3>
+  <p>One sentence each on: Pandas, supervised vs. unsupervised, train/test split, overfitting. Don't
+  re-teach — this is a reminder, not a repeat lesson. Move fast; the room needs the full remaining
+  time for evaluation, the AI API, and their own project.</p>
+</div>
+
+<div class="seg">
+  <span class="time">0:10 – 1:00 · EVALUATING A MODEL HONESTLY</span>
+  <h3>Why the single accuracy number from yesterday isn't the whole story</h3>
+  <p><strong>Open with the trap, explicitly:</strong> "Imagine 95% of your data is one category —
+  say, 'not fraud.' A model that always guesses 'not fraud,' every single time, scores 95% accuracy
+  while being completely useless. Accuracy alone can lie to you on data like this, which is most real
+  data."</p>
+  <pre>from sklearn.metrics import confusion_matrix, classification_report
+
+preds = model.predict(X_test)
+print(confusion_matrix(y_test, preds))
+print(classification_report(y_test, preds))</pre>
+  <p><strong>Walk through the confusion matrix on the board, not just in code</strong> — draw a 2x2
+  grid: true positives, false positives, false negatives, true negatives. Explain each cell as a
+  real-world outcome: "a false negative here means a fraud case we missed; a false positive means we
+  flagged an innocent transaction. Which mistake is worse depends entirely on the problem — the
+  numbers alone don't tell you that, you have to think about it."</p>
+  <p><strong>Define precision and recall as questions, not formulas:</strong> "Precision asks: of
+  everything I flagged as positive, how much did I get right? Recall asks: of everything that was
+  actually positive, how much did I actually catch? A model can be high on one and low on the other —
+  that trade-off is a real decision, not a bug."</p>
+  <p>Everyone runs this on their own Saturday model and reads their own precision/recall, not just
+  their accuracy number from yesterday.</p>
+  <div class="qa">
+    <p class="q">If asked: "Which metric should I actually care about?"</p>
+    <p>"Depends what a false negative costs you versus a false positive. A spam filter that misses
+    spam (false negative) is annoying. A medical test that misses a real diagnosis (false negative)
+    is dangerous. There's no universal right answer — that's the actual skill."</p>
+  </div>
+</div>
+
+<div class="seg">
+  <span class="time">1:10 – 1:45 · CALLING AN AI API FROM PYTHON</span>
+  <h3>The AI's output becomes part of your program, not a chat window</h3>
+  <p><strong>Frame it first:</strong> "Everything so far predicts a number or a category. This is
+  different — this is asking a language model to produce language, and using that output
+  programmatically." This is the bridge from "machine learning" to "the AI features companies
+  actually ship."</p>
   <pre>import anthropic
-client = anthropic.Anthropic(api_key="...")
+
+client = anthropic.Anthropic(api_key="YOUR_SANDBOX_KEY")
 response = client.messages.create(
     model="claude-...",
-    messages=[{"role": "user", "content": f"Summarize this finding: {result}"}]
+    max_tokens=200,
+    messages=[{
+        "role": "user",
+        "content": f"In plain English, summarize what this model found: {classification_report(y_test, preds)}"
+    }]
 )
 print(response.content)</pre>
-  <p>The point: the AI's output becomes part of your own program's output, not a separate chat
-  window — this is the actual skill behind most "AI features" companies ship.</p>
+  <p><strong>Explain the key line by line:</strong> "<code>client</code> is your connection to the AI
+  provider, authenticated with the sandbox key I've given you. <code>messages</code> is the
+  conversation you're sending — here, just one message, built from a Python f-string so it includes
+  your actual results. The response comes back as text you can print, save, or feed into the next
+  step of a program — exactly like any other function's return value."</p>
+  <div class="callout">
+    <strong>The point to land:</strong> "You didn't open a chat window and paste your results in. Your
+    code called the AI directly and used what came back. That's the actual skill behind almost every
+    'AI feature' a company ships — it's this pattern, not magic."
+  </div>
+</div>
+
+<div class="pagebreak"></div>
+<div class="seg">
+  <span class="time">1:45 – 2:40 · MINI PROJECT</span>
+  <h3>Hands-on, instructor circulating — not a second demo</h3>
+  <p>Each attendee picks one dataset or question from the list started Saturday morning. Walk it
+  through as a checklist they follow themselves:</p>
+  <ol>
+    <li><strong>Load it</strong> with <code>pd.read_csv</code> and look at it with <code>head()</code></li>
+    <li><strong>Clean it</strong> — check <code>isna().sum()</code>, decide what to do with any gaps</li>
+    <li><strong>Split it</strong> into features/label, then train/test</li>
+    <li><strong>Train</strong> a model with <code>LogisticRegression</code> (or reuse Saturday's code
+    as a template)</li>
+    <li><strong>Evaluate honestly</strong> — accuracy <em>and</em> the confusion matrix, not just one number</li>
+    <li><strong>(Bonus)</strong> add one AI API call, e.g. to turn the result into a plain-English summary</li>
+  </ol>
+  <p>Circulate constantly during this block — this is where the weekend either lands or doesn't. Most
+  questions will be Pandas syntax lookups, not conceptual; that's expected and fine.</p>
 </div>
 
 <div class="seg">
-  <span class="time">1:40 – 2:40</span>
-  <h4>Mini project</h4>
-  <p>Each attendee picks a small dataset or question (from the list started Saturday), and — with
-  the instructor circulating — takes it through: load → clean → explore → train → evaluate
-  honestly → optionally, an AI API call to summarize the result in plain English.</p>
+  <span class="time">2:40 – 3:00 · CLOSE</span>
+  <h3>Presentations, personal next steps, terms, Q&amp;A</h3>
+  <p>A few volunteers show their project in one minute each: what question they asked, what they
+  found, what the model got wrong. Give each attendee, individually if time allows, one specific
+  thing to learn next based on what they built (e.g. "look at decision trees next" or "learn to
+  handle categorical columns").</p>
+  <p><strong>State the terms plainly:</strong> "This is a one-time fee — no additional payments to
+  anyone in connection with this course, under any circumstances. We provide placement guidance if
+  you put in the work; placement isn't guaranteed. You may be asked to sign an NDA as part of the
+  program." Then Q&amp;A until time runs out.</p>
 </div>
 
-<div class="seg">
-  <span class="time">2:40 – 3:00</span>
-  <h4>Close</h4>
-  <p>A few volunteers show their mini project in one minute each. Instructor gives each attendee a
-  short personal note on what to learn next based on what they built. Close with the standard terms,
-  then Q&amp;A.</p>
-</div>
+<div class="pagebreak"></div>
+<h2>Appendix — glossary</h2>
+<table>
+  <tr><th style="width:120pt">Term</th><th>Plain meaning</th></tr>
+  <tr><td>Model</td><td>A program that's learned a pattern from data instead of being told the rule directly</td></tr>
+  <tr><td>Feature / Label</td><td>Feature = an input column; label = the answer being predicted</td></tr>
+  <tr><td>Training / test data</td><td>Data the model learns from vs. data held back to check it honestly</td></tr>
+  <tr><td>Overfitting</td><td>Memorizing training data instead of learning a general pattern</td></tr>
+  <tr><td>Accuracy</td><td>% correct — misleading on imbalanced data</td></tr>
+  <tr><td>Precision / Recall</td><td>Of flagged positives, % actually right / of real positives, % caught</td></tr>
+  <tr><td>Confusion matrix</td><td>The 2x2 breakdown of right and wrong predictions by type</td></tr>
+</table>
 
-<h2>What you leave with</h2>
+<h2>Appendix — what you leave with</h2>
 <ul>
-  <li>A trained, honestly-evaluated model you built yourself, on a dataset you chose</li>
+  <li>A trained, honestly-evaluated model you built yourself, on data you chose</li>
   <li>Comfort reading and writing Python/Pandas for real data, not just following a tutorial</li>
-  <li>An instinct for distrusting a model until you've checked precision and recall, not just accuracy</li>
+  <li>The instinct to check precision/recall, not just accuracy, before trusting a model</li>
   <li>Direct experience calling an AI API from your own code</li>
-  <li>A personal note on what to learn next</li>
+  <li>One specific, personal next thing to learn</li>
 </ul>
 
 <h2>Terms &amp; Conditions</h2>
@@ -204,7 +362,7 @@ print(response.content)</pre>
 </ol>
 
 <div class="foot">
-  ZOUM Consultancy · Break Into AI: Machine Learning Foundations · Whole course notes.
+  ZOUM Consultancy · Break Into AI: Machine Learning Foundations · Whole teaching notes.
   The public course page is at zoumconsultancy.com.
 </div>
 
