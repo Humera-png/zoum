@@ -342,7 +342,7 @@ export const courses: Course[] = [
           "A live session covering the specific Python and Pandas skills AI work actually depends on, then what machine learning actually is: supervised vs. unsupervised learning, training vs. test data, and why a model that's memorized its training data isn't the same as one that's learned something useful. Ends with a live demo training a real model on a real dataset.",
       },
       {
-        title: "Day 2 — Build, Evaluate & Ship Your Own Model",
+        title: "Sunday — Build, Evaluate & Ship Your Own Model",
         description:
           "Hands-on: you train and evaluate your own model with scikit-learn, learn why accuracy alone can lie to you, and call an AI API from your own code, not just a chat window. You leave with a working mini project and a personal plan for what to learn next.",
       },
@@ -453,12 +453,12 @@ export const courses: Course[] = [
       "A live, practitioner-led 2-day masterclass in automation engineering: use Python and AI/ML together to build a system that actually runs your work for you, not just theory.",
     modules: [
       {
-        title: "Day 1 — Python Automation Pipelines",
+        title: "Saturday — Python Automation Pipelines",
         description:
           "A live session covering the automation mindset (what's actually worth automating), writing Python scripts for real repeatable workflows, and error handling and logging, so a script that runs unattended fails loudly instead of silently. Ends with a live demo automating a real report from scratch.",
       },
       {
-        title: "Day 2 — APIs, Scheduling & AI-Driven Automation",
+        title: "Sunday — APIs, Scheduling & AI-Driven Automation",
         description:
           "Hands-on: connecting APIs, schedulers, and data sources into one working pipeline, then using an AI model to automate a decision, not just a prediction. You leave with one working automation you built yourself and a personal 7-Day Automation Build Plan.",
       },
