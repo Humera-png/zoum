@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Break Into AI: Machine Learning Foundations | Student Study Guide</title>
+<style>
+  @page { size: A4; margin: 20mm 18mm 16mm 18mm; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-family:"Segoe UI","Helvetica Neue",Arial,sans-serif; color:#14241B; font-size:10.5pt; line-height:1.5; margin:0; }
+  h1,h2,h3,h4 { font-family:"Segoe UI Semibold","Segoe UI",Arial,sans-serif; color:#0e2a1c; line-height:1.25; }
+  h1 { font-size:23pt; margin:0 0 4pt; }
+  h2 { font-size:14.5pt; margin:24pt 0 8pt; padding-bottom:4pt; border-bottom:2px solid #1fcb6b; }
+  h3 { font-size:11.5pt; margin:15pt 0 4pt; color:#0e7c42; }
+  h4 { font-size:10.5pt; margin:10pt 0 2pt; }
+  p { margin:0 0 7pt; }
+  ul,ol { margin:0 0 9pt; padding-left:18pt; }
+  li { margin:0 0 4pt; }
+  strong { color:#0e2a1c; }
+  code { font-family:"Consolas",monospace; background:#f1f5f2; padding:1px 4px; border-radius:3px; font-size:9.5pt; }
+  pre { background:#0e2a1c; color:#e8f5ee; font-family:"Consolas",monospace; font-size:9pt; padding:10pt 12pt; border-radius:6px; overflow-x:auto; white-space:pre-wrap; margin:8pt 0; }
+  .cover { padding:36pt 0 18pt; border-bottom:3px solid #1fcb6b; margin-bottom:10pt; }
+  .cover .brand { font-size:11pt; letter-spacing:3px; text-transform:uppercase; color:#0e7c42; font-weight:600; }
+  .cover .sub { font-size:12pt; color:#4b5a52; margin-top:6pt; }
+  .callout { background:#f1faf4; border-left:3px solid #1fcb6b; padding:9pt 12pt; margin:10pt 0; border-radius:0 6px 6px 0; }
+  .note { background:#fff8ec; border-left:3px solid #e0a63c; padding:8pt 12pt; margin:9pt 0; border-radius:0 6px 6px 0; font-size:10pt; }
+  table { width:100%; border-collapse:collapse; margin:10pt 0; font-size:9.5pt; }
+  th,td { text-align:left; padding:6pt 8pt; border-bottom:1px solid #e2e8e4; vertical-align:top; }
+  th { background:#0e2a1c; color:#fff; font-weight:600; }
+  .week { border:1px solid #e2e8e4; border-radius:8px; padding:10pt 14pt; margin:9pt 0; page-break-inside:avoid; }
+  .week .n { display:inline-block; background:#0e2a1c; color:#fff; font-size:8.5pt; font-weight:600; padding:2px 9px; border-radius:20px; letter-spacing:.5px; }
+  .pagebreak { page-break-before:always; }
+  .foot { margin-top:22pt; padding-top:8pt; border-top:1px solid #e2e8e4; font-size:8.5pt; color:#6b7a72; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="brand">ZOUM Consultancy</div>
+  <h1>Break Into AI: Machine Learning Foundations</h1>
+  <div class="sub">Student study guide &amp; workbook — 8 weeks</div>
+</div>
+
+<h3>How to use this guide</h3>
+<ul>
+  <li>Each week's section lists what's covered, the core idea to walk away with, and a practice task.</li>
+  <li>Do the practice task before the next session — the course builds week to week, nothing is a standalone lecture.</li>
+  <li>The glossary (Part 2) and the final project guide (Part 3) are reference material — come back to them throughout.</li>
+</ul>
+
+<h2>Before Week 1 — setup checklist</h2>
+<table>
+  <tr><th style="width:20pt">✓</th><th>Item</th><th>How</th></tr>
+  <tr><td></td><td>A Google account</td><td>For Google Colab — free, runs Python in the browser, no install needed to start.</td></tr>
+  <tr><td></td><td>A laptop</td><td>Chrome or Firefox.</td></tr>
+  <tr><td></td><td>No prior experience needed</td><td>Seriously — Week 1 assumes zero coding background.</td></tr>
+</table>
+
+<div class="pagebreak"></div>
+<h2>Part 1 — Week by week</h2>
+
+<h3>Module 1 — Python for AI &amp; Data Work</h3>
+<div class="week">
+  <span class="n">WEEK 1</span>
+  <h4>Python fundamentals</h4>
+  <p><strong>Covers:</strong> variables, if/else, loops, functions, and running code in a notebook.</p>
+  <p><strong>Core idea:</strong> a program is just a sequence of instructions the computer follows in
+  order — everything else is built from that.</p>
+  <p><strong>Practice:</strong> write a function that takes a list of numbers and returns the average,
+  without using a library.</p>
+</div>
+<div class="week">
+  <span class="n">WEEK 2</span>
+  <h4>NumPy &amp; Pandas</h4>
+  <p><strong>Covers:</strong> arrays, DataFrames, loading a CSV with <code>pandas.read_csv()</code>,
+  filtering rows, grouping, handling missing values.</p>
+  <p><strong>Core idea:</strong> almost all real data work is Pandas — load it, look at it, clean it,
+  ask it questions.</p>
+  <p><strong>Practice:</strong> load a public CSV dataset and answer three questions about it using
+  filtering and grouping (e.g. "which category has the highest average value?").</p>
+</div>
+<div class="week">
+  <span class="n">WEEK 3</span>
+  <h4>Exploring &amp; visualizing data</h4>
+  <p><strong>Covers:</strong> Matplotlib/Seaborn charts, spotting outliers and missing data visually.</p>
+  <p><strong>Core idea:</strong> never model data you haven't looked at first — a chart reveals
+  problems a table hides.</p>
+  <p><strong>Practice:</strong> make one histogram and one scatter plot from your Week 2 dataset;
+  write one sentence on what each reveals.</p>
+</div>
+
+<h3>Module 2 — Core Machine Learning Concepts</h3>
+<div class="week">
+  <span class="n">WEEK 4</span>
+  <h4>What machine learning actually is</h4>
+  <p><strong>Covers:</strong> supervised vs. unsupervised learning, training data vs. test data,
+  overfitting.</p>
+  <p><strong>Core idea:</strong> a model that scores perfectly on data it already saw has usually just
+  memorized it — the only score that matters is on data it's never seen.</p>
+  <div class="note"><strong>Quick check:</strong> if a model gets 99% on training data and 60% on test
+  data, what's wrong? → It's overfitting: it memorized the training set instead of learning a general
+  pattern.</div>
+</div>
+<div class="week">
+  <span class="n">WEEK 5</span>
+  <h4>Core algorithms</h4>
+  <p><strong>Covers:</strong> linear regression, logistic regression, decision trees — conceptually,
+  then trained with scikit-learn:</p>
+  <pre>from sklearn.linear_model import LogisticRegression
+model = LogisticRegression()
+model.fit(X_train, y_train)
+predictions = model.predict(X_test)</pre>
+  <p><strong>Practice:</strong> train a logistic regression on the Week 2 dataset to predict one
+  column from the others.</p>
+</div>
+<div class="week">
+  <span class="n">WEEK 6</span>
+  <h4>Evaluating a model honestly</h4>
+  <p><strong>Covers:</strong> accuracy, precision, recall, the confusion matrix.</p>
+  <p><strong>Core idea:</strong> on imbalanced data (e.g. 95% of cases are "normal"), a model that
+  always guesses "normal" gets 95% accuracy while being useless. Precision and recall catch this;
+  accuracy alone doesn't.</p>
+  <p><strong>Practice:</strong> compute the confusion matrix for your Week 5 model and explain what
+  each of its four numbers means in plain English.</p>
+</div>
+
+<h3>Module 3 — Real Datasets, AI APIs &amp; Final Project</h3>
+<div class="week">
+  <span class="n">WEEK 7</span>
+  <h4>A real, messy dataset + calling an AI API</h4>
+  <p><strong>Covers:</strong> taking a genuinely messy dataset through clean → explore → model, and
+  calling an AI API (OpenAI/Anthropic) from Python to use its output inside code, not a chat window.</p>
+  <pre>import anthropic
+client = anthropic.Anthropic(api_key="...")
+response = client.messages.create(
+    model="claude-...",
+    messages=[{"role": "user", "content": "Summarize this row of data: " + str(row)}]
+)</pre>
+  <p><strong>Practice:</strong> pick your messiest column so far and write a function that cleans it.</p>
+</div>
+<div class="week">
+  <span class="n">WEEK 8</span>
+  <h4>Final project</h4>
+  <p>See Part 3 for the full final project guide.</p>
+</div>
+
+<div class="pagebreak"></div>
+<h2>Part 2 — Glossary</h2>
+<table>
+  <tr><th style="width:130pt">Term</th><th>Plain-language meaning</th></tr>
+  <tr><td>Model</td><td>A program that's learned a pattern from data, instead of being told the rule directly</td></tr>
+  <tr><td>Training data</td><td>The data a model learns from</td></tr>
+  <tr><td>Test data</td><td>Data held back so you can check the model on examples it's never seen</td></tr>
+  <tr><td>Overfitting</td><td>A model that memorized training data instead of learning a general pattern</td></tr>
+  <tr><td>Feature</td><td>One input column a model uses to make a prediction</td></tr>
+  <tr><td>Label</td><td>The correct answer a supervised model is trying to predict</td></tr>
+  <tr><td>Supervised learning</td><td>Learning from data that already has the correct answers attached</td></tr>
+  <tr><td>Unsupervised learning</td><td>Finding structure in data that has no correct answers attached</td></tr>
+  <tr><td>Accuracy</td><td>% of predictions that were correct — misleading on imbalanced data</td></tr>
+  <tr><td>Precision</td><td>Of everything the model called "positive," what % actually was</td></tr>
+  <tr><td>Recall</td><td>Of everything that actually was "positive," what % the model caught</td></tr>
+</table>
+
+<h2>Part 3 — Final project guide</h2>
+<p>Your final project should show you can take a problem from raw data to a working, evaluated model.</p>
+<ol>
+  <li><strong>Pick a dataset</strong> that genuinely interests you (public datasets from sources like
+  Kaggle work well) — something you'd actually want the answer to.</li>
+  <li><strong>Clean and explore it</strong> using what you built in Weeks 1–3.</li>
+  <li><strong>Train a model</strong> using what you built in Weeks 4–6.</li>
+  <li><strong>Evaluate it honestly</strong> — report accuracy <em>and</em> precision/recall, and say
+  plainly where the model is weak.</li>
+  <li><strong>(Bonus)</strong> Call an AI API somewhere in the project — e.g. to generate a plain-English
+  summary of your model's findings.</li>
+  <li><strong>Present it</strong> in Week 8: what the problem was, what you built, what it got right
+  and wrong, and what you'd try next.</li>
+</ol>
+
+<h2>Part 4 — Keep learning</h2>
+<ul>
+  <li><strong>scikit-learn documentation</strong> — <code>scikit-learn.org</code>, the best reference for every algorithm covered</li>
+  <li><strong>Kaggle</strong> — real datasets and a community of people solving the same kinds of problems</li>
+  <li><strong>Pandas documentation</strong> — <code>pandas.pydata.org</code></li>
+</ul>
+
+<div class="foot">
+  ZOUM Consultancy · Break Into AI: Machine Learning Foundations · Student study guide.
+  The public course page is at zoumconsultancy.com.
+</div>
+
+</body>
+</html>

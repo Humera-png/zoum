@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Automate Everything: Python, AI & ML in Practice | Student Study Guide</title>
+<style>
+  @page { size: A4; margin: 20mm 18mm 16mm 18mm; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-family:"Segoe UI","Helvetica Neue",Arial,sans-serif; color:#14241B; font-size:10.5pt; line-height:1.5; margin:0; }
+  h1,h2,h3,h4 { font-family:"Segoe UI Semibold","Segoe UI",Arial,sans-serif; color:#0e2a1c; line-height:1.25; }
+  h1 { font-size:22pt; margin:0 0 4pt; }
+  h2 { font-size:14.5pt; margin:24pt 0 8pt; padding-bottom:4pt; border-bottom:2px solid #1fcb6b; }
+  h3 { font-size:11.5pt; margin:15pt 0 4pt; color:#0e7c42; }
+  h4 { font-size:10.5pt; margin:10pt 0 2pt; }
+  p { margin:0 0 7pt; }
+  ul,ol { margin:0 0 9pt; padding-left:18pt; }
+  li { margin:0 0 4pt; }
+  strong { color:#0e2a1c; }
+  code { font-family:"Consolas",monospace; background:#f1f5f2; padding:1px 4px; border-radius:3px; font-size:9.5pt; }
+  pre { background:#0e2a1c; color:#e8f5ee; font-family:"Consolas",monospace; font-size:9pt; padding:10pt 12pt; border-radius:6px; overflow-x:auto; white-space:pre-wrap; margin:8pt 0; }
+  .cover { padding:36pt 0 18pt; border-bottom:3px solid #1fcb6b; margin-bottom:10pt; }
+  .cover .brand { font-size:11pt; letter-spacing:3px; text-transform:uppercase; color:#0e7c42; font-weight:600; }
+  .cover .sub { font-size:12pt; color:#4b5a52; margin-top:6pt; }
+  .callout { background:#f1faf4; border-left:3px solid #1fcb6b; padding:9pt 12pt; margin:10pt 0; border-radius:0 6px 6px 0; }
+  .note { background:#fff8ec; border-left:3px solid #e0a63c; padding:8pt 12pt; margin:9pt 0; border-radius:0 6px 6px 0; font-size:10pt; }
+  table { width:100%; border-collapse:collapse; margin:10pt 0; font-size:9.5pt; }
+  th,td { text-align:left; padding:6pt 8pt; border-bottom:1px solid #e2e8e4; vertical-align:top; }
+  th { background:#0e2a1c; color:#fff; font-weight:600; }
+  .week { border:1px solid #e2e8e4; border-radius:8px; padding:10pt 14pt; margin:9pt 0; page-break-inside:avoid; }
+  .week .n { display:inline-block; background:#0e2a1c; color:#fff; font-size:8.5pt; font-weight:600; padding:2px 9px; border-radius:20px; letter-spacing:.5px; }
+  .pagebreak { page-break-before:always; }
+  .foot { margin-top:22pt; padding-top:8pt; border-top:1px solid #e2e8e4; font-size:8.5pt; color:#6b7a72; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="brand">ZOUM Consultancy</div>
+  <h1>Automate Everything: Python, AI &amp; Machine Learning in Practice</h1>
+  <div class="sub">Student study guide &amp; workbook — 8 weeks</div>
+</div>
+
+<h3>How to use this guide</h3>
+<ul>
+  <li>Each week ships something that runs — treat the practice task as the actual point, not an add-on.</li>
+  <li>By Week 3 you should have a script that runs and logs its own errors; by Week 6, one that runs
+  on a schedule without you starting it. That's the real progress marker, not just "keeping up."</li>
+</ul>
+
+<h2>Before Week 1 — setup checklist</h2>
+<table>
+  <tr><th style="width:20pt">✓</th><th>Item</th><th>How</th></tr>
+  <tr><td></td><td>Python installed</td><td>Python 3.x from python.org, or the instructor's shared setup guide</td></tr>
+  <tr><td></td><td>A code editor</td><td>VS Code (free) recommended</td></tr>
+  <tr><td></td><td>A repetitive task in mind</td><td>Something you or your team does manually and regularly — you'll automate it for your capstone</td></tr>
+</table>
+
+<div class="pagebreak"></div>
+<h2>Part 1 — Week by week</h2>
+
+<h3>Module 1 — Python Automation Pipelines</h3>
+<div class="week">
+  <span class="n">WEEK 1</span>
+  <h4>The automation mindset</h4>
+  <p><strong>Covers:</strong> spotting which repetitive tasks are worth automating, and Python
+  scripting basics.</p>
+  <p><strong>Core idea:</strong> not everything should be automated — a task that changes every time
+  or happens once a year usually isn't worth it. Automate what's repetitive <em>and</em> stable.</p>
+  <p><strong>Practice:</strong> list 3 repetitive tasks from your own work and note how often each happens and how long it takes by hand.</p>
+</div>
+<div class="week">
+  <span class="n">WEEK 2</span>
+  <h4>File &amp; data automation</h4>
+  <p><strong>Covers:</strong> reading/writing spreadsheets with pandas/openpyxl.</p>
+  <pre>import pandas as pd
+df = pd.read_excel("weekly_report.xlsx")
+summary = df.groupby("region")["sales"].sum()
+summary.to_excel("summary_output.xlsx")</pre>
+  <p><strong>Practice:</strong> automate one report you currently build by hand — even a simple one.</p>
+</div>
+<div class="week">
+  <span class="n">WEEK 3</span>
+  <h4>Error handling &amp; logging</h4>
+  <p><strong>Covers:</strong> <code>try/except</code>, logging.</p>
+  <pre>import logging
+logging.basicConfig(filename="run.log", level=logging.INFO)
+try:
+    result = risky_step()
+    logging.info(f"Success: {result}")
+except Exception as e:
+    logging.error(f"Failed: {e}")</pre>
+  <p><strong>Core idea:</strong> a script that fails silently is worse than one that never existed —
+  it gives false confidence. Always log what happened.</p>
+  <p><strong>Practice:</strong> add logging and error handling to your Week 2 automation.</p>
+</div>
+
+<h3>Module 2 — Connecting APIs, Schedulers &amp; Data Sources</h3>
+<div class="week">
+  <span class="n">WEEK 4</span>
+  <h4>Working with APIs</h4>
+  <pre>import requests
+response = requests.get("https://api.example.com/data", headers={"Authorization": "Bearer TOKEN"})
+data = response.json()</pre>
+  <p><strong>Practice:</strong> pull data from one free public API and save it to a file.</p>
+</div>
+<div class="week">
+  <span class="n">WEEK 5</span>
+  <h4>Scheduling</h4>
+  <p><strong>Covers:</strong> cron (Linux/Mac) and APScheduler (cross-platform, in Python):</p>
+  <pre>from apscheduler.schedulers.blocking import BlockingScheduler
+scheduler = BlockingScheduler()
+scheduler.add_job(my_automation, 'cron', hour=6)
+scheduler.start()</pre>
+  <p><strong>Practice:</strong> schedule your Week 4 script to run automatically once a day.</p>
+</div>
+<div class="week">
+  <span class="n">WEEK 6</span>
+  <h4>Connecting multiple data sources</h4>
+  <p><strong>Core idea:</strong> most real automations aren't one API — they're a database, an API,
+  and a file, all feeding one pipeline.</p>
+  <p><strong>Practice:</strong> combine two data sources from earlier weeks (e.g. your Week 2 file
+  and Week 4 API) into a single combined output.</p>
+</div>
+
+<h3>Module 3 — Applying AI/ML + Capstone</h3>
+<div class="week">
+  <span class="n">WEEK 7</span>
+  <h4>Using AI/ML to automate decisions</h4>
+  <pre>response = ai_client.messages.create(
+    model="...",
+    messages=[{"role": "user", "content": f"Classify this ticket as billing, technical, or other: {ticket_text}"}]
+)
+category = response.content
+# route based on category, automatically</pre>
+  <p><strong>Core idea:</strong> the AI's output becomes an input to the next automated step — a
+  decision, not just a report someone reads.</p>
+  <p><strong>Practice:</strong> add one AI-driven decision point to your pipeline from Week 6.</p>
+</div>
+<div class="week">
+  <span class="n">WEEK 8</span>
+  <h4>Capstone project</h4>
+  <p>See Part 3 for the full capstone guide.</p>
+</div>
+
+<div class="pagebreak"></div>
+<h2>Part 2 — Troubleshooting</h2>
+<table>
+  <tr><th>Symptom</th><th>Likely cause</th><th>Fix</th></tr>
+  <tr><td>Script works manually but fails when scheduled</td><td>relative file paths, or environment differences</td><td>use absolute paths; log the working directory at start</td></tr>
+  <tr><td>API call returns 401/403</td><td>bad or expired token</td><td>re-check the auth header; regenerate the key</td></tr>
+  <tr><td>Script "hangs" with no output</td><td>no logging, or an infinite retry loop</td><td>add logging at every step; cap retries</td></tr>
+  <tr><td>Excel file won't open after script runs</td><td>file was still open in another program during write</td><td>close the file before running; save to a new file name</td></tr>
+</table>
+
+<h2>Part 3 — Capstone project guide</h2>
+<ol>
+  <li><strong>Pick a real repetitive task</strong> from your own work (ideally the one you logged in Week 1).</li>
+  <li><strong>Map the pipeline</strong>: what triggers it, what data sources it touches, what it produces.</li>
+  <li><strong>Build it</strong> using Weeks 1–6: script, error handling, scheduling.</li>
+  <li><strong>Add one AI/ML-driven decision point</strong> from Week 7.</li>
+  <li><strong>Run it unattended</strong> for at least a few real cycles before presenting.</li>
+  <li><strong>Present it</strong> in Week 8: what it replaces, what breaks it, what you'd add next.</li>
+</ol>
+
+<h2>Part 4 — Keep learning</h2>
+<ul>
+  <li><strong>Python <code>requests</code> docs</strong> — <code>requests.readthedocs.io</code></li>
+  <li><strong>APScheduler docs</strong> — for anything beyond a daily cron job</li>
+  <li><strong>Real Python</strong> (realpython.com) — deep, practical write-ups on everything covered here</li>
+</ul>
+
+<div class="foot">
+  ZOUM Consultancy · Automate Everything: Python, AI &amp; Machine Learning in Practice · Student study guide.
+  The public course page is at zoumconsultancy.com.
+</div>
+
+</body>
+</html>
