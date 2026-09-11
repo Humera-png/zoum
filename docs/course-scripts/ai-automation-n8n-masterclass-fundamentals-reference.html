@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>n8n Fundamentals | Complete Teaching Reference</title>
+<style>
+  @page { size: A4; margin: 20mm 18mm 18mm 18mm; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-family:"Segoe UI","Helvetica Neue",Arial,sans-serif; color:#14241B; font-size:10.5pt; line-height:1.55; margin:0; }
+  h1,h2,h3,h4 { font-family:"Segoe UI Semibold","Segoe UI",Arial,sans-serif; color:#0e2a1c; line-height:1.25; }
+  h1 { font-size:21pt; margin:0 0 4pt; }
+  h2 { font-size:15pt; margin:24pt 0 8pt; padding-bottom:4pt; border-bottom:2px solid #1fcb6b; }
+  h3 { font-size:12.5pt; margin:18pt 0 6pt; color:#0e7c42; }
+  h4 { font-size:10.5pt; margin:11pt 0 3pt; }
+  p { margin:0 0 7pt; }
+  ul,ol { margin:0 0 9pt; padding-left:18pt; }
+  li { margin:0 0 4pt; }
+  strong { color:#0e2a1c; }
+  code { font-family:"Consolas",monospace; background:#f1f5f2; padding:1px 4px; border-radius:3px; font-size:9.5pt; }
+  pre { background:#0e2a1c; color:#e8f5ee; font-family:"Consolas",monospace; font-size:9pt; padding:10pt 12pt; border-radius:6px; overflow-x:auto; white-space:pre-wrap; margin:8pt 0; }
+  .cover { padding:34pt 0 16pt; border-bottom:3px solid #1fcb6b; margin-bottom:10pt; }
+  .cover .brand { font-size:11pt; letter-spacing:3px; text-transform:uppercase; color:#0e7c42; font-weight:600; }
+  .cover .sub { font-size:12pt; color:#4b5a52; margin-top:6pt; }
+  .callout { background:#f1faf4; border-left:3px solid #1fcb6b; padding:9pt 12pt; margin:9pt 0; border-radius:0 6px 6px 0; }
+  .analogy { background:#eef3fb; border-left:3px solid #4c7fd6; padding:8pt 12pt; margin:9pt 0; border-radius:0 6px 6px 0; font-size:10pt; }
+  .note { background:#fff8ec; border-left:3px solid #e0a63c; padding:8pt 12pt; margin:9pt 0; border-radius:0 6px 6px 0; font-size:10pt; }
+  .mistake { background:#fdf1f1; border-left:3px solid #d4534f; padding:8pt 12pt; margin:9pt 0; border-radius:0 6px 6px 0; font-size:10pt; }
+  .concept { border:1px solid #e2e8e4; border-radius:8px; padding:12pt 14pt; margin:10pt 0; page-break-inside:avoid; }
+  .concept .tag { display:inline-block; background:#0e2a1c; color:#fff; font-size:8.5pt; font-weight:600; padding:2px 9px; border-radius:20px; letter-spacing:.5px; }
+  table { width:100%; border-collapse:collapse; margin:10pt 0; font-size:9.5pt; }
+  th,td { text-align:left; padding:6pt 8pt; border-bottom:1px solid #e2e8e4; vertical-align:top; }
+  th { background:#0e2a1c; color:#fff; font-weight:600; }
+  .pagebreak { page-break-before:always; }
+  .foot { margin-top:20pt; padding-top:8pt; border-top:1px solid #e2e8e4; font-size:8.5pt; color:#6b7a72; }
+  .qa { margin:6pt 0 6pt 0; padding-left:10pt; border-left:2px solid #cfe3d6; }
+  .qa .q { font-style:italic; color:#0e7c42; }
+  .toc { columns:2; column-gap:24pt; font-size:9.5pt; }
+  .toc div { break-inside:avoid; margin-bottom:3pt; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="brand">ZOUM Consultancy</div>
+  <h1>n8n Fundamentals</h1>
+  <div class="sub">Complete teaching reference — every core concept explained from zero, in teaching order</div>
+</div>
+
+<div class="callout">
+  <strong>What this document is:</strong> a self-contained concept reference for the AI Automation
+  Masterclass (n8n). It assumes the instructor has never used n8n. Every concept is explained in
+  full — what it is, a plain-English analogy, exactly how it works, and a worked example — in the
+  order it comes up in the class. Read a section, then teach it straight from the page. It pairs
+  with the separate "Whole Teaching Notes" document, which has the minute-by-minute run of show;
+  this one is the "what do I actually say when I explain X" reference underneath it.
+</div>
+
+<h2>Contents</h2>
+<div class="toc">
+  <div>1. What is automation?</div>
+  <div>2. What is n8n?</div>
+  <div>3. The canvas &amp; the workflow</div>
+  <div>4. What is a node?</div>
+  <div>5. Trigger nodes vs. regular nodes</div>
+  <div>6. Manual Trigger</div>
+  <div>7. Webhook Trigger — full explanation</div>
+  <div>8. Schedule Trigger — full explanation</div>
+  <div>9. Other trigger types (brief)</div>
+  <div>10. What is JSON? (plain-English primer)</div>
+  <div>11. How data flows between nodes</div>
+  <div>12. The HTTP Request node</div>
+  <div>13. Expressions — the <code>{{ }}</code> syntax</div>
+  <div>14. Credentials &amp; authentication</div>
+  <div>15. The Set / Edit Fields node</div>
+  <div>16. The IF node — conditional logic</div>
+  <div>17. AI nodes — what an LLM is &amp; how the node works</div>
+  <div>18. Testing vs. Activating a workflow</div>
+  <div>19. Executions &amp; debugging a failed run</div>
+  <div>20. Glossary — everything in one table</div>
+</div>
+
+<div class="pagebreak"></div>
+<div class="concept">
+  <span class="tag">1</span>
+  <h3>What is automation?</h3>
+  <p><strong>Definition:</strong> automation is getting a computer to do, on its own, something a
+  person currently does by hand — the same way, every time, without needing to be asked.</p>
+  <div class="analogy"><strong>Analogy:</strong> think of a bank's ATM. Before ATMs, a person had to
+  walk into a branch and hand cash to a teller. The ATM automated that: it does the exact same job,
+  every time, without a human doing it manually. Software automation is the same idea, applied to
+  digital tasks — sending an email, updating a spreadsheet, replying to a customer.</p>
+  <p><strong>The one test for "is this worth automating":</strong> two questions — is it repetitive
+  (happens more than once), and is it stable (it happens roughly the same way each time)? If both are
+  yes, it's a good automation candidate. If a task is different every single time, automating it is
+  usually more work than it saves.</p>
+</div>
+
+<div class="concept">
+  <span class="tag">2</span>
+  <h3>What is n8n?</h3>
+  <p><strong>Definition:</strong> n8n (pronounced "n-eight-n," short for "nodemation") is a visual
+  workflow automation tool. Instead of writing a computer program line by line, you build an
+  automation by placing boxes — called <strong>nodes</strong> — on a canvas and connecting them with
+  lines, in the order you want things to happen.</p>
+  <div class="analogy"><strong>Analogy:</strong> imagine a flowchart on a whiteboard — a box for
+  "form submitted," an arrow to a box for "check the data," an arrow to a box for "send an email."
+  n8n is that flowchart, except each box is a real, working piece of software, and the whole diagram
+  actually runs.</p>
+  <p><strong>Why this matters for people with no coding background:</strong> the visual, box-and-line
+  approach means you don't need to know a programming language to build something that would
+  otherwise require writing real code. You still think logically and precisely — you're just doing it
+  with boxes instead of text.</p>
+  <p><strong>Why n8n specifically (compared to tools like Zapier or Make):</strong> it can be
+  self-hosted (no dependence on one company's servers), it doesn't charge per individual automation
+  run the way some competitors do, and — the reason it's taught in this class — it has first-class
+  support for calling AI models directly inside a workflow.</p>
+</div>
+
+<div class="pagebreak"></div>
+<div class="concept">
+  <span class="tag">3</span>
+  <h3>The canvas &amp; the workflow</h3>
+  <p><strong>What is a workflow?</strong> A workflow is one complete automation — one flowchart, made
+  of nodes connected in order, that does one job from start to finish. Everything you build in n8n
+  lives inside a workflow.</p>
+  <p><strong>What is the canvas?</strong> The canvas is the open, blank space where you build a
+  workflow — literally the whiteboard the nodes get placed on. You add nodes to it, drag them around,
+  and draw connections between them by dragging from one node's edge to the next node.</p>
+  <p><strong>Reading a workflow left to right:</strong> by convention, n8n workflows run left to
+  right (or top to bottom) — the leftmost node runs first, and execution flows along the connecting
+  lines to whatever's next.</p>
+</div>
+
+<div class="concept">
+  <span class="tag">4</span>
+  <h3>What is a node?</h3>
+  <p><strong>Definition:</strong> a node is one single step in a workflow. Each node does exactly one
+  job — fetch some data, transform it, send an email, ask an AI model a question, and so on. You
+  build complex automations by chaining many simple nodes together, not by making one node do
+  everything.</p>
+  <div class="analogy"><strong>Analogy:</strong> think of a factory assembly line. Each station on
+  the line does one small job — attach a wheel, tighten a bolt, spray paint — and the product moves
+  down the line from station to station. A node is one station. A workflow is the whole line.</p>
+  <p><strong>Every node has:</strong> settings on the left/inside (what should this node do,
+  specifically — e.g. which URL to call, what text to send), and, after it runs, an output panel
+  showing exactly what data it produced. Click any node to see both.</p>
+</div>
+
+<div class="pagebreak"></div>
+<div class="concept">
+  <span class="tag">5</span>
+  <h3>Trigger nodes vs. regular nodes</h3>
+  <p><strong>Every workflow needs exactly one starting point — a trigger node.</strong> A trigger is
+  a special kind of node whose only job is to decide <em>when</em> the workflow should run. Every
+  other node in the workflow is a "regular" node (sometimes called an "action" node) — it does
+  something with the data, but it doesn't decide when the workflow starts.</p>
+  <p><strong>The rule to teach:</strong> "The very first node in any workflow is always a trigger.
+  Everything after it is a regular node." n8n enforces this — you cannot run a workflow that doesn't
+  start with a trigger.</p>
+  <p>There are three trigger types used constantly in this course, covered in full next: Manual,
+  Webhook, and Schedule.</p>
+</div>
+
+<div class="concept">
+  <span class="tag">6</span>
+  <h3>Manual Trigger</h3>
+  <p><strong>What it is:</strong> the simplest possible trigger. It does nothing on its own — it
+  fires only when a person clicks the <strong>"Test workflow"</strong> button inside n8n.</p>
+  <p><strong>What it's for:</strong> building and testing. While you're constructing a workflow, you
+  don't want to wait for a real webhook or a scheduled time to see if it works — you want to run it
+  right now, on demand, and see the result immediately. That's exactly what Manual Trigger is for.</p>
+  <p><strong>What it's not for:</strong> a Manual Trigger workflow will never run by itself once you
+  close n8n — a person always has to click the button. It's a development tool, not something used
+  in a finished, "live" automation.</p>
+</div>
+
+<div class="pagebreak"></div>
+<div class="concept">
+  <span class="tag">7</span>
+  <h3>Webhook Trigger — full explanation</h3>
+  <p><strong>What is a webhook, in plain English?</strong> A webhook is a way for one piece of
+  software to instantly notify another piece of software the moment something happens — without
+  either one having to constantly check in with the other.</p>
+  <div class="analogy"><strong>Analogy — a doorbell, not a delivery you have to watch for:</strong>
+  imagine you're expecting a package. Without a doorbell, you'd have to keep walking to the window
+  every few minutes to check if it's arrived — that's "polling," constantly checking. A doorbell
+  means the delivery person notifies YOU the instant they arrive — you don't have to check at all. A
+  webhook is the doorbell. Instead of your workflow constantly asking "has anything happened yet?",
+  the other system rings the doorbell (sends a request) the instant something happens.</div>
+  <p><strong>How it actually works, step by step:</strong></p>
+  <ol>
+    <li>You add a Webhook node to a workflow in n8n.</li>
+    <li>n8n generates a unique web address (a URL) just for that node — something like
+    <code>https://your-n8n.com/webhook/abc123</code>.</li>
+    <li>You give that URL to whatever system needs to notify you — for example, you paste it into a
+    website's form-builder settings, or into another app's "notify this URL when X happens" field.</li>
+    <li>When the event actually happens elsewhere (someone submits the form), that other system sends
+    an HTTP request to your webhook's URL, carrying the relevant data along with it (the person's
+    name, email, message, etc.).</li>
+    <li>n8n receives that request instantly, and your workflow starts running immediately — with that
+    incoming data available to every node after it.</li>
+  </ol>
+  <p><strong>What is an "HTTP request," for someone hearing the term for the first time?</strong>
+  Every time a browser loads a web page, it's making an HTTP request to a server and getting a
+  response back. A webhook works the same way, except instead of a browser asking for a page, another
+  piece of software is sending data to your workflow's URL.</p>
+  <p><strong>HTTP Method — GET vs. POST (teach this briefly, it comes up immediately):</strong> a
+  <code>GET</code> request generally just asks for information; a <code>POST</code> request sends
+  data along with the request. A form submission (a lead's name, email, message) is always sent as a
+  <code>POST</code>, because it's delivering data, not just asking a question. This is why the
+  Webhook node in this class is always set to <code>POST</code>.</p>
+  <p><strong>Test URL vs. Production URL — the distinction that trips people up:</strong> every
+  Webhook node actually gives you two different web addresses:</p>
+  <table>
+    <tr><th style="width:110pt">URL</th><th>When it works</th><th>Used for</th></tr>
+    <tr><td>Test URL</td><td>Only while you've clicked "Listen for test event" inside n8n and are
+    actively watching</td><td>Building and testing, while you're in the editor</td></tr>
+    <tr><td>Production URL</td><td>Works continuously, any time, once the workflow is toggled Active</td><td>The real, live automation, running unattended</td></tr>
+  </table>
+  <p>Say this explicitly: "While we're building today, we always use the Test URL, because we're
+  sitting here watching it happen. The Production URL is what you'd give to a real website form once
+  the automation is finished and turned on."</p>
+  <div class="mistake">
+    <strong>Common mistake:</strong> sending a test request without first clicking "Listen for test
+    event" — the webhook isn't listening yet, so nothing happens and the node stays grey. Always
+    click Listen first, then send the request.
+  </div>
+  <div class="qa">
+    <p class="q">If asked: "Is a webhook the same as an API?"</p>
+    <p>Related, but not identical: "An API is a general way for two systems to talk to each other — it
+    can involve you asking a question and getting an answer back. A webhook is specifically the
+    reverse direction: the other system reaches out to YOU, the moment something happens, without you
+    asking first."</p>
+  </div>
+  <p><strong>Real-world example to give the room:</strong> "Imagine a 'Contact us' form on a company
+  website. When a visitor clicks Submit, the website doesn't just save the message quietly — it can
+  be configured to immediately send that data to a webhook URL. The moment they hit Submit, your n8n
+  workflow wakes up with their name, email, and message already in hand. No one had to check an
+  inbox or refresh a spreadsheet."</p>
+</div>
+
+<div class="pagebreak"></div>
+<div class="concept">
+  <span class="tag">8</span>
+  <h3>Schedule Trigger — full explanation</h3>
+  <p><strong>What is it?</strong> A Schedule Trigger fires a workflow automatically at set times —
+  not because something happened elsewhere, but because a certain amount of time has passed, or a
+  clock has hit a specific time.</p>
+  <div class="analogy"><strong>Analogy — an alarm clock, not a doorbell:</strong> where a Webhook is
+  a doorbell (reacts to an event), a Schedule Trigger is an alarm clock — it doesn't wait for
+  anything to happen, it just goes off at the time you set, every time, on its own.</div>
+  <p><strong>How it works:</strong> you configure the trigger with how often it should run — for
+  example, "every day at 6:00 AM," "every hour," or "every Monday at 9:00 AM." n8n then runs the
+  workflow automatically at each of those moments, forever, as long as the workflow is Active — no
+  person needs to be present or click anything.</p>
+  <p><strong>Where this matters — the concept of "cron":</strong> under the hood, scheduling systems
+  (in n8n and in most software) use a format called <strong>cron</strong> to describe recurring
+  times. You don't need to teach cron syntax in depth for this class, but it's worth naming: n8n's
+  Schedule Trigger has a simple dropdown for common cases (every X minutes/hours/days), and an
+  advanced "Cron Expression" option for anything unusual.</p>
+  <p><strong>Real-world examples to give the room:</strong> "Check for new orders every 15 minutes
+  and send a summary." "Every morning at 6 AM, pull yesterday's sales numbers and email a report."
+  "Every Monday, check which subscriptions are expiring this week." All three are things that need to
+  happen on a timer, regardless of whether any specific external event occurred — that's exactly what
+  a Schedule Trigger is for.</p>
+  <div class="qa">
+    <p class="q">If asked: "How is this different from a webhook?"</p>
+    <p>Say the distinction plainly: "A webhook fires because something happened somewhere else, right
+    now, unpredictably. A schedule fires because a certain time arrived — predictable, regular,
+    nothing external needs to happen at all."</p>
+  </div>
+</div>
+
+<div class="concept">
+  <span class="tag">9</span>
+  <h3>Other trigger types (brief — mention, don't build)</h3>
+  <ul>
+    <li><strong>App-specific triggers</strong> (e.g. a Gmail trigger, a Slack trigger) — fire when
+    something happens inside a specific app, like a new email arriving. Under the hood these often
+    work like a managed webhook or a scheduled check against that app.</li>
+    <li><strong>Error Trigger</strong> — a special trigger that fires when another workflow fails,
+    used to build "alert me if something breaks" automations.</li>
+    <li><strong>Chat Trigger</strong> — fires when a message is sent through a chat interface,
+    commonly used to build conversational AI assistants.</li>
+  </ul>
+  <p>These aren't built hands-on in the masterclass, but naming them answers the natural "what else
+  is there" question and previews the enhanced program.</p>
+</div>
+
+<div class="pagebreak"></div>
+<div class="concept">
+  <span class="tag">10</span>
+  <h3>What is JSON? (plain-English primer)</h3>
+  <p><strong>Why teach this at all:</strong> every single piece of data moving between n8n nodes is
+  in a format called JSON. Nobody can read a node's output panel confidently without recognizing this
+  shape, so it's worth 5 minutes even though it's "not really an n8n topic."</p>
+  <p><strong>Definition:</strong> JSON (JavaScript Object Notation) is just a simple, structured way
+  of writing down data as labeled pieces of information — a <strong>field name</strong>, then its
+  <strong>value</strong>.</p>
+  <pre>{
+  "name": "Priya",
+  "email": "priya@example.com",
+  "message": "Do you take on inventory automation?"
+}</pre>
+  <p><strong>Explain, pointing at each part:</strong> "This is one 'item' of data. <code>name</code>
+  is a field; <code>"Priya"</code> is its value. Same for <code>email</code> and <code>message</code>.
+  That's it — that's the entire idea. Every node's output is just a list of these labeled pieces of
+  data."</p>
+</div>
+
+<div class="concept">
+  <span class="tag">11</span>
+  <h3>How data flows between nodes</h3>
+  <p><strong>The single most important rule in all of n8n:</strong> a node's output becomes the next
+  node's input. Always. No exceptions. Whatever data comes out of one box is exactly what's available
+  to the next box in line.</p>
+  <div class="analogy"><strong>Analogy:</strong> think of a relay race — each runner (node) receives
+  the baton (the data) from the runner before them, does their leg of the race (their specific job),
+  and passes the baton on. Nobody can hand off data they never received.</div>
+  <p><strong>Practical consequence to teach:</strong> to use a webhook's incoming email address five
+  nodes later, you don't need to manually copy it forward through every node — you can reach back and
+  reference the original node directly (covered in Expressions, next).</p>
+</div>
+
+<div class="pagebreak"></div>
+<div class="concept">
+  <span class="tag">12</span>
+  <h3>The HTTP Request node</h3>
+  <p><strong>What it is:</strong> a general-purpose node that can call any web address on the
+  internet and send or receive data from it — the "universal connector" of n8n.</p>
+  <p><strong>Why it matters so much:</strong> n8n has hundreds of purpose-built nodes (Gmail, Slack,
+  Google Sheets, etc.), but it's impossible for it to have a dedicated node for every service that
+  exists. The HTTP Request node is the escape hatch: if a service has any API at all, you can talk to
+  it with this one node, even with zero dedicated n8n support for it.</p>
+  <p><strong>The line to say that lands this concept:</strong> "Once you understand this one node,
+  you're no longer limited to what n8n has built — you can automate literally anything that has an
+  API, which today is almost everything."</p>
+  <p><strong>Key settings to know:</strong> the <strong>URL</strong> to call, the <strong>Method</strong>
+  (GET to fetch data, POST to send data), <strong>Headers</strong> (often used to carry an
+  authentication token), and the <strong>Body</strong> (the data being sent, for POST requests).</p>
+</div>
+
+<div class="concept">
+  <span class="tag">13</span>
+  <h3>Expressions — the <code>{{ }}</code> syntax</h3>
+  <p><strong>What is an expression?</strong> A small piece of syntax that lets you insert a value
+  from somewhere else in the workflow into a field, instead of typing a fixed, hard-coded value.</p>
+  <p><strong>Why this exists:</strong> without expressions, every field you type is a fixed value —
+  useful for testing, useless for a real automation where the data is different every single time
+  (a different name, a different email, every run). Expressions are how a workflow stays dynamic.</p>
+  <p><strong>The syntax, piece by piece:</strong></p>
+  <pre>{{ $json.message }}</pre>
+  <ul>
+    <li><code>{{ }}</code> — tells n8n "don't treat this as literal text, evaluate what's inside."</li>
+    <li><code>$json</code> — means "the data arriving at this node right now."</li>
+    <li><code>.message</code> — the specific field you want to pull out of that data.</li>
+  </ul>
+  <p><strong>Field names with spaces:</strong></p>
+  <pre>{{ $json["field name"] }}</pre>
+  <p><strong>Reaching back to a specific earlier node (not just the immediately previous one):</strong></p>
+  <pre>{{ $('Webhook').item.json.email }}</pre>
+  <p>Explain: "name the node you want, in quotes, inside <code>$('...')</code>, then walk down to
+  the field exactly like before."</p>
+  <div class="qa">
+    <p class="q">If asked: "Why does my expression show [undefined]?"</p>
+    <p>Almost always a typo or wrong capitalization in the field name. Teach the fix directly: "Click
+    the earlier node and read its actual output panel — copy the exact field name from there instead
+    of typing it from memory."</p>
+  </div>
+</div>
+
+<div class="pagebreak"></div>
+<div class="concept">
+  <span class="tag">14</span>
+  <h3>Credentials &amp; authentication</h3>
+  <p><strong>What is a credential?</strong> A saved API key, password, or login token that a node
+  needs in order to talk to an external service on your behalf — for example, the key that proves to
+  an AI provider that you're allowed to use their models.</p>
+  <p><strong>Why n8n separates credentials from nodes:</strong> if every node stored its own copy of
+  a password, that password would be scattered everywhere and hard to change or keep safe. Instead,
+  you create ONE credential (say, "My OpenAI Account"), and any node that needs it just selects it
+  from a dropdown.</p>
+  <div class="analogy"><strong>Analogy:</strong> think of a credential like a key card for a building
+  — you check it out once from security, and any door that recognizes it lets you through. You don't
+  get issued a brand new key for every single door.</div>
+  <p><strong>Security note worth saying out loud:</strong> once a credential is saved, n8n never
+  displays the actual key again — so a workflow can be shared, exported, or shown on screen without
+  ever leaking the secret itself.</p>
+</div>
+
+<div class="concept">
+  <span class="tag">15</span>
+  <h3>The Set / Edit Fields node</h3>
+  <p><strong>What it is:</strong> a node used to create new fields or change existing ones in the
+  data as it flows through — reshaping data into the form a later step needs.</p>
+  <p><strong>Why it's needed:</strong> data rarely arrives in exactly the shape you want it in for
+  the next step. The Set node lets you add a field (e.g. combine first and last name into "full
+  name"), rename one, or hard-code a value that should be the same on every run.</p>
+</div>
+
+<div class="pagebreak"></div>
+<div class="concept">
+  <span class="tag">16</span>
+  <h3>The IF node — conditional logic</h3>
+  <p><strong>What it is:</strong> a node that splits a workflow into two paths — "true" and "false"
+  — based on a condition you set.</p>
+  <div class="analogy"><strong>Analogy:</strong> a fork in the road with a sign: "if it's raining, go
+  left; otherwise, go right." The IF node is that fork and that sign, built into a workflow.</div>
+  <p><strong>Example:</strong> "If the incoming message contains the word 'urgent,' send it to one
+  Slack channel; otherwise, send it to the normal channel." The condition ("contains urgent") decides
+  which of the two paths the data takes next.</p>
+</div>
+
+<div class="concept">
+  <span class="tag">17</span>
+  <h3>AI nodes — what an LLM is, and how the node works</h3>
+  <p><strong>What is an LLM, in one plain sentence?</strong> A large language model is an AI system
+  trained on enormous amounts of text that can read text you give it and generate a relevant response
+  — it predicts, very well, what a good reply looks like.</p>
+  <p><strong>What the AI node (OpenAI / Anthropic / similar) does:</strong> it sends your text (the
+  "prompt") to the AI provider's servers, and returns whatever text the model generates back into
+  your workflow, as normal node output — usable by every node after it, exactly like any other data.</p>
+  <p><strong>What a prompt is, and why it matters:</strong> the prompt is the instruction you give the
+  model. It is the entire interface — what you write in it directly controls what comes back.
+  Teach this explicitly with an example: telling the model "write a 3-sentence reply, and do not
+  invent pricing or timelines" produces a reliably different (and safer) result than not saying so.
+  The model will happily make things up if you don't tell it the boundaries.</p>
+  <div class="qa">
+    <p class="q">If asked: "Is the AI 'thinking'?"</p>
+    <p>Keep this simple and honest: "It's generating text based on patterns learned from huge amounts
+    of writing. It doesn't know facts the way a database does — it's very good at producing
+    plausible, relevant language, which is why the instructions you give it (the prompt) matter so
+    much."</p>
+  </div>
+</div>
+
+<div class="pagebreak"></div>
+<div class="concept">
+  <span class="tag">18</span>
+  <h3>Testing vs. Activating a workflow</h3>
+  <p><strong>Test workflow (the button):</strong> runs the workflow once, right now, so you can watch
+  it happen and check the output at every node. Used constantly while building.</p>
+  <p><strong>Active (the toggle, top-right of the editor):</strong> when turned on, the workflow
+  starts listening for its trigger continuously and automatically — a Webhook's Production URL only
+  works once Active is on; a Schedule Trigger only fires on its own once Active is on.</p>
+  <div class="mistake">
+    <strong>The mistake to pre-empt explicitly:</strong> "My webhook isn't working" is almost always
+    either (a) using the Test URL instead of the Production URL for a real, live integration, or (b)
+    forgetting to toggle Active. Teach both causes together since they're easy to confuse.
+  </div>
+</div>
+
+<div class="concept">
+  <span class="tag">19</span>
+  <h3>Executions &amp; debugging a failed run</h3>
+  <p><strong>What is an execution?</strong> One complete run of a workflow, start to finish — every
+  time the trigger fires (manually, by webhook, or on schedule), that's one execution, and n8n keeps
+  a record of it.</p>
+  <p><strong>The Executions tab:</strong> shows a history of every run, whether it succeeded or
+  failed, and — critically for debugging — lets you click into any past run and see exactly what
+  data was flowing through each node at that moment.</p>
+  <p><strong>How to debug a failed workflow, as a repeatable process to teach:</strong></p>
+  <ol>
+    <li>Open the failed execution and find the node that's marked with an error (usually shown in red).</li>
+    <li>Click that node and read its input — was the data it received what you expected?</li>
+    <li>If the input looks wrong, the problem is actually in an earlier node — trace backward.</li>
+    <li>If the input looks right but the node still failed, check its own settings (a typo in an
+    expression, a missing credential, a wrong field name).</li>
+  </ol>
+</div>
+
+<div class="pagebreak"></div>
+<h2>20. Glossary — everything in one table</h2>
+<table>
+  <tr><th style="width:130pt">Term</th><th>Plain meaning</th></tr>
+  <tr><td>Workflow</td><td>One complete automation, made of connected nodes</td></tr>
+  <tr><td>Canvas</td><td>The workspace where a workflow is built</td></tr>
+  <tr><td>Node</td><td>One step in a workflow; does exactly one job</td></tr>
+  <tr><td>Trigger</td><td>The special node that decides when a workflow starts</td></tr>
+  <tr><td>Manual Trigger</td><td>Fires only when you click "Test workflow"</td></tr>
+  <tr><td>Webhook</td><td>A URL that lets another system instantly notify your workflow when something happens</td></tr>
+  <tr><td>Test URL / Production URL</td><td>A webhook's "while I'm watching" address vs. its "live, always on" address</td></tr>
+  <tr><td>Schedule Trigger</td><td>Fires a workflow automatically at set times, like an alarm clock</td></tr>
+  <tr><td>HTTP request</td><td>One message sent from one system to another over the internet</td></tr>
+  <tr><td>JSON</td><td>The labeled field/value format all data in n8n is written in</td></tr>
+  <tr><td>Expression</td><td>The <code>{{ }}</code> syntax used to insert a value from another node</td></tr>
+  <tr><td>Credential</td><td>A saved API key/login a node can use without exposing it</td></tr>
+  <tr><td>HTTP Request node</td><td>The general-purpose node that can call any API on the internet</td></tr>
+  <tr><td>Set / Edit Fields node</td><td>Adds, renames, or hard-codes fields in the data</td></tr>
+  <tr><td>IF node</td><td>Splits a workflow into two paths based on a condition</td></tr>
+  <tr><td>LLM</td><td>An AI model that generates relevant text from a prompt</td></tr>
+  <tr><td>Prompt</td><td>The instruction given to an AI model — the whole interface to its behavior</td></tr>
+  <tr><td>Execution</td><td>One complete run of a workflow, start to finish</td></tr>
+  <tr><td>Active</td><td>The toggle that makes a workflow run automatically, on its own, forever</td></tr>
+</table>
+
+<div class="foot">
+  ZOUM Consultancy · n8n Fundamentals · Complete teaching reference for the AI Automation Masterclass (n8n).
+  Pairs with the Whole Teaching Notes document. The public course page is at zoumconsultancy.com.
+</div>
+
+</body>
+</html>
