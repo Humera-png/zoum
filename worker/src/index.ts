@@ -11,6 +11,7 @@ import {
   sendJobApplicationEmail,
   sendEnrollmentEmail,
   sendEnrollmentConfirmationEmail,
+  sendEnrollmentStartedEmail,
   type ResendAttachment,
 } from "./email";
 import { isRateLimited } from "./ratelimit";
@@ -166,6 +167,34 @@ async function handleCreateOrder(
       order.orderId,
     )
     .run();
+
+  // Notify the team the moment someone fills the form, independent of
+  // whether they go on to complete payment — the admin dashboard already
+  // shows this "created" row, and this puts the same lead in the inbox too,
+  // so an abandoned checkout is never just a silent database row.
+  const startedEmailResult = await sendEnrollmentStartedEmail({
+    apiKey: env.RESEND_API_KEY,
+    from: env.CONTACT_FROM_EMAIL,
+    to: env.CONTACT_TO_EMAIL,
+    data: {
+      name,
+      email,
+      phone,
+      education,
+      purpose,
+      courseTitle: course.title,
+      amountInr: course.priceInr,
+    },
+  });
+  if (!startedEmailResult.ok) {
+    // The order was already created and returned to the student below — a
+    // failed notification email shouldn't block checkout.
+    console.error(
+      "Enrollment-started email error:",
+      startedEmailResult.status,
+      startedEmailResult.body,
+    );
+  }
 
   return jsonResponse(
     {

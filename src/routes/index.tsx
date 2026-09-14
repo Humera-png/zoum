@@ -100,6 +100,7 @@ function HeroCourseAd() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.6 }}
+            style={{ objectPosition: course.imagePosition || "center" }}
             className="absolute inset-0 h-full w-full object-cover opacity-70 group-hover:opacity-85 transition-opacity duration-500"
           />
         </AnimatePresence>

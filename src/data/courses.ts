@@ -19,6 +19,10 @@ export interface Course {
   pros?: string[]; // shown as a bullet list on the course page, if present
   terms?: string[]; // Terms & Conditions bullets, shown on the course page, if present
   image: string;
+  // CSS object-position for the card/ad thumbnail crop, e.g. "50% 20%".
+  // Only needed for photos where the default center crop cuts off faces —
+  // most images (graphics, already-16:9 photos) don't need this.
+  imagePosition?: string;
 }
 
 const MASTERCLASS_TERMS = [
@@ -56,8 +60,8 @@ export const courses: Course[] = [
       "Placement assistance and guidance from a team that's done this before",
     ],
     terms: MASTERCLASS_TERMS,
-    image:
-      "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=80",
+    image: "/assets/bpo-career-masterclass.jpg",
+    imagePosition: "50% 15%",
   },
   {
     id: "it-career-masterclass",
@@ -88,8 +92,8 @@ export const courses: Course[] = [
       "Placement assistance and guidance from a team that's done this before",
     ],
     terms: MASTERCLASS_TERMS,
-    image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1200&q=80",
+    image: "/assets/it-career-interview-masterclass.jpg",
+    imagePosition: "50% 20%",
   },
   {
     id: "business-consultancy-masterclass",
@@ -152,8 +156,7 @@ export const courses: Course[] = [
       "A personal 7-Day Automation Build Plan you actually leave with",
     ],
     terms: MASTERCLASS_TERMS,
-    image:
-      "https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=1200&q=80",
+    image: "/assets/ai-automation-masterclass.jpg",
   },
   {
     id: "english-communication",
@@ -471,7 +474,6 @@ export const courses: Course[] = [
       "Placement assistance and guidance from a team that's done this before",
     ],
     terms: MASTERCLASS_TERMS,
-    image:
-      "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=80",
+    image: "/assets/python-ai-ml.jpg",
   },
 ];

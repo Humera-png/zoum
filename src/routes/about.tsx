@@ -35,13 +35,6 @@ function initialsOf(name: string): string {
 
 const board = [
   {
-    name: "Zyaad",
-    role: "Founder",
-    image: "/assets/abdur-founder.jpg",
-    bio: "Zyaad built ZOUM's recruitment engine from the ground up: the sourcing process, client relationships, and vetting standards that stand behind every candidate we put forward. 5+ years in strategic talent sourcing and business planning is the foundation he brings to the consultancy side of ZOUM too, working directly with client companies to turn a hiring need or a growth problem into a plan that's actually realistic to execute.",
-    linkedin: "https://www.linkedin.com/in/abdur-rehman-534483221/",
-  },
-  {
     name: "Parv ",
     role: "Founder",
     image: "/assets/parv-founder.jpg",
@@ -49,9 +42,16 @@ const board = [
     linkedin: "https://www.linkedin.com/in/parv-jain-50020232b/",
   },
   {
+    name: "Zyaad",
+    role: "Founder",
+    image: "/assets/abdur-founder.jpg",
+    bio: "Zyaad built ZOUM's recruitment engine from the ground up: the sourcing process, client relationships, and vetting standards that stand behind every candidate we put forward. 5+ years in strategic talent sourcing and business planning is the foundation he brings to the consultancy side of ZOUM too, working directly with client companies to turn a hiring need or a growth problem into a plan that's actually realistic to execute.",
+    linkedin: "https://www.linkedin.com/in/abdur-rehman-534483221/",
+  },
+  {
     name: "Huma",
     role: "Co-Founder & CTO",
-    image: "",
+    image: "/assets/huma-founder.png",
     bio: "Huma is the reason ZOUM's technology actually works, not just exists on paper. She built this website herself, the AI automation and agent systems ZOUM ships for clients, and the course and payments platform students enroll through, then built the infrastructure to keep all of it running without her having to babysit it. Her background is in computer science with a deep focus on automation, Python, and AI/ML, the same expertise behind the AI & IT services and courses ZOUM offers today. As Co-Founder and CTO, her real job is making sure technology is never the reason ZOUM can't move fast.",
     linkedin: "https://www.linkedin.com/in/humerashaikhofficial/",
   },

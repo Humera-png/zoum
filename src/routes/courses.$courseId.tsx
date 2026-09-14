@@ -89,6 +89,7 @@ function CourseDetailPage() {
                 <img
                   src={course.image}
                   alt={course.title}
+                  style={{ objectPosition: course.imagePosition || "center" }}
                   className="absolute inset-0 h-full w-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/0 to-transparent" />
@@ -150,6 +151,7 @@ function CourseDetailPage() {
                                 src={course.image}
                                 alt=""
                                 loading="lazy"
+                                style={{ objectPosition: course.imagePosition || "center" }}
                                 className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
                               />
                               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />

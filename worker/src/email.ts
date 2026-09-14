@@ -79,6 +79,74 @@ export interface EnrollmentData {
   communityUrl?: string;
 }
 
+// Sent the moment a student submits the enrollment form and checkout is
+// created — before payment completes. This is what lets the team see (in
+// their inbox, alongside the admin dashboard) that someone is interested
+// even if they never finish paying.
+export interface EnrollmentStartedData {
+  name: string;
+  email: string;
+  phone: string;
+  education: string;
+  purpose: string;
+  courseTitle: string;
+  amountInr: number;
+}
+
+export function renderEnrollmentStartedEmailHtml(data: EnrollmentStartedData): string {
+  const rows: [string, string][] = [
+    ["Name", data.name],
+    ["Email", data.email],
+    ["Phone", data.phone],
+    ["Education", data.education],
+    ["Purpose", data.purpose],
+    ["Course", data.courseTitle],
+    ["Amount due", `₹${data.amountInr.toLocaleString("en-IN")}`],
+  ];
+  const rowsHtml = rows
+    .map(
+      ([label, value]) =>
+        `<tr><td style="padding:4px 12px 4px 0;color:#647067;font-size:13px;white-space:nowrap;">${escapeHtml(label)}</td><td style="padding:4px 0;font-size:14px;">${escapeHtml(value)}</td></tr>`,
+    )
+    .join("");
+
+  return `<!doctype html>
+<html>
+  <body style="font-family:Arial,Helvetica,sans-serif;color:#14241b;">
+    <h2 style="margin:0 0 4px;">New enrollment started — ${escapeHtml(data.courseTitle)}</h2>
+    <p style="margin:0 0 16px;font-size:13px;color:#647067;">Payment not completed yet — check the admin dashboard's Enrollments tab for current status.</p>
+    <table cellpadding="0" cellspacing="0">${rowsHtml}</table>
+  </body>
+</html>`;
+}
+
+export async function sendEnrollmentStartedEmail(params: {
+  apiKey: string;
+  from: string;
+  to: string;
+  data: EnrollmentStartedData;
+}): Promise<{ ok: true } | { ok: false; status: number; body: string }> {
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${params.apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from: params.from,
+      to: [params.to],
+      reply_to: params.data.email,
+      subject: `New enrollment started — ${params.data.courseTitle} — ${params.data.name}`,
+      html: renderEnrollmentStartedEmailHtml(params.data),
+    }),
+  });
+
+  if (!res.ok) {
+    return { ok: false, status: res.status, body: await res.text() };
+  }
+  return { ok: true };
+}
+
 export function renderEnrollmentEmailHtml(data: EnrollmentData): string {
   const rows: [string, string][] = [
     ["Name", data.name],
