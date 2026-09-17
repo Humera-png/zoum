@@ -157,6 +157,7 @@ export const courses: Course[] = [
     ],
     terms: MASTERCLASS_TERMS,
     image: "/assets/ai-automation-masterclass.jpg",
+    imagePosition: "50% 38%",
   },
   {
     id: "english-communication",
