@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { MessageCircle, Users, Brain, Presentation, Handshake } from "lucide-react";
+import { MessageCircle, Users, Brain, Presentation, Handshake, Cpu } from "lucide-react";
 import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageBackdrop } from "@/components/PageBackdrop";
 import { CourseCard } from "@/components/CourseCard";
@@ -123,6 +123,11 @@ const programs = [
     icon: Handshake,
     name: "Business Consultancy Careers",
     desc: "Frameworks, client communication, and interview readiness for people breaking into consulting.",
+  },
+  {
+    icon: Cpu,
+    name: "IT & AI Careers",
+    desc: "n8n automation, machine learning foundations, Python, and IT interview readiness for people breaking into tech.",
   },
 ];
 
