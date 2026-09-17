@@ -100,6 +100,15 @@ export function Footer() {
                 </a>
               </li>
               <li className="flex items-center gap-2.5">
+                <Phone className="h-4 w-4 text-lime shrink-0" />
+                <a
+                  href="tel:+917665521538"
+                  className="text-sm text-foreground/80 hover:text-lime transition"
+                >
+                  +91 7665521538
+                </a>
+              </li>
+              <li className="flex items-center gap-2.5">
                 <Mail className="h-4 w-4 text-lime shrink-0" />
                 <a
                   href="mailto:contact@zoumconsultancy.com"
