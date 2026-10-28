@@ -1,17 +1,32 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Cpu, Landmark, HeartPulse, Factory, ShoppingBag, ShoppingCart, Radio, Plane } from "lucide-react";
+import {
+  Cpu,
+  Landmark,
+  HeartPulse,
+  Factory,
+  ShoppingBag,
+  ShoppingCart,
+  Radio,
+  Plane,
+} from "lucide-react";
 
 import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
 import { PageBackdrop } from "@/components/PageBackdrop";
 import { JobSeekerForm } from "@/components/JobSeekerForm";
 import { JobListings } from "@/components/JobListings";
+import {
+  AudienceSection,
+  StepsSection,
+  CitiesSection,
+  FaqSection,
+} from "@/components/ServiceGuide";
 
 export const Route = createFileRoute("/services/career")({
   head: () => ({
     meta: [
       {
-        title: "Recruitment Agency & Job Placement | ZOUM Consultancy Jaipur",
+        title: "Recruitment Agency & Job Placement | ZOUM Jaipur & Ahmedabad",
       },
       {
         name: "description",
@@ -20,7 +35,8 @@ export const Route = createFileRoute("/services/career")({
       },
       {
         name: "keywords",
-        content: "recruitment agency Jaipur, job placement India, job consultancy, career advisory, hiring agency India",
+        content:
+          "recruitment agency Jaipur, recruitment agency Ahmedabad, job placement Ahmedabad, job placement India, job consultancy, career advisory, hiring agency India",
       },
       {
         property: "og:title",
@@ -37,6 +53,71 @@ export const Route = createFileRoute("/services/career")({
 
   component: CareerPage,
 });
+
+const audiences = [
+  {
+    name: "Freshers",
+    desc: "Graduates and 12th-pass candidates looking for a first job in BPO, customer support, sales, IT, or operations. We help you present your profile properly and prepare for interviews.",
+  },
+  {
+    name: "Experienced Professionals",
+    desc: "People who are already qualified for a bigger role but aren't getting noticed. We put you in front of the right employers and help you negotiate better pay.",
+  },
+  {
+    name: "Companies Hiring",
+    desc: "Businesses that need screened, interview-ready candidates without spending weeks sorting resumes. Tell us the role and we'll shortlist people who fit.",
+  },
+];
+
+const steps = [
+  {
+    name: "Share your profile",
+    desc: "Apply for an open role below, or submit your details through the form so our team knows what you're looking for.",
+  },
+  {
+    name: "Profile review",
+    desc: "We look at your experience, skills, and goals, and tell you honestly which roles you're a strong fit for.",
+  },
+  {
+    name: "Matching",
+    desc: "We match you with openings from employers we work with across industries, in Jaipur, Ahmedabad, and other cities.",
+  },
+  {
+    name: "Interview preparation",
+    desc: "We help you get ready for the interview, from how to talk about your experience to the questions employers usually ask.",
+  },
+  {
+    name: "Offer and joining",
+    desc: "We stay involved through the offer, help you understand it, and support you until you join.",
+  },
+];
+
+const pageFaqs = [
+  {
+    q: "Do you place candidates in Ahmedabad as well as Jaipur?",
+    a: "Yes. We're headquartered in Jaipur and also work with candidates and employers in Ahmedabad. We place people in other cities across India too.",
+  },
+  {
+    q: "I'm a fresher with no experience. Can you help me get a job?",
+    a: "Yes. Many of the people we work with are freshers. We help you find entry-level roles, such as BPO and customer support jobs, and prepare you for interviews. Our courses can also help you build job-ready skills.",
+  },
+  {
+    q: "Which industries do you hire for?",
+    a: "IT and technology, banking and finance, healthcare, manufacturing, consumer and retail, e-commerce, telecom, and aviation.",
+  },
+  {
+    q: "How do I apply for a job through ZOUM?",
+    a: "Apply for any open role listed on this page, or fill in the job seeker form with your details. Our team reviews every application and contacts you when there's a role that fits.",
+  },
+  {
+    q: "How long does it take to get placed?",
+    a: "It depends on the role, your experience, and how many openings match your profile at the time. We keep you updated and contact you as soon as a suitable role comes up.",
+  },
+  {
+    q: "I'm an employer. How do I hire through ZOUM?",
+    a: "Contact us with the role, location, and the kind of candidate you need. We'll shortlist screened candidates for you to interview.",
+  },
+];
 
 const expertise = [
   {
@@ -93,7 +174,7 @@ function CareerPage() {
 
       <div className="max-w-5xl mx-auto relative z-10">
         <PageHeader
-          pill="Career Advisory"
+          pill="Job Placement & Recruitment Agency in Jaipur & Ahmedabad"
           title="Get Noticed For"
           italic="Bigger Roles."
           sub="We help people get noticed for the roles they're already qualified for, and negotiate better pay once they get there."
@@ -112,8 +193,8 @@ function CareerPage() {
         <div className="mt-20 space-y-32">
           <Section id="expertise" title="Our Expertise" kicker="/ industries">
             <p className="text-muted-foreground max-w-2xl -mt-4 mb-8">
-              We place across a wide range of industries, so we already understand the hiring
-              needs specific to your field, not just generic recruiting.
+              We place across a wide range of industries, so we already understand the hiring needs
+              specific to your field, not just generic recruiting.
             </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {expertise.map((e, i) => (
@@ -141,12 +222,22 @@ function CareerPage() {
 
           <Section id="apply" title="Apply Now" kicker="/ job seekers">
             <p className="text-muted-foreground max-w-2xl -mt-4 mb-8">
-              Looking for your next role, not looking to hire? Submit your details below and
-              our team will match you with the right opportunity.
+              Looking for your next role, not looking to hire? Submit your details below and our
+              team will match you with the right opportunity.
             </p>
             <JobSeekerForm />
           </Section>
 
+          <AudienceSection audiences={audiences} />
+
+          <StepsSection steps={steps} id="how-it-works" />
+          <CitiesSection
+            intro={
+              "We're based in Jaipur and work with candidates and employers in Ahmedabad and across India."
+            }
+          />
+
+          <FaqSection faqs={pageFaqs} />
           <CTA />
         </div>
       </div>

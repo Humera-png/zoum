@@ -7,11 +7,11 @@ import { PageBackdrop } from "@/components/PageBackdrop";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About ZOUM Consultancy | Jaipur Business Consultancy" },
+      { title: "About ZOUM Consultancy | Consultancy in Jaipur & Ahmedabad" },
       {
         name: "description",
         content:
-          "ZOUM Consultancy is a Jaipur-based consultancy. Meet the team behind our recruitment, AI automation, and software development work.",
+          "ZOUM Consultancy is a Jaipur-based consultancy serving Jaipur and Ahmedabad. Meet the team behind our recruitment, AI automation, and software development work.",
       },
       { property: "og:title", content: "About ZOUM Consultancy" },
       {

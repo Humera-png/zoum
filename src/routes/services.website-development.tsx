@@ -20,11 +20,17 @@ import {
 import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageBackdrop } from "@/components/PageBackdrop";
 import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
+import {
+  AudienceSection,
+  StepsSection,
+  CitiesSection,
+  FaqSection,
+} from "@/components/ServiceGuide";
 
 export const Route = createFileRoute("/services/website-development")({
   head: () => ({
     meta: [
-      { title: "Website Development & Social Media Marketing | ZOUM Consultancy Jaipur" },
+      { title: "Website Development & Social Media Marketing | ZOUM Jaipur & Ahmedabad" },
       {
         name: "description",
         content:
@@ -33,9 +39,12 @@ export const Route = createFileRoute("/services/website-development")({
       {
         name: "keywords",
         content:
-          "website development company India, web app development Jaipur, e-commerce development, social media marketing agency Jaipur, Instagram marketing India, LinkedIn management, digital marketing agency, digital presence company India",
+          "website development company India, web app development Jaipur, website development Ahmedabad, social media marketing agency Ahmedabad, e-commerce development, social media marketing agency Jaipur, Instagram marketing India, LinkedIn management, digital marketing agency, digital presence company India",
       },
-      { property: "og:title", content: "Website Development & Social Media Marketing | ZOUM Consultancy" },
+      {
+        property: "og:title",
+        content: "Website Development & Social Media Marketing | ZOUM Consultancy",
+      },
       {
         property: "og:description",
         content:
@@ -46,6 +55,71 @@ export const Route = createFileRoute("/services/website-development")({
   }),
   component: WebsiteDevelopmentPage,
 });
+
+const audiences = [
+  {
+    name: "New Businesses",
+    desc: "Shops, clinics, coaches, and startups that need a professional website quickly so customers can find and trust them online.",
+  },
+  {
+    name: "Growing Businesses",
+    desc: "Businesses that have outgrown a basic site and need more pages, a blog, bookings, or an online store.",
+  },
+  {
+    name: "Brands Wanting Leads",
+    desc: "Businesses that want the website and social media to bring in enquiries, not just look good.",
+  },
+];
+
+const steps = [
+  {
+    name: "Requirements call",
+    desc: "We learn about your business, your customers, and what the website needs to do.",
+  },
+  {
+    name: "Quote and plan",
+    desc: "We recommend a plan and give you a final quote based on your pages, features, and timeline.",
+  },
+  {
+    name: "Design and build",
+    desc: "We design and build the site, mobile responsive and fast, and share it with you for feedback.",
+  },
+  {
+    name: "Launch",
+    desc: "We connect your domain, set up SSL, and take the site live.",
+  },
+  {
+    name: "Grow",
+    desc: "If you want, we run your social media and campaigns to bring visitors to the site, and keep it updated.",
+  },
+];
+
+const pageFaqs = [
+  {
+    q: "How much does a website cost?",
+    a: "Our plans start at ₹9,999 – ₹11,999 for a Starter website, ₹13,999 – ₹19,999 for a Premium website, and ₹21,999 – ₹49,999 for a Business website. The final price depends on your requirements, and we confirm it in a quote before starting.",
+  },
+  {
+    q: "Is hosting included?",
+    a: "Hosting is included free for a year on the Business plan. For the Starter and Premium plans, it's billed separately once your site is live.",
+  },
+  {
+    q: "Will my website work on mobile phones?",
+    a: "Yes. Every site we build is mobile responsive and comes with an SSL certificate.",
+  },
+  {
+    q: "Can you also manage our social media?",
+    a: "Yes. We handle brand content, social media management, and paid campaigns on Meta and LinkedIn. Social media is scoped separately once we understand your goals.",
+  },
+  {
+    q: "Can I update the website myself after launch?",
+    a: "Yes. We build sites that are easy for your team to update, and we also offer ongoing maintenance and support if you'd rather we handle it.",
+  },
+  {
+    q: "Do you build websites for businesses in Ahmedabad?",
+    a: "Yes. We work with businesses in Jaipur and Ahmedabad, and with clients across India.",
+  },
+];
 
 const services = [
   {
@@ -201,7 +275,7 @@ function WebsiteDevelopmentPage() {
       />
       <div className="max-w-7xl mx-auto relative z-10">
         <PageHeader
-          pill="Website & Social Media"
+          pill="Website Development & Social Media Marketing in Jaipur & Ahmedabad"
           title="A Digital Presence"
           italic="That Actually Holds Up."
           sub="A fast, modern site and the audience to visit it: web development and social media marketing, run as one digital team instead of two vendors."
@@ -235,7 +309,9 @@ function WebsiteDevelopmentPage() {
                     </div>
                     <div className="p-4">
                       <div className="font-display text-base">{s.name}</div>
-                      <div className="text-xs text-muted-foreground mt-1.5 leading-relaxed">{s.desc}</div>
+                      <div className="text-xs text-muted-foreground mt-1.5 leading-relaxed">
+                        {s.desc}
+                      </div>
                     </div>
                   </motion.div>
                 ))}
@@ -305,6 +381,10 @@ function WebsiteDevelopmentPage() {
               </div>
             </Section>
 
+            <AudienceSection audiences={audiences} />
+
+            <StepsSection steps={steps} id="process" />
+
             <Section id="pricing" title="Plans" kicker="/ pricing">
               <p className="text-muted-foreground max-w-2xl -mt-4 mb-8">
                 Starting prices, adjusted to your project. Social media management is scoped
@@ -360,6 +440,13 @@ function WebsiteDevelopmentPage() {
               </p>
             </Section>
 
+            <CitiesSection
+              intro={
+                "We build websites for businesses in Jaipur and Ahmedabad, and for clients anywhere in India."
+              }
+            />
+
+            <FaqSection faqs={pageFaqs} />
             <CTA />
           </div>
         </div>

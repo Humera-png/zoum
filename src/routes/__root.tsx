@@ -100,10 +100,11 @@ const structuredData = {
     addressRegion: "Rajasthan",
     addressCountry: "IN",
   },
-  areaServed: {
-    "@type": "Country",
-    name: "India",
-  },
+  areaServed: [
+    { "@type": "City", name: "Jaipur" },
+    { "@type": "City", name: "Ahmedabad" },
+    { "@type": "Country", name: "India" },
+  ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Consultancy Services",
@@ -125,14 +126,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "ZOUM Consultancy Jaipur | Business Consultancy, Recruitment & IT Services" },
+      { title: "ZOUM Consultancy | Recruitment, Training & IT in Jaipur & Ahmedabad" },
       {
         name: "description",
         content:
-          "ZOUM Consultancy: a Jaipur-based consultancy. 5000+ job placements across India, plus AI automation, AI agents, website development, social media, BPO, and business consultancy for businesses.",
+          "ZOUM Consultancy: a Jaipur-based consultancy serving Jaipur, Ahmedabad and all of India. 5000+ job placements, plus AI automation, AI agents, website development, social media, BPO, and business consultancy for businesses.",
       },
       { name: "robots", content: "index, follow" },
-      { name: "keywords", content: "business consultancy Jaipur, recruitment agency Jaipur, placement services India, job consultancy, IT consultancy, AI automation agency, AI agents development, website development company, software development India, ZOUM" },
+      { name: "keywords", content: "business consultancy Jaipur, recruitment agency Jaipur, recruitment agency Ahmedabad, placement agency Ahmedabad, placement services India, job consultancy, IT consultancy, AI automation agency, AI agents development, website development company, software development India, ZOUM" },
       { property: "og:title", content: "ZOUM Consultancy | Business Consultancy, Recruitment & IT Services | Jaipur, India" },
       {
         property: "og:description",

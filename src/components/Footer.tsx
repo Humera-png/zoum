@@ -4,6 +4,7 @@ import { Logo } from "./Logo";
 
 const quickLinks = [
   { label: "Home", to: "/" as const },
+  { label: "Blog", to: "/blog" as const },
   { label: "About", to: "/about" as const },
   { label: "Contact", to: "/contact" as const },
 ];

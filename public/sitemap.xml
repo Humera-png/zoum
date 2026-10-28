@@ -96,4 +96,28 @@
     <loc>https://zoumconsultancy.com/courses/automation-ai-ml-practicum</loc>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://zoumconsultancy.com/blog</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zoumconsultancy.com/blog/bpo-jobs-in-jaipur-for-freshers</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://zoumconsultancy.com/blog/how-to-clear-a-call-centre-interview</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://zoumconsultancy.com/blog/best-courses-after-12th-for-it-jobs</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://zoumconsultancy.com/blog/ai-automation-for-small-businesses</loc>
+    <lastmod>2026-10-28</lastmod>
+    <priority>0.7</priority>
+  </url>
 </urlset>

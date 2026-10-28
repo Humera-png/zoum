@@ -36,16 +36,16 @@ import { courses } from "@/data/courses";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "ZOUM Consultancy Jaipur | Business Consultancy, Recruitment & IT Services" },
+      { title: "ZOUM Consultancy | Recruitment, Training & IT in Jaipur & Ahmedabad" },
       {
         name: "description",
         content:
-          "ZOUM Consultancy is a Jaipur-based consultancy: 5000+ job placements across India, plus AI automation, AI agents, website development, social media, BPO, and business consultancy.",
+          "ZOUM Consultancy is a Jaipur-based consultancy serving Jaipur, Ahmedabad and all of India: 5000+ job placements, plus AI automation, AI agents, website development, social media, BPO, and business consultancy.",
       },
       {
         name: "keywords",
         content:
-          "business consultancy Jaipur, recruitment agency Jaipur, job placement India, IT consultancy Jaipur, AI automation agency, AI agents development, website development company India, software development company",
+          "business consultancy Jaipur, recruitment agency Jaipur, recruitment agency Ahmedabad, business consultancy Ahmedabad, job placement India, IT consultancy Jaipur, AI automation agency, AI agents development, website development company India, software development company",
       },
       { property: "og:title", content: "ZOUM Consultancy | Business Consultancy, Recruitment & IT Services" },
       {
@@ -232,6 +232,10 @@ function Hero() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight tracking-tight whitespace-normal break-words"
           >
+            <span className="block mb-4 font-sans text-xs uppercase tracking-[0.3em] text-lime leading-normal before:content-['/_']">
+              Placement, Training &amp; IT Consultancy in Jaipur &amp; Ahmedabad
+              <span className="sr-only">:</span>
+            </span>
             Architecting <span className="italic font-serif text-lime">Alpha</span>:
             <br />
             Career &amp; Business <span className="text-gradient-charcoal">Mastery.</span>
@@ -959,7 +963,7 @@ const faqs = [
   },
   {
     q: "Does ZOUM help with job placement outside Jaipur?",
-    a: "Yes. While ZOUM is based in Jaipur, we place candidates and work with businesses across India.",
+    a: "Yes. ZOUM is based in Jaipur and also serves Ahmedabad, and we place candidates and work with businesses across India.",
   },
   {
     q: "What is AI automation and how does it help my business?",

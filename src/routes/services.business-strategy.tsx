@@ -7,6 +7,7 @@ import { PageBackdrop } from "@/components/PageBackdrop";
 import { CoursesSection } from "@/components/CoursesSection";
 import { courses } from "@/data/courses";
 import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
+import { AudienceSection, CitiesSection, FaqSection } from "@/components/ServiceGuide";
 
 const bpoCourses = courses.filter((c) => c.page === "bpo");
 
@@ -14,7 +15,7 @@ export const Route = createFileRoute("/services/business-strategy")({
   head: () => ({
     meta: [
       {
-        title: "BPO & Business Process Outsourcing Services in Jaipur | ZOUM",
+        title: "BPO & Business Process Outsourcing Services, Jaipur & Ahmedabad | ZOUM",
       },
 
       {
@@ -30,7 +31,8 @@ export const Route = createFileRoute("/services/business-strategy")({
 
       {
         name: "keywords",
-        content: "business process outsourcing India, BPO services Jaipur, operations consulting, process improvement",
+        content:
+          "business process outsourcing India, BPO services Jaipur, BPO services Ahmedabad, operations consulting, process improvement",
       },
 
       {
@@ -44,6 +46,44 @@ export const Route = createFileRoute("/services/business-strategy")({
 
   component: BusinessStrategyPage,
 });
+
+const audiences = [
+  {
+    name: "Growing Businesses",
+    desc: "Companies where operations, back-office work, or support is taking up time the team should spend on growth.",
+  },
+  {
+    name: "Businesses Losing Money to Inefficiency",
+    desc: "Teams with slow processes, unclear reporting, or work that keeps falling through the cracks.",
+  },
+  {
+    name: "BPO Job Seekers",
+    desc: "Candidates who want to start a career in BPO and customer support. See our BPO Career course on this page.",
+  },
+];
+
+const pageFaqs = [
+  {
+    q: "What is BPO (business process outsourcing)?",
+    a: "BPO means handing a business process, such as operations, customer support, or back-office work, to an outside team so it runs efficiently while you focus on growing the business.",
+  },
+  {
+    q: "Which processes can ZOUM handle?",
+    a: "We work on operations, internal workflows, reporting and performance tracking, and growth strategy. We start by finding where your business is losing time and money, then fix it directly.",
+  },
+  {
+    q: "How do we get started?",
+    a: "Contact us for a discovery conversation. We look at how your business runs today and recommend the right engagement model for you.",
+  },
+  {
+    q: "Do you offer BPO services in Ahmedabad?",
+    a: "Yes. We work with businesses in Jaipur and Ahmedabad, and with clients across India.",
+  },
+  {
+    q: "I want a BPO job. Can ZOUM help?",
+    a: "Yes. Our BPO Career course prepares you for BPO and customer support roles, and our placement team helps candidates find openings.",
+  },
+];
 
 const frameworks = [
   {
@@ -123,7 +163,7 @@ function BusinessStrategyPage() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <PageHeader
-          pill="Business Process Outsourcing"
+          pill="BPO & Business Process Outsourcing Services in Jaipur & Ahmedabad"
           title="Scale"
           italic="Smarter."
           sub="
@@ -235,6 +275,8 @@ Strategic consulting for businesses looking to improve operations, accelerate gr
               </Section>
             )}
 
+            <AudienceSection audiences={audiences} />
+
             <Section id="pricing" title="Engagement Models" kicker="/ solutions">
               <div className="grid md:grid-cols-3 gap-5">
                 {[
@@ -319,6 +361,13 @@ Strategic consulting for businesses looking to improve operations, accelerate gr
               </div>
             </Section>
 
+            <CitiesSection
+              intro={
+                "We support businesses in Jaipur and Ahmedabad, and deliver BPO work for clients across India."
+              }
+            />
+
+            <FaqSection faqs={pageFaqs} />
             <CTA />
           </div>
         </div>

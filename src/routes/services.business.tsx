@@ -14,11 +14,12 @@ import {
 import { MagneticButton } from "@/components/MagneticButton";
 import { PageBackdrop } from "@/components/PageBackdrop";
 import { Counter } from "@/components/Counter";
+import { CitiesSection, FaqSection } from "@/components/ServiceGuide";
 
 export const Route = createFileRoute("/services/business")({
   head: () => ({
     meta: [
-      { title: "Our Services | ZOUM Consultancy Jaipur" },
+      { title: "Our Services | ZOUM Jaipur & Ahmedabad" },
       {
         name: "description",
         content:
@@ -27,13 +28,33 @@ export const Route = createFileRoute("/services/business")({
       { property: "og:title", content: "Our Services | ZOUM Consultancy" },
       {
         property: "og:description",
-        content: "One team, five service lines: recruitment, training, AI & IT, web & social, and BPO.",
+        content:
+          "One team, five service lines: recruitment, training, AI & IT, web & social, and BPO.",
       },
     ],
     links: [{ rel: "canonical", href: "https://zoumconsultancy.com/services/business" }],
   }),
   component: BusinessPage,
 });
+
+const pageFaqs = [
+  {
+    q: "What services does ZOUM Consultancy offer?",
+    a: "Five service lines: job placement and recruitment, Learning and Development courses, AI and IT services, website development and social media marketing, and business process outsourcing (BPO).",
+  },
+  {
+    q: "Where is ZOUM Consultancy located?",
+    a: "Our headquarters is in Jaipur, Rajasthan. We also serve Ahmedabad, and work with clients and candidates across India.",
+  },
+  {
+    q: "Can one team handle more than one service for us?",
+    a: "Yes. Every service line is run by the same team, so your website, marketing, automation, and hiring don't need separate vendors.",
+  },
+  {
+    q: "How do I get started?",
+    a: "Contact us through the contact page or WhatsApp with what you need, and we'll get back to you with next steps.",
+  },
+];
 
 const services = [
   {
@@ -118,7 +139,9 @@ function ServiceOverviewCard({ s, i }: { s: (typeof services)[number]; i: number
         <h3 className="mt-2 font-display text-2xl tracking-tight leading-tight relative">
           {s.headline}
         </h3>
-        <p className="mt-2 text-sm text-muted-foreground leading-relaxed relative flex-1">{s.desc}</p>
+        <p className="mt-2 text-sm text-muted-foreground leading-relaxed relative flex-1">
+          {s.desc}
+        </p>
         <span className="mt-4 pt-3 border-t border-border text-xs font-semibold text-lime group-hover:underline relative">
           Explore →
         </span>
@@ -133,7 +156,7 @@ function BusinessPage() {
       <PageBackdrop />
       <div className="max-w-7xl mx-auto relative z-10">
         <PageHeader
-          pill="Services"
+          pill="Business Consultancy Services in Jaipur & Ahmedabad"
           title="Everything You Need."
           italic="One Team."
           sub="Five service lines, one consultancy: recruitment, training, AI & IT, web & social, and business process outsourcing, coordinated instead of scattered across five vendors."
@@ -193,6 +216,13 @@ function BusinessPage() {
             </div>
           </Section>
 
+          <CitiesSection
+            intro={
+              "Our Jaipur headquarters serves businesses, candidates, and students in Jaipur and Ahmedabad, and we work with clients across India."
+            }
+          />
+
+          <FaqSection faqs={pageFaqs} />
           <CTA />
         </div>
       </div>
@@ -213,20 +243,21 @@ export function PageHeader({
 }) {
   return (
     <header className="pt-12">
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="text-xs uppercase tracking-[0.3em] text-lime"
-      >
-        / {pill}
-      </motion.div>
+      {/* The pill sits inside the H1 so the heading carries the search
+          keywords ("... in Jaipur & Ahmedabad") while the big slogan stays the same. */}
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="mt-4 font-display text-5xl md:text-7xl tracking-tight max-w-4xl leading-[0.95]"
+        className="font-display tracking-tight max-w-4xl"
       >
-        {title} <span className="italic font-serif text-lime">{italic}</span>
+        <span className="block font-sans text-xs uppercase tracking-[0.3em] text-lime leading-normal before:content-['/_']">
+          {pill}
+          <span className="sr-only">:</span>
+        </span>
+        <span className="mt-4 block text-5xl md:text-7xl leading-[0.95]">
+          {title} <span className="italic font-serif text-lime">{italic}</span>
+        </span>
       </motion.h1>
       <motion.p
         initial={{ opacity: 0, y: 20 }}
@@ -299,12 +330,10 @@ export function CTA() {
         style={{ background: "rgba(31,203,107,0.45)" }}
       />
       <div className="relative">
-        <h3 className="font-display text-3xl md:text-5xl tracking-tight">
-          Ready to get started?
-        </h3>
+        <h3 className="font-display text-3xl md:text-5xl tracking-tight">Ready to get started?</h3>
         <p className="mt-3 text-muted-foreground max-w-md mx-auto">
-          Begin with a free 30-minute strategy call. No pitch deck, no prep required. Just a
-          direct conversation about your goals.
+          Begin with a free 30-minute strategy call. No pitch deck, no prep required. Just a direct
+          conversation about your goals.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
           <MagneticButton

@@ -6,22 +6,29 @@ import { PageBackdrop } from "@/components/PageBackdrop";
 import { CourseCard } from "@/components/CourseCard";
 import { courses } from "@/data/courses";
 import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
+import { CitiesSection } from "@/components/ServiceGuide";
 
 export const Route = createFileRoute("/services/talent-development")({
   head: () => ({
     meta: [
-      { title: "Courses: BPO, IT, Business Consultancy & AI Masterclasses | ZOUM Consultancy Jaipur" },
+      {
+        title:
+          "Courses: BPO, IT, Business Consultancy & AI Masterclasses | ZOUM Jaipur & Ahmedabad",
+      },
       {
         name: "description",
         content:
-          "Enroll in job-ready courses from ZOUM Consultancy, Jaipur: BPO Career Masterclass, IT Career Masterclass, Business Consultancy Masterclass, AI & Machine Learning, and more. Sign in, enroll online.",
+          "Enroll in job-ready courses from ZOUM Consultancy in Jaipur and Ahmedabad: BPO Career Masterclass, IT Career Masterclass, Business Consultancy Masterclass, AI & Machine Learning, and more. Sign in, enroll online.",
       },
       {
         name: "keywords",
         content:
           "BPO training course India, IT career masterclass, business consultancy course India, AI and machine learning course India, interview preparation course India, leadership training course, skills training course Jaipur",
       },
-      { property: "og:title", content: "Courses: BPO, IT, Business Consultancy & AI | ZOUM Consultancy" },
+      {
+        property: "og:title",
+        content: "Courses: BPO, IT, Business Consultancy & AI | ZOUM Consultancy",
+      },
       {
         property: "og:description",
         content:
@@ -59,7 +66,10 @@ function CourseListSchema({ courses: list }: { courses: typeof courses }) {
     })),
   };
   return (
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
   );
 }
 
@@ -80,6 +90,14 @@ const courseFaqs = [
     q: "Can teams or companies book training for employees?",
     a: "Yes. For team or company bookings, contact us directly instead of enrolling as an individual, and we'll set up a plan for your group.",
   },
+  {
+    q: "Can I join from Ahmedabad or another city?",
+    a: "Yes. Courses also run online, so you can join from Ahmedabad or anywhere in India.",
+  },
+  {
+    q: "Which course should I choose?",
+    a: "Pick the track that matches the job you want: the BPO Career Masterclass for BPO and customer support roles, the IT Career Masterclass for IT jobs, or the Business Consultancy and AI masterclasses for those fields. Not sure? Contact us and we'll help you choose.",
+  },
 ];
 
 function CourseFaqSchema() {
@@ -94,7 +112,10 @@ function CourseFaqSchema() {
     })),
   };
   return (
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
   );
 }
 
@@ -161,7 +182,7 @@ function TalentDevelopmentPage() {
       <CourseFaqSchema />
       <div className="max-w-7xl mx-auto relative z-10">
         <PageHeader
-          pill="Learning and Development (L&D)"
+          pill="Career Courses & Skill Training in Jaipur & Ahmedabad"
           title="Skills That"
           italic="Get You Noticed."
           sub="Training programs and courses that help individuals build the workplace, technical, and AI skills that turn a resume into an offer."
@@ -183,8 +204,8 @@ function TalentDevelopmentPage() {
             {flagshipCourses.length > 0 && (
               <Section id="tracks" title="Pick Your Track" kicker="/ start here">
                 <p className="text-muted-foreground max-w-2xl -mt-4 mb-8">
-                  {flagshipCourses.length} tracks, each its own course. Pick one, see what's
-                  inside, and enroll directly from that page.
+                  {flagshipCourses.length} tracks, each its own course. Pick one, see what's inside,
+                  and enroll directly from that page.
                 </p>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
                   {flagshipCourses.map((course) => (
@@ -246,6 +267,11 @@ function TalentDevelopmentPage() {
               </Section>
             )}
 
+            <CitiesSection
+              intro={
+                "Courses run in person at our Jaipur centre and online, so students in Ahmedabad and anywhere in India can join."
+              }
+            />
             <CTA />
           </div>
         </div>

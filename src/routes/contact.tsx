@@ -7,11 +7,11 @@ import { PageBackdrop } from "@/components/PageBackdrop";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact ZOUM Consultancy | Free Strategy Call | Jaipur, India" },
+      { title: "Contact ZOUM Consultancy | Jaipur & Ahmedabad | Free Strategy Call" },
       {
         name: "description",
         content:
-          "Contact ZOUM Consultancy in Jaipur for a free strategy call. We help businesses scale, professionals advance careers, and brands grow online. Response within 24 hours.",
+          "Contact ZOUM Consultancy, serving Jaipur and Ahmedabad, for a free strategy call. We help businesses scale, professionals advance careers, and brands grow online. Response within 24 hours.",
       },
       { property: "og:title", content: "Contact ZOUM Consultancy | Book a Free Strategy Call" },
       {

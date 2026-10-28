@@ -20,6 +20,12 @@ import { PageBackdrop } from "@/components/PageBackdrop";
 import { CoursesSection } from "@/components/CoursesSection";
 import { courses } from "@/data/courses";
 import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
+import {
+  AudienceSection,
+  StepsSection,
+  CitiesSection,
+  FaqSection,
+} from "@/components/ServiceGuide";
 
 const aiItCourses = courses.filter((c) => c.page === "ai-it");
 
@@ -27,17 +33,17 @@ export const Route = createFileRoute("/services/ai-automation")({
   head: () => ({
     meta: [
       {
-        title: "AI Automation & AI Agents Company | ZOUM Consultancy Jaipur",
+        title: "AI Automation & AI Agents Company | ZOUM Jaipur & Ahmedabad",
       },
       {
         name: "description",
         content:
-          "ZOUM Consultancy is an AI automation and IT consultancy in Jaipur. We build AI agents, chatbots, workflow automation, custom software, and mobile apps for businesses across India.",
+          "ZOUM Consultancy is an AI automation and IT consultancy serving Jaipur and Ahmedabad. We build AI agents, chatbots, workflow automation, custom software, and mobile apps for businesses across India.",
       },
       {
         name: "keywords",
         content:
-          "AI automation agency India, AI agents development, AI chatbot development, custom software development Jaipur, IT consultancy India, business process automation, workflow automation company, AI integration services",
+          "AI automation agency India, AI agents development, AI chatbot development, custom software development Jaipur, AI automation company Ahmedabad, IT consultancy India, business process automation, workflow automation company, AI integration services",
       },
       {
         property: "og:title",
@@ -54,6 +60,71 @@ export const Route = createFileRoute("/services/ai-automation")({
 
   component: AIPage,
 });
+
+const audiences = [
+  {
+    name: "Small Businesses",
+    desc: "Owners who spend hours on replying to customers, follow-ups, data entry, or reports, and want that work handled automatically.",
+  },
+  {
+    name: "Growing Companies",
+    desc: "Teams whose manual processes no longer keep up, and who need custom software, internal tools, or an app built around how they actually work.",
+  },
+  {
+    name: "Startups",
+    desc: "Founders who need a product built, whether a web app, mobile app, or AI feature, by a team that can take it from idea to launch.",
+  },
+];
+
+const steps = [
+  {
+    name: "Discovery call",
+    desc: "We learn how your business runs today and where time and money are being lost.",
+  },
+  {
+    name: "Roadmap",
+    desc: "We map out what to automate or build first, what it involves, and what it will cost, before any work starts.",
+  },
+  {
+    name: "Build",
+    desc: "We build the automation, AI agent, software, or app, and share progress with you as we go.",
+  },
+  {
+    name: "Test and launch",
+    desc: "We test with real data and real use cases, then launch and train your team on it.",
+  },
+  {
+    name: "Support and improvement",
+    desc: "We monitor, fix, and improve the system after launch so it keeps working as your business grows.",
+  },
+];
+
+const pageFaqs = [
+  {
+    q: "What kind of tasks can AI automation handle for my business?",
+    a: "Repetitive, rule-based work such as following up with leads, answering common customer questions, processing orders, entering data, and creating reports. If your team does the same steps again and again, it can usually be automated.",
+  },
+  {
+    q: "Do I need technical knowledge to use what you build?",
+    a: "No. We build systems your team can use without coding, and we train them on it before handing it over.",
+  },
+  {
+    q: "Can you connect AI to the tools we already use?",
+    a: "Yes. We integrate AI and automation with your existing tools, websites, CRMs, and APIs instead of making you replace everything.",
+  },
+  {
+    q: "Do you build mobile apps as well as software?",
+    a: "Yes. We build Android and iOS apps, web applications, custom software, and cloud infrastructure, along with AI and automation.",
+  },
+  {
+    q: "How much does an AI automation or software project cost?",
+    a: "It depends on the scope. We start with a discovery stage to understand what you need, then give you a clear quote before any build work begins.",
+  },
+  {
+    q: "Do you work with businesses in Ahmedabad?",
+    a: "Yes. We work with businesses in Jaipur and Ahmedabad, and with clients across India remotely.",
+  },
+];
 
 const services = [
   {
@@ -216,7 +287,7 @@ function AIPage() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <PageHeader
-          pill="AI & Software Development"
+          pill="AI Automation & Software Development in Jaipur & Ahmedabad"
           title="Build"
           italic="Digital Intelligence."
           sub="ZOUM creates AI-powered software solutions, mobile applications, automation systems, and cloud technologies that help businesses operate smarter and scale faster."
@@ -270,7 +341,9 @@ function AIPage() {
                     </div>
                     <div className="p-4">
                       <div className="font-display text-base">{s.name}</div>
-                      <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">{s.desc}</p>
+                      <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">
+                        {s.desc}
+                      </p>
                     </div>
                   </motion.div>
                 ))}
@@ -367,13 +440,19 @@ function AIPage() {
               </Section>
             )}
 
+            <AudienceSection audiences={audiences} />
+
+            <StepsSection steps={steps} id="process" />
+
             <Section id="pricing" title="Technology Partnerships" kicker="/ engagement">
               <div className="grid md:grid-cols-3 gap-5">
                 {partnerships.map((p, i) => (
                   <div
                     key={i}
                     className={`glass-strong rounded-3xl overflow-hidden transition ${
-                      p.highlight ? "ring-2 ring-[var(--brand-deep)] shadow-[0_24px_60px_-24px_var(--brand-glow)]" : ""
+                      p.highlight
+                        ? "ring-2 ring-[var(--brand-deep)] shadow-[0_24px_60px_-24px_var(--brand-glow)]"
+                        : ""
                     }`}
                   >
                     <div className="relative aspect-[16/9] overflow-hidden">
@@ -406,6 +485,13 @@ function AIPage() {
               </div>
             </Section>
 
+            <CitiesSection
+              intro={
+                "We work with businesses in Jaipur and Ahmedabad, and build for clients across India remotely."
+              }
+            />
+
+            <FaqSection faqs={pageFaqs} />
             <CTA />
           </div>
         </div>

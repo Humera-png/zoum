@@ -6,7 +6,7 @@ import { MagneticButton } from "@/components/MagneticButton";
 
 export const Route = createFileRoute("/jobs/$jobId")({
   head: ({ params }) => ({
-    meta: [{ title: "Job Details | ZOUM Consultancy Jaipur" }],
+    meta: [{ title: "Job Details | ZOUM Jaipur & Ahmedabad" }],
     links: [{ rel: "canonical", href: `https://zoumconsultancy.com/jobs/${params.jobId}` }],
   }),
   component: JobDetailPage,

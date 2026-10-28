@@ -21,6 +21,8 @@ import { Route as ServicesTalentDevelopmentRouteImport } from './routes/services
 import { Route as ServicesWebsiteDevelopmentRouteImport } from './routes/services.website-development'
 import { Route as JobsJobIdRouteImport } from './routes/jobs.$jobId'
 import { Route as CoursesCourseIdRouteImport } from './routes/courses.$courseId'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
@@ -82,6 +84,16 @@ const CoursesCourseIdRoute = CoursesCourseIdRouteImport.update({
   path: '/courses/$courseId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -96,6 +108,8 @@ export interface FileRoutesByFullPath {
   '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
   '/jobs/$jobId': typeof JobsJobIdRoute
   '/courses/$courseId': typeof CoursesCourseIdRoute
+  '/blog': typeof BlogIndexRoute
+  '/blog/$slug': typeof BlogSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -110,6 +124,8 @@ export interface FileRoutesByTo {
   '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
   '/jobs/$jobId': typeof JobsJobIdRoute
   '/courses/$courseId': typeof CoursesCourseIdRoute
+  '/blog': typeof BlogIndexRoute
+  '/blog/$slug': typeof BlogSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -125,6 +141,8 @@ export interface FileRoutesById {
   '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
   '/jobs/$jobId': typeof JobsJobIdRoute
   '/courses/$courseId': typeof CoursesCourseIdRoute
+  '/blog/': typeof BlogIndexRoute
+  '/blog/$slug': typeof BlogSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -141,6 +159,8 @@ export interface FileRouteTypes {
     | '/services/website-development'
     | '/jobs/$jobId'
     | '/courses/$courseId'
+    | '/blog'
+    | '/blog/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -155,6 +175,8 @@ export interface FileRouteTypes {
     | '/services/website-development'
     | '/jobs/$jobId'
     | '/courses/$courseId'
+    | '/blog'
+    | '/blog/$slug'
   id:
     | '__root__'
     | '/'
@@ -169,6 +191,8 @@ export interface FileRouteTypes {
     | '/services/website-development'
     | '/jobs/$jobId'
     | '/courses/$courseId'
+    | '/blog/'
+    | '/blog/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -184,6 +208,8 @@ export interface RootRouteChildren {
   ServicesWebsiteDevelopmentRoute: typeof ServicesWebsiteDevelopmentRoute
   JobsJobIdRoute: typeof JobsJobIdRoute
   CoursesCourseIdRoute: typeof CoursesCourseIdRoute
+  BlogIndexRoute: typeof BlogIndexRoute
+  BlogSlugRoute: typeof BlogSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -272,6 +298,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CoursesCourseIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -288,6 +328,8 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesWebsiteDevelopmentRoute: ServicesWebsiteDevelopmentRoute,
   JobsJobIdRoute: JobsJobIdRoute,
   CoursesCourseIdRoute: CoursesCourseIdRoute,
+  BlogIndexRoute: BlogIndexRoute,
+  BlogSlugRoute: BlogSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
