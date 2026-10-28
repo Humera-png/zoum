@@ -36,7 +36,7 @@ import { courses } from "@/data/courses";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "ZOUM Consultancy | Recruitment, Training & IT in Jaipur & Ahmedabad" },
+      { title: "Career & Business Consultancy in Jaipur, Ahmedabad & India | ZOUM" },
       {
         name: "description",
         content:
@@ -233,7 +233,7 @@ function Hero() {
             className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight tracking-tight whitespace-normal break-words"
           >
             <span className="block mb-4 font-sans text-xs uppercase tracking-[0.3em] text-lime leading-normal before:content-['/_']">
-              Placement, Training &amp; IT Consultancy in Jaipur &amp; Ahmedabad
+              Career &amp; Business Consultancy in Jaipur, Ahmedabad &amp; Across India
               <span className="sr-only">:</span>
             </span>
             Architecting <span className="italic font-serif text-lime">Alpha</span>:

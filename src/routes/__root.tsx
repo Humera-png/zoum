@@ -126,7 +126,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "ZOUM Consultancy | Recruitment, Training & IT in Jaipur & Ahmedabad" },
+      { title: "Career & Business Consultancy in Jaipur, Ahmedabad & India | ZOUM" },
       {
         name: "description",
         content:
