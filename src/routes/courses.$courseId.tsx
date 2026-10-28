@@ -24,6 +24,9 @@ export const Route = createFileRoute("/courses/$courseId")({
             }
           : { name: "robots", content: "noindex" },
       ],
+      links: course
+        ? [{ rel: "canonical", href: `https://zoumconsultancy.com/courses/${course.id}` }]
+        : [],
     };
   },
   component: CourseDetailPage,

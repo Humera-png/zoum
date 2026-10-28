@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ZOUM Consultancy</title>
     <!--
+      Favicons live in the static HTML (not the router head) for the same
+      reason as AdSense below: Google's favicon crawler reads the raw HTML
+      and doesn't run JS. Google needs a square icon that's a multiple of
+      48px, so the 48/96/192 PNGs are listed explicitly.
+    -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#00C755" />
+    <!--
       Google AdSense: hardcoded directly in the static HTML (not injected
       via React/TanStack Router head management) because this app is a
       client-rendered SPA — the AdSense site-verification crawler fetches

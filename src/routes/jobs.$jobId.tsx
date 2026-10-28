@@ -5,8 +5,9 @@ import { PageBackdrop } from "@/components/PageBackdrop";
 import { MagneticButton } from "@/components/MagneticButton";
 
 export const Route = createFileRoute("/jobs/$jobId")({
-  head: () => ({
+  head: ({ params }) => ({
     meta: [{ title: "Job Details | ZOUM Consultancy Jaipur" }],
+    links: [{ rel: "canonical", href: `https://zoumconsultancy.com/jobs/${params.jobId}` }],
   }),
   component: JobDetailPage,
 });

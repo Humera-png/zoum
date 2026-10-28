@@ -150,7 +150,7 @@ const caseStudies = [
 const plans = [
   {
     tier: "Starter Website",
-    price: "₹10,000 – ₹12,000",
+    price: "₹9,999 – ₹11,999",
     desc: "A single-page, scroll-based site for a new business that needs an immediate online presence.",
     feats: [
       "1 scroll-based landing page",
@@ -163,7 +163,7 @@ const plans = [
   },
   {
     tier: "Premium Website",
-    price: "₹18,000 – ₹22,000",
+    price: "₹13,999 – ₹19,999",
     desc: "A 7+ page dynamic site for a growing business that needs the essential features covered.",
     feats: [
       "7+ real, separate pages",
@@ -177,7 +177,7 @@ const plans = [
   },
   {
     tier: "Business Website",
-    price: "₹30,000 – ₹50,000",
+    price: "₹21,999 – ₹49,999",
     desc: "An 8+ page full-service solution for an established business that wants maximum visibility.",
     feats: [
       "8+ pages, everything in Premium",
@@ -353,6 +353,11 @@ function WebsiteDevelopmentPage() {
                   </div>
                 ))}
               </div>
+              <p className="text-xs text-muted-foreground mt-6 max-w-2xl">
+                * Disclaimer: Prices vary based on the requirements of each client. The ranges above
+                are indicative, and your final quote depends on the scope, features and timeline of
+                your project.
+              </p>
             </Section>
 
             <CTA />

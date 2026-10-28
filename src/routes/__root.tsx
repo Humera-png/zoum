@@ -1,3 +1,4 @@
+import * as React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -18,6 +19,15 @@ import appCss from "../styles.css?url";
 // until the tag was hardcoded into the static HTML instead.
 
 function NotFoundComponent() {
+  // The SPA serves every unknown URL with HTTP 200, so tell Google not to
+  // index this page; otherwise it shows up as a "soft 404" in Search Console.
+  React.useEffect(() => {
+    const tag = document.createElement("meta");
+    tag.name = "robots";
+    tag.content = "noindex";
+    document.head.appendChild(tag);
+    return () => tag.remove();
+  }, []);
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
@@ -139,16 +149,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:image", content: "https://zoumconsultancy.com/assets/zoum-logo.png" },
     ],
     links: [
-      {
-        rel: "icon",
-        type: "image/png",
-        // Cropped from the current logo's icon mark (green, white background)
-        // — the full lockup (icon + wordmark) is a wide image on a mostly-
-        // white square canvas and reads as blank at browser-tab size, so
-        // this is pre-cropped to just the icon for clarity at that size.
-        href: "/assets/zoum-favicon.png",
-      },
-      { rel: "canonical", href: "https://zoumconsultancy.com" },
+      // Favicons are declared in the static index.html so crawlers see them.
+      // No canonical here: each page sets its own. A root-level canonical
+      // pointed every page at the homepage, so Google treated them as duplicates.
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
