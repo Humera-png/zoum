@@ -31,8 +31,8 @@ export const Route = createFileRoute("/services/career")({
         content:
           "Get noticed for bigger roles and negotiate better pay. Recruitment and job placement across India.",
       },
-      { rel: "canonical", href: "https://zoumconsultancy.com/services/career" },
     ],
+    links: [{ rel: "canonical", href: "https://zoumconsultancy.com/services/career" }],
   }),
 
   component: CareerPage,

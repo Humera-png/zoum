@@ -53,8 +53,8 @@ export const Route = createFileRoute("/")({
         content:
           "Jaipur's consultancy: job placement across India, AI automation, AI agents, website & software development, business consultancy.",
       },
-      { rel: "canonical", href: "https://zoumconsultancy.com" },
     ],
+    links: [{ rel: "canonical", href: "https://zoumconsultancy.com" }],
   }),
   component: Index,
 });

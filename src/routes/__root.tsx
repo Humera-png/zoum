@@ -196,6 +196,12 @@ import { CLERK_PUBLISHABLE_KEY } from "@/lib/clerk";
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
+  // Drop index.html's static fallback tags once the app mounts, so pages
+  // don't end up with two <title>s or duplicate descriptions.
+  React.useEffect(() => {
+    document.querySelectorAll("[data-static-head]").forEach((el) => el.remove());
+  }, []);
+
   const app = (
     <QueryClientProvider client={queryClient}>
       <IntroScreen />

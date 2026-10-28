@@ -27,8 +27,8 @@ export const Route = createFileRoute("/services/talent-development")({
         content:
           "Job-ready courses with clear modules: BPO Career Masterclass, IT Career Masterclass, Business Consultancy Masterclass, AI & Machine Learning, and more.",
       },
-      { rel: "canonical", href: "https://zoumconsultancy.com/services/talent-development" },
     ],
+    links: [{ rel: "canonical", href: "https://zoumconsultancy.com/services/talent-development" }],
   }),
   component: TalentDevelopmentPage,
 });

@@ -29,8 +29,8 @@ export const Route = createFileRoute("/services/business")({
         property: "og:description",
         content: "One team, five service lines: recruitment, training, AI & IT, web & social, and BPO.",
       },
-      { rel: "canonical", href: "https://zoumconsultancy.com/services/business" },
     ],
+    links: [{ rel: "canonical", href: "https://zoumconsultancy.com/services/business" }],
   }),
   component: BusinessPage,
 });

@@ -3,7 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ZOUM Consultancy</title>
+    <!--
+      Static fallbacks for crawlers that don't run JS (WhatsApp, LinkedIn and
+      Facebook link previews). Tagged data-static-head and removed by the app
+      on mount, so each route's own title/description from the router wins.
+    -->
+    <title data-static-head>ZOUM Consultancy Jaipur | Recruitment, Training & IT Services</title>
+    <meta data-static-head name="description" content="Jaipur consultancy for job placement across India, BPO operations, career courses, AI automation, and website development." />
+    <meta data-static-head property="og:title" content="ZOUM Consultancy Jaipur | Recruitment, Training & IT Services" />
+    <meta data-static-head property="og:description" content="Job placement across India, career courses, BPO operations, AI automation and website development from Jaipur." />
+    <meta data-static-head property="og:image" content="https://zoumconsultancy.com/assets/zoum-logo.png" />
+    <meta data-static-head property="og:url" content="https://zoumconsultancy.com" />
+    <meta data-static-head property="og:type" content="website" />
     <!--
       Favicons live in the static HTML (not the router head) for the same
       reason as AdSense below: Google's favicon crawler reads the raw HTML

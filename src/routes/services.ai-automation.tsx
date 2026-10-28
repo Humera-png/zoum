@@ -48,8 +48,8 @@ export const Route = createFileRoute("/services/ai-automation")({
         content:
           "Build smarter with ZOUM: AI agents, workflow automation, chatbots, software platforms, and mobile apps for modern Indian businesses.",
       },
-      { rel: "canonical", href: "https://zoumconsultancy.com/services/ai-automation" },
     ],
+    links: [{ rel: "canonical", href: "https://zoumconsultancy.com/services/ai-automation" }],
   }),
 
   component: AIPage,

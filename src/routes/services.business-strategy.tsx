@@ -14,7 +14,7 @@ export const Route = createFileRoute("/services/business-strategy")({
   head: () => ({
     meta: [
       {
-        title: "Business Process Outsourcing | ZOUM",
+        title: "BPO & Business Process Outsourcing Services in Jaipur | ZOUM",
       },
 
       {
@@ -25,10 +25,8 @@ export const Route = createFileRoute("/services/business-strategy")({
 
       {
         property: "og:title",
-        content: "Business Process Outsourcing | ZOUM",
+        content: "BPO & Business Process Outsourcing Services | ZOUM Consultancy",
       },
-
-      { rel: "canonical", href: "https://zoumconsultancy.com/services/bpo-operations" },
 
       {
         name: "keywords",
@@ -41,6 +39,7 @@ export const Route = createFileRoute("/services/business-strategy")({
           "Strategic consulting and operational excellence solutions designed for ambitious businesses.",
       },
     ],
+    links: [{ rel: "canonical", href: "https://zoumconsultancy.com/services/bpo-operations" }],
   }),
 
   component: BusinessStrategyPage,

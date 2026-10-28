@@ -25,7 +25,7 @@ export function IntroScreen() {
           className="fixed inset-0 z-[999] bg-white flex flex-col items-center justify-center cursor-pointer"
           onClick={() => setShow(false)}
         >
-          <motion.h1
+          <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
@@ -36,7 +36,7 @@ export function IntroScreen() {
             }}
           >
             ZOUM
-          </motion.h1>
+          </motion.div>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

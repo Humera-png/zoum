@@ -41,8 +41,8 @@ export const Route = createFileRoute("/services/website-development")({
         content:
           "A fast, modern site and the audience to actually visit it, built and grown by one digital team.",
       },
-      { rel: "canonical", href: "https://zoumconsultancy.com/services/website-development" },
     ],
+    links: [{ rel: "canonical", href: "https://zoumconsultancy.com/services/website-development" }],
   }),
   component: WebsiteDevelopmentPage,
 });
