@@ -124,7 +124,7 @@ export function Footer() {
 
         <div className="flex flex-wrap items-center justify-between gap-4 pt-8 border-t border-border">
           <span className="text-muted-foreground text-xs">
-            © 2025 ZOUM Consultancy. All rights reserved.
+            © {new Date().getFullYear()} ZOUM Consultancy. All rights reserved.
           </span>
         </div>
       </div>
