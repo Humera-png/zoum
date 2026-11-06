@@ -164,8 +164,8 @@ export function DiwaliDecor() {
             <div className="pr-4">
               <div className="font-display text-lg leading-tight text-amber-950">Happy Diwali!</div>
               <p className="mt-1 text-sm text-amber-900/80 leading-snug">
-                Masterclasses at <span className="font-semibold text-amber-950">₹599</span>{" "}
-                <span className="line-through">₹999</span>, till {OFFER_ENDS_LABEL}.
+                Diwali offer on courses, starting at{" "}
+                <span className="font-semibold text-amber-950">₹599</span>, till {OFFER_ENDS_LABEL}.
               </p>
               <Link
                 to="/services/talent-development"

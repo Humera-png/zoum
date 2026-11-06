@@ -46,6 +46,8 @@ export const DIWALI_PRICES: Record<string, number> = {
   "business-consultancy-masterclass": 599,
   "ai-ml-foundations": 599,
   "automation-ai-ml-practicum": 599,
+  "ai-automation-n8n-masterclass": 999,
+  "interview-mastery": 1999,
 };
 
 export function findCourse(id: string): CourseRecord | undefined {
