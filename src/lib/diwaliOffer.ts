@@ -4,8 +4,8 @@
 // IMPORTANT: worker/src/courses.ts has the same prices and end date. That's
 // the price actually charged at checkout, so change both together.
 
-export const OFFER_ENDS = new Date("2026-11-15T23:59:59+05:30");
-export const OFFER_ENDS_LABEL = "15 November";
+export const OFFER_ENDS = new Date("2026-11-12T23:59:59+05:30");
+export const OFFER_ENDS_LABEL = "12 November";
 
 // course id -> Diwali price in whole rupees
 export const DIWALI_PRICES: Record<string, number> = {
