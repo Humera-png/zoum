@@ -96,7 +96,9 @@ const structuredData = {
   email: "contact@zoumconsultancy.com",
   address: {
     "@type": "PostalAddress",
+    streetAddress: "C-411, Block B, Shankar Colony, Siddharth Nagar, Near Airport, Jagatpura",
     addressLocality: "Jaipur",
+    postalCode: "302017",
     addressRegion: "Rajasthan",
     addressCountry: "IN",
   },
