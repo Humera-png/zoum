@@ -36,6 +36,21 @@ export const COURSES: CourseRecord[] = [
   },
 ];
 
+// Diwali offer. Same prices and end date as src/lib/diwaliOffer.ts on the
+// frontend. While it runs, findCourse() returns the offer price, so every
+// order, record, and email uses it. After OFFER_ENDS, normal prices return.
+export const OFFER_ENDS = new Date("2026-11-15T23:59:59+05:30");
+export const DIWALI_PRICES: Record<string, number> = {
+  "bpo-career-masterclass": 599,
+  "it-career-masterclass": 599,
+  "business-consultancy-masterclass": 599,
+  "ai-ml-foundations": 599,
+  "automation-ai-ml-practicum": 599,
+};
+
 export function findCourse(id: string): CourseRecord | undefined {
-  return COURSES.find((c) => c.id === id);
+  const course = COURSES.find((c) => c.id === id);
+  if (!course) return undefined;
+  const offer = Date.now() < OFFER_ENDS.getTime() ? DIWALI_PRICES[id] : undefined;
+  return offer ? { ...course, priceInr: offer } : course;
 }

@@ -2,9 +2,11 @@ import { Link } from "@tanstack/react-router";
 import { Clock, ArrowUpRight } from "lucide-react";
 import type { Course } from "@/data/courses";
 import { CATEGORY_META } from "@/lib/courseCategory";
+import { diwaliPrice, inr } from "@/lib/diwaliOffer";
 
 export function CourseCard({ course }: { course: Course }) {
   const { label, icon: Icon } = CATEGORY_META[course.category];
+  const offer = diwaliPrice(course.id);
 
   return (
     <Link
@@ -35,7 +37,20 @@ export function CourseCard({ course }: { course: Course }) {
         </div>
         <p className="mt-3 text-sm text-muted-foreground line-clamp-2">{course.summary}</p>
 
-        <div className="mt-4 pt-4 border-t border-border flex items-center justify-end mt-auto">
+        <div
+          className={`mt-4 pt-4 border-t border-border flex items-center mt-auto ${offer ? "justify-between" : "justify-end"}`}
+        >
+          {offer && (
+            <div className="flex flex-col">
+              <span className="text-[10px] uppercase tracking-[0.15em] font-semibold text-[#C8572A]">
+                Diwali offer
+              </span>
+              <span className="text-sm">
+                <span className="font-semibold text-foreground">{inr(offer)}</span>{" "}
+                <span className="text-muted-foreground line-through">{inr(course.priceInr)}</span>
+              </span>
+            </div>
+          )}
           <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-lime bg-lime/10 rounded-full px-3 py-1.5 group-hover:bg-lime group-hover:text-white transition">
             Enroll <ArrowUpRight className="h-3.5 w-3.5" />
           </span>
