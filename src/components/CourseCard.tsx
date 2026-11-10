@@ -7,6 +7,7 @@ import { diwaliPrice, inr } from "@/lib/diwaliOffer";
 export function CourseCard({ course }: { course: Course }) {
   const { label, icon: Icon } = CATEGORY_META[course.category];
   const offer = diwaliPrice(course.id);
+  const plainPrice = !offer && course.showPrice ? course.priceInr : undefined;
 
   return (
     <Link
@@ -38,8 +39,11 @@ export function CourseCard({ course }: { course: Course }) {
         <p className="mt-3 text-sm text-muted-foreground line-clamp-2">{course.summary}</p>
 
         <div
-          className={`mt-4 pt-4 border-t border-border flex items-center mt-auto ${offer ? "justify-between" : "justify-end"}`}
+          className={`mt-4 pt-4 border-t border-border flex items-center mt-auto ${offer || plainPrice ? "justify-between" : "justify-end"}`}
         >
+          {plainPrice !== undefined && (
+            <span className="text-sm font-semibold text-foreground">{inr(plainPrice)}</span>
+          )}
           {offer && (
             <div className="flex flex-col">
               <span className="text-[10px] uppercase tracking-[0.15em] font-semibold text-[#C8572A]">

@@ -19,6 +19,9 @@ export interface Course {
   pros?: string[]; // shown as a bullet list on the course page, if present
   terms?: string[]; // Terms & Conditions bullets, shown on the course page, if present
   image: string;
+  // Show the price on the course card. Prices are normally hidden; used for
+  // the ₹1 test course so testers can see what they'll pay.
+  showPrice?: boolean;
   // CSS object-position for the card/ad thumbnail crop, e.g. "50% 20%".
   // Only needed for photos where the default center crop cuts off faces —
   // most images (graphics, already-16:9 photos) don't need this.
@@ -484,13 +487,14 @@ export const courses: Course[] = [
   },
 ];
 
-// Hidden courses: reachable only by direct link (e.g. for testing live
-// payments). Never listed anywhere, not in the sitemap, and marked noindex.
+// Test courses: shown at the end of the L&D "Pick Your Track" grid so anyone
+// can enroll and pay through the normal flow, but kept out of every other
+// list, out of the sitemap, and marked noindex so Google never shows them.
 // Each one must also exist in worker/src/courses.ts with the same price.
 export const hiddenCourses: Course[] = [
   {
     id: "razorpay-live-test",
-    title: "Razorpay Live Payment Test",
+    title: "Test Course: ₹1 Payment Check",
     category: "career",
     page: "bpo",
     priceInr: 1,
@@ -505,6 +509,7 @@ export const hiddenCourses: Course[] = [
       },
     ],
     image: "/assets/interview-handshake.jpg",
+    showPrice: true,
   },
 ];
 
