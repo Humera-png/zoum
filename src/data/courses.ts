@@ -224,7 +224,8 @@ export const courses: Course[] = [
     page: "consultancy",
     priceInr: 3999,
     duration: "Live classes by Experts",
-    summary: "Time management, teamwork, and professional etiquette for people early in their career.",
+    summary:
+      "Time management, teamwork, and professional etiquette for people early in their career.",
     modules: [
       {
         title: "Time & Task Management",
@@ -252,7 +253,8 @@ export const courses: Course[] = [
     page: "consultancy",
     priceInr: 8999,
     duration: "Live classes by Experts",
-    summary: "Preparing high performers to step into their first management role with real support.",
+    summary:
+      "Preparing high performers to step into their first management role with real support.",
     modules: [
       {
         title: "Delegation & Setting Team Goals",
@@ -299,8 +301,7 @@ export const courses: Course[] = [
           "How to negotiate salary without sounding pushy, and how to actually compare two offers instead of just chasing the bigger number.",
       },
     ],
-    image:
-      "/assets/interview-handshake.jpg",
+    image: "/assets/interview-handshake.jpg",
   },
   {
     id: "workplace-digital-skills",
@@ -309,7 +310,8 @@ export const courses: Course[] = [
     page: "consultancy",
     priceInr: 3499,
     duration: "Live classes by Experts",
-    summary: "Practical training on the everyday tools every office job expects you to already know.",
+    summary:
+      "Practical training on the everyday tools every office job expects you to already know.",
     modules: [
       {
         title: "Spreadsheets for Work",
@@ -369,7 +371,8 @@ export const courses: Course[] = [
     page: "ai-it",
     priceInr: 6999,
     duration: "Live classes by Experts",
-    summary: "Learn to code in Python from scratch, the language behind most AI, automation, and data work.",
+    summary:
+      "Learn to code in Python from scratch, the language behind most AI, automation, and data work.",
     modules: [
       {
         title: "Python Fundamentals",
@@ -397,7 +400,8 @@ export const courses: Course[] = [
     page: "ai-it",
     priceInr: 19999,
     duration: "Live classes by Experts",
-    summary: "Go from zero to building and deploying a real web application, front end and back end.",
+    summary:
+      "Go from zero to building and deploying a real web application, front end and back end.",
     modules: [
       {
         title: "Frontend Fundamentals",
@@ -425,7 +429,8 @@ export const courses: Course[] = [
     page: "ai-it",
     priceInr: 8999,
     duration: "Live classes by Experts",
-    summary: "Turn raw spreadsheets and databases into answers, a practical analytics skillset for any role.",
+    summary:
+      "Turn raw spreadsheets and databases into answers, a practical analytics skillset for any role.",
     modules: [
       {
         title: "Advanced Excel & SQL Fundamentals",
@@ -478,3 +483,32 @@ export const courses: Course[] = [
     image: "/assets/python-ai-ml.jpg",
   },
 ];
+
+// Hidden courses: reachable only by direct link (e.g. for testing live
+// payments). Never listed anywhere, not in the sitemap, and marked noindex.
+// Each one must also exist in worker/src/courses.ts with the same price.
+export const hiddenCourses: Course[] = [
+  {
+    id: "razorpay-live-test",
+    title: "Razorpay Live Payment Test",
+    category: "career",
+    page: "bpo",
+    priceInr: 1,
+    duration: "Internal test",
+    summary:
+      "A ₹1 internal test to confirm live Razorpay payments work end to end. Not a real course.",
+    modules: [
+      {
+        title: "Payment test",
+        description:
+          "Pay ₹1 to check that checkout, payment verification and confirmation emails work in live mode.",
+      },
+    ],
+    image: "/assets/interview-handshake.jpg",
+  },
+];
+
+/** Find any course by id, including hidden ones. Use only for the course page. */
+export function findAnyCourse(id: string): Course | undefined {
+  return courses.find((c) => c.id === id) ?? hiddenCourses.find((c) => c.id === id);
+}

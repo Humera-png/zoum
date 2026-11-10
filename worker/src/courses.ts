@@ -34,6 +34,9 @@ export const COURSES: CourseRecord[] = [
     title: "Automate Everything: Python, AI & Machine Learning in Practice",
     priceInr: 999,
   },
+  // Hidden ₹1 course for testing live Razorpay payments. Reachable only by
+  // direct link; see hiddenCourses in src/data/courses.ts.
+  { id: "razorpay-live-test", title: "Razorpay Live Payment Test", priceInr: 1 },
 ];
 
 // Diwali offer. Same prices and end date as src/lib/diwaliOffer.ts on the
