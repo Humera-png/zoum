@@ -4,7 +4,7 @@ import { MessageCircle, Users, Brain, Presentation, Handshake, Cpu } from "lucid
 import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageBackdrop } from "@/components/PageBackdrop";
 import { CourseCard } from "@/components/CourseCard";
-import { courses, hiddenCourses } from "@/data/courses";
+import { courses } from "@/data/courses";
 import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
 import { CitiesSection } from "@/components/ServiceGuide";
 
@@ -208,7 +208,7 @@ function TalentDevelopmentPage() {
                   and enroll directly from that page.
                 </p>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                  {[...flagshipCourses, ...hiddenCourses].map((course) => (
+                  {flagshipCourses.map((course) => (
                     <CourseCard key={course.id} course={course} />
                   ))}
                 </div>

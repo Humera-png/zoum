@@ -19,9 +19,6 @@ export interface Course {
   pros?: string[]; // shown as a bullet list on the course page, if present
   terms?: string[]; // Terms & Conditions bullets, shown on the course page, if present
   image: string;
-  // Show the price on the course card. Prices are normally hidden; used for
-  // the ₹1 test course so testers can see what they'll pay.
-  showPrice?: boolean;
   // CSS object-position for the card/ad thumbnail crop, e.g. "50% 20%".
   // Only needed for photos where the default center crop cuts off faces —
   // most images (graphics, already-16:9 photos) don't need this.
@@ -486,34 +483,3 @@ export const courses: Course[] = [
     image: "/assets/python-ai-ml.jpg",
   },
 ];
-
-// Test courses: shown at the end of the L&D "Pick Your Track" grid so anyone
-// can enroll and pay through the normal flow, but kept out of every other
-// list, out of the sitemap, and marked noindex so Google never shows them.
-// Each one must also exist in worker/src/courses.ts with the same price.
-export const hiddenCourses: Course[] = [
-  {
-    id: "razorpay-live-test",
-    title: "Test Course: ₹1 Payment Check",
-    category: "career",
-    page: "bpo",
-    priceInr: 1,
-    duration: "Internal test",
-    summary:
-      "A ₹1 internal test to confirm live Razorpay payments work end to end. Not a real course.",
-    modules: [
-      {
-        title: "Payment test",
-        description:
-          "Pay ₹1 to check that checkout, payment verification and confirmation emails work in live mode.",
-      },
-    ],
-    image: "/assets/interview-handshake.jpg",
-    showPrice: true,
-  },
-];
-
-/** Find any course by id, including hidden ones. Use only for the course page. */
-export function findAnyCourse(id: string): Course | undefined {
-  return courses.find((c) => c.id === id) ?? hiddenCourses.find((c) => c.id === id);
-}

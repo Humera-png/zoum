@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Clock, ArrowUpRight, Check, Award, ShieldCheck } from "lucide-react";
-import { findAnyCourse, hiddenCourses, type Course } from "@/data/courses";
+import { courses, type Course } from "@/data/courses";
 import { CATEGORY_META } from "@/lib/courseCategory";
 import { PageBackdrop } from "@/components/PageBackdrop";
 import { CourseEnrollPanel } from "@/components/CourseEnrollPanel";
@@ -11,8 +11,7 @@ import { Diya } from "@/components/DiwaliDecor";
 
 export const Route = createFileRoute("/courses/$courseId")({
   head: ({ params }) => {
-    const course = findAnyCourse(params.courseId);
-    const hidden = hiddenCourses.some((c) => c.id === params.courseId);
+    const course = courses.find((c) => c.id === params.courseId);
     return {
       meta: [
         {
@@ -26,12 +25,10 @@ export const Route = createFileRoute("/courses/$courseId")({
               content: `${course.summary} ${course.duration}. Enroll online.`,
             }
           : { name: "robots", content: "noindex" },
-        ...(hidden ? [{ name: "robots", content: "noindex, nofollow" }] : []),
       ],
-      links:
-        course && !hidden
-          ? [{ rel: "canonical", href: `https://zoumconsultancy.com/courses/${course.id}` }]
-          : [],
+      links: course
+        ? [{ rel: "canonical", href: `https://zoumconsultancy.com/courses/${course.id}` }]
+        : [],
     };
   },
   component: CourseDetailPage,
@@ -66,7 +63,7 @@ function CourseSchema({ course }: { course: Course }) {
 
 function CourseDetailPage() {
   const { courseId } = Route.useParams();
-  const course = findAnyCourse(courseId);
+  const course = courses.find((c) => c.id === courseId);
   const [openModule, setOpenModule] = useState(0);
 
   return (
