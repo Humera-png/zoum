@@ -27,8 +27,8 @@ export function Footer() {
               <Logo height={48} />
             </div>
             <p className="text-muted-foreground mt-4 text-sm max-w-sm leading-relaxed">
-              ZOUM Consultancy connects businesses and professionals through strategy, talent,
-              social media, and AI. Jaipur headquartered, pan-India reach.
+              ZOUM (pronounced "zoom") Consultancy connects businesses and professionals through
+              strategy, talent, social media, and AI. Jaipur headquartered, pan-India reach.
             </p>
             <div className="flex items-center gap-2 mt-5">
               {[
@@ -59,20 +59,14 @@ export function Footer() {
             <ul className="space-y-2.5">
               {quickLinks.map((l) => (
                 <li key={l.to}>
-                  <Link
-                    to={l.to}
-                    className="text-sm text-foreground/80 hover:text-lime transition"
-                  >
+                  <Link to={l.to} className="text-sm text-foreground/80 hover:text-lime transition">
                     {l.label}
                   </Link>
                 </li>
               ))}
               {serviceLinks.map((l) => (
                 <li key={l.to}>
-                  <Link
-                    to={l.to}
-                    className="text-sm text-foreground/80 hover:text-lime transition"
-                  >
+                  <Link to={l.to} className="text-sm text-foreground/80 hover:text-lime transition">
                     {l.label}
                   </Link>
                 </li>
@@ -88,7 +82,8 @@ export function Footer() {
               <li className="flex items-start gap-2.5">
                 <MapPin className="h-4 w-4 text-lime mt-0.5 shrink-0" />
                 <span className="text-sm text-foreground/80 leading-relaxed">
-                  ZOUM Consultancy, C-411, Block B, Shankar Colony, Siddharth Nagar, Jagatpura (near airport), Jaipur, Rajasthan 302017
+                  ZOUM Consultancy, C-411, Block B, Shankar Colony, Siddharth Nagar, Jagatpura (near
+                  airport), Jaipur, Rajasthan 302017
                 </span>
               </li>
               <li className="flex items-center gap-2.5">

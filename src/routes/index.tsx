@@ -36,7 +36,7 @@ import { courses } from "@/data/courses";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Career & Business Consultancy in Jaipur, Ahmedabad & India | ZOUM" },
+      { title: "ZOUM Consultancy | Career & Business Consultancy in Jaipur, Ahmedabad & India" },
       {
         name: "description",
         content:

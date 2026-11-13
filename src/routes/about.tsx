@@ -16,7 +16,8 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: "About ZOUM Consultancy" },
       {
         property: "og:description",
-        content: "A team that's actually done the work, not just consultants. Meet the ZOUM advisory board.",
+        content:
+          "A team that's actually done the work, not just consultants. Meet the ZOUM advisory board.",
       },
     ],
     links: [{ rel: "canonical", href: "https://zoumconsultancy.com/about" }],
@@ -92,16 +93,16 @@ function AboutPage() {
 
         <section className="mt-20 max-w-3xl">
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-            ZOUM Consultancy is a Jaipur-based consultancy working with businesses and job seekers
-            across India. On the recruitment side, we help candidates get noticed for roles they're
-            already qualified for and negotiate better pay once they get there, we've placed 5000+
-            people so far, across 100+ companies. On the IT side, we build AI automation and AI
-            agents that take over repetitive work, along with websites and custom software that
-            businesses actually own and can grow with, not something they'll need to redo in a
-            year. Alongside that, we run talent and skills training, social media marketing,
-            business consultancy, and business process outsourcing for companies that want one team
-            instead of five different vendors. Every person on our team has actually done the work
-            we advise on, not just talked about it.
+            ZOUM (pronounced &ldquo;zoom&rdquo;) Consultancy is a Jaipur-based consultancy working
+            with businesses and job seekers across India. On the recruitment side, we help
+            candidates get noticed for roles they're already qualified for and negotiate better pay
+            once they get there, we've placed 5000+ people so far, across 100+ companies. On the IT
+            side, we build AI automation and AI agents that take over repetitive work, along with
+            websites and custom software that businesses actually own and can grow with, not
+            something they'll need to redo in a year. Alongside that, we run talent and skills
+            training, social media marketing, business consultancy, and business process outsourcing
+            for companies that want one team instead of five different vendors. Every person on our
+            team has actually done the work we advise on, not just talked about it.
           </p>
         </section>
 
@@ -115,8 +116,7 @@ function AboutPage() {
                 The people behind the work.
               </h2>
             </div>
-            <p className="text-muted-foreground max-w-sm text-sm">
-            </p>
+            <p className="text-muted-foreground max-w-sm text-sm"></p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-5">
