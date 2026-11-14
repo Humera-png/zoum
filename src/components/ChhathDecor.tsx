@@ -195,9 +195,6 @@ export function ChhathDecor() {
               <p className="mt-0.5 text-sm font-medium text-orange-900/90" lang="hi">
                 छठ पूजा की हार्दिक शुभकामनाएं
               </p>
-              <p className="mt-1 text-sm text-orange-900/75 leading-snug">
-                May Surya Dev and Chhathi Maiya bless you and your family with health and happiness.
-              </p>
             </div>
           </div>
         </div>
