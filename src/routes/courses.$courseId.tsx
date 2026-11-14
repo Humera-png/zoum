@@ -6,8 +6,6 @@ import { courses, type Course } from "@/data/courses";
 import { CATEGORY_META } from "@/lib/courseCategory";
 import { PageBackdrop } from "@/components/PageBackdrop";
 import { CourseEnrollPanel } from "@/components/CourseEnrollPanel";
-import { diwaliPrice, inr, OFFER_ENDS_LABEL } from "@/lib/diwaliOffer";
-import { Diya } from "@/components/DiwaliDecor";
 
 export const Route = createFileRoute("/courses/$courseId")({
   head: ({ params }) => {
@@ -221,24 +219,6 @@ function CourseDetailPage() {
                       </AnimatePresence>
 
                       <div className="mt-6 pt-6 border-t border-border">
-                        {diwaliPrice(course.id) && (
-                          <div className="mb-6 max-w-md flex items-center gap-3 rounded-2xl border border-amber-200 bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 p-4">
-                            <Diya className="h-10 w-12 shrink-0" />
-                            <div>
-                              <div className="text-[10px] uppercase tracking-[0.15em] font-semibold text-[#C8572A]">
-                                Diwali offer · till {OFFER_ENDS_LABEL}
-                              </div>
-                              <div className="mt-0.5 text-amber-950">
-                                <span className="font-display text-2xl">
-                                  {inr(diwaliPrice(course.id)!)}
-                                </span>{" "}
-                                <span className="text-sm text-amber-900/60 line-through">
-                                  {inr(course.priceInr)}
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        )}
                         <h3 className="font-display text-lg mb-1">Enroll in this course</h3>
                         <p className="text-sm text-muted-foreground mb-5">
                           Sign in (or create an account) to enroll and pay securely.

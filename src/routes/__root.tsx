@@ -192,7 +192,7 @@ import { PageTransition } from "@/components/PageTransition";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
-import { DiwaliDecor } from "@/components/DiwaliDecor";
+import { ChhathDecor } from "@/components/ChhathDecor";
 import { IntroScreen } from "@/components/IntroScreen";
 import { GradientCursor } from "@/components/GradientCursor";
 import { CLERK_PUBLISHABLE_KEY } from "@/lib/clerk";
@@ -216,7 +216,7 @@ function RootComponent() {
       </PageTransition>
       <Footer />
       <WhatsAppButton />
-      <DiwaliDecor />
+      <ChhathDecor />
     </QueryClientProvider>
   );
 
