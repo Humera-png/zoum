@@ -117,10 +117,18 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-4 pt-8 border-t border-border">
+        <div className="flex flex-wrap items-center gap-x-8 gap-y-3 pt-8 border-t border-border">
           <span className="text-muted-foreground text-xs">
             © {new Date().getFullYear()} ZOUM Consultancy. All rights reserved.
           </span>
+          <div className="flex items-center gap-5 text-xs">
+            <Link to="/privacy-policy" className="text-muted-foreground hover:text-lime transition">
+              Privacy Policy
+            </Link>
+            <Link to="/terms" className="text-muted-foreground hover:text-lime transition">
+              Terms &amp; Conditions
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
