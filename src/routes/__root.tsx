@@ -94,6 +94,15 @@ const structuredData = {
   url: "https://zoumconsultancy.com",
   logo: "https://zoumconsultancy.com/assets/zoum-logo.png",
   email: "contact@zoumconsultancy.com",
+  telephone: "+91-8360971791",
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: "+91-8360971791",
+      contactType: "customer service",
+      areaServed: "IN",
+    },
+  ],
   address: {
     "@type": "PostalAddress",
     streetAddress: "C-411, Block B, Shankar Colony, Siddharth Nagar, Near Airport, Jagatpura",
@@ -111,16 +120,28 @@ const structuredData = {
     "@type": "OfferCatalog",
     name: "Consultancy Services",
     itemListElement: [
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Recruitment & Job Placement" } },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Recruitment & Job Placement" },
+      },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI Automation & AI Agents" } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Website Development" } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Software Development" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Business Process Outsourcing" } },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Business Process Outsourcing" },
+      },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Social Media Marketing" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Talent & Skills Development" } },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Talent & Skills Development" },
+      },
     ],
   },
-  sameAs: ["https://zoumconsultancy.com"],
+  sameAs: [
+    "https://www.linkedin.com/company/zoum-consultancy/",
+    "https://www.instagram.com/zoumplacementservices",
+  ],
 };
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
@@ -128,18 +149,27 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "ZOUM Consultancy | Career & Business Consultancy in Jaipur, Ahmedabad & India" },
+      { title: "ZOUM Consultancy: Jobs, Courses & AI | Jaipur & Ahmedabad" },
       {
         name: "description",
         content:
           "ZOUM Consultancy: a Jaipur-based consultancy serving Jaipur, Ahmedabad and all of India. 5000+ job placements, plus AI automation, AI agents, website development, social media, BPO, and business consultancy for businesses.",
       },
       { name: "robots", content: "index, follow" },
-      { name: "keywords", content: "business consultancy Jaipur, recruitment agency Jaipur, recruitment agency Ahmedabad, placement agency Ahmedabad, placement services India, job consultancy, IT consultancy, AI automation agency, AI agents development, website development company, software development India, ZOUM" },
-      { property: "og:title", content: "ZOUM Consultancy | Business Consultancy, Recruitment & IT Services | Jaipur, India" },
+      {
+        name: "keywords",
+        content:
+          "business consultancy Jaipur, recruitment agency Jaipur, recruitment agency Ahmedabad, placement agency Ahmedabad, placement services India, job consultancy, IT consultancy, AI automation agency, AI agents development, website development company, software development India, ZOUM",
+      },
+      {
+        property: "og:title",
+        content:
+          "ZOUM Consultancy | Business Consultancy, Recruitment & IT Services | Jaipur, India",
+      },
       {
         property: "og:description",
-        content: "Jaipur's consultancy: job placement across India, plus AI automation, AI agents, website development, and business consultancy.",
+        content:
+          "Jaipur's consultancy: job placement across India, plus AI automation, AI agents, website development, and business consultancy.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://zoumconsultancy.com" },
@@ -147,8 +177,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: "ZOUM Consultancy" },
       { property: "og:locale", content: "en_IN" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "ZOUM Consultancy | Business Consultancy, Recruitment & IT Services" },
-      { name: "twitter:description", content: "Jaipur consultancy: job placement, AI automation, AI agents, website & software development, business consultancy." },
+      {
+        name: "twitter:title",
+        content: "ZOUM Consultancy | Business Consultancy, Recruitment & IT Services",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Jaipur consultancy: job placement, AI automation, AI agents, website & software development, business consultancy.",
+      },
       { name: "twitter:image", content: "https://zoumconsultancy.com/assets/zoum-logo.png" },
     ],
     links: [

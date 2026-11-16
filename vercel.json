@@ -1,12 +1,28 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "redirects": [
     {
       "source": "/(.*)",
-      "has": [{ "type": "host", "value": "www.zoumconsultancy.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "www.zoumconsultancy.com"
+        }
+      ],
       "destination": "https://zoumconsultancy.com/$1",
       "permanent": true
     }
   ],
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "rewrites": [
+    {
+      "source": "/(jobs|services|courses|blog)/(.*)",
+      "destination": "/app-shell.html"
+    },
+    {
+      "source": "/admin(.*)",
+      "destination": "/app-shell.html"
+    }
+  ]
 }

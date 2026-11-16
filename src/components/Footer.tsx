@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Twitter, Linkedin, Instagram, MapPin, Phone, Mail } from "lucide-react";
+import { Linkedin, Instagram, MapPin, Phone, Mail } from "lucide-react";
 import { Logo } from "./Logo";
 
 const quickLinks = [
@@ -32,7 +32,6 @@ export function Footer() {
             </p>
             <div className="flex items-center gap-2 mt-5">
               {[
-                { Icon: Twitter, href: "#" },
                 { Icon: Linkedin, href: "https://www.linkedin.com/company/zoum-consultancy/" },
                 {
                   Icon: Instagram,

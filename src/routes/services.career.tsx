@@ -31,7 +31,7 @@ export const Route = createFileRoute("/services/career")({
       {
         name: "description",
         content:
-          "ZOUM Consultancy's recruitment service helps candidates get noticed for bigger roles and negotiate better pay. 5000+ job placements across India, 100+ companies served.",
+          "Recruitment and job placement agency in Jaipur and Ahmedabad. 5000+ job placements across India and 100+ companies served. Get noticed for bigger roles.",
       },
       {
         name: "keywords",

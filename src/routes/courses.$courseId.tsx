@@ -3,6 +3,32 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Clock, ArrowUpRight, Check, Award, ShieldCheck } from "lucide-react";
 import { courses, type Course } from "@/data/courses";
+import { pageTitle, metaDescription } from "@/lib/seo";
+import { FaqSection, type Faq } from "@/components/ServiceGuide";
+
+// Answer-first questions for search and AI answers. Shared facts only:
+// format, enrollment, payment, the 12-day refund policy (see /terms) and
+// the "placement assistance, not guaranteed" course term.
+function courseFaqs(course: Course): Faq[] {
+  return [
+    {
+      q: `Is the ${course.title} online or in person?`,
+      a: "Both. Classes run in person at our Jaipur centre or online, individually or in small groups, so you can join from Ahmedabad or anywhere in India.",
+    },
+    {
+      q: `How do I enroll in the ${course.title}?`,
+      a: "Sign in or create a free account on this page, then pay securely online through Razorpay using a card, UPI or netbanking. Your enrollment is confirmed as soon as the payment goes through.",
+    },
+    {
+      q: "Can I get a refund?",
+      a: "Yes. You can request a refund within 12 days of your payment by emailing contact@zoumconsultancy.com or messaging us on WhatsApp. Approved refunds go back to your original payment method.",
+    },
+    {
+      q: "Does the course guarantee a job?",
+      a: "No course can honestly guarantee a job. We give placement assistance and guidance to students who put in the work, and ZOUM also works as a recruitment agency connecting candidates with employers in Jaipur, Ahmedabad and across India.",
+    },
+  ];
+}
 import { CATEGORY_META } from "@/lib/courseCategory";
 import { PageBackdrop } from "@/components/PageBackdrop";
 import { CourseEnrollPanel } from "@/components/CourseEnrollPanel";
@@ -13,14 +39,12 @@ export const Route = createFileRoute("/courses/$courseId")({
     return {
       meta: [
         {
-          title: course
-            ? `${course.title} | ZOUM Consultancy Courses`
-            : "Course | ZOUM Consultancy",
+          title: course ? pageTitle(course.title) : "Course | ZOUM Consultancy",
         },
         course
           ? {
               name: "description",
-              content: `${course.summary} ${course.duration}. Enroll online.`,
+              content: metaDescription(`${course.summary} Enroll online.`),
             }
           : { name: "robots", content: "noindex" },
       ],
@@ -248,6 +272,9 @@ function CourseDetailPage() {
                 )}
               </div>
             </motion.div>
+            <div className="mt-16">
+              <FaqSection id="course-faq" title="Course Questions" faqs={courseFaqs(course)} />
+            </div>
           </>
         )}
       </div>

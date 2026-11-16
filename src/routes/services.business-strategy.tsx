@@ -15,7 +15,7 @@ export const Route = createFileRoute("/services/business-strategy")({
   head: () => ({
     meta: [
       {
-        title: "BPO & Business Process Outsourcing Services, Jaipur & Ahmedabad | ZOUM",
+        title: "BPO & Outsourcing Services in Jaipur & Ahmedabad | ZOUM",
       },
 
       {

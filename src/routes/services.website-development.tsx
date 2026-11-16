@@ -30,11 +30,11 @@ import {
 export const Route = createFileRoute("/services/website-development")({
   head: () => ({
     meta: [
-      { title: "Website Development & Social Media Marketing | ZOUM Jaipur & Ahmedabad" },
+      { title: "Website Development & Social Media in Jaipur | ZOUM" },
       {
         name: "description",
         content:
-          "Digital presence for growing businesses: website & web app development plus social media marketing, content, and paid campaigns, run by one team. ZOUM Consultancy, Jaipur.",
+          "Website and web app development plus social media marketing, content and paid campaigns for growing businesses, by ZOUM Consultancy in Jaipur.",
       },
       {
         name: "keywords",

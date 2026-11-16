@@ -8,15 +8,7 @@
    FONTS
 ====================== */
 
-@font-face {
-  font-family: "Clash Display";
-
-  src: url("https://fonts.cdnfonts.com/s/100013/ClashDisplay-Variable.woff2") format("woff2");
-
-  font-weight: 200 700;
-
-  font-display: swap;
-}
+/* Clash Display is loaded from Fontshare (its official free source) in index.html. */
 
 /* ======================
    THEME

@@ -19,11 +19,11 @@ import { CitiesSection, FaqSection } from "@/components/ServiceGuide";
 export const Route = createFileRoute("/services/business")({
   head: () => ({
     meta: [
-      { title: "Our Services | ZOUM Jaipur & Ahmedabad" },
+      { title: "Business Consultancy Services in Jaipur & Ahmedabad | ZOUM" },
       {
         name: "description",
         content:
-          "ZOUM Consultancy's 5 service lines: Find Job, Learning & Development, AI & IT Services, Website Development & Social Media, and Business Process Outsourcing, run by one team in Jaipur.",
+          "Business consultancy in Jaipur and Ahmedabad: recruitment, training courses, AI and IT services, websites, social media and BPO, all from one team.",
       },
       { property: "og:title", content: "Our Services | ZOUM Consultancy" },
       {

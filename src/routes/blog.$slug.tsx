@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { pageTitle, metaDescription } from "@/lib/seo";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { PageBackdrop } from "@/components/PageBackdrop";
 import { CTA } from "./services.business";
@@ -18,8 +19,8 @@ export const Route = createFileRoute("/blog/$slug")({
     }
     return {
       meta: [
-        { title: `${post.title} | ZOUM Consultancy` },
-        { name: "description", content: post.description },
+        { title: pageTitle(post.title) },
+        { name: "description", content: metaDescription(post.description) },
         { property: "og:title", content: post.title },
         { property: "og:description", content: post.description },
         { property: "og:type", content: "article" },

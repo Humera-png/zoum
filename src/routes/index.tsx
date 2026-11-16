@@ -36,18 +36,21 @@ import { courses } from "@/data/courses";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "ZOUM Consultancy | Career & Business Consultancy in Jaipur, Ahmedabad & India" },
+      { title: "ZOUM Consultancy: Jobs, Courses & AI | Jaipur & Ahmedabad" },
       {
         name: "description",
         content:
-          "ZOUM Consultancy is a Jaipur-based consultancy serving Jaipur, Ahmedabad and all of India: 5000+ job placements, plus AI automation, AI agents, website development, social media, BPO, and business consultancy.",
+          "Jaipur consultancy serving Ahmedabad and all of India: 5000+ job placements, career courses, AI automation, websites, BPO and business consultancy.",
       },
       {
         name: "keywords",
         content:
           "business consultancy Jaipur, recruitment agency Jaipur, recruitment agency Ahmedabad, business consultancy Ahmedabad, job placement India, IT consultancy Jaipur, AI automation agency, AI agents development, website development company India, software development company",
       },
-      { property: "og:title", content: "ZOUM Consultancy | Business Consultancy, Recruitment & IT Services" },
+      {
+        property: "og:title",
+        content: "ZOUM Consultancy | Business Consultancy, Recruitment & IT Services",
+      },
       {
         property: "og:description",
         content:
@@ -189,7 +192,9 @@ function GlassVisual() {
           className="absolute top-11 left-1/2 -translate-x-[calc(100%+6px)] glass-strong rounded-2xl px-4 py-2.5 text-center"
           style={{ transform: "translateZ(90px)" }}
         >
-          <div className="text-[9px] uppercase tracking-wider text-muted-foreground">Placements</div>
+          <div className="text-[9px] uppercase tracking-wider text-muted-foreground">
+            Placements
+          </div>
           <div className="font-display text-xl text-foreground leading-tight">5000+</div>
         </motion.div>
         <motion.div
@@ -246,8 +251,8 @@ function Hero() {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="mt-5 md:mt-7 text-base md:text-lg text-muted-foreground max-w-xl"
           >
-            ZOUM Consultancy scales companies and accelerates careers through data-driven
-            strategy, clear execution, and no wasted time.
+            ZOUM Consultancy scales companies and accelerates careers through data-driven strategy,
+            clear execution, and no wasted time.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -323,7 +328,10 @@ function SectorsStrip() {
                 delay: (i % sectors.length) * 0.15,
               }}
               className="group inline-flex items-center justify-center gap-2 w-[230px] shrink-0 border border-slate-200/50 px-4 py-3 mx-1 h-16 rounded-xl shadow-sm transition-all duration-500 cursor-default hover:border-emerald-500/40 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)]"
-              style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.85), rgba(31,203,107,0.08))" }}
+              style={{
+                background:
+                  "linear-gradient(135deg, rgba(255,255,255,0.85), rgba(31,203,107,0.08))",
+              }}
             >
               <motion.span
                 animate={{ rotate: [0, 12, 0] }}
@@ -337,7 +345,9 @@ function SectorsStrip() {
               >
                 <s.icon className="h-3.5 w-3.5 text-lime group-hover:text-white transition" />
               </motion.span>
-              <span className="text-sm font-medium text-foreground whitespace-nowrap">{s.label}</span>
+              <span className="text-sm font-medium text-foreground whitespace-nowrap">
+                {s.label}
+              </span>
             </motion.div>
           ))}
         </motion.div>
@@ -429,9 +439,7 @@ function ServiceCard({ s, i }: { s: (typeof services)[number]; i: number }) {
         </h3>
         <p className="mt-2 text-muted-foreground text-sm leading-relaxed">{s.body}</p>
         <div className="mt-4 pt-3 border-t border-border flex items-center justify-between mt-auto">
-          <span className="text-xs font-semibold text-lime group-hover:underline">
-            Learn more
-          </span>
+          <span className="text-xs font-semibold text-lime group-hover:underline">Learn more</span>
           <ArrowUpRight className="h-4 w-4 text-lime" />
         </div>
       </Link>
@@ -555,8 +563,7 @@ function WhyChooseZoum() {
           >
             <div className="text-xs uppercase tracking-[0.3em] text-lime mb-4">/ why zoum</div>
             <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-tight">
-              What sets us{" "}
-              <span className="italic font-serif text-muted-foreground">apart.</span>
+              What sets us <span className="italic font-serif text-muted-foreground">apart.</span>
             </h2>
           </motion.div>
           <CardGrid items={whatSetsUsApart} />
@@ -569,10 +576,11 @@ function WhyChooseZoum() {
             viewport={{ once: true }}
             className="text-center mb-10 md:mb-14"
           >
-            <div className="text-xs uppercase tracking-[0.3em] text-lime mb-4">/ the difference</div>
+            <div className="text-xs uppercase tracking-[0.3em] text-lime mb-4">
+              / the difference
+            </div>
             <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-tight">
-              Why{" "}
-              <span className="italic font-serif text-muted-foreground">choose us.</span>
+              Why <span className="italic font-serif text-muted-foreground">choose us.</span>
             </h2>
           </motion.div>
           <CardGrid items={whyChooseUs} />
@@ -624,8 +632,8 @@ function Philosophy() {
           transition={{ delay: 0.3 }}
           className="mt-7 text-muted-foreground max-w-xl mx-auto"
         >
-          Founded in 2020, ZOUM Consultancy works with businesses and people who want
-          real results, not average ones.
+          Founded in 2020, ZOUM Consultancy works with businesses and people who want real results,
+          not average ones.
         </motion.p>
 
         {/* Compact 2-col metric matrix */}
@@ -780,9 +788,7 @@ function Testimonials() {
           viewport={{ once: true }}
           className="text-center mb-10 md:mb-14"
         >
-          <div className="text-xs uppercase tracking-[0.3em] text-lime mb-4">
-            / real results
-          </div>
+          <div className="text-xs uppercase tracking-[0.3em] text-lime mb-4">/ real results</div>
           <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-tight">
             Clients. Founders.{" "}
             <span className="italic font-serif text-muted-foreground">On record.</span>
@@ -914,8 +920,8 @@ function Contact() {
             READY FOR YOUR <span className="italic font-serif text-lime">NEXT ROLE?</span>
           </h2>
           <p className="mt-6 text-muted-foreground max-w-md">
-            Submit your details and we'll match you with the right opportunity. No lengthy
-            process, no ghosting. Just a clear next step.
+            Submit your details and we'll match you with the right opportunity. No lengthy process,
+            no ghosting. Just a clear next step.
           </p>
           <div className="mt-6 space-y-3 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
@@ -1013,9 +1019,7 @@ function FAQ() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
       <div className="max-w-4xl mx-auto">
-        <div className="text-xs uppercase tracking-[0.3em] text-lime mb-3 text-center">
-          / faq
-        </div>
+        <div className="text-xs uppercase tracking-[0.3em] text-lime mb-3 text-center">/ faq</div>
         <h2 className="font-display text-4xl md:text-6xl tracking-tight text-center mb-12">
           Common questions.
         </h2>
