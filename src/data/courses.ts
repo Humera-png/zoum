@@ -10,6 +10,10 @@ export interface CourseModule {
 export interface Course {
   id: string;
   title: string;
+  // Google title and description: the searchable course name plus Jaipur and
+  // Ahmedabad (the main markets), then online across India.
+  seoTitle?: string;
+  seoDescription?: string;
   category: CourseCategory;
   page: CoursePage;
   priceInr: number; // whole rupees — charged at checkout, not displayed
@@ -33,6 +37,9 @@ const MASTERCLASS_TERMS = [
 export const courses: Course[] = [
   {
     id: "bpo-career-masterclass",
+    seoTitle: "BPO Course & Interview Training in Jaipur & Ahmedabad",
+    seoDescription:
+      "BPO course and interview training in Jaipur and online for Ahmedabad and across India. Live masterclass, mock interviews and placement assistance.",
     title: "BPO Career & Interview Masterclass",
     category: "career",
     page: "bpo",
@@ -65,6 +72,9 @@ export const courses: Course[] = [
   },
   {
     id: "it-career-masterclass",
+    seoTitle: "IT Career Course for Freshers, Jaipur & Ahmedabad",
+    seoDescription:
+      "IT career course for freshers in Jaipur and online for Ahmedabad and across India: resume and LinkedIn, mock interviews and placement assistance.",
     title: "IT Career & Interview Masterclass",
     category: "career",
     page: "ai-it",
@@ -97,6 +107,9 @@ export const courses: Course[] = [
   },
   {
     id: "business-consultancy-masterclass",
+    seoTitle: "Business Consultancy Course in Jaipur & Ahmedabad",
+    seoDescription:
+      "Business consultancy course in Jaipur and online for Ahmedabad and across India: consulting frameworks, case practice and mock interviews.",
     title: "Business Consultancy Masterclass",
     category: "career",
     page: "consultancy",
@@ -129,6 +142,9 @@ export const courses: Course[] = [
   },
   {
     id: "ai-automation-n8n-masterclass",
+    seoTitle: "n8n AI Automation Course in Jaipur & Ahmedabad",
+    seoDescription:
+      "n8n and AI automation course in Jaipur and online for Ahmedabad and across India. Live classes, real automation builds and a twice-weekly program.",
     title: "AI Automation Masterclass (n8n)",
     category: "tech",
     page: "ai-it",
@@ -161,6 +177,9 @@ export const courses: Course[] = [
   },
   {
     id: "english-communication",
+    seoTitle: "Spoken English Course in Jaipur & Ahmedabad",
+    seoDescription:
+      "Spoken English course in Jaipur and online for Ahmedabad and across India: workplace communication, accent neutralization and mock interviews.",
     title: "Speak With Confidence: English & Communication",
     category: "language",
     page: "consultancy",
@@ -190,6 +209,9 @@ export const courses: Course[] = [
   },
   {
     id: "personality-development",
+    seoTitle: "Personality Development Course, Jaipur & Ahmedabad",
+    seoDescription:
+      "Personality development course in Jaipur and online for Ahmedabad and across India: body language, public speaking and confident communication.",
     title: "Own The Room: Personality Development",
     category: "soft-skills",
     page: "consultancy",
@@ -219,6 +241,9 @@ export const courses: Course[] = [
   },
   {
     id: "workplace-soft-skills",
+    seoTitle: "Soft Skills Training in Jaipur & Ahmedabad",
+    seoDescription:
+      "Soft skills training in Jaipur and online for Ahmedabad and across India: time management, teamwork, workplace etiquette and feedback.",
     title: "Workplace Ready: Soft Skills That Matter",
     category: "soft-skills",
     page: "consultancy",
@@ -248,6 +273,9 @@ export const courses: Course[] = [
   },
   {
     id: "leadership-readiness",
+    seoTitle: "Leadership Course in Jaipur & Ahmedabad",
+    seoDescription:
+      "Leadership training for new managers in Jaipur and online for Ahmedabad and across India: delegation, team goals, 1:1s and performance talks.",
     title: "Lead From Day One: Leadership Readiness",
     category: "leadership",
     page: "consultancy",
@@ -277,6 +305,9 @@ export const courses: Course[] = [
   },
   {
     id: "interview-mastery",
+    seoTitle: "Interview Preparation Course in Jaipur & Ahmedabad",
+    seoDescription:
+      "Interview preparation course in Jaipur and online for Ahmedabad and across India: resume and LinkedIn review, tough questions, salary negotiation.",
     title: "Crack Any Interview: Interview Mastery",
     category: "career",
     page: "consultancy",
@@ -305,6 +336,9 @@ export const courses: Course[] = [
   },
   {
     id: "workplace-digital-skills",
+    seoTitle: "Excel & Digital Skills Course, Jaipur & Ahmedabad",
+    seoDescription:
+      "Excel and digital skills course in Jaipur and online for Ahmedabad and across India: spreadsheets, professional email and file organisation.",
     title: "Digital Skills for the Modern Workplace",
     category: "tech",
     page: "consultancy",
@@ -334,6 +368,9 @@ export const courses: Course[] = [
   },
   {
     id: "ai-ml-foundations",
+    seoTitle: "Machine Learning Course in Jaipur & Ahmedabad",
+    seoDescription:
+      "Machine learning course in Jaipur and online for Ahmedabad and across India. Weekend live masterclass: train and evaluate your own model in Python.",
     title: "Break Into AI: Machine Learning Foundations",
     category: "tech",
     page: "ai-it",
@@ -366,6 +403,9 @@ export const courses: Course[] = [
   },
   {
     id: "python-programming",
+    seoTitle: "Python Course for Beginners in Jaipur & Ahmedabad",
+    seoDescription:
+      "Python course for beginners in Jaipur and online for Ahmedabad and across India. Learn from zero, write automation scripts and build a final project.",
     title: "Code Your Future: Python for Beginners",
     category: "tech",
     page: "ai-it",
@@ -395,6 +435,9 @@ export const courses: Course[] = [
   },
   {
     id: "full-stack-web-development",
+    seoTitle: "Full-Stack Web Development Course, Jaipur & Ahmedabad",
+    seoDescription:
+      "Full-stack web development course in Jaipur and online for Ahmedabad and across India: frontend, backend, databases and a live app.",
     title: "Build & Launch: Full-Stack Web Development",
     category: "tech",
     page: "ai-it",
@@ -424,6 +467,9 @@ export const courses: Course[] = [
   },
   {
     id: "data-analytics",
+    seoTitle: "Data Analytics Course in Jaipur & Ahmedabad",
+    seoDescription:
+      "Data analytics course in Jaipur and online for Ahmedabad and across India: advanced Excel, SQL, dashboards and presenting data.",
     title: "Data Skills That Get You Hired",
     category: "data",
     page: "ai-it",
@@ -453,6 +499,9 @@ export const courses: Course[] = [
   },
   {
     id: "automation-ai-ml-practicum",
+    seoTitle: "Python Automation & AI Course, Jaipur & Ahmedabad",
+    seoDescription:
+      "Python automation and AI course in Jaipur and online for Ahmedabad and across India. 2-day live masterclass: build a real automation pipeline.",
     title: "Automate Everything: Python, AI & Machine Learning in Practice",
     category: "tech",
     page: "ai-it",

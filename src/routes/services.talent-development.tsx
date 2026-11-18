@@ -12,17 +12,17 @@ export const Route = createFileRoute("/services/talent-development")({
   head: () => ({
     meta: [
       {
-        title: "Career Courses: BPO, IT & AI Masterclasses | ZOUM Jaipur",
+        title: "Career Courses in Jaipur & Ahmedabad: BPO, IT & AI | ZOUM",
       },
       {
         name: "description",
         content:
-          "Job-ready courses in Jaipur and online: BPO, IT and Business Consultancy career masterclasses, AI automation and machine learning. Enroll online.",
+          "Job-ready courses in Jaipur, Ahmedabad and online across India: BPO, IT and business consultancy masterclasses, AI automation, Python and more.",
       },
       {
         name: "keywords",
         content:
-          "BPO training course India, IT career masterclass, business consultancy course India, AI and machine learning course India, interview preparation course India, leadership training course, skills training course Jaipur",
+          "BPO course Jaipur, BPO course Ahmedabad, IT career course Jaipur, IT course Ahmedabad, business consultancy course India, AI automation course Jaipur, n8n course Ahmedabad, machine learning course India, spoken English course Jaipur, interview preparation course Ahmedabad, personality development course Jaipur",
       },
       {
         property: "og:title",

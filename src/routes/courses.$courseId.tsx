@@ -68,12 +68,12 @@ export const Route = createFileRoute("/courses/$courseId")({
     return {
       meta: [
         {
-          title: course ? pageTitle(course.title) : "Course | ZOUM Consultancy",
+          title: course ? pageTitle(course.seoTitle ?? course.title) : "Course | ZOUM Consultancy",
         },
         course
           ? {
               name: "description",
-              content: metaDescription(`${course.summary} Enroll online.`),
+              content: metaDescription(course.seoDescription ?? `${course.summary} Enroll online.`),
             }
           : { name: "robots", content: "noindex" },
       ],
@@ -158,6 +158,9 @@ function CourseDetailPage() {
                   / {CATEGORY_META[course.category].label}
                 </div>
                 <h1 className="font-display text-xl md:text-2xl tracking-tight">{course.title}</h1>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Live classes in Jaipur and online, for students in Ahmedabad and across India.
+                </p>
                 <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
                   <span className="inline-flex items-center gap-1.5">
                     <Clock className="h-4 w-4 text-lime" /> {course.duration}

@@ -21,7 +21,7 @@ export const Route = createFileRoute("/services/business-strategy")({
       {
         name: "description",
         content:
-          "ZOUM provides business process outsourcing, operations support, growth strategy, and process improvement to help companies scale efficiently.",
+          "BPO and business process outsourcing in Jaipur, Ahmedabad and across India: customer support, back-office, operations support and process improvement.",
       },
 
       {
