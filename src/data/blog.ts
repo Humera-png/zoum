@@ -1,5 +1,7 @@
-// Blog articles. To add a new one, append an object to `posts` and add its
-// URL (https://zoumconsultancy.com/blog/<slug>) to public/sitemap.xml.
+// Blog articles. To add a new one, append an object to `posts` (or to
+// `guides` in blog-guides.ts) and add its URL
+// (https://zoumconsultancy.com/blog/<slug>) to public/sitemap.xml.
+import { guides } from "./blog-guides";
 
 export type Block =
   | { type: "p"; text: string }
@@ -11,16 +13,22 @@ export type Block =
 export type Post = {
   slug: string;
   title: string;
+  // shorter title for Google results when `title` is too long (keep under 56 characters)
+  seoTitle?: string;
   description: string;
   date: string; // YYYY-MM-DD
   category: string;
   readMinutes: number;
   body: Block[];
+  // Shown at the end of the article with FAQPage structured data, so Google
+  // and AI answers can quote them directly.
+  faqs?: { q: string; a: string }[];
 };
 
-export const posts: Post[] = [
+const basePosts: Post[] = [
   {
     slug: "bpo-jobs-in-jaipur-for-freshers",
+    seoTitle: "BPO Jobs in Jaipur & Ahmedabad for Freshers",
     title: "BPO Jobs in Jaipur and Ahmedabad for Freshers: A Complete Guide",
     description:
       "What BPO jobs are, which roles freshers can apply for in Jaipur and Ahmedabad, the skills employers look for, and how to get hired faster.",
@@ -97,6 +105,7 @@ export const posts: Post[] = [
   },
   {
     slug: "how-to-clear-a-call-centre-interview",
+    seoTitle: "How to Clear a Call Centre Interview",
     title: "How to Clear a Call Centre Interview: Questions, Answers and Tips",
     description:
       "The rounds in a call centre interview, the questions you'll be asked, how to answer them, and the mistakes that get freshers rejected.",
@@ -307,3 +316,5 @@ export const posts: Post[] = [
     ],
   },
 ];
+
+export const posts: Post[] = [...basePosts, ...guides];

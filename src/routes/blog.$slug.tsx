@@ -5,6 +5,7 @@ import { PageBackdrop } from "@/components/PageBackdrop";
 import { CTA } from "./services.business";
 import { formatDate } from "./blog.index";
 import { posts, type Post } from "@/data/blog";
+import { FaqSection } from "@/components/ServiceGuide";
 
 export const Route = createFileRoute("/blog/$slug")({
   head: ({ params }) => {
@@ -19,7 +20,7 @@ export const Route = createFileRoute("/blog/$slug")({
     }
     return {
       meta: [
-        { title: pageTitle(post.title) },
+        { title: pageTitle(post.seoTitle ?? post.title) },
         { name: "description", content: metaDescription(post.description) },
         { property: "og:title", content: post.title },
         { property: "og:description", content: post.description },
@@ -139,6 +140,12 @@ function BlogPostPage() {
             return <p key={i}>{b.text}</p>;
           })}
         </div>
+
+        {post.faqs && post.faqs.length > 0 && (
+          <div className="mt-16 -mx-6">
+            <FaqSection faqs={post.faqs} id="article-faq" title="Frequently Asked Questions" />
+          </div>
+        )}
 
         <div className="mt-24">
           <CTA />

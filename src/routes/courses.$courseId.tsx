@@ -5,6 +5,35 @@ import { Clock, ArrowUpRight, Check, Award, ShieldCheck } from "lucide-react";
 import { courses, type Course } from "@/data/courses";
 import { pageTitle, metaDescription } from "@/lib/seo";
 import { FaqSection, type Faq } from "@/components/ServiceGuide";
+import { posts } from "@/data/blog";
+
+// Blog articles that link to this course, linked back from the course page so
+// search engines see the course and its guides as one topic.
+function RelatedGuides({ courseId }: { courseId: string }) {
+  const related = posts.filter((p) =>
+    p.body.some((b) => b.type === "links" && b.links.some((l) => l.to === `/courses/${courseId}`)),
+  );
+  if (related.length === 0) return null;
+  return (
+    <section className="mt-16 glass-strong rounded-3xl p-8">
+      <div className="text-xs uppercase tracking-[0.3em] text-lime">/ guides</div>
+      <h2 className="mt-3 font-display text-2xl">Related guides</h2>
+      <ul className="mt-5 space-y-3">
+        {related.map((p) => (
+          <li key={p.slug}>
+            <Link
+              to="/blog/$slug"
+              params={{ slug: p.slug }}
+              className="inline-flex items-center gap-1.5 font-semibold text-lime hover:underline"
+            >
+              {p.title} <ArrowUpRight className="h-4 w-4" />
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
 
 // Answer-first questions for search and AI answers. Shared facts only:
 // format, enrollment, payment, the 12-day refund policy (see /terms) and
@@ -275,6 +304,7 @@ function CourseDetailPage() {
             <div className="mt-16">
               <FaqSection id="course-faq" title="Course Questions" faqs={courseFaqs(course)} />
             </div>
+            <RelatedGuides courseId={course.id} />
           </>
         )}
       </div>
