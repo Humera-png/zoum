@@ -2,6 +2,7 @@
 // `guides` in blog-guides.ts) and add its URL
 // (https://zoumconsultancy.com/blog/<slug>) to public/sitemap.xml.
 import { guides } from "./blog-guides";
+import { ahmedabadGuides } from "./blog-ahmedabad";
 
 export type Block =
   | { type: "p"; text: string }
@@ -317,4 +318,4 @@ const basePosts: Post[] = [
   },
 ];
 
-export const posts: Post[] = [...basePosts, ...guides];
+export const posts: Post[] = [...basePosts, ...guides, ...ahmedabadGuides];

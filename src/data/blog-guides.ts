@@ -82,6 +82,7 @@ export const guides: Post[] = [
         title: "Find a job with ZOUM",
         links: [
           { label: "Job placement in Jaipur and Ahmedabad", to: "/services/career" },
+          { label: "Looking in Ahmedabad? Placement consultancy in Ahmedabad", to: "/blog/placement-consultancy-in-ahmedabad" },
           { label: "Interview Mastery course", to: "/courses/interview-mastery" },
           { label: "BPO Career Masterclass", to: "/courses/bpo-career-masterclass" },
         ],
@@ -243,6 +244,7 @@ export const guides: Post[] = [
         links: [
           { label: "Website development and pricing", to: "/services/website-development" },
           { label: "Contact us for a quote", to: "/contact" },
+          { label: "In Ahmedabad? How to choose a website company", to: "/blog/website-development-company-in-ahmedabad" },
           { label: "Full-Stack Web Development course", to: "/courses/full-stack-web-development" },
         ],
       },
