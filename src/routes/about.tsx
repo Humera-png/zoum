@@ -96,7 +96,7 @@ function AboutPage() {
             ZOUM (pronounced &ldquo;zoom&rdquo;) Consultancy is a Jaipur-based consultancy working
             with businesses and job seekers across India. On the recruitment side, we help
             candidates get noticed for roles they're already qualified for and negotiate better pay
-            once they get there, we've placed 5000+ people so far, across 100+ companies. On the IT
+            once they get there, together with our hiring partners we've placed 700+ people over the past five years, across 100+ companies, with the highest packages reaching ₹60–80 LPA for senior roles. On the IT
             side, we build AI automation and AI agents that take over repetitive work, along with
             websites and custom software that businesses actually own and can grow with, not
             something they'll need to redo in a year. Alongside that, we run talent and skills
@@ -171,7 +171,7 @@ function AboutPage() {
               style={{ background: "rgba(31,203,107,0.35)" }}
             />
             {[
-              { v: 5000, suffix: "+", label: "Careers Placed" },
+              { v: 700, suffix: "+", label: "Careers Placed" },
               { v: 100, suffix: "+", label: "Companies Served" },
               { v: 5, suffix: "", label: "Service Lines" },
               { v: 2020, suffix: "", label: "Founded", noGroup: true },

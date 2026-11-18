@@ -40,7 +40,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Jaipur consultancy serving Ahmedabad and all of India: 5000+ job placements, career courses, AI automation, websites, BPO and business consultancy.",
+          "Jaipur consultancy serving Ahmedabad and all of India: 700+ job placements, career courses, AI automation, websites, BPO and business consultancy.",
       },
       {
         name: "keywords",
@@ -195,7 +195,7 @@ function GlassVisual() {
           <div className="text-[9px] uppercase tracking-wider text-muted-foreground">
             Placements
           </div>
-          <div className="font-display text-xl text-foreground leading-tight">5000+</div>
+          <div className="font-display text-xl text-foreground leading-tight">700+</div>
         </motion.div>
         <motion.div
           animate={{ y: [0, -8, 0] }}
@@ -495,7 +495,7 @@ const whatSetsUsApart = [
   },
   {
     icon: Award,
-    title: "5000+ Placements, Proven Results",
+    title: "700+ Placements, Proven Results",
     body: "A track record you can check, not a promise you have to take on faith.",
   },
   {
@@ -646,7 +646,7 @@ function Philosophy() {
         >
           <div className="px-6 py-7 md:py-8 text-center">
             <div className="font-display text-3xl md:text-5xl tracking-tight text-foreground leading-none">
-              5000+
+              700+
             </div>
             <div className="mt-3 text-[10px] md:text-xs uppercase tracking-[0.25em] text-muted-foreground">
               Placements
@@ -654,10 +654,10 @@ function Philosophy() {
           </div>
           <div className="px-6 py-7 md:py-8 text-center">
             <div className="font-display text-3xl md:text-5xl tracking-tight text-foreground leading-none">
-              100+
+              ₹60–80L
             </div>
             <div className="mt-3 text-[10px] md:text-xs uppercase tracking-[0.25em] text-muted-foreground">
-              Companies served
+              Highest packages (LPA)
             </div>
           </div>
         </motion.div>
@@ -926,7 +926,7 @@ function Contact() {
           <div className="mt-6 space-y-3 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-lime" />
-              5000+ placements across every level
+              700+ placements across every level
             </div>
             <div className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-lime" />

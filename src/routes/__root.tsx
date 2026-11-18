@@ -153,7 +153,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "ZOUM Consultancy: a Jaipur-based consultancy serving Jaipur, Ahmedabad and all of India. 5000+ job placements, plus AI automation, AI agents, website development, social media, BPO, and business consultancy for businesses.",
+          "ZOUM Consultancy: a Jaipur-based consultancy serving Jaipur, Ahmedabad and all of India. 700+ job placements, plus AI automation, AI agents, website development, social media, BPO, and business consultancy for businesses.",
       },
       { name: "robots", content: "index, follow" },
       {

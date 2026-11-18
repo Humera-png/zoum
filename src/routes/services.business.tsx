@@ -180,7 +180,7 @@ function BusinessPage() {
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
               />
               {[
-                { v: 5000, suffix: "+", label: "Placements" },
+                { v: 700, suffix: "+", label: "Placements" },
                 { v: 100, suffix: "+", label: "Companies Served" },
               ].map((s, i) => (
                 <div key={i} className="relative text-center sm:text-left">

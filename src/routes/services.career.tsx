@@ -31,7 +31,7 @@ export const Route = createFileRoute("/services/career")({
       {
         name: "description",
         content:
-          "Recruitment and job placement agency in Jaipur and Ahmedabad. 5000+ job placements across India and 100+ companies served. Get noticed for bigger roles.",
+          "Recruitment and job placement agency in Jaipur and Ahmedabad. 700+ placements, with highest packages of ₹60–80 LPA for senior roles. Apply with your profile.",
       },
       {
         name: "keywords",
@@ -107,7 +107,11 @@ const pageFaqs = [
   },
   {
     q: "How do I apply for a job through ZOUM?",
-    a: "Apply for any open role listed on this page, or fill in the job seeker form with your details. Our team reviews every application and contacts you when there's a role that fits.",
+    a: "Apply for any open role listed on this page, or fill in the job seeker form with your experience, current salary and the role you want. Our team reviews every application and contacts you when there's a role that genuinely matches your profile, so the form is the best way to reach us, rather than a phone call.",
+  },
+  {
+    q: "What salary packages have your candidates received?",
+    a: "Over the past five years, together with our hiring partners, we've placed 700+ candidates. The highest packages have been ₹60–80 LPA, for senior professionals with strong experience in their field. Most roles we fill are entry and mid-level, with salaries in line with the market for the role and city.",
   },
   {
     q: "How long does it take to get placed?",
