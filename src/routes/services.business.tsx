@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { MagneticButton } from "@/components/MagneticButton";
 import { PageBackdrop } from "@/components/PageBackdrop";
+import { ServiceGuides } from "@/components/ServiceGuides";
 import { Counter } from "@/components/Counter";
 import { CitiesSection, FaqSection } from "@/components/ServiceGuide";
 
@@ -223,6 +224,8 @@ function BusinessPage() {
           />
 
           <FaqSection faqs={pageFaqs} />
+
+          <ServiceGuides servicePath="/services/business" />
           <CTA />
         </div>
       </div>

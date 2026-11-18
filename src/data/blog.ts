@@ -3,6 +3,7 @@
 // (https://zoumconsultancy.com/blog/<slug>) to public/sitemap.xml.
 import { guides } from "./blog-guides";
 import { ahmedabadGuides } from "./blog-ahmedabad";
+import { marketingGuides } from "./blog-marketing";
 
 export type Block =
   | { type: "p"; text: string }
@@ -318,4 +319,4 @@ const basePosts: Post[] = [
   },
 ];
 
-export const posts: Post[] = [...basePosts, ...guides, ...ahmedabadGuides];
+export const posts: Post[] = [...basePosts, ...guides, ...ahmedabadGuides, ...marketingGuides];

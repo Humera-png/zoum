@@ -162,7 +162,7 @@ export const guides: Post[] = [
         title: "Hire with ZOUM",
         links: [
           { label: "Recruitment and staffing services", to: "/services/career" },
-          { label: "BPO and outsourcing services", to: "/services/business-strategy" },
+          { label: "BPO and outsourcing services", to: "/services/bpo-operations" },
           { label: "Contact us about your hiring needs", to: "/contact" },
         ],
       },
@@ -398,7 +398,7 @@ export const guides: Post[] = [
         type: "links",
         title: "Outsource with ZOUM",
         links: [
-          { label: "BPO and outsourcing services", to: "/services/business-strategy" },
+          { label: "BPO and outsourcing services", to: "/services/bpo-operations" },
           { label: "AI automation for repetitive work", to: "/services/ai-automation" },
           { label: "Talk to us about your process", to: "/contact" },
         ],

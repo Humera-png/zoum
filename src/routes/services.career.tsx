@@ -13,6 +13,7 @@ import {
 
 import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
 import { PageBackdrop } from "@/components/PageBackdrop";
+import { ServiceGuides } from "@/components/ServiceGuides";
 import { JobSeekerForm } from "@/components/JobSeekerForm";
 import { JobListings } from "@/components/JobListings";
 import {
@@ -242,6 +243,8 @@ function CareerPage() {
           />
 
           <FaqSection faqs={pageFaqs} />
+
+          <ServiceGuides servicePath="/services/career" />
           <CTA />
         </div>
       </div>

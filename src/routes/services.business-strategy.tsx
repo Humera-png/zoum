@@ -4,6 +4,7 @@ import { Check, Target, BarChart3, Workflow, Rocket } from "lucide-react";
 
 import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageBackdrop } from "@/components/PageBackdrop";
+import { ServiceGuides } from "@/components/ServiceGuides";
 import { CoursesSection } from "@/components/CoursesSection";
 import { courses } from "@/data/courses";
 import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
@@ -368,6 +369,8 @@ Strategic consulting for businesses looking to improve operations, accelerate gr
             />
 
             <FaqSection faqs={pageFaqs} />
+
+            <ServiceGuides servicePath="/services/bpo-operations" />
             <CTA />
           </div>
         </div>

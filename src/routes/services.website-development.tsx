@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageBackdrop } from "@/components/PageBackdrop";
+import { ServiceGuides } from "@/components/ServiceGuides";
 import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
 import {
   AudienceSection,
@@ -447,6 +448,8 @@ function WebsiteDevelopmentPage() {
             />
 
             <FaqSection faqs={pageFaqs} />
+
+            <ServiceGuides servicePath="/services/website-development" />
             <CTA />
           </div>
         </div>

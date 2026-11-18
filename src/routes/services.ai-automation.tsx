@@ -17,6 +17,7 @@ import {
 
 import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageBackdrop } from "@/components/PageBackdrop";
+import { ServiceGuides } from "@/components/ServiceGuides";
 import { CoursesSection } from "@/components/CoursesSection";
 import { courses } from "@/data/courses";
 import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
@@ -492,6 +493,8 @@ function AIPage() {
             />
 
             <FaqSection faqs={pageFaqs} />
+
+            <ServiceGuides servicePath="/services/ai-automation" />
             <CTA />
           </div>
         </div>
