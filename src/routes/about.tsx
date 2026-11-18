@@ -11,7 +11,7 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "ZOUM Consultancy is a Jaipur-based consultancy serving Jaipur and Ahmedabad. Meet the team behind our recruitment, AI automation, and software development work.",
+          "ZOUM Consultancy has its head office in Jaipur and a branch office in Ahmedabad, and works across India. Meet the team behind our recruitment, AI automation, and software development work.",
       },
       { property: "og:title", content: "About ZOUM Consultancy" },
       {
@@ -46,14 +46,14 @@ const board = [
     name: "Zyaad",
     role: "Founder",
     image: "/assets/abdur-founder.jpg",
-    bio: "Zyaad built ZOUM's recruitment engine from nothing: the sourcing process, the vetting standards, the client relationships that decide whether a candidate ZOUM puts forward actually gets hired. Five-plus years in strategic talent sourcing and business planning taught him the difference between a hiring plan that looks good on a slide and one a company can actually execute, and that's the standard he holds every engagement to on the consultancy side of ZOUM.",
+    bio: "Zyaad built ZOUM's recruitment engine from nothing: the sourcing process, the vetting standards, the client relationships that decide whether a candidate ZOUM puts forward actually gets hired. Five-plus years in strategic talent sourcing and business planning taught him the difference between a hiring plan that looks good on a slide and one a company can actually execute, and that's the standard he holds every engagement to on the consultancy side of ZOUM. Together with Parv, he leads ZOUM's Jaipur head office, working directly with the employers and candidates there, and between them the two founders bring relationships with 100+ companies. For employers, he's the one who turns a vague requirement into a clear hiring brief; for candidates, the one who tells them honestly which roles they're ready for.",
     linkedin: "https://www.linkedin.com/in/abdur-rehman-534483221/",
   },
   {
     name: "Huma",
     role: "Co-Founder & CTO",
     image: "/assets/huma-founder.png",
-    bio: "Huma is why ZOUM's technology exists at all, not just why it works. She built this website end to end, the AI automation and agent systems ZOUM ships to clients, and the course-and-payments platform every student enrolls through, then built the infrastructure underneath all of it so none of it needs her standing over it to keep running. Her background is computer science with a deliberate focus on automation, Python, and AI/ML, the same expertise behind ZOUM's AI & IT service line and courses. As Co-Founder and CTO, her job is simple to state and hard to do: make sure technology is never the reason ZOUM moves slower than it should.",
+    bio: "Huma is why ZOUM's technology exists at all, not just why it works. She built this website end to end, the AI automation and agent systems ZOUM ships to clients, and the course-and-payments platform every student enrolls through, then built the infrastructure underneath all of it so none of it needs her standing over it to keep running. Her background is computer science with a deliberate focus on automation, Python, and AI/ML, the same expertise behind ZOUM's AI & IT service line and courses. As Co-Founder and CTO, her job is simple to state and hard to do: make sure technology is never the reason ZOUM moves slower than it should. Beyond client work, she has designed and built software products of her own from the ground up, including a live software platform she runs as her own business, so she knows what it takes to take software from an idea to something real people rely on. She also leads ZOUM's Ahmedabad branch office, handling clients, candidates and projects there.",
     linkedin: "https://www.linkedin.com/in/humerashaikhofficial/",
   },
 ];
@@ -93,8 +93,8 @@ function AboutPage() {
 
         <section className="mt-20 max-w-3xl">
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-            ZOUM (pronounced &ldquo;zoom&rdquo;) Consultancy is a Jaipur-based consultancy working
-            with businesses and job seekers across India. On the recruitment side, we help
+            ZOUM (pronounced &ldquo;zoom&rdquo;) Consultancy has its head office in Jaipur and a branch office in
+            Ahmedabad, working with businesses and job seekers across India. On the recruitment side, we help
             candidates get noticed for roles they're already qualified for and negotiate better pay
             once they get there, together with our hiring partners we've placed 700+ people over the past five years, across 100+ companies, with the highest packages reaching ₹60–80 LPA for senior roles. On the IT
             side, we build AI automation and AI agents that take over repetitive work, along with

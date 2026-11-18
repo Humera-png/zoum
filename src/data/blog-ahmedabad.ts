@@ -1,6 +1,6 @@
-// Ahmedabad-focused guides. ZOUM is headquartered in Jaipur and works with
-// candidates, students and businesses in Ahmedabad online and through its
-// employer network. Don't imply an Ahmedabad office. Each article must have
+// Ahmedabad-focused guides. ZOUM's head office is in Jaipur and it has a
+// branch office in Ahmedabad (led by Huma). Courses are in person in Jaipur or online, so for
+// Ahmedabad students describe them as online. Each article must have
 // its own angle, not a Jaipur article with the city name swapped.
 // Merged into `posts` in blog.ts; each slug must also be in public/sitemap.xml.
 import type { Post } from "./blog";
@@ -81,7 +81,7 @@ export const ahmedabadGuides: Post[] = [
     faqs: [
       {
         q: "Can I get a job in Ahmedabad through a consultancy based in another city?",
-        a: "Yes. What matters is that the consultancy works with employers hiring in Ahmedabad. ZOUM is headquartered in Jaipur and places candidates with employers in Ahmedabad, handling registration and preparation by phone, WhatsApp and video call.",
+        a: "Yes. What matters is that the consultancy works with employers hiring in Ahmedabad. ZOUM has its head office in Jaipur and a branch office in Ahmedabad, and places candidates with employers in Ahmedabad.",
       },
       {
         q: "Which jobs are available for freshers in Ahmedabad?",
@@ -147,7 +147,7 @@ export const ahmedabadGuides: Post[] = [
       { type: "h2", text: "Do you need a company in Ahmedabad?" },
       {
         type: "p",
-        text: "Website projects run well remotely. Briefs, design reviews and approvals all happen on calls and shared links. What matters is clear communication, a portfolio you trust and a written scope. ZOUM builds websites for businesses in Ahmedabad, Jaipur and across India, with starter websites from ₹9,999 to ₹11,999, premium 7+ page websites from ₹13,999 to ₹19,999, and business websites with SEO from ₹21,999 to ₹49,999.",
+        text: "Website projects run well remotely. Briefs, design reviews and approvals all happen on calls and shared links. What matters is clear communication, a portfolio you trust and a written scope. ZOUM has a branch office in Ahmedabad and builds websites for businesses there, in Jaipur and across India, with starter websites from ₹9,999 to ₹11,999, premium 7+ page websites from ₹13,999 to ₹19,999, and business websites with SEO from ₹21,999 to ₹49,999.",
       },
       {
         type: "links",
@@ -227,7 +227,7 @@ export const ahmedabadGuides: Post[] = [
       { type: "h2", text: "Working with an automation partner" },
       {
         type: "p",
-        text: "Automation projects run well remotely: the process is mapped on calls, built and tested, then handed over with training. ZOUM builds AI automation and AI agents for businesses in Ahmedabad, Jaipur and across India, starting with a free strategy call to find the task worth automating first.",
+        text: "Automation projects run well remotely: the process is mapped on calls, built and tested, then handed over with training. ZOUM's Ahmedabad branch builds AI automation and AI agents for businesses in Ahmedabad, and the wider team serves Jaipur and clients across India, starting with a free strategy call to find the task worth automating first.",
       },
       {
         type: "links",
@@ -250,7 +250,7 @@ export const ahmedabadGuides: Post[] = [
       },
       {
         q: "Does ZOUM provide AI automation services in Ahmedabad?",
-        a: "Yes. ZOUM works with businesses in Ahmedabad remotely, from mapping the process on calls to building, testing and training your team.",
+        a: "Yes. ZOUM has a branch office in Ahmedabad, alongside its Jaipur head office, and works with Ahmedabad businesses from mapping the process to building, testing and training your team.",
       },
     ],
   },

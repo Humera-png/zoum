@@ -7,6 +7,7 @@ import {
   Wrench,
   Check,
   Megaphone,
+  Search,
   PenTool,
   Users2,
   Boxes,
@@ -31,16 +32,16 @@ import {
 export const Route = createFileRoute("/services/website-development")({
   head: () => ({
     meta: [
-      { title: "Website Development & Social Media, Jaipur & Ahmedabad | ZOUM" },
+      { title: "Website, SEO & Social Media in Jaipur & Ahmedabad | ZOUM" },
       {
         name: "description",
         content:
-          "Website development and social media marketing for businesses in Jaipur, Ahmedabad and across India. Website packages from ₹9,999. Get a free quote.",
+          "Website development, SEO and social media marketing for businesses in Jaipur, Ahmedabad and across India. Websites from ₹9,999. Get a free quote.",
       },
       {
         name: "keywords",
         content:
-          "website development company India, web app development Jaipur, website development Ahmedabad, social media marketing agency Ahmedabad, e-commerce development, social media marketing agency Jaipur, Instagram marketing India, LinkedIn management, digital marketing agency, digital presence company India",
+          "SEO services Jaipur, SEO services Ahmedabad, SEO company India, local SEO, website development company India, web app development Jaipur, website development Ahmedabad, social media marketing agency Ahmedabad, e-commerce development, social media marketing agency Jaipur, Instagram marketing India, LinkedIn management, digital marketing agency, digital presence company India",
       },
       {
         property: "og:title",
@@ -109,6 +110,10 @@ const pageFaqs = [
     a: "Yes. Every site we build is mobile responsive and comes with an SSL certificate.",
   },
   {
+    q: "Do you offer SEO services?",
+    a: "Yes. We do SEO for new and existing websites in Jaipur, Ahmedabad and across India: fixing technical issues that stop Google reading your site, page titles and descriptions, service and location pages, content, Google Business Profile, Search Console setup and monthly reporting. Our Business website plan includes SEO setup, and ongoing SEO is quoted after a free review of your site.",
+  },
+  {
     q: "Can you also manage our social media?",
     a: "Yes. We handle brand content, social media management, and paid campaigns on Meta and LinkedIn. Social media is scoped separately once we understand your goals.",
   },
@@ -154,6 +159,13 @@ const services = [
 ];
 
 const marketing = [
+  {
+    icon: Search,
+    name: "SEO & Google Visibility",
+    desc: "Get found on Google, Google Maps and AI answers: technical fixes, page titles, content, Google Business Profile and monthly reporting.",
+    image:
+      "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=1200&q=80",
+  },
   {
     icon: PenTool,
     name: "Brand Strategy & Content",
@@ -319,8 +331,8 @@ function WebsiteDevelopmentPage() {
               </div>
             </Section>
 
-            <Section id="marketing" title="Then, Bring It An Audience" kicker="/ social & content">
-              <div className="grid md:grid-cols-3 gap-5">
+            <Section id="marketing" title="Then, Bring It An Audience" kicker="/ seo, social & content">
+              <div className="grid md:grid-cols-2 gap-5">
                 {marketing.map((m, i) => (
                   <motion.div
                     key={i}

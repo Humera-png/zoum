@@ -28,7 +28,7 @@ export function Footer() {
             </div>
             <p className="text-muted-foreground mt-4 text-sm max-w-sm leading-relaxed">
               ZOUM (pronounced "zoom") Consultancy connects businesses and professionals through
-              strategy, talent, social media, and AI. Jaipur headquartered, pan-India reach.
+              strategy, talent, social media, and AI. Head office in Jaipur, branch office in Ahmedabad, pan-India reach.
             </p>
             <div className="flex items-center gap-2 mt-5">
               {[

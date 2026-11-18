@@ -90,7 +90,7 @@ const structuredData = {
   name: "ZOUM Consultancy",
   alternateName: "ZOUM Placement Services",
   description:
-    "ZOUM Consultancy is a Jaipur-based consultancy. We place candidates in jobs across India, run BPO operations, train talent, and build AI automation, AI agents, websites, and custom software for businesses.",
+    "ZOUM Consultancy has its head office in Jaipur and a branch office in Ahmedabad. We place candidates in jobs across India, run BPO operations, train talent, and build AI automation, AI agents, websites, and custom software for businesses.",
   url: "https://zoumconsultancy.com",
   logo: "https://zoumconsultancy.com/assets/zoum-logo.png",
   email: "contact@zoumconsultancy.com",
@@ -153,7 +153,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "ZOUM Consultancy: a Jaipur-based consultancy serving Jaipur, Ahmedabad and all of India. 700+ job placements, plus AI automation, AI agents, website development, social media, BPO, and business consultancy for businesses.",
+          "ZOUM Consultancy: head office in Jaipur, branch office in Ahmedabad, serving all of India. 700+ job placements, plus AI automation, AI agents, website development, social media, BPO, and business consultancy for businesses.",
       },
       { name: "robots", content: "index, follow" },
       {

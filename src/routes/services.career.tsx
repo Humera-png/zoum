@@ -96,7 +96,7 @@ const steps = [
 const pageFaqs = [
   {
     q: "Do you place candidates in Ahmedabad as well as Jaipur?",
-    a: "Yes. We're headquartered in Jaipur and also work with candidates and employers in Ahmedabad. We place people in other cities across India too.",
+    a: "Yes. Our head office is in Jaipur and we have a branch office in Ahmedabad, working with candidates and employers in each city. We place people in other cities across India too.",
   },
   {
     q: "I'm a fresher with no experience. Can you help me get a job?",
@@ -238,7 +238,7 @@ function CareerPage() {
           <StepsSection steps={steps} id="how-it-works" />
           <CitiesSection
             intro={
-              "We're based in Jaipur and work with candidates and employers in Ahmedabad and across India."
+              "Head office in Jaipur, branch office in Ahmedabad, working with candidates and employers across India."
             }
           />
 

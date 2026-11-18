@@ -117,7 +117,7 @@ const line = (p) =>
 const llms = [
   "# ZOUM Consultancy",
   "",
-  '> ZOUM (pronounced "zoom") Consultancy is a consultancy based in Jaipur, Rajasthan, India, serving Jaipur, Ahmedabad and clients across India. It offers job placement and recruitment, career courses (BPO, IT, business consultancy and AI), AI automation and AI agents, website development and social media, BPO services and business consultancy.',
+  '> ZOUM (pronounced "zoom") Consultancy is a consultancy with its head office in Jaipur (Rajasthan) and a branch office in Ahmedabad (Gujarat), India, serving clients across India. It offers job placement and recruitment, career courses (BPO, IT, business consultancy and AI), AI automation and AI agents, website development and social media, BPO services and business consultancy.',
   "",
   "Contact: contact@zoumconsultancy.com, +91 8360971791, +91 7665521538 (WhatsApp). Address: C-411, Block B, Shankar Colony, Siddharth Nagar, Jagatpura (near airport), Jaipur, Rajasthan 302017, India.",
   "",

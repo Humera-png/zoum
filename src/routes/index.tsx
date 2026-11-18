@@ -930,7 +930,7 @@ function Contact() {
             </div>
             <div className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-lime" />
-              Pan-India coverage, Jaipur headquartered
+              Head office Jaipur, branch in Ahmedabad, pan-India coverage
             </div>
             <div className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-lime" />
@@ -969,7 +969,7 @@ const faqs = [
   },
   {
     q: "Does ZOUM help with job placement outside Jaipur?",
-    a: "Yes. ZOUM is based in Jaipur and also serves Ahmedabad, and we place candidates and work with businesses across India.",
+    a: "Yes. ZOUM's head office is in Jaipur, with a branch office in Ahmedabad, and we place candidates and work with businesses across India.",
   },
   {
     q: "What is AI automation and how does it help my business?",
