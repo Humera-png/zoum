@@ -81,8 +81,8 @@ export function Footer() {
               <li className="flex items-start gap-2.5">
                 <MapPin className="h-4 w-4 text-lime mt-0.5 shrink-0" />
                 <span className="text-sm text-foreground/80 leading-relaxed">
-                  ZOUM Consultancy, C-411, Block B, Shankar Colony, Siddharth Nagar, Jagatpura (near
-                  airport), Jaipur, Rajasthan 302017
+                  ZOUM Consultancy, Plot No. 3, Tulsi Path, Madrampura, Civil Lines, Jaipur,
+                  Rajasthan 302006
                 </span>
               </li>
               <li className="flex items-center gap-2.5">

@@ -32,8 +32,8 @@ export function LegalPage({
 export function ContactBlock() {
   return (
     <p>
-      ZOUM Consultancy, C-411, Block B, Shankar Colony, Siddharth Nagar, Jagatpura (near airport),
-      Jaipur, Rajasthan 302017, India
+      ZOUM Consultancy, Plot No. 3, Tulsi Path, Madrampura, Civil Lines,
+      Jaipur, Rajasthan 302006, India
       <br />
       Email: <a href="mailto:contact@zoumconsultancy.com">contact@zoumconsultancy.com</a>
       <br />

@@ -105,9 +105,9 @@ const structuredData = {
   ],
   address: {
     "@type": "PostalAddress",
-    streetAddress: "C-411, Block B, Shankar Colony, Siddharth Nagar, Near Airport, Jagatpura",
+    streetAddress: "Plot No. 3, Tulsi Path, Madrampura, Civil Lines",
     addressLocality: "Jaipur",
-    postalCode: "302017",
+    postalCode: "302006",
     addressRegion: "Rajasthan",
     addressCountry: "IN",
   },
