@@ -715,6 +715,11 @@ export const expansions: Record<string, Expansion> = {
         type: "p",
         text: "Technical fixes are picked up within days to weeks once Google recrawls your site. New pages for less competitive local searches can start appearing within a few weeks to a few months. Competitive searches take longer and depend on content quality, reviews and links. The businesses that win at SEO are usually the ones that keep improving steadily for months, not the ones that do everything in one week.",
       },
+      { type: "h3", text: "From our own work" },
+      {
+        type: "p",
+        text: "We recently built a new website for a client, with each page written around the searches their customers actually use. For the first few weeks there was very little to see. About a month after launch, visitors from Google slowly started coming in, and the numbers have kept growing since. It's still in progress: SEO usually shows its real results after around three months, so we keep improving pages and tracking which searches bring people in. That slow start followed by steady growth is what most businesses should expect.",
+      },
     ],
     faqs: [
       {
@@ -830,6 +835,11 @@ export const expansions: Record<string, Expansion> = {
       {
         type: "p",
         text: "If your site is built with JavaScript frameworks and Google sees blank pages, if you've moved domains, or if pages stay \"crawled, not indexed\" for months after you improve them, a technical review is worth it. These problems are usually fixable, but they're hard to diagnose without looking at how the site is built and served.",
+      },
+      { type: "h2", text: "What a normal recovery looks like" },
+      {
+        type: "p",
+        text: "When we built a new keyword-focused website for one of our clients, Google traffic was close to zero at first. Around a month after launch, visitors from search started arriving slowly, and they have kept increasing. The site is still growing, because SEO typically shows its real picture after about three months. If your site has just been fixed or rebuilt, a quiet first month is normal; what matters is that the trend keeps moving up.",
       },
     ],
     faqs: [
