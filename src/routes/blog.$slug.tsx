@@ -39,7 +39,7 @@ function ArticleSchema({ post }: { post: Post }) {
     headline: post.title,
     description: post.description,
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: post.updated ?? post.date,
     mainEntityOfPage: `https://zoumconsultancy.com/blog/${post.slug}`,
     author: {
       "@type": "Organization",
@@ -94,7 +94,9 @@ function BlogPostPage() {
           {post.title}
         </h1>
         <div className="mt-5 text-sm text-muted-foreground">
-          ZOUM Consultancy · {formatDate(post.date)} · {post.readMinutes} min read
+          ZOUM Consultancy · {formatDate(post.date)}
+          {post.updated && post.updated !== post.date && <> · Updated {formatDate(post.updated)}</>} ·{" "}
+          {post.readMinutes} min read
         </div>
 
         <div className="mt-12 space-y-5 text-[17px] leading-relaxed text-foreground/85">

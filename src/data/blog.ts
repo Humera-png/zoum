@@ -4,6 +4,7 @@
 import { guides } from "./blog-guides";
 import { ahmedabadGuides } from "./blog-ahmedabad";
 import { marketingGuides } from "./blog-marketing";
+import { expansions } from "./blog-expansions";
 
 export type Block =
   | { type: "p"; text: string }
@@ -19,6 +20,7 @@ export type Post = {
   seoTitle?: string;
   description: string;
   date: string; // YYYY-MM-DD
+  updated?: string; // YYYY-MM-DD, last substantial update (dateModified)
   category: string;
   readMinutes: number;
   body: Block[];
@@ -319,4 +321,27 @@ const basePosts: Post[] = [
   },
 ];
 
-export const posts: Post[] = [...basePosts, ...guides, ...ahmedabadGuides, ...marketingGuides];
+// Adds the extra sections from blog-expansions.ts before each article's
+// closing "links" block, appends extra FAQs, and recalculates read time.
+function expand(post: Post): Post {
+  const extra = expansions[post.slug];
+  if (!extra) return post;
+  const linksAt = post.body.findIndex((b) => b.type === "links");
+  const body =
+    linksAt === -1
+      ? [...post.body, ...extra.blocks]
+      : [...post.body.slice(0, linksAt), ...extra.blocks, ...post.body.slice(linksAt)];
+  const faqs = [...(post.faqs ?? []), ...(extra.faqs ?? [])];
+  const text = [
+    ...body.flatMap((b) =>
+      b.type === "ul" ? b.items : b.type === "links" ? [] : [b.text],
+    ),
+    ...faqs.flatMap((f) => [f.q, f.a]),
+  ].join(" ");
+  const readMinutes = Math.max(post.readMinutes, Math.round(text.split(/\s+/).length / 200));
+  return { ...post, body, faqs, readMinutes, updated: extra.updated };
+}
+
+export const posts: Post[] = [...basePosts, ...guides, ...ahmedabadGuides, ...marketingGuides].map(
+  expand,
+);
