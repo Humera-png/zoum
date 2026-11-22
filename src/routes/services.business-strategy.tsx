@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Check, Target, BarChart3, Workflow, Rocket } from "lucide-react";
+import { PhoneOutgoing, MessagesSquare, FileSpreadsheet, UserCheck, Earth } from "lucide-react";
 
 import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageBackdrop } from "@/components/PageBackdrop";
@@ -8,168 +8,185 @@ import { ServiceGuides } from "@/components/ServiceGuides";
 import { CoursesSection } from "@/components/CoursesSection";
 import { courses } from "@/data/courses";
 import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
-import { AudienceSection, CitiesSection, FaqSection } from "@/components/ServiceGuide";
+import {
+  AudienceSection,
+  StepsSection,
+  CitiesSection,
+  FaqSection,
+} from "@/components/ServiceGuide";
 
 const bpoCourses = courses.filter((c) => c.page === "bpo");
 
+// Served at /services/bpo-operations (see routeTree.gen.ts); the file name is historical.
 export const Route = createFileRoute("/services/business-strategy")({
   head: () => ({
     meta: [
-      {
-        title: "BPO & Outsourcing Services in Jaipur & Ahmedabad | ZOUM",
-      },
-
+      { title: "BPO Services & BPO Recruitment in Jaipur & Ahmedabad | ZOUM" },
       {
         name: "description",
         content:
-          "BPO and business process outsourcing in Jaipur, Ahmedabad and across India: customer support, back-office, operations support and process improvement.",
+          "Outsource telecalling, chat and email support, and back-office work to ZOUM, or hire BPO team leaders and international process staff. Jaipur, Ahmedabad and India.",
       },
-
       {
         property: "og:title",
-        content: "BPO & Business Process Outsourcing Services | ZOUM Consultancy",
+        content: "BPO Services & BPO Recruitment | ZOUM Consultancy",
       },
-
       {
         name: "keywords",
         content:
-          "business process outsourcing India, BPO services Jaipur, BPO services Ahmedabad, operations consulting, process improvement",
+          "BPO services Jaipur, BPO services Ahmedabad, BPO company Jaipur, business process outsourcing India, telecalling services Jaipur, outbound calling services India, chat support outsourcing, email support outsourcing, back office outsourcing Jaipur, data entry outsourcing India, BPO recruitment agency Jaipur, BPO hiring Ahmedabad, international BPO recruitment",
       },
-
       {
         property: "og:description",
         content:
-          "Strategic consulting and operational excellence solutions designed for ambitious businesses.",
+          "Telecalling, chat and email support, and back-office work run by our team, plus recruitment of BPO team leaders and international process staff.",
       },
     ],
     links: [{ rel: "canonical", href: "https://zoumconsultancy.com/services/bpo-operations" }],
   }),
 
-  component: BusinessStrategyPage,
+  component: BpoPage,
 });
+
+const outsourcing = [
+  {
+    icon: PhoneOutgoing,
+    name: "Outbound Calling & Telecalling",
+    desc: "Lead calls, sales calls, follow-ups and appointment setting, made by our team using your script and reported back to you.",
+  },
+  {
+    icon: MessagesSquare,
+    name: "Chat & Email Support",
+    desc: "Answering your customers' questions over chat, WhatsApp and email, so no message waits for hours for a reply.",
+  },
+  {
+    icon: FileSpreadsheet,
+    name: "Back Office & Data Work",
+    desc: "Data entry, order processing, documentation and admin work, done accurately so your own team can focus on customers.",
+  },
+];
+
+const hiring = [
+  {
+    icon: UserCheck,
+    name: "Team Leaders, QAs & Trainers",
+    desc: "Experienced team leaders, quality analysts and process trainers for BPO companies that need people who can run a floor from day one.",
+  },
+  {
+    icon: Earth,
+    name: "International Process Staff",
+    desc: "Candidates with the English and communication skills for international voice processes serving the UK, US and other markets.",
+  },
+];
+
+const steps = [
+  {
+    name: "Discovery call",
+    desc: "We learn which work you want to hand over, how much of it there is, and how you measure it today.",
+  },
+  {
+    name: "Process setup",
+    desc: "We agree the scripts, tools, targets and daily or weekly reports before anything starts.",
+  },
+  {
+    name: "Team and training",
+    desc: "We assign the team and train them on your products, process and tone of voice.",
+  },
+  {
+    name: "Go live",
+    desc: "The team starts working on your process, with a ZOUM point of contact for you.",
+  },
+  {
+    name: "Report and improve",
+    desc: "You get regular reports on calls, replies or work completed, and we adjust the process as we learn.",
+  },
+];
 
 const audiences = [
   {
-    name: "Growing Businesses",
-    desc: "Companies where operations, back-office work, or support is taking up time the team should spend on growth.",
+    name: "Businesses That Want to Outsource",
+    desc: "Companies spending too much time on calls, customer messages or data work, and small businesses that don't want to build an in-house team for it.",
   },
   {
-    name: "Businesses Losing Money to Inefficiency",
-    desc: "Teams with slow processes, unclear reporting, or work that keeps falling through the cracks.",
+    name: "BPO Companies That Are Hiring",
+    desc: "BPOs and call centres that need team leaders, QAs, trainers or international process staff.",
   },
   {
     name: "BPO Job Seekers",
-    desc: "Candidates who want to start a career in BPO and customer support. See our BPO Career course on this page.",
+    desc: "Candidates who want to start or grow a BPO career. See our BPO Career course and job openings.",
   },
 ];
 
 const pageFaqs = [
   {
     q: "What is BPO (business process outsourcing)?",
-    a: "BPO means handing a business process, such as operations, customer support, or back-office work, to an outside team so it runs efficiently while you focus on growing the business.",
+    a: "BPO means handing a business process, such as calling leads, answering customer messages or data entry, to an outside team that runs it for you, so your own staff can focus on growing the business.",
   },
   {
-    q: "Which processes can ZOUM handle?",
-    a: "We work on operations, internal workflows, reporting and performance tracking, and growth strategy. We start by finding where your business is losing time and money, then fix it directly.",
+    q: "Which BPO services does ZOUM offer?",
+    a: "Outbound calling and telecalling (lead calls, sales calls, follow-ups, appointment setting), chat and email support, and back-office and data work such as data entry, order processing and documentation.",
   },
   {
-    q: "How do we get started?",
-    a: "Contact us for a discovery conversation. We look at how your business runs today and recommend the right engagement model for you.",
+    q: "Can a small business outsource to ZOUM?",
+    a: "Yes. Work like follow-up calls, email support or data entry suits small businesses well, because you get the work done without hiring and training a full in-house team.",
+  },
+  {
+    q: "How much does BPO outsourcing cost?",
+    a: "It depends on the type of work, the volume, the hours and the reporting you need. We quote after a free discovery call, once we understand your process.",
+  },
+  {
+    q: "Do you recruit staff for BPO companies?",
+    a: "Yes. We recruit team leaders, quality analysts and trainers, and staff for international voice processes. Tell us the roles and requirements, and we share suitable candidates.",
   },
   {
     q: "Do you offer BPO services in Ahmedabad?",
-    a: "Yes. We work with businesses in Jaipur and Ahmedabad, and with clients across India.",
+    a: "Yes. We work with businesses in Jaipur and Ahmedabad, and run outsourced work for clients across India.",
   },
   {
     q: "I want a BPO job. Can ZOUM help?",
-    a: "Yes. Our BPO Career course prepares you for BPO and customer support roles, and our placement team helps candidates find openings.",
+    a: "Yes. Our BPO Career course prepares you for BPO and customer support roles, and our placement team helps candidates find openings. See our Find Jobs page for current roles.",
   },
 ];
 
-const frameworks = [
-  {
-    icon: Target,
+function Cards({ items }: { items: typeof outsourcing }) {
+  return (
+    <div className="grid md:grid-cols-3 gap-5">
+      {items.map((f, i) => (
+        <motion.div
+          key={f.name}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: i * 0.05 }}
+          className="group glass node-bloom rounded-2xl p-6"
+        >
+          <div className="h-10 w-10 rounded-xl glass-strong grid place-items-center mb-4 group-hover:bg-lime group-hover:text-white transition">
+            <f.icon className="h-5 w-5" />
+          </div>
+          <h3 className="font-display text-xl">{f.name}</h3>
+          <p className="text-sm text-muted-foreground mt-2">{f.desc}</p>
+        </motion.div>
+      ))}
+    </div>
+  );
+}
 
-    name: "Business Growth Strategy",
-
-    desc: "We help companies identify growth opportunities, improve decision making, and create clear strategies that align teams with measurable business goals.",
-  },
-
-  {
-    icon: Workflow,
-
-    name: "Operational Excellence",
-
-    desc: "Improve internal systems, workflows, and execution processes to reduce inefficiencies and create scalable operations.",
-  },
-
-  {
-    icon: BarChart3,
-
-    name: "Performance & Analytics",
-
-    desc: "Build data-driven organizations using dashboards, KPIs, reporting systems, and performance frameworks.",
-  },
-
-  {
-    icon: Rocket,
-
-    name: "Scaling & Transformation",
-
-    desc: "Support businesses through expansion, digital transformation, restructuring, and long-term operational growth.",
-  },
-];
-
-const cases = [
-  {
-    client: "Technology Company",
-
-    result: "40% Faster Execution",
-
-    duration: "6 Months",
-
-    note: "Redesigned operational workflows and leadership processes to improve company-wide efficiency.",
-  },
-
-  {
-    client: "Growing Enterprise",
-
-    result: "3x Process Efficiency",
-
-    duration: "1 Year",
-
-    note: "Implemented scalable systems, reporting structures, and strategic operating models.",
-  },
-
-  {
-    client: "Startup Expansion",
-
-    result: "Market Expansion",
-
-    duration: "Quarterly",
-
-    note: "Built growth roadmap, operational structure, and execution strategy for scaling.",
-  },
-];
-
-function BusinessStrategyPage() {
+function BpoPage() {
   return (
     <main className="pt-32 px-6 pb-20 relative">
       <PageBackdrop />
       <ServiceSchema
-        name="Business Process Outsourcing"
-        description="Operations support, growth strategy, and process improvement to help companies scale efficiently."
+        name="BPO Services & BPO Recruitment"
+        description="Outbound calling and telecalling, chat and email support, and back-office work for businesses, plus recruitment of BPO team leaders, QAs, trainers and international process staff."
         url="https://zoumconsultancy.com/services/bpo-operations"
       />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <PageHeader
-          pill="BPO & Business Process Outsourcing Services in Jaipur & Ahmedabad"
+          pill="BPO Services & BPO Recruitment in Jaipur & Ahmedabad"
           title="Scale"
           italic="Smarter."
-          sub="
-Strategic consulting for businesses looking to improve operations, accelerate growth, optimize execution, and build scalable systems for long-term success.
-"
+          sub="We run outbound calling, chat and email support, and back-office work for businesses, and recruit team leaders and international process staff for BPO companies."
         />
 
         <div className="mt-10 relative aspect-[3/1] max-h-64 rounded-3xl overflow-hidden glass-strong">
@@ -186,91 +203,46 @@ Strategic consulting for businesses looking to improve operations, accelerate gr
           <ServiceSubNav />
 
           <div className="space-y-32">
-            <Section id="overview" title="Strategic Growth Engine" kicker="/ consulting">
-              <div className="glass-strong rounded-3xl p-10">
-                <p className="font-serif italic text-3xl">
-                  "Successful companies are not built only through ideas. They are built through
-                  strategy, systems, execution, and the ability to adapt."
-                </p>
-
-                <p className="mt-6 text-muted-foreground">
-                  ZOUM partners with organizations to solve complex business challenges through
-                  strategic planning, operational improvement, technology enablement, and
-                  growth-focused execution frameworks.
-                </p>
-              </div>
+            <Section id="overview" title="BPO Services for Businesses" kicker="/ outsourcing">
+              <p className="text-muted-foreground max-w-2xl -mt-4 mb-8">
+                Hand repetitive calling, customer messages and data work to our team.
+                You keep control of the process and get regular reports; we handle the daily work.
+              </p>
+              <Cards items={outsourcing} />
             </Section>
 
-            <Section id="process" title="Our Consulting Framework" kicker="/ methodology">
+            <StepsSection steps={steps} id="process" title="How Outsourcing Works" />
+
+            <Section id="recruitment" title="BPO Recruitment" kicker="/ hiring for BPO companies">
+              <p className="text-muted-foreground max-w-2xl -mt-4 mb-8">
+                For BPOs and call centres: we find and shortlist candidates for the roles that are
+                hardest to fill.
+              </p>
               <div className="grid md:grid-cols-2 gap-5">
-                {frameworks.map((f, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{
-                      opacity: 0,
-                      y: 20,
-                    }}
-                    whileInView={{
-                      opacity: 1,
-                      y: 0,
-                    }}
-                    viewport={{
-                      once: true,
-                    }}
-                    transition={{
-                      delay: i * 0.05,
-                    }}
-                    className="group glass node-bloom rounded-2xl p-6"
-                  >
+                {hiring.map((h) => (
+                  <div key={h.name} className="group glass node-bloom rounded-2xl p-6">
                     <div className="h-10 w-10 rounded-xl glass-strong grid place-items-center mb-4 group-hover:bg-lime group-hover:text-white transition">
-                      <f.icon className="h-5 w-5" />
+                      <h.icon className="h-5 w-5" />
                     </div>
-
-                    <div className="font-display text-xl">{f.name}</div>
-
-                    <div className="text-sm text-muted-foreground mt-2">{f.desc}</div>
-                  </motion.div>
+                    <h3 className="font-display text-xl">{h.name}</h3>
+                    <p className="text-sm text-muted-foreground mt-2">{h.desc}</p>
+                  </div>
                 ))}
               </div>
-            </Section>
-
-            <Section id="results" title="Business Impact" kicker="/ transformation">
-              <div className="grid md:grid-cols-3 gap-4">
-                {cases.map((c, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{
-                      opacity: 0,
-                      y: 20,
-                    }}
-                    whileInView={{
-                      opacity: 1,
-                      y: 0,
-                    }}
-                    viewport={{
-                      once: true,
-                    }}
-                    className="glass-strong rounded-2xl p-6 hover-glow-lime transition"
-                  >
-                    <div className="text-xs uppercase tracking-wider text-muted-foreground">
-                      {c.client}
-                    </div>
-
-                    <div className="font-display text-3xl mt-2">{c.result}</div>
-
-                    <div className="text-xs text-lime mt-1">{c.duration}</div>
-
-                    <div className="text-sm text-muted-foreground mt-4">{c.note}</div>
-                  </motion.div>
-                ))}
-              </div>
+              <p className="mt-6 text-sm text-muted-foreground">
+                Looking for a BPO job instead?{" "}
+                <Link to="/services/career" className="text-lime font-semibold hover:underline">
+                  See current openings
+                </Link>
+                .
+              </p>
             </Section>
 
             {bpoCourses.length > 0 && (
               <Section id="courses" title="BPO Career Course" kicker="/ enroll">
                 <p className="text-muted-foreground max-w-2xl -mt-4 mb-8">
-                  Want a career in BPO instead of outsourcing your operations to one? This is where
-                  that starts.
+                  Want to work in BPO yourself? This course prepares you for BPO and customer
+                  support roles.
                 </p>
                 <CoursesSection page="bpo" />
               </Section>
@@ -278,93 +250,32 @@ Strategic consulting for businesses looking to improve operations, accelerate gr
 
             <AudienceSection audiences={audiences} />
 
-            <Section id="pricing" title="Engagement Models" kicker="/ solutions">
-              <div className="grid md:grid-cols-3 gap-5">
-                {[
-                  {
-                    tier: "Strategy Consulting",
-
-                    price: "Discovery",
-
-                    time: "Initial Assessment",
-
-                    feats: ["Business analysis", "Growth roadmap", "Strategic recommendations"],
-                  },
-
-                  {
-                    tier: "Operations Transformation",
-
-                    price: "Growth",
-
-                    time: "Ongoing Partnership",
-
-                    highlight: true,
-
-                    feats: [
-                      "Process optimization",
-
-                      "Operational systems",
-
-                      "Performance improvement",
-                    ],
-                  },
-
-                  {
-                    tier: "Enterprise Advisory",
-
-                    price: "Custom",
-
-                    time: "Long-Term",
-
-                    feats: ["Ongoing consulting", "Change planning", "Growth strategy"],
-                  },
-                ].map((t, i) => (
-                  <div
-                    key={i}
-                    className={`glass-strong rounded-3xl p-8 transition ${
-                      t.highlight
-                        ? "ring-2 ring-[var(--brand-deep)] shadow-[0_24px_60px_-24px_var(--brand-glow)]"
-                        : ""
-                    }`}
-                  >
-                    {t.highlight && (
-                      <div className="text-[10px] inline-block bg-lime text-white px-2.5 py-1 rounded-full mb-3 uppercase tracking-wider">
-                        Most Popular
-                      </div>
-                    )}
-
-                    <div className="font-display text-2xl">{t.tier}</div>
-
-                    <div className="font-display text-4xl mt-2">{t.price}</div>
-
-                    <div className="text-xs uppercase tracking-wider text-muted-foreground mt-1">
-                      {t.time}
-                    </div>
-
-                    <ul className="mt-6 space-y-2 text-sm text-muted-foreground">
-                      {t.feats.map((f) => (
-                        <li key={f} className="flex items-center gap-2">
-                          <Check className="h-3.5 w-3.5 text-lime" />
-
-                          {f}
-                        </li>
-                      ))}
-                    </ul>
-
-                    <Link
-                      to="/contact"
-                      className="mt-6 block text-center glass rounded-full py-3 text-sm hover:bg-white transition"
-                    >
-                      Discuss Strategy
-                    </Link>
-                  </div>
-                ))}
+            <Section id="pricing" title="Pricing" kicker="/ how we quote">
+              <div className="glass-strong rounded-3xl p-8 md:p-10 max-w-3xl">
+                <p className="text-muted-foreground leading-relaxed">
+                  Outsourced work is quoted per process, based on the type of work, the volume, the
+                  working hours and the reports you need. Recruitment terms are agreed for each
+                  hiring requirement. Both start with a free call.
+                </p>
+                <p className="mt-4 text-sm text-muted-foreground">
+                  Need help with operations strategy rather than outsourcing?{" "}
+                  <Link to="/services/business" className="text-lime font-semibold hover:underline">
+                    See our business consultancy services
+                  </Link>
+                  .
+                </p>
+                <Link
+                  to="/contact"
+                  className="mt-6 inline-flex btn-lime font-semibold px-6 py-3 rounded-full"
+                >
+                  Get a free quote
+                </Link>
               </div>
             </Section>
 
             <CitiesSection
               intro={
-                "We support businesses in Jaipur and Ahmedabad, and deliver BPO work for clients across India."
+                "We work with businesses in Jaipur and Ahmedabad, and run outsourced work and hiring for clients across India."
               }
             />
 

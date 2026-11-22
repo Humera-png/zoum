@@ -1,37 +1,38 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { MessageCircle, Users, Brain, Presentation, Handshake, Cpu } from "lucide-react";
+import { MessageCircle, Brain, Presentation, Cpu, Monitor } from "lucide-react";
 import { ServiceSubNav } from "@/components/ServiceSubNav";
 import { PageBackdrop } from "@/components/PageBackdrop";
 import { CourseCard } from "@/components/CourseCard";
 import { courses } from "@/data/courses";
 import { PageHeader, Section, CTA, ServiceSchema } from "./services.business";
-import { CitiesSection } from "@/components/ServiceGuide";
+import { AudienceSection, StepsSection, CitiesSection } from "@/components/ServiceGuide";
+import { ServiceGuides } from "@/components/ServiceGuides";
 
 export const Route = createFileRoute("/services/talent-development")({
   head: () => ({
     meta: [
       {
-        title: "Career Courses in Jaipur & Ahmedabad: BPO, IT & AI | ZOUM",
+        title: "Corporate Training & Career Courses in Jaipur & Ahmedabad | ZOUM",
       },
       {
         name: "description",
         content:
-          "Job-ready courses in Jaipur, Ahmedabad and online across India: BPO, IT and business consultancy masterclasses, AI automation, Python and more.",
+          "Corporate training for teams and job-ready courses for individuals in Jaipur, Ahmedabad and online: communication, soft skills, digital, AI, IT and BPO.",
       },
       {
         name: "keywords",
         content:
-          "BPO course Jaipur, BPO course Ahmedabad, IT career course Jaipur, IT course Ahmedabad, business consultancy course India, AI automation course Jaipur, n8n course Ahmedabad, machine learning course India, spoken English course Jaipur, interview preparation course Ahmedabad, personality development course Jaipur",
+          "corporate training company Jaipur, corporate training Ahmedabad, employee training Jaipur, soft skills training for employees, communication skills training for employees, AI training for employees, BPO course Jaipur, BPO course Ahmedabad, IT career course Jaipur, IT course Ahmedabad, business consultancy course India, AI automation course Jaipur, n8n course Ahmedabad, machine learning course India, spoken English course Jaipur, interview preparation course Ahmedabad, personality development course Jaipur",
       },
       {
         property: "og:title",
-        content: "Courses: BPO, IT, Business Consultancy & AI | ZOUM Consultancy",
+        content: "Corporate Training & Career Courses | ZOUM Consultancy",
       },
       {
         property: "og:description",
         content:
-          "Job-ready courses with clear modules: BPO Career Masterclass, IT Career Masterclass, Business Consultancy Masterclass, AI & Machine Learning, and more.",
+          "Training for teams and job-ready courses for individuals: communication, soft skills, digital and AI skills, and BPO, IT and consultancy careers.",
       },
     ],
     links: [{ rel: "canonical", href: "https://zoumconsultancy.com/services/talent-development" }],
@@ -86,8 +87,12 @@ const courseFaqs = [
     a: "Both. Courses run individually or in small groups, in person in Jaipur or online, depending on what works for you.",
   },
   {
-    q: "Can teams or companies book training for employees?",
-    a: "Yes. For team or company bookings, contact us directly instead of enrolling as an individual, and we'll set up a plan for your group.",
+    q: "Do you offer corporate training for companies?",
+    a: "Yes. We train employees in communication and spoken English, workplace and soft skills, leadership readiness for new managers, digital workplace skills, and AI and automation. Contact us and we'll plan a programme for your team.",
+  },
+  {
+    q: "Can the training be customised for our team?",
+    a: "Yes. We start with a call to understand your team's roles and gaps, then agree the topics, format and schedule. Training runs in person in Jaipur or online, so teams in Ahmedabad and other cities can join.",
   },
   {
     q: "Can I join from Ahmedabad or another city?",
@@ -118,36 +123,57 @@ function CourseFaqSchema() {
   );
 }
 
+// Corporate training topics for companies (the individual tracks are the course cards below).
 const programs = [
   {
     icon: MessageCircle,
-    name: "English & Communication",
-    desc: "Spoken and written English training built for real workplace situations, not textbook drills.",
-  },
-  {
-    icon: Users,
-    name: "Personality Development",
-    desc: "Confidence, presence, and interpersonal skills that come through in interviews and on the job.",
+    name: "Communication & Spoken English",
+    desc: "Spoken and written English for real workplace situations: calls, emails, meetings and customers, not textbook drills.",
   },
   {
     icon: Presentation,
     name: "Workplace & Soft Skills",
-    desc: "Time management, teamwork, and professional etiquette for people early in their career.",
+    desc: "Time management, teamwork, professional etiquette and confidence for new joiners and early-career employees.",
   },
   {
     icon: Brain,
     name: "Leadership Readiness",
-    desc: "Preparing high performers to step into their first management role with real support.",
+    desc: "Preparing high performers to step into their first team lead or manager role.",
   },
   {
-    icon: Handshake,
-    name: "Business Consultancy Careers",
-    desc: "Frameworks, client communication, and interview readiness for people breaking into consulting.",
+    icon: Monitor,
+    name: "Digital Workplace Skills",
+    desc: "Everyday digital tools, documents, spreadsheets and online collaboration, so teams work faster with fewer errors.",
   },
   {
     icon: Cpu,
-    name: "IT & AI Careers",
-    desc: "n8n automation, machine learning foundations, Python, and IT interview readiness for people breaking into tech.",
+    name: "AI & Automation for Teams",
+    desc: "Practical use of AI tools and n8n automation, so teams hand repetitive work to software.",
+  },
+];
+
+const companySteps = [
+  { name: "Needs call", desc: "We learn about your team, their roles, and the skills you want to improve." },
+  { name: "Training plan", desc: "We agree the topics, format, group size and schedule, and send you a quote." },
+  {
+    name: "Training sessions",
+    desc: "Practical, interactive sessions in person in Jaipur or online, built around your team's real work.",
+  },
+  { name: "Review", desc: "We share what was covered and suggest next steps for the team." },
+];
+
+const audiences = [
+  {
+    name: "Companies & HR Teams",
+    desc: "Businesses that want new joiners productive sooner and teams that communicate and work better.",
+  },
+  {
+    name: "Freshers & Job Seekers",
+    desc: "Graduates and students who want job-ready skills for BPO, IT, consultancy or AI roles.",
+  },
+  {
+    name: "Working Professionals",
+    desc: "People who want to communicate with more confidence, move into tech, or step up to a lead role.",
   },
 ];
 
@@ -173,18 +199,18 @@ function TalentDevelopmentPage() {
     <main className="pt-32 px-6 pb-20 relative">
       <PageBackdrop />
       <ServiceSchema
-        name="Learning and Development (L&D)"
-        description="BPO, AI & IT, English communication, and workplace skills training and courses for individuals and teams."
+        name="Corporate Training & Career Courses (L&D)"
+        description="Corporate training for teams and job-ready career courses for individuals in Jaipur, Ahmedabad and online: communication, soft skills, digital, AI, IT and BPO."
         url="https://zoumconsultancy.com/services/talent-development"
       />
       <CourseListSchema courses={flagshipCourses} />
       <CourseFaqSchema />
       <div className="max-w-7xl mx-auto relative z-10">
         <PageHeader
-          pill="Career Courses & Skill Training in Jaipur & Ahmedabad"
+          pill="Corporate Training & Career Courses in Jaipur & Ahmedabad"
           title="Skills That"
           italic="Get You Noticed."
-          sub="Training programs and courses that help individuals build the workplace, technical, and AI skills that turn a resume into an offer."
+          sub="Training for companies that want stronger teams, and job-ready courses for individuals who want a better job: communication, soft skills, digital, AI, IT and BPO skills."
         />
 
         <div className="mt-10 relative aspect-[3/1] max-h-64 rounded-3xl overflow-hidden glass-strong">
@@ -200,21 +226,11 @@ function TalentDevelopmentPage() {
         <div className="mt-20 grid lg:grid-cols-[200px_1fr] gap-12">
           <ServiceSubNav />
           <div className="space-y-32">
-            {flagshipCourses.length > 0 && (
-              <Section id="tracks" title="Pick Your Track" kicker="/ start here">
-                <p className="text-muted-foreground max-w-2xl -mt-4 mb-8">
-                  {flagshipCourses.length} tracks, each its own course. Pick one, see what's inside,
-                  and enroll directly from that page.
-                </p>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                  {flagshipCourses.map((course) => (
-                    <CourseCard key={course.id} course={course} />
-                  ))}
-                </div>
-              </Section>
-            )}
-
-            <Section id="overview" title="What We Train" kicker="/ programs">
+            <Section id="overview" title="Training for Companies" kicker="/ corporate training">
+              <p className="text-muted-foreground max-w-2xl -mt-4 mb-8">
+                Employee training programmes for teams in Jaipur, Ahmedabad and across India,
+                planned around your team's roles and delivered in person or online.
+              </p>
               <div className="grid md:grid-cols-2 gap-5">
                 {programs.map((p, i) => (
                   <motion.div
@@ -228,26 +244,33 @@ function TalentDevelopmentPage() {
                     <div className="h-10 w-10 rounded-xl glass-strong grid place-items-center mb-4 group-hover:bg-lime group-hover:text-white transition">
                       <p.icon className="h-5 w-5" />
                     </div>
-                    <div className="font-display text-xl">{p.name}</div>
-                    <div className="text-sm text-muted-foreground mt-2">{p.desc}</div>
+                    <h3 className="font-display text-xl">{p.name}</h3>
+                    <p className="text-sm text-muted-foreground mt-2">{p.desc}</p>
                   </motion.div>
                 ))}
               </div>
             </Section>
 
-            <Section id="process" title="Who It's For" kicker="/ fit">
-              <div className="glass-strong rounded-2xl p-6 max-w-2xl">
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  Recent graduates preparing for interviews, working professionals who want to
-                  communicate with more confidence, and teams that need a consistent baseline of
-                  workplace skills. Programs run individually or in small groups, in person in
-                  Jaipur or online.
+            <StepsSection steps={companySteps} id="process" title="How Corporate Training Works" />
+
+            {flagshipCourses.length > 0 && (
+              <Section id="tracks" title="Career Courses for Individuals" kicker="/ start here">
+                <p className="text-muted-foreground max-w-2xl -mt-4 mb-8">
+                  {flagshipCourses.length} job-ready tracks, each its own course. Pick one, see
+                  what's inside, and enroll directly from that page.
                 </p>
-              </div>
-            </Section>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                  {flagshipCourses.map((course) => (
+                    <CourseCard key={course.id} course={course} />
+                  ))}
+                </div>
+              </Section>
+            )}
+
+            <AudienceSection audiences={audiences} />
 
             {courses.length > 0 && (
-              <Section id="course-faq" title="Course Questions" kicker="/ faq">
+              <Section id="course-faq" title="Common Questions" kicker="/ faq">
                 <div className="space-y-4">
                   {courseFaqs.map((f, i) => (
                     <motion.div
@@ -268,9 +291,10 @@ function TalentDevelopmentPage() {
 
             <CitiesSection
               intro={
-                "Courses run in person at our Jaipur centre and online, so students in Ahmedabad and anywhere in India can join."
+                "Training and courses run in person at our Jaipur centre and online, so teams and students in Ahmedabad and anywhere in India can join."
               }
             />
+            <ServiceGuides servicePath="/services/talent-development" />
             <CTA />
           </div>
         </div>

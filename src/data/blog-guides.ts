@@ -318,7 +318,7 @@ export const guides: Post[] = [
         type: "links",
         title: "Grow with ZOUM",
         links: [
-          { label: "Website development and social media management", to: "/services/website-development" },
+          { label: "Social media marketing services", to: "/services/social-media-marketing" },
           { label: "AI automation for lead follow-up", to: "/services/ai-automation" },
           { label: "Contact us", to: "/contact" },
         ],

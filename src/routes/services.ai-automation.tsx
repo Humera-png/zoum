@@ -34,17 +34,17 @@ export const Route = createFileRoute("/services/ai-automation")({
   head: () => ({
     meta: [
       {
-        title: "AI Automation & AI Agents Company | ZOUM Jaipur & Ahmedabad",
+        title: "AI Automation Company in Jaipur & Ahmedabad | ZOUM",
       },
       {
         name: "description",
         content:
-          "AI automation company in Jaipur and Ahmedabad. ZOUM builds AI agents, chatbots, workflow automation, custom software and mobile apps for businesses in India.",
+          "AI automation company in Jaipur and Ahmedabad. ZOUM builds AI agents, chatbots, n8n workflow automation, custom software and apps for businesses across India.",
       },
       {
         name: "keywords",
         content:
-          "AI automation agency India, AI agents development, AI chatbot development, custom software development Jaipur, AI automation company Ahmedabad, IT consultancy India, business process automation, workflow automation company, AI integration services",
+          "AI automation company Jaipur, AI automation company Ahmedabad, AI automation agency India, n8n automation agency, AI agents development, AI chatbot development Jaipur, IT services company Jaipur, custom software development Jaipur, app development Jaipur, business process automation, workflow automation company",
       },
       {
         property: "og:title",
@@ -120,6 +120,10 @@ const pageFaqs = [
   {
     q: "How much does an AI automation or software project cost?",
     a: "It depends on the scope. We start with a discovery stage to understand what you need, then give you a clear quote before any build work begins.",
+  },
+  {
+    q: "Which tools do you use for automation?",
+    a: "Mostly n8n for workflows, connected to the tools you already use, such as Google Sheets, WhatsApp, email, CRMs and your website, plus AI models for chatbots, agents and voice assistants. We pick what fits your business and budget.",
   },
   {
     q: "Do you work with businesses in Ahmedabad?",
@@ -281,17 +285,17 @@ function AIPage() {
     <main className="pt-32 px-6 pb-20 relative">
       <PageBackdrop />
       <ServiceSchema
-        name="AI Automation & AI Agents"
-        description="AI automation, AI agents, chatbots, and custom software development for businesses across India."
+        name="AI Automation & IT Services"
+        description="AI automation, AI agents, chatbots, n8n workflow automation, custom software and app development for businesses in Jaipur, Ahmedabad and across India."
         url="https://zoumconsultancy.com/services/ai-automation"
       />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <PageHeader
-          pill="AI Automation & Software Development in Jaipur & Ahmedabad"
+          pill="AI Automation Company in Jaipur & Ahmedabad"
           title="Build"
           italic="Digital Intelligence."
-          sub="ZOUM creates AI-powered software solutions, mobile applications, automation systems, and cloud technologies that help businesses operate smarter and scale faster."
+          sub="AI agents, chatbots and n8n workflow automation that take repetitive work off your team, plus the custom software and apps to run your business on."
         />
 
         <div className="mt-20 grid lg:grid-cols-[200px_1fr] gap-12">

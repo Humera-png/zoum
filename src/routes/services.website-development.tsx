@@ -6,10 +6,10 @@ import {
   ShoppingCart,
   Wrench,
   Check,
-  Megaphone,
+  MapPin,
+  FileText,
+  Share2 as ShareIcon,
   Search,
-  PenTool,
-  Users2,
   Boxes,
   ArrowUpRight,
   Workflow,
@@ -32,25 +32,25 @@ import {
 export const Route = createFileRoute("/services/website-development")({
   head: () => ({
     meta: [
-      { title: "Website, SEO & Social Media in Jaipur & Ahmedabad | ZOUM" },
+      { title: "Website Development Company in Jaipur & Ahmedabad | ZOUM" },
       {
         name: "description",
         content:
-          "Website development, SEO and social media marketing for businesses in Jaipur, Ahmedabad and across India. Websites from ₹9,999. Get a free quote.",
+          "Website development company in Jaipur and Ahmedabad: business websites, e-commerce, web apps and SEO for businesses across India. Websites from ₹9,999.",
       },
       {
         name: "keywords",
         content:
-          "SEO services Jaipur, SEO services Ahmedabad, SEO company India, local SEO, website development company India, web app development Jaipur, website development Ahmedabad, social media marketing agency Ahmedabad, e-commerce development, social media marketing agency Jaipur, Instagram marketing India, LinkedIn management, digital marketing agency, digital presence company India",
+          "website development company Jaipur, website development Ahmedabad, website design Jaipur, web development company India, e-commerce website development, web app development Jaipur, SEO services Jaipur, SEO services Ahmedabad, SEO company India, local SEO",
       },
       {
         property: "og:title",
-        content: "Website Development & Social Media Marketing | ZOUM Consultancy",
+        content: "Website Development & SEO | ZOUM Consultancy",
       },
       {
         property: "og:description",
         content:
-          "A fast, modern site and the audience to actually visit it, built and grown by one digital team.",
+          "Fast, modern websites, online stores and web apps, plus the SEO that gets them found on Google.",
       },
     ],
     links: [{ rel: "canonical", href: "https://zoumconsultancy.com/services/website-development" }],
@@ -69,7 +69,7 @@ const audiences = [
   },
   {
     name: "Brands Wanting Leads",
-    desc: "Businesses that want the website and social media to bring in enquiries, not just look good.",
+    desc: "Businesses that want the website to bring in enquiries from Google, not just look good.",
   },
 ];
 
@@ -92,7 +92,7 @@ const steps = [
   },
   {
     name: "Grow",
-    desc: "If you want, we run your social media and campaigns to bring visitors to the site, and keep it updated.",
+    desc: "If you want, we run SEO and keep the site updated, and our social media team can bring visitors to it.",
   },
 ];
 
@@ -115,7 +115,7 @@ const pageFaqs = [
   },
   {
     q: "Can you also manage our social media?",
-    a: "Yes. We handle brand content, social media management, and paid campaigns on Meta and LinkedIn. Social media is scoped separately once we understand your goals.",
+    a: "Yes. Our social media team handles content, page management, and paid campaigns on Meta and LinkedIn. It is quoted separately; see our social media marketing page.",
   },
   {
     q: "Can I update the website myself after launch?",
@@ -159,6 +159,7 @@ const services = [
 ];
 
 const marketing = [
+  // SEO lives here; social media has its own page (/services/social-media-marketing).
   {
     icon: Search,
     name: "SEO & Google Visibility",
@@ -167,23 +168,23 @@ const marketing = [
       "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    icon: PenTool,
-    name: "Brand Strategy & Content",
-    desc: "A clear brand voice and a content system that attracts attention and builds trust over time.",
+    icon: MapPin,
+    name: "Local SEO & Google Maps",
+    desc: "A complete Google Business Profile, consistent listings and location pages, so nearby customers find you on Google Maps.",
     image:
       "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    icon: Users2,
-    name: "Social Media Management",
-    desc: "Consistent publishing, engagement, and reporting across Instagram, LinkedIn, and beyond.",
+    icon: FileText,
+    name: "SEO Content & Blogs",
+    desc: "Service pages and articles that answer what your customers search for, written to rank and to bring enquiries.",
     image:
       "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    icon: Megaphone,
-    name: "Paid Social Campaigns",
-    desc: "Performance-focused ads on Meta and LinkedIn, targeted and tested to generate real leads.",
+    icon: ShareIcon,
+    name: "Social Media Marketing",
+    desc: "Content, page management and Meta and LinkedIn ads from our social media team, quoted separately.",
     image:
       "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=1200&q=80",
   },
@@ -194,8 +195,8 @@ const caseStudies = [
     icon: Boxes,
     name: "NaviaLabs",
     tag: "Web app · Built by our team",
-    desc: "An AI-powered inventory management and procurement platform for manufacturers, distributors, and wholesalers, preventing stockouts, automating reordering, and forecasting demand.",
-    url: "https://navialabs.vercel.app",
+    desc: "An inventory intelligence platform for businesses with stock in many places, such as pharmacy chains, retailers and distributors: stock by location, reorder suggestions and demand forecasting.",
+    url: "https://navialabs.si",
   },
   {
     icon: Workflow,
@@ -282,16 +283,16 @@ function WebsiteDevelopmentPage() {
     <main className="pt-32 px-6 pb-20 relative">
       <PageBackdrop />
       <ServiceSchema
-        name="Website Development & Social Media Marketing"
-        description="Website, web app, and e-commerce development plus social media marketing and paid campaigns, for growing businesses across India."
+        name="Website Development & SEO"
+        description="Website, web app, and e-commerce development plus SEO, for businesses in Jaipur, Ahmedabad and across India."
         url="https://zoumconsultancy.com/services/website-development"
       />
       <div className="max-w-7xl mx-auto relative z-10">
         <PageHeader
-          pill="Website Development & Social Media Marketing in Jaipur & Ahmedabad"
+          pill="Website Development Company in Jaipur & Ahmedabad"
           title="A Digital Presence"
           italic="That Actually Holds Up."
-          sub="A fast, modern site and the audience to visit it: web development and social media marketing, run as one digital team instead of two vendors."
+          sub="Fast, modern websites, online stores and web apps that load quickly, work on every phone, and are built to be found on Google."
         />
 
         <div className="mt-20 grid lg:grid-cols-[200px_1fr] gap-12">
@@ -331,7 +332,7 @@ function WebsiteDevelopmentPage() {
               </div>
             </Section>
 
-            <Section id="marketing" title="Then, Bring It An Audience" kicker="/ seo, social & content">
+            <Section id="marketing" title="Then, Get It Found" kicker="/ seo & growth">
               <div className="grid md:grid-cols-2 gap-5">
                 {marketing.map((m, i) => (
                   <motion.div
@@ -361,6 +362,13 @@ function WebsiteDevelopmentPage() {
                   </motion.div>
                 ))}
               </div>
+              <p className="mt-6 text-sm text-muted-foreground">
+                Want social media handled too?{" "}
+                <Link to="/services/social-media-marketing" className="text-lime font-semibold hover:underline">
+                  See our social media marketing services
+                </Link>
+                .
+              </p>
             </Section>
 
             <Section id="case-studies" title="What We've Actually Built" kicker="/ case studies">
@@ -400,8 +408,8 @@ function WebsiteDevelopmentPage() {
 
             <Section id="pricing" title="Plans" kicker="/ pricing">
               <p className="text-muted-foreground max-w-2xl -mt-4 mb-8">
-                Starting prices, adjusted to your project. Social media management is scoped
-                separately once we know your goals. Hosting is included free for a year on the
+                Starting prices, adjusted to your project. Social media management is quoted
+                separately on our social media marketing page. Hosting is included free for a year on the
                 Business plan; billed separately for Starter and Premium once your site is live.
               </p>
               <div className="grid md:grid-cols-3 gap-5">

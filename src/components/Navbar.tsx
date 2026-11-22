@@ -33,9 +33,14 @@ const serviceItems = [
     desc: "Production AI Architectures.",
   },
   {
-    label: "Website Development & Social Media",
+    label: "Website Development & SEO",
     to: "/services/website-development" as const,
     desc: "A Digital Presence That Actually Holds Up.",
+  },
+  {
+    label: "Social Media Marketing",
+    to: "/services/social-media-marketing" as const,
+    desc: "Be Seen By The Right People.",
   },
   {
     label: "Business Process Outsourcing",

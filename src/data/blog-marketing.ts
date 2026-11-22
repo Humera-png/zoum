@@ -9,7 +9,8 @@ import type { Post } from "./blog";
 
 const D = "2026-11-18";
 
-const WEB = { label: "Website development and social media", to: "/services/website-development" };
+const WEB = { label: "Website development and SEO", to: "/services/website-development" };
+const SOCIAL = { label: "Social media marketing services", to: "/services/social-media-marketing" };
 const CONTACT = { label: "Get a free quote", to: "/contact" };
 
 export const marketingGuides: Post[] = [
@@ -367,7 +368,7 @@ export const marketingGuides: Post[] = [
         type: "links",
         title: "Grow on social media with ZOUM",
         links: [
-          WEB,
+          SOCIAL,
           { label: "Social media marketing for small businesses", to: "/blog/social-media-marketing-for-small-business" },
           { label: "Facebook and Instagram ads for beginners", to: "/blog/facebook-instagram-ads-for-small-business" },
         ],
@@ -446,7 +447,7 @@ export const marketingGuides: Post[] = [
         type: "links",
         title: "Run ads with ZOUM",
         links: [
-          WEB,
+          SOCIAL,
           { label: "Automate lead follow-up with AI", to: "/services/ai-automation" },
           { label: "SEO vs social media vs ads", to: "/blog/seo-vs-social-media-vs-ads" },
         ],
@@ -516,7 +517,7 @@ export const marketingGuides: Post[] = [
         type: "links",
         title: "Grow on LinkedIn with ZOUM",
         links: [
-          WEB,
+          SOCIAL,
           { label: "Business consultancy services", to: "/services/business" },
           CONTACT,
         ],
@@ -602,7 +603,7 @@ export const marketingGuides: Post[] = [
         links: [
           WEB,
           { label: "SEO for small businesses", to: "/blog/seo-for-small-businesses" },
-          { label: "Facebook and Instagram ads for beginners", to: "/blog/facebook-instagram-ads-for-small-business" },
+          SOCIAL,
         ],
       },
     ],
@@ -826,7 +827,7 @@ export const marketingGuides: Post[] = [
         type: "links",
         title: "Work with ZOUM",
         links: [
-          WEB,
+          SOCIAL,
           { label: "Instagram marketing for local businesses", to: "/blog/instagram-marketing-for-local-businesses" },
           { label: "LinkedIn marketing for B2B businesses", to: "/blog/linkedin-marketing-for-b2b-businesses" },
         ],

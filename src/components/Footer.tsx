@@ -13,7 +13,8 @@ const serviceLinks = [
   { label: "Find Job", to: "/services/career" as const },
   { label: "Learning and Development (L&D)", to: "/services/talent-development" as const },
   { label: "AI and IT Services", to: "/services/ai-automation" as const },
-  { label: "Website Development & Social Media", to: "/services/website-development" as const },
+  { label: "Website Development & SEO", to: "/services/website-development" as const },
+  { label: "Social Media Marketing", to: "/services/social-media-marketing" as const },
   { label: "Business Process Outsourcing", to: "/services/bpo-operations" as const },
 ];
 

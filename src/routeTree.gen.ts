@@ -21,6 +21,7 @@ import { Route as ServicesBpoOperationsRouteImport } from './routes/services.bus
 import { Route as ServicesAiAutomationRouteImport } from './routes/services.ai-automation'
 import { Route as ServicesTalentDevelopmentRouteImport } from './routes/services.talent-development'
 import { Route as ServicesWebsiteDevelopmentRouteImport } from './routes/services.website-development'
+import { Route as ServicesSocialMediaMarketingRouteImport } from './routes/services.social-media-marketing'
 import { Route as JobsJobIdRouteImport } from './routes/jobs.$jobId'
 import { Route as CoursesCourseIdRouteImport } from './routes/courses.$courseId'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
@@ -86,6 +87,11 @@ const ServicesWebsiteDevelopmentRoute = ServicesWebsiteDevelopmentRouteImport.up
   path: '/services/website-development',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesSocialMediaMarketingRoute = ServicesSocialMediaMarketingRouteImport.update({
+  id: '/services/social-media-marketing',
+  path: '/services/social-media-marketing',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const JobsJobIdRoute = JobsJobIdRouteImport.update({
   id: '/jobs/$jobId',
   path: '/jobs/$jobId',
@@ -120,6 +126,7 @@ export interface FileRoutesByFullPath {
   '/services/career': typeof ServicesCareerRoute
   '/services/talent-development': typeof ServicesTalentDevelopmentRoute
   '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
+  '/services/social-media-marketing': typeof ServicesSocialMediaMarketingRoute
   '/jobs/$jobId': typeof JobsJobIdRoute
   '/courses/$courseId': typeof CoursesCourseIdRoute
   '/blog': typeof BlogIndexRoute
@@ -138,6 +145,7 @@ export interface FileRoutesByTo {
   '/services/career': typeof ServicesCareerRoute
   '/services/talent-development': typeof ServicesTalentDevelopmentRoute
   '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
+  '/services/social-media-marketing': typeof ServicesSocialMediaMarketingRoute
   '/jobs/$jobId': typeof JobsJobIdRoute
   '/courses/$courseId': typeof CoursesCourseIdRoute
   '/blog': typeof BlogIndexRoute
@@ -157,6 +165,7 @@ export interface FileRoutesById {
   '/services/career': typeof ServicesCareerRoute
   '/services/talent-development': typeof ServicesTalentDevelopmentRoute
   '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
+  '/services/social-media-marketing': typeof ServicesSocialMediaMarketingRoute
   '/jobs/$jobId': typeof JobsJobIdRoute
   '/courses/$courseId': typeof CoursesCourseIdRoute
   '/blog/': typeof BlogIndexRoute
@@ -177,6 +186,7 @@ export interface FileRouteTypes {
     | '/services/career'
     | '/services/talent-development'
     | '/services/website-development'
+    | '/services/social-media-marketing'
     | '/jobs/$jobId'
     | '/courses/$courseId'
     | '/blog'
@@ -195,6 +205,7 @@ export interface FileRouteTypes {
     | '/services/career'
     | '/services/talent-development'
     | '/services/website-development'
+    | '/services/social-media-marketing'
     | '/jobs/$jobId'
     | '/courses/$courseId'
     | '/blog'
@@ -213,6 +224,7 @@ export interface FileRouteTypes {
     | '/services/career'
     | '/services/talent-development'
     | '/services/website-development'
+    | '/services/social-media-marketing'
     | '/jobs/$jobId'
     | '/courses/$courseId'
     | '/blog/'
@@ -232,6 +244,7 @@ export interface RootRouteChildren {
   ServicesCareerRoute: typeof ServicesCareerRoute
   ServicesTalentDevelopmentRoute: typeof ServicesTalentDevelopmentRoute
   ServicesWebsiteDevelopmentRoute: typeof ServicesWebsiteDevelopmentRoute
+  ServicesSocialMediaMarketingRoute: typeof ServicesSocialMediaMarketingRoute
   JobsJobIdRoute: typeof JobsJobIdRoute
   CoursesCourseIdRoute: typeof CoursesCourseIdRoute
   BlogIndexRoute: typeof BlogIndexRoute
@@ -324,6 +337,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesWebsiteDevelopmentRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/social-media-marketing': {
+      id: '/services/social-media-marketing'
+      path: '/services/social-media-marketing'
+      fullPath: '/services/social-media-marketing'
+      preLoaderRoute: typeof ServicesSocialMediaMarketingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/jobs/$jobId': {
       id: '/jobs/$jobId'
       path: '/jobs/$jobId'
@@ -368,6 +388,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesCareerRoute: ServicesCareerRoute,
   ServicesTalentDevelopmentRoute: ServicesTalentDevelopmentRoute,
   ServicesWebsiteDevelopmentRoute: ServicesWebsiteDevelopmentRoute,
+  ServicesSocialMediaMarketingRoute: ServicesSocialMediaMarketingRoute,
   JobsJobIdRoute: JobsJobIdRoute,
   CoursesCourseIdRoute: CoursesCourseIdRoute,
   BlogIndexRoute: BlogIndexRoute,
