@@ -25,6 +25,7 @@ import {
   Handshake,
   GraduationCap,
   Globe,
+  Megaphone,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
@@ -383,11 +384,19 @@ const services = [
   },
   {
     icon: Globe,
-    title: "Website Development & Social Media",
+    title: "Website Development & SEO",
     headline: "A Digital Presence That Converts.",
-    body: "A fast, modern site and the social content and campaigns that bring it an audience.",
+    body: "Fast, modern websites built to rank on Google and Google Maps, and to turn visitors into enquiries.",
     to: "/services/website-development" as const,
     img: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    icon: Megaphone,
+    title: "Social Media Marketing",
+    headline: "Be Seen By The Right People.",
+    body: "Content, page management and paid campaigns on Instagram, Facebook and LinkedIn that bring real leads.",
+    to: "/services/social-media-marketing" as const,
+    img: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=1200&q=80",
   },
   {
     icon: TrendingUp,
@@ -705,7 +714,7 @@ const testimonials = [
   {
     name: "Vikram S.",
     role: "VP of Growth & Brand Strategy",
-    service: "Website Development & Social Media",
+    service: "Social Media Marketing",
     quote:
       "We had content but no traction. In two months, ZOUM's system hit 5M+ organic impressions and turned it into 40 qualified leads.",
   },
@@ -721,7 +730,7 @@ const testimonials = [
   {
     name: "Marcus Chen",
     role: "Co-Founder, E-Commerce Hub",
-    service: "Website Development & Social Media",
+    service: "Social Media Marketing",
     quote:
       "ZOUM rebuilt our short-form video strategy. Now TikTok and LinkedIn drive daily sales without us spending a dime on ads.",
   },
@@ -985,11 +994,11 @@ const faqs = [
   },
   {
     q: "Does ZOUM offer training or skills development?",
-    a: "Yes. Our Learning and Development (L&D) team runs English, communication, and workplace skills training that helps candidates show up with more confidence and get hired faster.",
+    a: "Yes. We run corporate training for companies (communication and spoken English, soft skills, leadership readiness, digital and AI skills) and job-ready career courses for individuals in BPO, IT, consultancy and AI.",
   },
   {
     q: "Can ZOUM manage our social media?",
-    a: "Yes. We build content and campaigns that get seen, and turn that attention into real leads, not just likes, across platforms like Instagram and LinkedIn.",
+    a: "Yes. We plan and create content, manage your pages, and run paid campaigns on Instagram, Facebook and LinkedIn, with monthly reports focused on real leads, not just likes.",
   },
   {
     q: "What does ZOUM's business consultancy service cover?",
@@ -997,7 +1006,7 @@ const faqs = [
   },
   {
     q: "What is business process outsourcing (BPO) and does ZOUM offer it?",
-    a: "BPO means handing off a business process, like operations or back-office work, to an outside team so it runs more efficiently. ZOUM finds where a business is losing time and money and fixes it directly.",
+    a: "BPO means handing a business process to an outside team that runs it for you. ZOUM offers outbound calling and telecalling, chat and email support, and back-office and data work, and also recruits team leaders and international process staff for BPO companies.",
   },
 ];
 
