@@ -232,6 +232,7 @@ import { PageTransition } from "@/components/PageTransition";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { ZaiChat } from "@/components/ZaiChat";
 import { ChhathDecor } from "@/components/ChhathDecor";
 import { IntroScreen } from "@/components/IntroScreen";
 import { GradientCursor } from "@/components/GradientCursor";
@@ -256,6 +257,7 @@ function RootComponent() {
       </PageTransition>
       <Footer />
       <WhatsAppButton />
+      <ZaiChat />
       <ChhathDecor />
     </QueryClientProvider>
   );

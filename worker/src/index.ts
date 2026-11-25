@@ -15,6 +15,7 @@ import {
   type ResendAttachment,
 } from "./email";
 import { isRateLimited } from "./ratelimit";
+import { handleChat } from "./chat";
 import { findCourse } from "./courses";
 import { getClerkUserId } from "./clerk";
 import { createRazorpayOrder, verifyRazorpaySignature } from "./razorpay";
@@ -30,6 +31,8 @@ export interface Env {
   RAZORPAY_KEY_ID: string; // secret (not sensitive, but kept alongside the actual secret)
   RAZORPAY_KEY_SECRET: string; // secret
   ADMIN_TOKEN: string; // secret — set via `wrangler secret put ADMIN_TOKEN`
+  GROQ_API_KEY: string; // secret — set via `wrangler secret put GROQ_API_KEY` (ZAI chat)
+  GROQ_MODEL?: string; // optional var — overrides the default Groq model
 }
 
 // Only these keys can be written through POST /admin/settings.
@@ -389,6 +392,9 @@ export default {
     if (request.method !== "POST") {
       return jsonResponse({ error: "Method not allowed" }, 405, cors);
     }
+
+    // ZAI chat has its own, higher rate limit (see chat.ts).
+    if (url.pathname === "/chat") return handleChat(request, env, cors);
 
     const ip = request.headers.get("CF-Connecting-IP") ?? "unknown";
     if (await isRateLimited(env.RATE_LIMIT_KV, ip)) {

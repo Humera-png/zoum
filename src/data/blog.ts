@@ -5,6 +5,7 @@ import { guides } from "./blog-guides";
 import { ahmedabadGuides } from "./blog-ahmedabad";
 import { marketingGuides } from "./blog-marketing";
 import { expansions } from "./blog-expansions";
+import { itGuides } from "./blog-it";
 
 export type Block =
   | { type: "p"; text: string }
@@ -342,6 +343,12 @@ function expand(post: Post): Post {
   return { ...post, body, faqs, readMinutes, updated: extra.updated };
 }
 
-export const posts: Post[] = [...basePosts, ...guides, ...ahmedabadGuides, ...marketingGuides].map(
+export const posts: Post[] = [
+  ...basePosts,
+  ...guides,
+  ...ahmedabadGuides,
+  ...marketingGuides,
+  ...itGuides,
+].map(
   expand,
 );
