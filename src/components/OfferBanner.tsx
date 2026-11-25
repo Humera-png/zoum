@@ -38,7 +38,7 @@ export function OfferBanner() {
       role="region"
       aria-label={`${OFFER_NAME} offer`}
       style={{ backgroundColor: "#0b0b0b", color: "#ffffff" }}
-      className="fixed z-[55] bottom-6 left-4 right-24 sm:right-auto sm:left-6 sm:w-[340px] rounded-2xl p-5 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)]"
+      className="fixed z-[55] bottom-40 left-4 right-4 sm:bottom-6 sm:right-auto sm:left-6 sm:w-[340px] rounded-2xl p-5 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)]"
     >
       <button
         type="button"
