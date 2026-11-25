@@ -330,6 +330,20 @@ function WebsiteDevelopmentPage() {
                   </motion.div>
                 ))}
               </div>
+              <div className="mt-8 grid sm:grid-cols-2 gap-3">
+                {[
+                  { label: "Custom Software & Web Apps", to: "/services/software-development" },
+                  { label: "Mobile App Development", to: "/services/mobile-app-development" },
+                ].map((l) => (
+                  <a
+                    key={l.to}
+                    href={l.to}
+                    className="glass rounded-xl px-4 py-3 text-sm font-semibold hover:bg-white transition flex items-center justify-between"
+                  >
+                    {l.label} <span className="text-lime">→</span>
+                  </a>
+                ))}
+              </div>
             </Section>
 
             <Section id="marketing" title="Then, Get It Found" kicker="/ seo & growth">
