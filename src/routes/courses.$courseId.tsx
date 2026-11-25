@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Clock, ArrowUpRight, Check, Award, ShieldCheck } from "lucide-react";
 import { courses, type Course } from "@/data/courses";
+import { offerPrice, inr, OFFER_NAME, OFFER_ENDS_LABEL } from "@/lib/offer";
 import { pageTitle, metaDescription } from "@/lib/seo";
 import { FaqSection, type Faq } from "@/components/ServiceGuide";
 import { posts } from "@/data/blog";
@@ -275,6 +276,30 @@ function CourseDetailPage() {
                       </AnimatePresence>
 
                       <div className="mt-6 pt-6 border-t border-border">
+                        {offerPrice(course.id) && (
+                          <div
+                            style={{ backgroundColor: "#0b0b0b", color: "#ffffff" }}
+                            className="mb-6 max-w-md rounded-2xl p-4"
+                          >
+                            <div
+                              className="text-[10px] uppercase tracking-[0.2em] font-bold"
+                              style={{ color: "#1fcb6b" }}
+                            >
+                              {OFFER_NAME} offer · till {OFFER_ENDS_LABEL}
+                            </div>
+                            <div className="mt-1">
+                              <span className="font-display text-2xl">
+                                {inr(offerPrice(course.id)!)}
+                              </span>{" "}
+                              <span
+                                className="text-sm line-through"
+                                style={{ color: "rgba(255,255,255,0.55)" }}
+                              >
+                                {inr(course.priceInr)}
+                              </span>
+                            </div>
+                          </div>
+                        )}
                         <h3 className="font-display text-lg mb-1">Enroll in this course</h3>
                         <p className="text-sm text-muted-foreground mb-5">
                           Sign in (or create an account) to enroll and pay securely.

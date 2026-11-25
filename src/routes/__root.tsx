@@ -233,7 +233,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { ZaiChat } from "@/components/ZaiChat";
-import { ChhathDecor } from "@/components/ChhathDecor";
+import { OfferBanner } from "@/components/OfferBanner";
 import { IntroScreen } from "@/components/IntroScreen";
 import { GradientCursor } from "@/components/GradientCursor";
 import { CLERK_PUBLISHABLE_KEY } from "@/lib/clerk";
@@ -258,7 +258,7 @@ function RootComponent() {
       <Footer />
       <WhatsAppButton />
       <ZaiChat />
-      <ChhathDecor />
+      <OfferBanner />
     </QueryClientProvider>
   );
 
