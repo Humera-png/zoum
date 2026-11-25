@@ -90,7 +90,8 @@ export function ZaiChat() {
           type="button"
           onClick={() => setOpen(true)}
           aria-label="Chat with ZAI, ZOUM's AI assistant"
-          className="fixed bottom-24 right-6 z-50 h-14 pl-4 pr-5 rounded-full bg-foreground text-background inline-flex items-center gap-2 shadow-lg hover:scale-105 transition-transform"
+          style={{ backgroundColor: "#16201b", color: "#ffffff" }}
+          className="fixed bottom-24 right-6 z-[60] h-12 pl-4 pr-5 rounded-full inline-flex items-center gap-2 shadow-[0_10px_30px_-8px_rgba(0,0,0,0.45)] hover:scale-105 transition-transform"
         >
           <Sparkles className="h-5 w-5" />
           <span className="font-semibold text-sm">Ask ZAI</span>
@@ -101,31 +102,34 @@ export function ZaiChat() {
         <div
           role="dialog"
           aria-label="ZAI chat"
-          className="fixed z-50 bottom-24 right-4 left-4 sm:left-auto sm:right-6 sm:w-[380px] h-[min(560px,70vh)] rounded-3xl bg-background border border-border shadow-2xl flex flex-col overflow-hidden"
+          style={{ backgroundColor: "#ffffff", color: "#16201b" }}
+          className="fixed z-[60] bottom-24 right-4 left-4 sm:left-auto sm:right-6 sm:w-[380px] h-[min(560px,70vh)] rounded-3xl border border-black/10 shadow-[0_24px_60px_-12px_rgba(0,0,0,0.35)] flex flex-col overflow-hidden isolate"
         >
-          <div className="flex items-center justify-between px-5 py-4 border-b border-border">
+          <div style={{ backgroundColor: "#16201b", color: "#ffffff" }}
+            className="flex items-center justify-between px-5 py-4">
             <div>
               <div className="font-display text-lg flex items-center gap-2">
-                <Sparkles className="h-4 w-4 text-lime" /> ZAI
+                <Sparkles className="h-4 w-4" style={{ color: "#1fcb6b" }} /> ZAI
               </div>
-              <div className="text-xs text-muted-foreground">ZOUM's AI assistant · may make mistakes</div>
+              <div className="text-xs" style={{ color: "rgba(255,255,255,0.7)" }}>ZOUM's AI assistant · may make mistakes</div>
             </div>
             <button
               type="button"
               onClick={() => setOpen(false)}
               aria-label="Close chat"
-              className="h-9 w-9 grid place-items-center rounded-full hover:bg-black/5"
+              className="h-9 w-9 grid place-items-center rounded-full hover:bg-white/10"
             >
               <X className="h-4 w-4" />
             </button>
           </div>
 
-          <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3 text-sm">
+          <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3 text-sm bg-white">
             {messages.map((m, i) => (
               <div key={i} className={m.role === "user" ? "flex justify-end" : "flex"}>
                 <div
+                  style={{ backgroundColor: m.role === "user" ? "#1fcb6b" : "#f1f3f2" }}
                   className={`max-w-[85%] rounded-2xl px-4 py-2.5 leading-relaxed whitespace-pre-wrap ${
-                    m.role === "user" ? "bg-lime text-white" : "bg-black/5"
+                    m.role === "user" ? "text-white" : ""
                   }`}
                 >
                   {m.role === "assistant" ? renderText(m.content) : m.content}
@@ -139,7 +143,7 @@ export function ZaiChat() {
                     key={s}
                     type="button"
                     onClick={() => send(s)}
-                    className="text-left text-xs rounded-xl border border-border px-3 py-2 hover:bg-black/5"
+                    className="text-left text-xs rounded-xl border border-black/10 bg-white px-3 py-2 hover:bg-black/5"
                   >
                     {s}
                   </button>
@@ -155,20 +159,21 @@ export function ZaiChat() {
               e.preventDefault();
               send(input);
             }}
-            className="p-3 border-t border-border flex gap-2"
+            className="p-3 border-t border-black/10 flex gap-2 bg-white"
           >
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
               maxLength={1000}
               placeholder="Ask about a project, service or course…"
-              className="flex-1 rounded-full border border-border px-4 py-2.5 text-sm bg-transparent outline-none focus:border-lime"
+              className="flex-1 rounded-full border border-black/15 px-4 py-2.5 text-sm bg-white text-[#16201b] outline-none focus:border-[#1fcb6b]"
             />
             <button
               type="submit"
               disabled={busy || !input.trim()}
               aria-label="Send"
-              className="h-10 w-10 rounded-full bg-lime text-white grid place-items-center disabled:opacity-40"
+              style={{ backgroundColor: "#1fcb6b" }}
+              className="h-10 w-10 rounded-full text-white grid place-items-center disabled:opacity-40"
             >
               <Send className="h-4 w-4" />
             </button>
