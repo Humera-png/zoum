@@ -88,7 +88,7 @@ const structuredData = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   name: "ZOUM Consultancy",
-  alternateName: "ZOUM Placement Services",
+  alternateName: ["ZOUM Placement Services", "Zoom Consultancy", "ZOUM"],
   description:
     "ZOUM Consultancy has its head office in Jaipur and a branch office in Ahmedabad. We place candidates in jobs across India, run BPO operations, train talent, and build AI automation, AI agents, websites, and custom software for businesses.",
   url: "https://zoumconsultancy.com",

@@ -25,7 +25,7 @@ export const Route = createFileRoute("/services/business-strategy")({
       {
         name: "description",
         content:
-          "Outsource telecalling, chat and email support, and back-office work to ZOUM, or hire BPO team leaders and international process staff. Jaipur, Ahmedabad and India.",
+          "BPO services for small businesses: outsource telecalling, chat and email support, and back-office work, or hire BPO team leaders. Jaipur, Ahmedabad, India.",
       },
       {
         property: "og:title",
@@ -34,7 +34,7 @@ export const Route = createFileRoute("/services/business-strategy")({
       {
         name: "keywords",
         content:
-          "BPO services Jaipur, BPO services Ahmedabad, BPO company Jaipur, business process outsourcing India, telecalling services Jaipur, outbound calling services India, chat support outsourcing, email support outsourcing, back office outsourcing Jaipur, data entry outsourcing India, BPO recruitment agency Jaipur, BPO hiring Ahmedabad, international BPO recruitment",
+          "BPO for small business, business process outsourcing for small business, BPO services Jaipur, BPO services Ahmedabad, BPO company Jaipur, business process outsourcing India, telecalling services Jaipur, outbound calling services India, chat support outsourcing, email support outsourcing, back office outsourcing Jaipur, data entry outsourcing India, BPO recruitment agency Jaipur, BPO hiring Ahmedabad, international BPO recruitment",
       },
       {
         property: "og:description",
