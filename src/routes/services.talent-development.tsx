@@ -186,6 +186,7 @@ const flagshipIds = [
   "bpo-career-masterclass",
   "it-career-masterclass",
   "business-consultancy-masterclass",
+  "hr-course",
   "ai-automation-n8n-masterclass",
   "ai-ml-foundations",
   "automation-ai-ml-practicum",

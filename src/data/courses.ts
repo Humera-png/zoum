@@ -176,6 +176,51 @@ export const courses: Course[] = [
     imagePosition: "50% 38%",
   },
   {
+    id: "hr-course",
+    seoTitle: "HR Course in Jaipur & Ahmedabad, Live & Recorded",
+    seoDescription:
+      "1-month HR course for freshers and students: weekend live classes, weekday practical sessions, study material, job assistance and an internship certificate.",
+    title: "Step Into HR: 1-Month HR Course",
+    category: "career",
+    page: "consultancy",
+    priceInr: 9999,
+    duration: "1 month · 8 sessions",
+    summary:
+      "Learn HR from scratch with practical exposure. Built for freshers and college students who want to start a career in HR.",
+    modules: [
+      {
+        title: "8 Live Weekend Sessions",
+        description:
+          "Two classes a week on Saturday and Sunday, 2 to 3 hours each, over one month. Every session is also recorded, so you never miss one.",
+      },
+      {
+        title: "2 to 3 Practical Classes on Weekdays",
+        description:
+          "Hands-on practical classes on weekdays where you apply what you learned in the weekend sessions.",
+      },
+      {
+        title: "Study Material and Support",
+        description:
+          "Study material to learn at your own pace, and a team you can call any time for help during the course.",
+      },
+      {
+        title: "Job Assistance and Certificates",
+        description:
+          "Job assistance once you finish, plus a course completion certificate and a 6-month internship certificate.",
+      },
+    ],
+    pros: [
+      "Launch offer: ₹9,999 (regular fee ₹15,000)",
+      "Live and recorded classes, so you can catch up on any session",
+      "Weekend classes that fit around college or work",
+      "Practical classes, not just theory",
+      "Course completion certificate and 6-month internship certificate",
+      "Job assistance after the course",
+    ],
+    terms: MASTERCLASS_TERMS,
+    image: "/assets/hr-course.jpg",
+  },
+  {
     id: "english-communication",
     seoTitle: "Spoken English Course in Jaipur & Ahmedabad",
     seoDescription:

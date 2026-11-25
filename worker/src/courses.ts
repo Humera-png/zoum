@@ -27,6 +27,7 @@ export const COURSES: CourseRecord[] = [
     priceInr: 999,
   },
   { id: "ai-automation-n8n-masterclass", title: "AI Automation Masterclass — n8n", priceInr: 1499 },
+  { id: "hr-course", title: "Step Into HR: 1-Month HR Course", priceInr: 9999 },
   {
     id: "english-communication",
     title: "Speak With Confidence: English & Communication",

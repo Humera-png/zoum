@@ -58,6 +58,10 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://zoumconsultancy.com/courses/hr-course</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://zoumconsultancy.com/courses/ai-automation-n8n-masterclass</loc>
     <priority>0.7</priority>
   </url>
