@@ -34,17 +34,17 @@ export const Route = createFileRoute("/services/ai-automation")({
   head: () => ({
     meta: [
       {
-        title: "AI Automation Company in Jaipur & Ahmedabad | ZOUM",
+        title: "AI Automation & IT Services Company, India & Worldwide | ZOUM",
       },
       {
         name: "description",
         content:
-          "AI automation company in Jaipur and Ahmedabad. ZOUM builds AI agents, chatbots, n8n workflow automation, custom software and apps for businesses across India.",
+          "AI automation and IT services for clients in India and worldwide: AI agents, chatbots, n8n automation, custom software and mobile apps. Jaipur & Ahmedabad.",
       },
       {
         name: "keywords",
         content:
-          "AI automation company Jaipur, AI automation company Ahmedabad, AI automation agency India, n8n automation agency, AI agents development, AI chatbot development Jaipur, IT services company Jaipur, custom software development Jaipur, app development Jaipur, business process automation, workflow automation company",
+          "AI automation company, IT services company India, AI automation agency, offshore IT services India, AI automation company Jaipur, AI automation company Ahmedabad, AI automation agency India, n8n automation agency, AI agents development, AI chatbot development Jaipur, IT services company Jaipur, custom software development Jaipur, app development Jaipur, business process automation, workflow automation company",
       },
       {
         property: "og:title",
@@ -53,7 +53,7 @@ export const Route = createFileRoute("/services/ai-automation")({
       {
         property: "og:description",
         content:
-          "Build smarter with ZOUM: AI agents, workflow automation, chatbots, software platforms, and mobile apps for modern Indian businesses.",
+          "AI agents, workflow automation, chatbots, custom software and mobile apps, built in India for businesses worldwide.",
       },
     ],
     links: [{ rel: "canonical", href: "https://zoumconsultancy.com/services/ai-automation" }],
@@ -126,8 +126,8 @@ const pageFaqs = [
     a: "Mostly n8n for workflows, connected to the tools you already use, such as Google Sheets, WhatsApp, email, CRMs and your website, plus AI models for chatbots, agents and voice assistants. We pick what fits your business and budget.",
   },
   {
-    q: "Do you work with businesses in Ahmedabad?",
-    a: "Yes. We work with businesses in Jaipur and Ahmedabad, and with clients across India remotely.",
+    q: "Do you work with clients outside India?",
+    a: "Yes. Besides Jaipur, Ahmedabad and the rest of India, we work remotely with clients in the US, the UK, Europe, the Middle East and Australia, and invoice in US dollars or another agreed currency.",
   },
 ];
 
@@ -353,6 +353,22 @@ function AIPage() {
                   </motion.div>
                 ))}
               </div>
+              <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                {[
+                  { label: "Custom Software Development", to: "/services/software-development" },
+                  { label: "AI Agents & Chatbots", to: "/services/ai-agents-chatbots" },
+                  { label: "Mobile App Development", to: "/services/mobile-app-development" },
+                  { label: "n8n Workflow Automation", to: "/services/n8n-automation" },
+                ].map((l) => (
+                  <a
+                    key={l.to}
+                    href={l.to}
+                    className="glass rounded-xl px-4 py-3 text-sm font-semibold hover:bg-white transition flex items-center justify-between"
+                  >
+                    {l.label} <span className="text-lime">→</span>
+                  </a>
+                ))}
+              </div>
             </Section>
 
             <Section id="results" title="Business Outcomes" kicker="/ impact">
@@ -492,7 +508,7 @@ function AIPage() {
 
             <CitiesSection
               intro={
-                "We work with businesses in Jaipur and Ahmedabad, and build for clients across India remotely."
+                "Head office in Jaipur, branch in Ahmedabad. We build for clients across India and worldwide (US, UK, Europe, the Middle East and Australia), working remotely and invoicing international clients in US dollars or another agreed currency."
               }
             />
 

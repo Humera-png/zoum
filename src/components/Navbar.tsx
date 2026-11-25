@@ -33,6 +33,26 @@ const serviceItems = [
     desc: "Production AI Architectures.",
   },
   {
+    label: "Custom Software Development",
+    to: "/services/software-development" as const,
+    desc: "Software Built Around Your Business.",
+  },
+  {
+    label: "AI Agents & Chatbots",
+    to: "/services/ai-agents-chatbots" as const,
+    desc: "AI That Works On Your Data.",
+  },
+  {
+    label: "Mobile App Development",
+    to: "/services/mobile-app-development" as const,
+    desc: "Android & iOS Apps.",
+  },
+  {
+    label: "n8n Automation",
+    to: "/services/n8n-automation" as const,
+    desc: "Let Your Tools Do The Busywork.",
+  },
+  {
     label: "Website Development & SEO",
     to: "/services/website-development" as const,
     desc: "A Digital Presence That Actually Holds Up.",

@@ -126,7 +126,10 @@ const structuredData = {
       },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI Automation & AI Agents" } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Website Development & SEO" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Software Development" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Custom Software Development" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI Agents & Chatbots" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Mobile App Development" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "n8n Workflow Automation" } },
       {
         "@type": "Offer",
         itemOffered: { "@type": "Service", name: "BPO Services & BPO Recruitment" },

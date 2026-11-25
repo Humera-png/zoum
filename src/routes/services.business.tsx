@@ -306,10 +306,12 @@ export function ServiceSchema({
   name,
   description,
   url,
+  worldwide = false,
 }: {
   name: string;
   description: string;
   url: string;
+  worldwide?: boolean;
 }) {
   const schema = {
     "@context": "https://schema.org",
@@ -323,7 +325,7 @@ export function ServiceSchema({
       name: "ZOUM Consultancy",
       url: "https://zoumconsultancy.com",
     },
-    areaServed: { "@type": "Country", name: "India" },
+    areaServed: worldwide ? "Worldwide" : { "@type": "Country", name: "India" },
   };
   return (
     <script

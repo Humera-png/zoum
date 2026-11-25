@@ -21,6 +21,10 @@ import { Route as ServicesBpoOperationsRouteImport } from './routes/services.bus
 import { Route as ServicesAiAutomationRouteImport } from './routes/services.ai-automation'
 import { Route as ServicesTalentDevelopmentRouteImport } from './routes/services.talent-development'
 import { Route as ServicesWebsiteDevelopmentRouteImport } from './routes/services.website-development'
+import { Route as ServicesSoftwareDevelopmentRouteImport } from './routes/services.software-development'
+import { Route as ServicesAiAgentsChatbotsRouteImport } from './routes/services.ai-agents-chatbots'
+import { Route as ServicesMobileAppDevelopmentRouteImport } from './routes/services.mobile-app-development'
+import { Route as ServicesN8nAutomationRouteImport } from './routes/services.n8n-automation'
 import { Route as ServicesSocialMediaMarketingRouteImport } from './routes/services.social-media-marketing'
 import { Route as JobsJobIdRouteImport } from './routes/jobs.$jobId'
 import { Route as CoursesCourseIdRouteImport } from './routes/courses.$courseId'
@@ -87,6 +91,26 @@ const ServicesWebsiteDevelopmentRoute = ServicesWebsiteDevelopmentRouteImport.up
   path: '/services/website-development',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesSoftwareDevelopmentRoute = ServicesSoftwareDevelopmentRouteImport.update({
+  id: '/services/software-development',
+  path: '/services/software-development',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesAiAgentsChatbotsRoute = ServicesAiAgentsChatbotsRouteImport.update({
+  id: '/services/ai-agents-chatbots',
+  path: '/services/ai-agents-chatbots',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesMobileAppDevelopmentRoute = ServicesMobileAppDevelopmentRouteImport.update({
+  id: '/services/mobile-app-development',
+  path: '/services/mobile-app-development',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesN8nAutomationRoute = ServicesN8nAutomationRouteImport.update({
+  id: '/services/n8n-automation',
+  path: '/services/n8n-automation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesSocialMediaMarketingRoute = ServicesSocialMediaMarketingRouteImport.update({
   id: '/services/social-media-marketing',
   path: '/services/social-media-marketing',
@@ -126,6 +150,10 @@ export interface FileRoutesByFullPath {
   '/services/career': typeof ServicesCareerRoute
   '/services/talent-development': typeof ServicesTalentDevelopmentRoute
   '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
+  '/services/software-development': typeof ServicesSoftwareDevelopmentRoute
+  '/services/ai-agents-chatbots': typeof ServicesAiAgentsChatbotsRoute
+  '/services/mobile-app-development': typeof ServicesMobileAppDevelopmentRoute
+  '/services/n8n-automation': typeof ServicesN8nAutomationRoute
   '/services/social-media-marketing': typeof ServicesSocialMediaMarketingRoute
   '/jobs/$jobId': typeof JobsJobIdRoute
   '/courses/$courseId': typeof CoursesCourseIdRoute
@@ -145,6 +173,10 @@ export interface FileRoutesByTo {
   '/services/career': typeof ServicesCareerRoute
   '/services/talent-development': typeof ServicesTalentDevelopmentRoute
   '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
+  '/services/software-development': typeof ServicesSoftwareDevelopmentRoute
+  '/services/ai-agents-chatbots': typeof ServicesAiAgentsChatbotsRoute
+  '/services/mobile-app-development': typeof ServicesMobileAppDevelopmentRoute
+  '/services/n8n-automation': typeof ServicesN8nAutomationRoute
   '/services/social-media-marketing': typeof ServicesSocialMediaMarketingRoute
   '/jobs/$jobId': typeof JobsJobIdRoute
   '/courses/$courseId': typeof CoursesCourseIdRoute
@@ -165,6 +197,10 @@ export interface FileRoutesById {
   '/services/career': typeof ServicesCareerRoute
   '/services/talent-development': typeof ServicesTalentDevelopmentRoute
   '/services/website-development': typeof ServicesWebsiteDevelopmentRoute
+  '/services/software-development': typeof ServicesSoftwareDevelopmentRoute
+  '/services/ai-agents-chatbots': typeof ServicesAiAgentsChatbotsRoute
+  '/services/mobile-app-development': typeof ServicesMobileAppDevelopmentRoute
+  '/services/n8n-automation': typeof ServicesN8nAutomationRoute
   '/services/social-media-marketing': typeof ServicesSocialMediaMarketingRoute
   '/jobs/$jobId': typeof JobsJobIdRoute
   '/courses/$courseId': typeof CoursesCourseIdRoute
@@ -186,6 +222,10 @@ export interface FileRouteTypes {
     | '/services/career'
     | '/services/talent-development'
     | '/services/website-development'
+    | '/services/software-development'
+    | '/services/ai-agents-chatbots'
+    | '/services/mobile-app-development'
+    | '/services/n8n-automation'
     | '/services/social-media-marketing'
     | '/jobs/$jobId'
     | '/courses/$courseId'
@@ -205,6 +245,10 @@ export interface FileRouteTypes {
     | '/services/career'
     | '/services/talent-development'
     | '/services/website-development'
+    | '/services/software-development'
+    | '/services/ai-agents-chatbots'
+    | '/services/mobile-app-development'
+    | '/services/n8n-automation'
     | '/services/social-media-marketing'
     | '/jobs/$jobId'
     | '/courses/$courseId'
@@ -224,6 +268,10 @@ export interface FileRouteTypes {
     | '/services/career'
     | '/services/talent-development'
     | '/services/website-development'
+    | '/services/software-development'
+    | '/services/ai-agents-chatbots'
+    | '/services/mobile-app-development'
+    | '/services/n8n-automation'
     | '/services/social-media-marketing'
     | '/jobs/$jobId'
     | '/courses/$courseId'
@@ -244,6 +292,10 @@ export interface RootRouteChildren {
   ServicesCareerRoute: typeof ServicesCareerRoute
   ServicesTalentDevelopmentRoute: typeof ServicesTalentDevelopmentRoute
   ServicesWebsiteDevelopmentRoute: typeof ServicesWebsiteDevelopmentRoute
+  ServicesSoftwareDevelopmentRoute: typeof ServicesSoftwareDevelopmentRoute
+  ServicesAiAgentsChatbotsRoute: typeof ServicesAiAgentsChatbotsRoute
+  ServicesMobileAppDevelopmentRoute: typeof ServicesMobileAppDevelopmentRoute
+  ServicesN8nAutomationRoute: typeof ServicesN8nAutomationRoute
   ServicesSocialMediaMarketingRoute: typeof ServicesSocialMediaMarketingRoute
   JobsJobIdRoute: typeof JobsJobIdRoute
   CoursesCourseIdRoute: typeof CoursesCourseIdRoute
@@ -337,6 +389,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesWebsiteDevelopmentRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/software-development': {
+      id: '/services/software-development'
+      path: '/services/software-development'
+      fullPath: '/services/software-development'
+      preLoaderRoute: typeof ServicesSoftwareDevelopmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/ai-agents-chatbots': {
+      id: '/services/ai-agents-chatbots'
+      path: '/services/ai-agents-chatbots'
+      fullPath: '/services/ai-agents-chatbots'
+      preLoaderRoute: typeof ServicesAiAgentsChatbotsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/mobile-app-development': {
+      id: '/services/mobile-app-development'
+      path: '/services/mobile-app-development'
+      fullPath: '/services/mobile-app-development'
+      preLoaderRoute: typeof ServicesMobileAppDevelopmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/n8n-automation': {
+      id: '/services/n8n-automation'
+      path: '/services/n8n-automation'
+      fullPath: '/services/n8n-automation'
+      preLoaderRoute: typeof ServicesN8nAutomationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/social-media-marketing': {
       id: '/services/social-media-marketing'
       path: '/services/social-media-marketing'
@@ -388,6 +468,10 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesCareerRoute: ServicesCareerRoute,
   ServicesTalentDevelopmentRoute: ServicesTalentDevelopmentRoute,
   ServicesWebsiteDevelopmentRoute: ServicesWebsiteDevelopmentRoute,
+  ServicesSoftwareDevelopmentRoute: ServicesSoftwareDevelopmentRoute,
+  ServicesAiAgentsChatbotsRoute: ServicesAiAgentsChatbotsRoute,
+  ServicesMobileAppDevelopmentRoute: ServicesMobileAppDevelopmentRoute,
+  ServicesN8nAutomationRoute: ServicesN8nAutomationRoute,
   ServicesSocialMediaMarketingRoute: ServicesSocialMediaMarketingRoute,
   JobsJobIdRoute: JobsJobIdRoute,
   CoursesCourseIdRoute: CoursesCourseIdRoute,
