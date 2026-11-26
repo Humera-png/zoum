@@ -12,6 +12,76 @@ const CONTACT = { label: "Get a free project estimate", to: "/contact" };
 
 export const itGuides: Post[] = [
   {
+    slug: "navialabs-case-study",
+    seoTitle: "NaviaLabs Case Study: Building a SaaS Platform",
+    title: "Case Study: How We Built NaviaLabs, a Multi-Location Operations SaaS",
+    description:
+      "How the ZOUM team designed, built and launched NaviaLabs, a live SaaS platform for inventory, purchasing, forecasting and an AI operations agent.",
+    date: "2026-11-26",
+    category: "AI & Business",
+    readMinutes: 6,
+    body: [
+      {
+        type: "p",
+        text: "NaviaLabs (navialabs.si) is a live operations platform for businesses that hold stock in more than one place: stores, godowns and warehouses. It was designed, built and launched by the founders of ZOUM, and we run it ourselves. This case study explains the problem, what we built, and what it shows about how we build software for clients.",
+      },
+      { type: "h2", text: "The problem" },
+      {
+        type: "p",
+        text: "Businesses with several locations usually track stock in separate spreadsheets, registers and WhatsApp messages. The owner sees the full picture too late: one store runs out while another holds the same item unsold, purchase orders are written from memory, and slow-moving stock goes unnoticed until it becomes a loss.",
+      },
+      { type: "h2", text: "What we built" },
+      {
+        type: "ul",
+        items: [
+          "One live view of stock across every store and warehouse, with a status for every item: critical, low, healthy or overstocked.",
+          "A daily Needs Attention list: what is out, at its minimum or about to run out, and which location can spare it.",
+          "Purchasing from request to receipt: purchase requests, approvals, purchase orders, and receiving including part deliveries.",
+          "A check on the purchase order form that warns when another location already holds the stock unsold.",
+          "Demand and reorder forecasts calculated from the business's own sales history.",
+          "Ask Navia, an AI operations agent that answers questions in plain language from the business's own data and shows where each figure comes from.",
+          "Data import from Excel that checks every row before anything is saved, plus roles and permissions for the team.",
+        ],
+      },
+      { type: "h2", text: "How we built it" },
+      {
+        type: "ul",
+        items: [
+          "A web application that works in any browser on desktop, tablet and phone, with nothing to install.",
+          "Multi-tenant SaaS architecture: sign-in, organisations, roles, subscriptions and an internal admin panel.",
+          "A managed cloud database and automatic deployments, so new features ship routinely.",
+          "AI used where it helps (answering questions, reading supplier invoices) and exact calculations where they matter (stock, forecasts, reorder suggestions), so every number can be checked.",
+          "Search-optimised marketing pages, a glossary and guides, so the product can be found on Google.",
+        ],
+      },
+      { type: "h2", text: "What it shows about working with us" },
+      {
+        type: "p",
+        text: "We build client products the way we built our own: a clear scope first, working software at every milestone, honest claims about what the software does, and support after launch. If you're planning a SaaS product, an internal tool or an AI agent, NaviaLabs is the clearest example of what we can deliver.",
+      },
+      {
+        type: "links",
+        title: "Related",
+        links: [
+          { label: "Visit NaviaLabs", to: "https://navialabs.si" },
+          SOFTWARE,
+          AI_AGENTS,
+          CONTACT,
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Who built NaviaLabs?",
+        a: "NaviaLabs was designed, built and launched by the founders of ZOUM Consultancy, who also run it.",
+      },
+      {
+        q: "Can ZOUM build a SaaS product like NaviaLabs for my business?",
+        a: "Yes. We build custom software, SaaS products and AI agents for clients in India and worldwide, starting with a free discovery call and a written scope.",
+      },
+    ],
+  },
+  {
     slug: "how-to-hire-an-n8n-developer",
     seoTitle: "How to Hire an n8n Developer (Checklist)",
     title: "How to Hire an n8n Developer: A Practical Checklist",
